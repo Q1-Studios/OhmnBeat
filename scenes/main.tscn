@@ -1,6 +1,96 @@
-[gd_scene load_steps=2 format=3 uid="uid://di604njbsw667"]
+[gd_scene load_steps=8 format=3 uid="uid://di604njbsw667"]
 
-[ext_resource type="Script" uid="uid://dw8mrorbg5ybs" path="res://scripts/temp.gd" id="1_o5qli"]
+[ext_resource type="PackedScene" uid="uid://ijo4bvqkw1sv" path="res://scenes/line_2d_formatter.tscn" id="2_0wfyh"]
+
+[sub_resource type="GDScript" id="GDScript_o5qli"]
+script/source = "extends Node2D
+"
+
+[sub_resource type="Curve" id="Curve_o5qli"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_o5qli"]
+offsets = PackedFloat32Array(0, 0.0009871669, 1)
+colors = PackedColorArray(0, 0, 0, 1, 1, 0.011764706, 1, 1, 0, 1, 1, 1)
+
+[sub_resource type="Animation" id="Animation_0wfyh"]
+resource_name = "new_animation"
+length = 6.0
+loop_mode = 1
+step = 1.0
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:width_curve:point_0/position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -1.0033333, 0, 0, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 3, 6)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:width_curve:point_0/position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 1, -1.0033333, -0.16666667, 0, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 3, 6)
+}
+
+[sub_resource type="Animation" id="Animation_sugp2"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:width_curve:point_0/position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:width_curve:point_0/position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_sugp2"]
+_data = {
+&"RESET": SubResource("Animation_sugp2"),
+&"new_animation": SubResource("Animation_0wfyh")
+}
 
 [node name="Node2D" type="Node2D"]
-script = ExtResource("1_o5qli")
+script = SubResource("GDScript_o5qli")
+
+[node name="Line2DFormatter" parent="." instance=ExtResource("2_0wfyh")]
+points = PackedVector2Array(121, 888, 182, 783, 540, 464, 741, 369, 1012, 598, 1172, 736, 1435, 604, 1500, 392)
+width_curve = SubResource("Curve_o5qli")
+default_color = Color(0, 1, 1, 1)
+gradient = SubResource("Gradient_o5qli")
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+round_precision = 16
+antialiased = true
+refreshOnAllTicks = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Line2DFormatter"]
+libraries = {
+&"": SubResource("AnimationLibrary_sugp2")
+}
+autoplay = "new_animation"
+speed_scale = 3.0
