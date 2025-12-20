@@ -23,6 +23,10 @@ window/size/mode=3
 window/stretch/mode="canvas_items"
 window/size/mode.editor=0
 
+[global_group]
+
+Enemy=""
+
 [input]
 
 Hex1={

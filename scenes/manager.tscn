@@ -1,0 +1,44 @@
+[gd_scene load_steps=7 format=3 uid="uid://dlfmexxr77roi"]
+
+[ext_resource type="Script" uid="uid://braju33b42mc7" path="res://scripts/manager.gd" id="1_bdh1m"]
+[ext_resource type="PackedScene" uid="uid://bjr3b5q84iffp" path="res://scenes/bar.tscn" id="2_bgrh2"]
+[ext_resource type="Resource" uid="uid://0w5h01ppjf2y" path="res://assets/beatmaps/test.tres" id="2_gq280"]
+[ext_resource type="Script" uid="uid://ddscsssdhyx1q" path="res://scripts/test_character.gd" id="3_21v6b"]
+[ext_resource type="Texture2D" uid="uid://7fkwqoc63022" path="res://assets/sprites/icon.svg" id="3_u52xp"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gq280"]
+size = Vector2(128, 128)
+
+[node name="Manager" type="Node2D" node_paths=PackedStringArray("bar1", "bar2", "bar3")]
+script = ExtResource("1_bdh1m")
+beatMap = ExtResource("2_gq280")
+bar1 = NodePath("Bar")
+bar2 = NodePath("Bar2")
+bar3 = NodePath("Bar3")
+
+[node name="Bar" parent="." instance=ExtResource("2_bgrh2")]
+position = Vector2(592, 616.0001)
+scale = Vector2(7, 7)
+
+[node name="Bar2" parent="." instance=ExtResource("2_bgrh2")]
+position = Vector2(776.0001, 304.00006)
+rotation = -2.0943952
+scale = Vector2(7, 7)
+
+[node name="Bar3" parent="." instance=ExtResource("2_bgrh2")]
+position = Vector2(408, 304)
+rotation = 2.0943952
+scale = Vector2(7, 7)
+
+[node name="TestCharacter" type="CharacterBody2D" parent="." groups=["Enemy"]]
+position = Vector2(192, 320)
+scale = Vector2(0.5, 0.5)
+script = ExtResource("3_21v6b")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TestCharacter"]
+shape = SubResource("RectangleShape2D_gq280")
+
+[node name="Sprite2D" type="Sprite2D" parent="TestCharacter"]
+texture = ExtResource("3_u52xp")
+
+[connection signal="perfectHit" from="Bar" to="." method="_on_bar_perfect_hit"]
