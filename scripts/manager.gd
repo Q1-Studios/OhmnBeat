@@ -59,7 +59,7 @@ func _process(delta: float) -> void:
 		#print("currentTime in seconds", currentTimeMs)
 		#print("songLength")
 		currentSongProgress = currentTimeMs / songLength
-		print("progress", currentSongProgress)
+		#print("progress", currentSongProgress)
 	
 	if enemyTracker < beatMapLength:
 			currentEnemyKey = beatMap.data[enemyTracker].key

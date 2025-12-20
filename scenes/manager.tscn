@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://bjr3b5q84iffp" path="res://scenes/bar.tscn" id="2_bgrh2"]
 [ext_resource type="Resource" uid="uid://cqughl5jgodkd" path="res://assets/beatmaps/test.tres" id="2_gq280"]
 [ext_resource type="AudioStream" uid="uid://cbuu6rjekjsc6" path="res://Kygo & Selena Gomez - It Ain't Me (Codeko Remix).mp3" id="4_21v6b"]
-[ext_resource type="Script" uid="uid://bnf2a02u3wggg" path="res://scripts/texture_progress_bar.gd" id="5_gq280"]
+[ext_resource type="Script" path="res://scripts/texture_progress_bar.gd" id="5_gq280"]
 
 [sub_resource type="Gradient" id="Gradient_cphvb"]
 offsets = PackedFloat32Array(0, 0.50402147, 1)
@@ -25,31 +25,31 @@ bar6 = NodePath("Bar6")
 music = NodePath("AudioStreamPlayer")
 
 [node name="Bar" parent="." instance=ExtResource("2_bgrh2")]
-position = Vector2(879, 189)
+position = Vector2(6.0915947e-05, -385)
 scale = Vector2(7, 7)
 
 [node name="Bar2" parent="." instance=ExtResource("2_bgrh2")]
-position = Vector2(1212, 381)
+position = Vector2(333, -193.00006)
 rotation = 1.0471976
 scale = Vector2(7, 7)
 
 [node name="Bar3" parent="." instance=ExtResource("2_bgrh2")]
-position = Vector2(1212, 765.99994)
+position = Vector2(333, 191.99988)
 rotation = 2.0943952
 scale = Vector2(7, 7)
 
 [node name="Bar4" parent="." instance=ExtResource("2_bgrh2")]
-position = Vector2(879.00006, 958)
+position = Vector2(0.0001219511, 384)
 rotation = 3.1415927
 scale = Vector2(7, 7)
 
 [node name="Bar5" parent="." instance=ExtResource("2_bgrh2")]
-position = Vector2(546, 766)
+position = Vector2(-332.99994, 192)
 rotation = 4.1887903
 scale = Vector2(7, 7)
 
 [node name="Bar6" parent="." instance=ExtResource("2_bgrh2")]
-position = Vector2(546, 381.00003)
+position = Vector2(-333, -193.00003)
 rotation = -1.0471976
 scale = Vector2(7, 7)
 

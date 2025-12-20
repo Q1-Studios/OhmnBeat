@@ -1,45 +1,48 @@
 extends Line2D
 
-@export var size: float = 4.0
-@export var wave_amplitude: float = 1.0
-@export var wave_frequency: float = 0.5
-@export var wave_speed: float = 6.0
-@export var points_per_side: int = 45
-
-var time: float = 0.0
+@export var subdivisions:int = 150
+@export var amplitude:float = 25
+@export var period:float = 1.0
 
 
-func _process(delta: float) -> void:
-	time += delta * wave_speed
-	global_position = get_global_mouse_position()
-	global_position.y += 25
-	update_rippling_shape()
 
-func update_rippling_shape() -> void:
+@export var length:float = 15.0
+
+enum WAVE_TYPE {SINE, TRIANGLE, SAW, SINE_WOBBLE}
+@export var wavetype: WAVE_TYPE = WAVE_TYPE.SINE
+
+var wave_functions = {
+		WAVE_TYPE.SINE: get_sine_wave,
+		WAVE_TYPE.TRIANGLE: get_triangle_wave,
+		WAVE_TYPE.SAW: get_saw_wave,
+		WAVE_TYPE.SINE_WOBBLE: get_wobble_sine_wave,
+	}
+
+var offset = 0
+func updatewave() -> void:
 	var new_points = []
-	var v1 = Vector2(size, 0)
-	var v2 = Vector2(0.0, size * 0.6)
-	var v3 = Vector2(-size, 0.0)
-	var v4 = Vector2(0.0, -size * 0.6)
-	new_points.append_array(rippleside(v1, v2))
-	new_points.append_array(rippleside(v2, v3))
-	new_points.append_array(rippleside(v3, v4))
-	new_points.append_array(rippleside(v4, v1))
-	points = new_points
-
-func rippleside(start: Vector2, end: Vector2) -> Array:
-	var side_points = []
-	var direction = (end - start).normalized()
-
-	var normal = Vector2(-direction.y, direction.x)
-	var distance = start.distance_to(end)
+	for p in range(subdivisions):
+		var x = p * (length / subdivisions)
+		var y = wave_functions[wavetype].call((x / period) + offset, amplitude)
+		new_points.append(Vector2(x,y))
 	
-	for i in range(points_per_side):
-		var t = float(i) / points_per_side
-		var base_pos = start.lerp(end, t)
+	#position.x = offset * period
 
-		var ripple = sin((t * distance * wave_frequency) - time) * wave_amplitude
-		
-		side_points.append(base_pos + (normal * ripple))
-		
-	return side_points
+
+	points = new_points
+	#offset += movespeed * delta
+
+
+func get_sine_wave(x: float, amp: float) -> float:
+	return sin(x) * amp
+
+
+func get_triangle_wave(x: float, amp: float) -> float:
+	return (pingpong(x, 2.0) - 1.0) * amp
+
+func get_saw_wave(x: float, amp: float) -> float:
+	return (fmod(x, 2.0) - 1.0) * amp
+
+func get_wobble_sine_wave(x: float, amp: float) -> float:
+	var wobble = sin(x * 0.25) * amp * 0.2 
+	return sin(x + wobble) * amp
