@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://bcdqwk2oqbq4w"]
+
+[ext_resource type="Script" uid="uid://b7ccurasquhpu" path="res://scripts/cursorwave.gd" id="1_lftaj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j3s2c"]
+
+[node name="CursorWave" type="Line2D"]
+rotation = -1.5707963
+scale = Vector2(8.937601, 8.937601)
+points = PackedVector2Array(0, 0, 15, 0, 7.5, 3.5, 15, 0, 7.5, -3.5)
+closed = true
+width = 0.495
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+round_precision = 16
+antialiased = true
+script = ExtResource("1_lftaj")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+scale = Vector2(0.25, 0.25)
+shape = SubResource("RectangleShape2D_j3s2c")

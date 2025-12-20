@@ -6,20 +6,20 @@ extends Node2D
 @onready var area_2d: Area2D = $Area2D
 
 func _ready() -> void:
-	area_2d.mouse_entered.connect(_on_mouse_entered)
-	area_2d.mouse_exited.connect(_on_mouse_exited)
-	area_2d.input_event.connect(_on_input_event)
+	area_2d.area_entered.connect(_on_area_entered)
+	area_2d.area_exited.connect(_on_area_exited)
 
-func _on_mouse_entered() -> void:
+func _on_area_entered(_other_area: Area2D) -> void:
 	modulate = highlight_color
 
-func _on_mouse_exited() -> void:
+func _on_area_exited(_other_area: Area2D) -> void:
 	modulate = normal_color
 
-func _on_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
-	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
-		handle_click()
+func _process(_delta) -> void:
+	if Input.is_anything_pressed():
+		if area_2d.get_overlapping_areas().size() > 0:
+			handle_click()
+			hide()
 
 func handle_click() -> void:
-	print("Owl clicked!")
-	
+	print("Owl interacted with via collision!")
