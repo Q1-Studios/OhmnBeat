@@ -14,21 +14,15 @@ var points:int = 0
 #TODO
 # would be nice if we could add hexagon rotation as a next level gimmick
 
-
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	bar1.enemyDestination = marker.position
 	bar1.keyName = "Hex1"
-	bar2.enemyDestination = marker.position
 	bar2.keyName = "Hex2"
-	bar3.enemyDestination = marker.position
 	bar3.keyName = "Hex3"
 
-	print(bar1.enemyDestination)
 	for x in beatMap.data:
-		pass
-		#print(x.milliseconds)
-		#print(x.key)
+		print(x.milliseconds)
+		print(x.key)
 
 
 

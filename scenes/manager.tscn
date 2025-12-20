@@ -15,11 +15,7 @@ beatMap = ExtResource("2_gq280")
 bar1 = NodePath("Bar")
 bar2 = NodePath("Bar2")
 bar3 = NodePath("Bar3")
-marker = NodePath("EnemyDestination")
-
-[node name="EnemyDestination" type="Marker2D" parent="."]
-position = Vector2(592, 296)
-scale = Vector2(1.009025, 0.98123515)
+marker = NodePath("")
 
 [node name="Bar" parent="." instance=ExtResource("2_bgrh2")]
 position = Vector2(592, 616.0001)
