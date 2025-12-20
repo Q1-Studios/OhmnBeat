@@ -1,50 +1,53 @@
-[gd_scene load_steps=7 format=3 uid="uid://dlfmexxr77roi"]
+[gd_scene load_steps=5 format=3 uid="uid://dlfmexxr77roi"]
 
 [ext_resource type="Script" uid="uid://braju33b42mc7" path="res://scripts/manager.gd" id="1_bdh1m"]
 [ext_resource type="PackedScene" uid="uid://bjr3b5q84iffp" path="res://scenes/bar.tscn" id="2_bgrh2"]
 [ext_resource type="Resource" uid="uid://0w5h01ppjf2y" path="res://assets/beatmaps/test.tres" id="2_gq280"]
-[ext_resource type="Script" uid="uid://ddscsssdhyx1q" path="res://scripts/test_character.gd" id="3_21v6b"]
-[ext_resource type="Texture2D" uid="uid://7fkwqoc63022" path="res://assets/sprites/icon.svg" id="3_u52xp"]
+[ext_resource type="AudioStream" uid="uid://cbuu6rjekjsc6" path="res://Kygo & Selena Gomez - It Ain't Me (Codeko Remix).mp3" id="4_21v6b"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_gq280"]
-size = Vector2(128, 128)
-
-[node name="Manager" type="Node2D" node_paths=PackedStringArray("bar1", "bar2", "bar3", "marker")]
+[node name="Manager" type="Node2D" node_paths=PackedStringArray("bar1", "bar2", "bar3", "bar4", "bar5", "bar6", "music")]
 script = ExtResource("1_bdh1m")
 beatMap = ExtResource("2_gq280")
 bar1 = NodePath("Bar")
 bar2 = NodePath("Bar2")
 bar3 = NodePath("Bar3")
-marker = NodePath("")
+bar4 = NodePath("Bar4")
+bar5 = NodePath("Bar5")
+bar6 = NodePath("Bar6")
+music = NodePath("AudioStreamPlayer")
 
 [node name="Bar" parent="." instance=ExtResource("2_bgrh2")]
-position = Vector2(592, 616.0001)
-rotation = 3.1415927
+position = Vector2(880, 191.99998)
 scale = Vector2(7, 7)
 
 [node name="Bar2" parent="." instance=ExtResource("2_bgrh2")]
-visible = false
-position = Vector2(856, 296.00006)
+position = Vector2(1216, 384)
 rotation = 1.0471976
 scale = Vector2(7, 7)
 
 [node name="Bar3" parent="." instance=ExtResource("2_bgrh2")]
-visible = false
-position = Vector2(320.00003, 312)
+position = Vector2(1215.9999, 767.9999)
+rotation = 2.0943952
+scale = Vector2(7, 7)
+
+[node name="Bar4" parent="." instance=ExtResource("2_bgrh2")]
+position = Vector2(912, 983.99994)
+rotation = 3.1415927
+scale = Vector2(7, 7)
+
+[node name="Bar5" parent="." instance=ExtResource("2_bgrh2")]
+position = Vector2(575.99994, 791.99994)
+rotation = 4.1887903
+scale = Vector2(7, 7)
+
+[node name="Bar6" parent="." instance=ExtResource("2_bgrh2")]
+position = Vector2(560, 399.99997)
 rotation = -1.1379547
 scale = Vector2(7, 7)
 
-[node name="TestCharacter" type="CharacterBody2D" parent="." groups=["Enemy"]]
-visible = false
-position = Vector2(192, 320)
-scale = Vector2(0.5, 0.5)
-script = ExtResource("3_21v6b")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TestCharacter"]
-shape = SubResource("RectangleShape2D_gq280")
-
-[node name="Sprite2D" type="Sprite2D" parent="TestCharacter"]
-texture = ExtResource("3_u52xp")
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_21v6b")
+volume_db = -40.0
 
 [connection signal="noHit" from="Bar" to="." method="_on_bar_no_hit"]
 [connection signal="okInnerHit" from="Bar" to="." method="_on_bar_ok_inner_hit"]
@@ -58,3 +61,15 @@ texture = ExtResource("3_u52xp")
 [connection signal="okInnerHit" from="Bar3" to="." method="_on_bar_3_ok_inner_hit"]
 [connection signal="okOuterHit" from="Bar3" to="." method="_on_bar_3_ok_outer_hit"]
 [connection signal="perfectHit" from="Bar3" to="." method="_on_bar_3_perfect_hit"]
+[connection signal="noHit" from="Bar4" to="." method="_on_bar_3_no_hit"]
+[connection signal="okInnerHit" from="Bar4" to="." method="_on_bar_3_ok_inner_hit"]
+[connection signal="okOuterHit" from="Bar4" to="." method="_on_bar_3_ok_outer_hit"]
+[connection signal="perfectHit" from="Bar4" to="." method="_on_bar_3_perfect_hit"]
+[connection signal="noHit" from="Bar5" to="." method="_on_bar_3_no_hit"]
+[connection signal="okInnerHit" from="Bar5" to="." method="_on_bar_3_ok_inner_hit"]
+[connection signal="okOuterHit" from="Bar5" to="." method="_on_bar_3_ok_outer_hit"]
+[connection signal="perfectHit" from="Bar5" to="." method="_on_bar_3_perfect_hit"]
+[connection signal="noHit" from="Bar6" to="." method="_on_bar_3_no_hit"]
+[connection signal="okInnerHit" from="Bar6" to="." method="_on_bar_3_ok_inner_hit"]
+[connection signal="okOuterHit" from="Bar6" to="." method="_on_bar_3_ok_outer_hit"]
+[connection signal="perfectHit" from="Bar6" to="." method="_on_bar_3_perfect_hit"]

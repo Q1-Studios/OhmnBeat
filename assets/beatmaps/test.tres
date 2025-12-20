@@ -5,32 +5,32 @@
 
 [sub_resource type="Resource" id="Resource_0xf04"]
 script = ExtResource("1_mv8ii")
-milliseconds = 1985
+milliseconds = 1000
 key = "S"
 
 [sub_resource type="Resource" id="Resource_lnj24"]
 script = ExtResource("1_mv8ii")
-milliseconds = 2394
+milliseconds = 2000
 key = "D"
 
 [sub_resource type="Resource" id="Resource_dk4rp"]
 script = ExtResource("1_mv8ii")
-milliseconds = 2757
+milliseconds = 3000
 key = "F"
 
 [sub_resource type="Resource" id="Resource_5c5ma"]
 script = ExtResource("1_mv8ii")
-milliseconds = 3796
+milliseconds = 4000
 key = "J"
 
 [sub_resource type="Resource" id="Resource_xmo30"]
 script = ExtResource("1_mv8ii")
-milliseconds = 4159
+milliseconds = 5000
 key = "K"
 
 [sub_resource type="Resource" id="Resource_uslsf"]
 script = ExtResource("1_mv8ii")
-milliseconds = 4500
+milliseconds = 6000
 key = "L"
 
 [resource]

@@ -4,13 +4,24 @@ extends Node2D
 @export var bar1:Node2D
 @export var bar2:Node2D
 @export var bar3:Node2D
-@export var marker:Marker2D
+@export var bar4:Node2D
+@export var bar5:Node2D
+@export var bar6:Node2D
+@export var music:AudioStreamPlayer
 
 var PERFECTPOINTS:int = 300
 var OKPOINTS:int = 200
 var DAMAGE:int = 10
 var health:int = 100
 var points:int = 0
+var beatMapLength: int = 0
+var enemyTracker:int = 0
+var currentEnemyKey:String
+var currentEnemyTime:int
+var currentElapsedTime:int
+var musicLatency:int
+var currentMusicTime:int
+
 #TODO
 # would be nice if we could add hexagon rotation as a next level gimmick
 
@@ -19,18 +30,48 @@ func _ready() -> void:
 	bar1.keyName = "Hex1"
 	bar2.keyName = "Hex2"
 	bar3.keyName = "Hex3"
+	bar4.keyName = "Hex4"
+	bar5.keyName = "Hex5"
+	bar6.keyName = "Hex6"
+	musicLatency = AudioServer.get_output_latency()
+	music.play()
+	beatMapLength = beatMap.data.size()
 
-	for x in beatMap.data:
-		print(x.milliseconds)
-		print(x.key)
+
 
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	
-	
-	pass
+	if enemyTracker < beatMapLength:
+			currentEnemyKey = beatMap.data[enemyTracker].key
+			currentEnemyTime = beatMap.data[enemyTracker].milliseconds 
+			currentElapsedTime = Time.get_ticks_msec()
+			#print(beatMap.data[enemyTracker].key)
+			currentMusicTime = int(1000 * (music.get_playback_position() + AudioServer.get_time_to_next_mix() + musicLatency))
+
+			if (currentMusicTime >= currentEnemyTime - 5):
+				match currentEnemyKey:
+					"S":
+						bar1.spawnEnemy()
+						enemyTracker += 1
+					"D":
+						bar2.spawnEnemy()
+						enemyTracker += 1
+					"F":
+						bar3.spawnEnemy()
+						enemyTracker += 1
+					"J":
+						bar4.spawnEnemy()
+						enemyTracker += 1
+					"K":
+						bar5.spawnEnemy()
+						enemyTracker += 1
+					"L":
+						bar6.spawnEnemy()
+						enemyTracker += 1
+					_:
+						print("waiting")
 
 
 func _on_bar_perfect_hit() -> void:

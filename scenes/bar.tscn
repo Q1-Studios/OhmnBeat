@@ -7,24 +7,26 @@
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_bwlfd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x848m"]
-size = Vector2(96, 5)
+size = Vector2(60.6, 5)
 
-[node name="Bar" type="Node2D" node_paths=PackedStringArray("okInnerBar", "okOuterBar", "perfectBar")]
-scale = Vector2(15, 15)
+[node name="Bar" type="Node2D" node_paths=PackedStringArray("okInnerBar", "okOuterBar", "perfectBar", "enemySpawn")]
+scale = Vector2(10, 10)
 script = ExtResource("1_5dekh")
 okInnerBar = NodePath("OkInnerBar")
 okOuterBar = NodePath("OkOuterBar")
 perfectBar = NodePath("PerfectBar")
+enemySpawn = NodePath("")
 
 [node name="PerfectBar" type="Area2D" parent="."]
 script = ExtResource("2_bwlfd")
 
 [node name="BarSprite" type="Sprite2D" parent="PerfectBar"]
-position = Vector2(-4.7683716e-07, 0)
-scale = Vector2(96.00001, 5.0000005)
+position = Vector2(-9.536743e-07, -1.4901161e-08)
+scale = Vector2(60.8, 4.7083335)
 texture = SubResource("PlaceholderTexture2D_bwlfd")
 
 [node name="PerfectCollision" type="CollisionShape2D" parent="PerfectBar"]
+scale = Vector2(0.99999994, 0.99999994)
 shape = SubResource("RectangleShape2D_x848m")
 
 [node name="OkInnerBar" type="Area2D" parent="."]
@@ -40,13 +42,13 @@ position = Vector2(0, -5.0000005)
 script = ExtResource("2_bwlfd")
 
 [node name="OkOuterCollision" type="CollisionShape2D" parent="OkOuterBar"]
-position = Vector2(0, 4.7683716e-07)
+position = Vector2(2.3841858e-07, 4.7683716e-07)
+scale = Vector2(0.9999998, 0.9999998)
 shape = SubResource("RectangleShape2D_x848m")
 
 [node name="MissBar" type="Area2D" parent="."]
-position = Vector2(0, 34.133335)
+position = Vector2(0, 17.066668)
 script = ExtResource("3_x848m")
 
 [node name="MissCollision" type="CollisionShape2D" parent="MissBar"]
-position = Vector2(0, -4.7683716e-07)
 shape = SubResource("RectangleShape2D_x848m")

@@ -4,6 +4,8 @@ extends Node2D
 @export var okInnerBar:SuccessZone
 @export var okOuterBar:SuccessZone
 @export var perfectBar:SuccessZone
+@export var enemySpawn:Marker2D
+
 signal perfectHit
 signal okInnerHit
 signal okOuterHit
@@ -19,7 +21,7 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	spawnEnemy()
+	#spawnEnemy()
 	pass
 
 func _input(event: InputEvent) -> void:
@@ -46,10 +48,10 @@ func hit(targetList:Array):
 	return containsEnemy
 
 func spawnEnemy():
-	if Input.is_action_just_pressed("spawnKey"):
-		#print(enemyDestination)
-		var instance = enemy.instantiate()
-		instance.position.y = -50
-		instance.endPosition = $MissBar.position
-		instance.speed = 0.1
-		add_child(instance)
+	#if Input.is_action_just_pressed("spawnKey"):
+	#print("spawn call works")
+	var instance = enemy.instantiate()
+	instance.position.y = -50
+	instance.endPosition = $MissBar.position
+	instance.speed = 0.1
+	add_child(instance)
