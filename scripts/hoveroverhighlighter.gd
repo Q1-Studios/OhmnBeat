@@ -23,3 +23,6 @@ func _process(_delta) -> void:
 
 func handle_click() -> void:
 	print("Owl interacted with via collision!")
+
+func hide_collision_stuf():
+	$Area2D.hide()
