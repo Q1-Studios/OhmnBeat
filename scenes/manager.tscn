@@ -9,28 +9,36 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gq280"]
 size = Vector2(128, 128)
 
-[node name="Manager" type="Node2D" node_paths=PackedStringArray("bar1", "bar2", "bar3")]
+[node name="Manager" type="Node2D" node_paths=PackedStringArray("bar1", "bar2", "bar3", "marker")]
 script = ExtResource("1_bdh1m")
 beatMap = ExtResource("2_gq280")
 bar1 = NodePath("Bar")
 bar2 = NodePath("Bar2")
 bar3 = NodePath("Bar3")
+marker = NodePath("EnemyDestination")
+
+[node name="EnemyDestination" type="Marker2D" parent="."]
+position = Vector2(592, 296)
 
 [node name="Bar" parent="." instance=ExtResource("2_bgrh2")]
 position = Vector2(592, 616.0001)
+rotation = 3.1415927
 scale = Vector2(7, 7)
 
 [node name="Bar2" parent="." instance=ExtResource("2_bgrh2")]
-position = Vector2(776.0001, 304.00006)
-rotation = -2.0943952
+visible = false
+position = Vector2(856, 296.00006)
+rotation = 1.0471976
 scale = Vector2(7, 7)
 
 [node name="Bar3" parent="." instance=ExtResource("2_bgrh2")]
-position = Vector2(408, 304)
-rotation = 2.0943952
+visible = false
+position = Vector2(320.00003, 312)
+rotation = -1.1379547
 scale = Vector2(7, 7)
 
 [node name="TestCharacter" type="CharacterBody2D" parent="." groups=["Enemy"]]
+visible = false
 position = Vector2(192, 320)
 scale = Vector2(0.5, 0.5)
 script = ExtResource("3_21v6b")
@@ -41,4 +49,15 @@ shape = SubResource("RectangleShape2D_gq280")
 [node name="Sprite2D" type="Sprite2D" parent="TestCharacter"]
 texture = ExtResource("3_u52xp")
 
+[connection signal="noHit" from="Bar" to="." method="_on_bar_no_hit"]
+[connection signal="okInnerHit" from="Bar" to="." method="_on_bar_ok_inner_hit"]
+[connection signal="okOuterHit" from="Bar" to="." method="_on_bar_ok_outer_hit"]
 [connection signal="perfectHit" from="Bar" to="." method="_on_bar_perfect_hit"]
+[connection signal="noHit" from="Bar2" to="." method="_on_bar_2_no_hit"]
+[connection signal="okInnerHit" from="Bar2" to="." method="_on_bar_2_ok_inner_hit"]
+[connection signal="okOuterHit" from="Bar2" to="." method="_on_bar_2_ok_outer_hit"]
+[connection signal="perfectHit" from="Bar2" to="." method="_on_bar_2_perfect_hit"]
+[connection signal="noHit" from="Bar3" to="." method="_on_bar_3_no_hit"]
+[connection signal="okInnerHit" from="Bar3" to="." method="_on_bar_3_ok_inner_hit"]
+[connection signal="okOuterHit" from="Bar3" to="." method="_on_bar_3_ok_outer_hit"]
+[connection signal="perfectHit" from="Bar3" to="." method="_on_bar_3_perfect_hit"]

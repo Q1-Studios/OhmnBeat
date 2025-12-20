@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://bjr3b5q84iffp"]
+[gd_scene load_steps=6 format=3 uid="uid://bjr3b5q84iffp"]
 
 [ext_resource type="Script" uid="uid://cwsl3qyhoh8nb" path="res://scripts/bars.gd" id="1_5dekh"]
 [ext_resource type="Script" uid="uid://cx5bywiu0iqj" path="res://scripts/successZone.gd" id="2_bwlfd"]
+[ext_resource type="Script" uid="uid://cnw6sasggbm1f" path="res://scenes/miss_bar.gd" id="3_x848m"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_bwlfd"]
 
@@ -27,15 +28,25 @@ texture = SubResource("PlaceholderTexture2D_bwlfd")
 shape = SubResource("RectangleShape2D_x848m")
 
 [node name="OkInnerBar" type="Area2D" parent="."]
+position = Vector2(0, 5.0000005)
 script = ExtResource("2_bwlfd")
 
 [node name="OkInnerCollision" type="CollisionShape2D" parent="OkInnerBar"]
-position = Vector2(0, 5)
+position = Vector2(0, -4.7683716e-07)
 shape = SubResource("RectangleShape2D_x848m")
 
 [node name="OkOuterBar" type="Area2D" parent="."]
+position = Vector2(0, -5.0000005)
 script = ExtResource("2_bwlfd")
 
 [node name="OkOuterCollision" type="CollisionShape2D" parent="OkOuterBar"]
-position = Vector2(0, -5)
+position = Vector2(0, 4.7683716e-07)
+shape = SubResource("RectangleShape2D_x848m")
+
+[node name="MissBar" type="Area2D" parent="."]
+position = Vector2(0, 34.133335)
+script = ExtResource("3_x848m")
+
+[node name="MissCollision" type="CollisionShape2D" parent="MissBar"]
+position = Vector2(0, -4.7683716e-07)
 shape = SubResource("RectangleShape2D_x848m")

@@ -8,7 +8,7 @@ var progress: float = 0.0
 
 func _ready() -> void:
 	startPosition = position 
-	print("i spawned")
+	#print("i spawned")
 	pass # Replace with function body.
 
 
