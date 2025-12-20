@@ -1,9 +1,17 @@
-[gd_scene load_steps=5 format=3 uid="uid://dlfmexxr77roi"]
+[gd_scene load_steps=8 format=3 uid="uid://dlfmexxr77roi"]
 
 [ext_resource type="Script" uid="uid://braju33b42mc7" path="res://scripts/manager.gd" id="1_bdh1m"]
 [ext_resource type="PackedScene" uid="uid://bjr3b5q84iffp" path="res://scenes/bar.tscn" id="2_bgrh2"]
-[ext_resource type="Resource" uid="uid://cmrye6janx0y8" path="res://assets/beatmaps/test.tres" id="2_gq280"]
+[ext_resource type="Resource" uid="uid://cqughl5jgodkd" path="res://assets/beatmaps/test.tres" id="2_gq280"]
 [ext_resource type="AudioStream" uid="uid://cbuu6rjekjsc6" path="res://Kygo & Selena Gomez - It Ain't Me (Codeko Remix).mp3" id="4_21v6b"]
+[ext_resource type="Script" uid="uid://bnf2a02u3wggg" path="res://scripts/texture_progress_bar.gd" id="5_gq280"]
+
+[sub_resource type="Gradient" id="Gradient_cphvb"]
+offsets = PackedFloat32Array(0, 0.50402147, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.12654808, 0.6759541, 0.22052673, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_o1c0c"]
+gradient = SubResource("Gradient_cphvb")
 
 [node name="Manager" type="Node2D" node_paths=PackedStringArray("bar1", "bar2", "bar3", "bar4", "bar5", "bar6", "music")]
 script = ExtResource("1_bdh1m")
@@ -17,37 +25,43 @@ bar6 = NodePath("Bar6")
 music = NodePath("AudioStreamPlayer")
 
 [node name="Bar" parent="." instance=ExtResource("2_bgrh2")]
-position = Vector2(880, 191.99998)
+position = Vector2(879, 189)
 scale = Vector2(7, 7)
 
 [node name="Bar2" parent="." instance=ExtResource("2_bgrh2")]
-position = Vector2(1216, 384)
+position = Vector2(1212, 381)
 rotation = 1.0471976
 scale = Vector2(7, 7)
 
 [node name="Bar3" parent="." instance=ExtResource("2_bgrh2")]
-position = Vector2(1215.9999, 767.9999)
+position = Vector2(1212, 765.99994)
 rotation = 2.0943952
 scale = Vector2(7, 7)
 
 [node name="Bar4" parent="." instance=ExtResource("2_bgrh2")]
-position = Vector2(912, 983.99994)
+position = Vector2(879.00006, 958)
 rotation = 3.1415927
 scale = Vector2(7, 7)
 
 [node name="Bar5" parent="." instance=ExtResource("2_bgrh2")]
-position = Vector2(575.99994, 791.99994)
+position = Vector2(546, 766)
 rotation = 4.1887903
 scale = Vector2(7, 7)
 
 [node name="Bar6" parent="." instance=ExtResource("2_bgrh2")]
-position = Vector2(560, 399.99997)
-rotation = -1.1379547
+position = Vector2(546, 381.00003)
+rotation = -1.0471976
 scale = Vector2(7, 7)
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_21v6b")
 volume_db = -40.0
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+texture_progress = SubResource("GradientTexture1D_o1c0c")
+script = ExtResource("5_gq280")
 
 [connection signal="noHit" from="Bar" to="." method="_on_bar_no_hit"]
 [connection signal="okInnerHit" from="Bar" to="." method="_on_bar_ok_inner_hit"]

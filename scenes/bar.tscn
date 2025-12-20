@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://bjr3b5q84iffp"]
+[gd_scene load_steps=7 format=3 uid="uid://bjr3b5q84iffp"]
 
 [ext_resource type="Script" uid="uid://cwsl3qyhoh8nb" path="res://scripts/bars.gd" id="1_5dekh"]
 [ext_resource type="Script" uid="uid://cx5bywiu0iqj" path="res://scripts/successZone.gd" id="2_bwlfd"]
@@ -8,6 +8,9 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x848m"]
 size = Vector2(60.6, 5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qdsxc"]
+size = Vector2(48.000008, 5)
 
 [node name="Bar" type="Node2D" node_paths=PackedStringArray("okInnerBar", "okOuterBar", "perfectBar")]
 scale = Vector2(10, 10)
@@ -50,6 +53,8 @@ position = Vector2(0, 17.066668)
 script = ExtResource("3_x848m")
 
 [node name="MissCollision" type="CollisionShape2D" parent="MissBar"]
-shape = SubResource("RectangleShape2D_x848m")
+position = Vector2(-9.536742e-08, 0)
+scale = Vector2(0.99999976, 0.99999976)
+shape = SubResource("RectangleShape2D_qdsxc")
 
 [connection signal="missed" from="MissBar" to="." method="_on_miss_bar_missed"]

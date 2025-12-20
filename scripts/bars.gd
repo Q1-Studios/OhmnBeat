@@ -10,6 +10,7 @@ signal perfectHit
 signal okInnerHit
 signal okOuterHit
 signal noHit
+var randomEnemyOffsetX: int
 var enemyDestination: Vector2
 var enemy = preload("res://scenes/enemy.tscn")
 
@@ -53,6 +54,8 @@ func hit(targetList:Array):
 func spawnEnemy():
 	#print("spawn call works")
 	var instance = enemy.instantiate()
+	randomEnemyOffsetX = randi_range(-30, 30)
+	instance.position.x = randomEnemyOffsetX
 	instance.position.y = -50
 	instance.endPosition = $PerfectBar.position
 	instance.speed = 0.5

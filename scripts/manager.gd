@@ -8,6 +8,7 @@ extends Node2D
 @export var bar5:Node2D
 @export var bar6:Node2D
 @export var music:AudioStreamPlayer
+@export var progressBar:TextureProgressBar
 
 var PERFECTPOINTS:int = 300
 var OKPOINTS:int = 200
@@ -19,19 +20,21 @@ var beatMapLength: int = 0
 var enemyTracker:int = 0
 var currentEnemyKey:String
 var currentEnemyTime:int
-var currentElapsedTime:int
 var musicLatency:int
 var currentMusicTime:int
 var globalStartTime:int
 var hasStarted:bool = false
-
+var currentTimeMs:float = 0
+var songStartTime:float = 0
+var songLength:float = 0
+var currentSongProgress:float = 0
 #TODO
 # would be nice if we could add hexagon rotation as a next level gimmick
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	globalStartTime = Time.get_unix_time_from_system()
-	
+	songLength = int(music.stream.get_length() * 1000)
 	bar1.keyName = "Hex1"
 	bar2.keyName = "Hex2"
 	bar3.keyName = "Hex3"
@@ -47,12 +50,20 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if Time.get_unix_time_from_system() - 3 >= globalStartTime and not hasStarted:
 		music.play()
+		songStartTime = Time.get_unix_time_from_system()
 		hasStarted = true
+	
+	if currentSongProgress <= 1 and songStartTime != 0:
+		currentTimeMs = Time.get_unix_time_from_system() - songStartTime
+		currentTimeMs = currentTimeMs * 1000
+		#print("currentTime in seconds", currentTimeMs)
+		#print("songLength")
+		currentSongProgress = currentTimeMs / songLength
+		print("progress", currentSongProgress)
 	
 	if enemyTracker < beatMapLength:
 			currentEnemyKey = beatMap.data[enemyTracker].key
 			currentEnemyTime = beatMap.data[enemyTracker].milliseconds 
-			currentElapsedTime = Time.get_ticks_msec()
 			#print(beatMap.data[enemyTracker].key)
 			currentMusicTime = int(1000 * (music.get_playback_position() + AudioServer.get_time_to_next_mix() + musicLatency))
 			if (currentMusicTime >= currentEnemyTime - 2000):
