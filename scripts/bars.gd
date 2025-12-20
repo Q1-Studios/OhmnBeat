@@ -21,17 +21,18 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	#spawnEnemy()
+	#if Input.is_action_just_pressed("spawnKey"):
+		#spawnEnemy()
 	pass
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed(keyName):
 	#if event is InputEventKey and event.is_pressed() and event.as_text_keycode() == keyName:
-		print(keyName)
+		#print(keyName)
 		if hit(perfectBar.enemyList):
 			perfectHit.emit()
-			print("hit")
-			print(Time.get_unix_time_from_system())
+			#print("hit")
+			#print(Time.get_unix_time_from_system())
 		elif hit(okInnerBar.enemyList):
 			okInnerHit.emit()
 		elif hit(okOuterBar.enemyList):
@@ -50,10 +51,13 @@ func hit(targetList:Array):
 	return containsEnemy
 
 func spawnEnemy():
-	#if Input.is_action_just_pressed("spawnKey"):
 	#print("spawn call works")
 	var instance = enemy.instantiate()
 	instance.position.y = -50
 	instance.endPosition = $PerfectBar.position
 	instance.speed = 0.5
 	add_child(instance)
+
+
+func _on_miss_bar_missed() -> void:
+	noHit.emit()

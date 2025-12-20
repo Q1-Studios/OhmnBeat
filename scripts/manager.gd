@@ -12,6 +12,7 @@ extends Node2D
 var PERFECTPOINTS:int = 300
 var OKPOINTS:int = 200
 var DAMAGE:int = 10
+var RECOVER:int = 5
 var health:int = 100
 var points:int = 0
 var beatMapLength: int = 0
@@ -29,7 +30,6 @@ var hasStarted:bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	
 	globalStartTime = Time.get_unix_time_from_system()
 	
 	bar1.keyName = "Hex1"
@@ -41,9 +41,6 @@ func _ready() -> void:
 	musicLatency = AudioServer.get_output_latency()
 	
 	beatMapLength = beatMap.data.size()
-
-
-
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -159,14 +156,17 @@ func _on_bar_5_no_hit() -> void:
 func _on_bar_6_no_hit() -> void:
 	missed()
 
+
+
 func missed():
-	print("miss")
-	print("Health: ")
 	health -= DAMAGE
 	health = clamp(health, 0, 100)
-	print(health)
-	print("")
+	print("Missed! Current Health: ", health)
+
 func okHit():
 	points += OKPOINTS
 func perfectHit():
+	health += RECOVER
+	health = clamp(health, 0, 100)
+	print("Perfect! Current Health: ", health)
 	points += PERFECTPOINTS

@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cwsl3qyhoh8nb" path="res://scripts/bars.gd" id="1_5dekh"]
 [ext_resource type="Script" uid="uid://cx5bywiu0iqj" path="res://scripts/successZone.gd" id="2_bwlfd"]
-[ext_resource type="Script" path="res://scripts/miss_bar.gd" id="3_x848m"]
+[ext_resource type="Script" uid="uid://cnw6sasggbm1f" path="res://scripts/miss_bar.gd" id="3_x848m"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_bwlfd"]
 
@@ -51,3 +51,5 @@ script = ExtResource("3_x848m")
 
 [node name="MissCollision" type="CollisionShape2D" parent="MissBar"]
 shape = SubResource("RectangleShape2D_x848m")
+
+[connection signal="missed" from="MissBar" to="." method="_on_miss_bar_missed"]

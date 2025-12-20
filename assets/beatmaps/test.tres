@@ -1,68 +1,138 @@
-[gd_resource type="Resource" script_class="Beatmap" load_steps=15 format=3 uid="uid://cmrye6janx0y8"]
+[gd_resource type="Resource" script_class="Beatmap" load_steps=29 format=3]
 
-[ext_resource type="Script" uid="uid://nbg3jtt8yyoh" path="res://TimeStampKey.gd" id="1_mv8ii"]
-[ext_resource type="Script" uid="uid://dflfigbm8j6fj" path="res://beatmap.gd" id="2_76ctb"]
+[ext_resource type="Script" path="res://TimeStampKey.gd" id="1_mv8ii"]
+[ext_resource type="Script" path="res://beatmap.gd" id="2_76ctb"]
 
 [sub_resource type="Resource" id="Resource_0xf04"]
 script = ExtResource("1_mv8ii")
-milliseconds = 11520
+milliseconds = 913
 key = "D"
 
 [sub_resource type="Resource" id="Resource_lnj24"]
 script = ExtResource("1_mv8ii")
-milliseconds = 12212
-key = "D"
+milliseconds = 1514
+key = "J"
 
 [sub_resource type="Resource" id="Resource_dk4rp"]
 script = ExtResource("1_mv8ii")
-milliseconds = 12533
-key = "D"
+milliseconds = 1828
+key = "J"
 
 [sub_resource type="Resource" id="Resource_5c5ma"]
 script = ExtResource("1_mv8ii")
-milliseconds = 12683
-key = "D"
+milliseconds = 1969
+key = "J"
 
 [sub_resource type="Resource" id="Resource_xmo30"]
 script = ExtResource("1_mv8ii")
-milliseconds = 13463
-key = "D"
+milliseconds = 2173
+key = "F"
 
 [sub_resource type="Resource" id="Resource_uslsf"]
 script = ExtResource("1_mv8ii")
-milliseconds = 13643
+milliseconds = 2854
 key = "D"
 
 [sub_resource type="Resource" id="Resource_1lnqq"]
 script = ExtResource("1_mv8ii")
-milliseconds = 14127
+milliseconds = 3036
 key = "D"
 
 [sub_resource type="Resource" id="Resource_uidau"]
 script = ExtResource("1_mv8ii")
-milliseconds = 14490
-key = "D"
+milliseconds = 3529
+key = "J"
 
 [sub_resource type="Resource" id="Resource_ii2d6"]
 script = ExtResource("1_mv8ii")
-milliseconds = 14794
-key = "D"
+milliseconds = 3841
+key = "F"
 
 [sub_resource type="Resource" id="Resource_vf8k6"]
 script = ExtResource("1_mv8ii")
-milliseconds = 15127
-key = "D"
+milliseconds = 4137
+key = "K"
 
 [sub_resource type="Resource" id="Resource_l4htq"]
 script = ExtResource("1_mv8ii")
-milliseconds = 15290
+milliseconds = 4480
 key = "D"
 
 [sub_resource type="Resource" id="Resource_itp5f"]
 script = ExtResource("1_mv8ii")
-milliseconds = 15465
+milliseconds = 4650
 key = "D"
+
+[sub_resource type="Resource" id="Resource_rn43x"]
+script = ExtResource("1_mv8ii")
+milliseconds = 4834
+key = "F"
+
+[sub_resource type="Resource" id="Resource_1clyg"]
+script = ExtResource("1_mv8ii")
+milliseconds = 5535
+key = "D"
+
+[sub_resource type="Resource" id="Resource_7fm20"]
+script = ExtResource("1_mv8ii")
+milliseconds = 5722
+key = "D"
+
+[sub_resource type="Resource" id="Resource_w5428"]
+script = ExtResource("1_mv8ii")
+milliseconds = 6139
+key = "F"
+
+[sub_resource type="Resource" id="Resource_84280"]
+script = ExtResource("1_mv8ii")
+milliseconds = 6486
+key = "D"
+
+[sub_resource type="Resource" id="Resource_s56ji"]
+script = ExtResource("1_mv8ii")
+milliseconds = 6787
+key = "S"
+
+[sub_resource type="Resource" id="Resource_dbicf"]
+script = ExtResource("1_mv8ii")
+milliseconds = 7161
+key = "D"
+
+[sub_resource type="Resource" id="Resource_y8mlh"]
+script = ExtResource("1_mv8ii")
+milliseconds = 7353
+key = "F"
+
+[sub_resource type="Resource" id="Resource_smkks"]
+script = ExtResource("1_mv8ii")
+milliseconds = 7520
+key = "D"
+
+[sub_resource type="Resource" id="Resource_b7edv"]
+script = ExtResource("1_mv8ii")
+milliseconds = 8125
+key = "D"
+
+[sub_resource type="Resource" id="Resource_o7sil"]
+script = ExtResource("1_mv8ii")
+milliseconds = 8496
+key = "D"
+
+[sub_resource type="Resource" id="Resource_ir6nk"]
+script = ExtResource("1_mv8ii")
+milliseconds = 8830
+key = "F"
+
+[sub_resource type="Resource" id="Resource_ssdha"]
+script = ExtResource("1_mv8ii")
+milliseconds = 9148
+key = "D"
+
+[sub_resource type="Resource" id="Resource_3h3q3"]
+script = ExtResource("1_mv8ii")
+milliseconds = 9314
+key = "F"
 
 [resource]
 script = ExtResource("2_76ctb")
-data = Array[ExtResource("1_mv8ii")]([SubResource("Resource_0xf04"), SubResource("Resource_lnj24"), SubResource("Resource_dk4rp"), SubResource("Resource_5c5ma"), SubResource("Resource_xmo30"), SubResource("Resource_uslsf"), SubResource("Resource_1lnqq"), SubResource("Resource_uidau"), SubResource("Resource_ii2d6"), SubResource("Resource_vf8k6"), SubResource("Resource_l4htq"), SubResource("Resource_itp5f")])
+data = Array[ExtResource("1_mv8ii")]([SubResource("Resource_0xf04"), SubResource("Resource_lnj24"), SubResource("Resource_dk4rp"), SubResource("Resource_5c5ma"), SubResource("Resource_xmo30"), SubResource("Resource_uslsf"), SubResource("Resource_1lnqq"), SubResource("Resource_uidau"), SubResource("Resource_ii2d6"), SubResource("Resource_vf8k6"), SubResource("Resource_l4htq"), SubResource("Resource_itp5f"), SubResource("Resource_rn43x"), SubResource("Resource_1clyg"), SubResource("Resource_7fm20"), SubResource("Resource_w5428"), SubResource("Resource_84280"), SubResource("Resource_s56ji"), SubResource("Resource_dbicf"), SubResource("Resource_y8mlh"), SubResource("Resource_smkks"), SubResource("Resource_b7edv"), SubResource("Resource_o7sil"), SubResource("Resource_ir6nk"), SubResource("Resource_ssdha"), SubResource("Resource_3h3q3")])
