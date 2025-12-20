@@ -1,0 +1,114 @@
+[gd_scene load_steps=10 format=3 uid="uid://3dacuugsdegt"]
+
+[ext_resource type="Script" uid="uid://bloaqnqylotk2" path="res://scripts/linegen.gd" id="1_4qaq7"]
+[ext_resource type="Shader" uid="uid://csxon2ptntecx" path="res://shaders/crtscreen.gdshader" id="1_hah7f"]
+[ext_resource type="Shader" uid="uid://brf2fxm2ewmux" path="res://shaders/accumulator.gdshader" id="1_uphyt"]
+
+[sub_resource type="GDScript" id="GDScript_uphyt"]
+resource_name = "fwd"
+script/source = "extends Node2D
+func _input(event: InputEvent) -> void:
+	if event is InputEventMouseMotion or event is InputEventMouseButton:
+		$SubViewport.push_input(event,false)
+"
+
+[sub_resource type="Environment" id="Environment_5gdhr"]
+background_mode = 3
+background_energy_multiplier = 0.0
+ambient_light_source = 1
+reflected_light_source = 1
+tonemap_exposure = 0.99
+tonemap_white = 0.7
+glow_enabled = true
+glow_normalized = true
+glow_strength = 0.9
+glow_mix = 0.243
+glow_bloom = 0.95
+glow_blend_mode = 4
+adjustment_enabled = true
+adjustment_brightness = 0.99
+adjustment_contrast = 0.96
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5gdhr"]
+shader = ExtResource("1_hah7f")
+shader_parameter/scanline_count = 43.06400204554
+shader_parameter/scanline_speed = 0.05
+shader_parameter/scanline_strength = 0.1200000057
+shader_parameter/v_scan_strength = 0.1200000057
+shader_parameter/rgb_offset_uv = 0.0
+shader_parameter/curvature = 0.35
+shader_parameter/screen_aspect = Vector2(16, 9)
+shader_parameter/phosphor_bias_red = 1.0
+shader_parameter/phosphor_bias_blue = 1.0
+shader_parameter/phosphor_bias_green = 1.15
+shader_parameter/phosphor_clamp = 1.045
+shader_parameter/noise_strength = 0.0250000011875
+shader_parameter/noise_scale = 747.885
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_b4inp"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hah7f"]
+shader = ExtResource("1_uphyt")
+shader_parameter/decay = 0.050000002375
+shader_parameter/hard_cut = 0.030000001425
+
+[sub_resource type="GDScript" id="GDScript_4qaq7"]
+resource_name = "testwave"
+script/source = "extends Node2D
+func _process(delta):
+	$TestWave.offset += delta*15
+	$TestWave.updatewave()
+	$TestWave.global_position = get_global_mouse_position()
+"
+
+[node name="Shadertesting" type="Node2D"]
+script = SubResource("GDScript_uphyt")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_5gdhr")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+material = SubResource("ShaderMaterial_5gdhr")
+offset_right = 40.0
+offset_bottom = 40.0
+texture = SubResource("ViewportTexture_b4inp")
+
+[node name="SubViewport" type="SubViewport" parent="."]
+handle_input_locally = false
+size = Vector2i(1920, 1080)
+render_target_clear_mode = 1
+render_target_update_mode = 4
+
+[node name="ColorRect" type="ColorRect" parent="SubViewport"]
+material = SubResource("ShaderMaterial_hah7f")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+color = Color(1, 0, 0, 1)
+
+[node name="Node2D" type="Node2D" parent="SubViewport"]
+position = Vector2(272, 191)
+rotation = 1.5707964
+scale = Vector2(9.120001, 9.120001)
+script = SubResource("GDScript_4qaq7")
+
+[node name="TestWave" type="Line2D" parent="SubViewport/Node2D"]
+position = Vector2(34.105, -70.865)
+scale = Vector2(-0.98, -0.98)
+points = PackedVector2Array(0, 0, 15, 0, 7.5, 3.5, 15, 0, 7.5, -3.5)
+width = 0.495
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+round_precision = 16
+antialiased = true
+script = ExtResource("1_4qaq7")
+subdivisions = 400
+amplitude = 3.0
+period = 2.0
+length = 25.0
