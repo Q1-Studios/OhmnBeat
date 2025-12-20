@@ -1,8 +1,12 @@
-[gd_scene load_steps=11 format=3 uid="uid://c58wjax2eyvgm"]
+[gd_scene load_steps=18 format=3 uid="uid://c58wjax2eyvgm"]
 
 [ext_resource type="Shader" uid="uid://csxon2ptntecx" path="res://shaders/crtscreen.gdshader" id="1_olg7q"]
+[ext_resource type="Script" uid="uid://dy7fu0maf3ug8" path="res://scripts/glitch_effect_sub_viewport.gd" id="2_2r41h"]
 [ext_resource type="Shader" uid="uid://brf2fxm2ewmux" path="res://shaders/accumulator.gdshader" id="2_t1rx8"]
 [ext_resource type="PackedScene" uid="uid://dlfmexxr77roi" path="res://scenes/manager.tscn" id="3_w8frs"]
+[ext_resource type="Script" uid="uid://b0idrg4xodocc" path="res://scripts/score_label.gd" id="4_mx8sn"]
+[ext_resource type="Script" uid="uid://cxj5w7n7ps51f" path="res://scripts/music_progress_bar.gd" id="4_ppgk2"]
+[ext_resource type="Script" uid="uid://dt8goso8xl5cc" path="res://scripts/glitch_effect.gd" id="5_klq6b"]
 
 [sub_resource type="GDScript" id="GDScript_w8frs"]
 resource_name = "forward_keyboard_inputs"
@@ -56,6 +60,67 @@ shader = ExtResource("2_t1rx8")
 shader_parameter/decay = 0.010000000475
 shader_parameter/hard_cut = 0.0250000011875
 
+[sub_resource type="Animation" id="Animation_b121j"]
+resource_name = "GlitchEffectAnimation"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SubViewport:size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2i(1920, 1080), Vector2i(2010, 1080)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SubViewport/Manager/AudioStreamPlayer:volume_db")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-40.0, -80.0]
+}
+
+[sub_resource type="Animation" id="Animation_8c41q"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SubViewport:size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2i(1920, 1080)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SubViewport/Manager/AudioStreamPlayer:volume_db")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-40.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_olg7q"]
+_data = {
+&"GlitchEffectAnimation": SubResource("Animation_b121j"),
+&"RESET": SubResource("Animation_8c41q")
+}
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w8frs"]
 bg_color = Color(1, 1, 1, 0.08235294)
 corner_detail = 1
@@ -77,11 +142,14 @@ offset_bottom = 40.0
 texture = SubResource("ViewportTexture_b4inp")
 metadata/_edit_use_anchors_ = true
 
-[node name="SubViewport" type="SubViewport" parent="."]
+[node name="SubViewport" type="SubViewport" parent="." node_paths=PackedStringArray("manager", "glitchEffectAnimationPlayer")]
 handle_input_locally = false
 size = Vector2i(1920, 1080)
 render_target_clear_mode = 1
 render_target_update_mode = 4
+script = ExtResource("2_2r41h")
+manager = NodePath("Manager")
+glitchEffectAnimationPlayer = NodePath("GlitchEffect")
 
 [node name="ColorRect" type="ColorRect" parent="SubViewport"]
 material = SubResource("ShaderMaterial_hah7f")
@@ -95,6 +163,7 @@ size_flags_vertical = 3
 color = Color(1, 0, 0, 1)
 
 [node name="Labels" type="Node2D" parent="SubViewport"]
+visible = false
 position = Vector2(214.5, 419.08)
 scale = Vector2(0.145, 0.145)
 
@@ -117,6 +186,7 @@ points = PackedVector2Array(359, 1012, 360.347, 1011.98, 362.156, 1011.92, 364.2
 points = PackedVector2Array(823, 1332, 823.336, 1332, 824.248, 1332, 825.592, 1332, 827.224, 1332, 829, 1332, 830.776, 1332, 832.408, 1332, 833.752, 1332, 834.664, 1332, 835, 1332, 837.094, 1332.05, 838.785, 1332.2, 840.117, 1332.47, 841.133, 1332.91, 841.878, 1333.56, 842.393, 1334.43, 842.723, 1335.58, 842.912, 1337.04, 843.003, 1338.83, 843.04, 1341, 843.04, 1342.32, 843.04, 1345.89, 843.04, 1351.15, 843.04, 1357.54, 843.04, 1364.5, 843.04, 1371.46, 843.04, 1377.85, 843.04, 1383.11, 843.04, 1386.68, 843.04, 1388, 843.04, 1388.21, 843.04, 1388.78, 843.04, 1389.62, 843.04, 1390.65, 843.04, 1391.76, 843.04, 1392.87, 843.04, 1393.9, 843.04, 1394.74, 843.04, 1395.31, 843.04, 1395.52, 843.469, 1396.57, 844.072, 1397.49, 844.823, 1398.28, 845.695, 1398.92, 846.663, 1399.41, 847.699, 1399.75, 848.778, 1399.92, 849.874, 1399.93, 850.96, 1399.75, 852.01, 1399.38, 852.626, 1398.95, 854.297, 1397.78, 856.76, 1396.06, 859.75, 1393.97, 863.005, 1391.69, 866.26, 1389.41, 869.25, 1387.32, 871.713, 1385.6, 873.384, 1384.43, 874, 1384, 875.456, 1382.96, 879.408, 1380.14, 885.232, 1375.98, 892.304, 1370.93, 900, 1365.43, 907.696, 1359.93, 914.768, 1354.88, 920.592, 1350.72, 924.544, 1347.9, 926, 1346.86, 927.479, 1345.79, 929.393, 1344.39, 931.63, 1342.75, 934.08, 1340.98, 936.631, 1339.16, 939.172, 1337.39, 941.59, 1335.76, 943.775, 1334.38, 945.616, 1333.32, 947, 1332.7, 947.75, 1332.48, 948.525, 1332.31, 949.321, 1332.18, 950.131, 1332.1, 950.951, 1332.04, 951.775, 1332.01, 952.597, 1331.99, 953.412, 1331.99, 954.215, 1332, 955, 1332, 955.336, 1332, 956.248, 1332, 957.592, 1332, 959.224, 1332, 961, 1332, 962.776, 1332, 964.408, 1332, 965.752, 1332, 966.664, 1332, 967, 1332, 966.504, 1333.3, 965.944, 1334.4, 965.32, 1335.35, 964.629, 1336.18, 963.87, 1336.92, 963.041, 1337.6, 962.142, 1338.26, 961.169, 1338.93, 960.123, 1339.64, 959, 1340.42, 958.524, 1340.76, 957.232, 1341.68, 955.328, 1343.05, 953.016, 1344.7, 950.5, 1346.5, 947.984, 1348.3, 945.672, 1349.95, 943.768, 1351.32, 942.476, 1352.24, 942, 1352.58, 940.712, 1353.5, 937.216, 1355.98, 932.064, 1359.65, 925.808, 1364.09, 919, 1368.93, 912.192, 1373.78, 905.936, 1378.22, 900.784, 1381.89, 897.288, 1384.37, 896, 1385.29, 893.814, 1386.87, 891.352, 1388.66, 888.683, 1390.61, 885.876, 1392.65, 883, 1394.71, 880.124, 1396.72, 877.317, 1398.62, 874.648, 1400.35, 872.186, 1401.83, 870, 1403, 871.84, 1404.26, 876.833, 1407.67, 884.191, 1412.69, 893.126, 1418.8, 902.85, 1425.44, 912.574, 1432.08, 921.509, 1438.19, 928.867, 1443.21, 933.86, 1446.62, 935.7, 1447.88, 936.258, 1448.26, 937.773, 1449.29, 940.005, 1450.81, 942.715, 1452.66, 945.665, 1454.67, 948.615, 1456.67, 951.325, 1458.52, 953.557, 1460.04, 955.072, 1461.07, 955.63, 1461.45, 955.948, 1461.72, 956.812, 1462.44, 958.086, 1463.51, 959.632, 1464.81, 961.315, 1466.22, 962.998, 1467.64, 964.544, 1468.94, 965.818, 1470.01, 966.682, 1470.73, 967, 1471, 966.468, 1470.98, 965.024, 1470.93, 962.896, 1470.86, 960.312, 1470.77, 957.5, 1470.68, 954.688, 1470.59, 952.104, 1470.5, 949.976, 1470.43, 948.532, 1470.38, 948, 1470.36, 947.216, 1469.91, 945.088, 1468.7, 941.952, 1466.92, 938.144, 1464.75, 934, 1462.39, 929.856, 1460.03, 926.048, 1457.86, 922.912, 1456.08, 920.784, 1454.87, 920, 1454.42, 918.552, 1453.57, 914.621, 1451.25, 908.828, 1447.84, 901.795, 1443.69, 894.14, 1439.18, 886.485, 1434.67, 879.452, 1430.52, 873.659, 1427.11, 869.728, 1424.79, 868.28, 1423.94, 867.544, 1423.52, 865.547, 1422.39, 862.604, 1420.71, 859.029, 1418.68, 855.14, 1416.47, 851.251, 1414.26, 847.676, 1412.23, 844.733, 1410.55, 842.736, 1409.42, 842, 1409, 842.431, 1410.78, 842.741, 1412.63, 842.948, 1414.52, 843.069, 1416.45, 843.122, 1418.4, 843.126, 1420.36, 843.098, 1422.31, 843.055, 1424.24, 843.017, 1426.14, 843, 1428, 843, 1428.95, 843, 1431.54, 843, 1435.34, 843, 1439.97, 843, 1445, 843, 1450.03, 843, 1454.66, 843, 1458.46, 843, 1461.05, 843, 1462, 842.992, 1463.86, 842.956, 1465.47, 842.845, 1466.84, 842.611, 1467.99, 842.207, 1468.94, 841.587, 1469.69, 840.704, 1470.25, 839.509, 1470.65, 837.957, 1470.9, 836, 1471, 832.64, 1471.06, 829.915, 1471.06, 827.758, 1470.96, 826.103, 1470.69, 824.884, 1470.18, 824.034, 1469.38, 823.486, 1468.22, 823.176, 1466.65, 823.036, 1464.6, 823, 1462, 823, 1458.36, 823, 1448.48, 823, 1433.92, 823, 1416.24, 823, 1397, 823, 1377.76, 823, 1360.08, 823, 1345.52, 823, 1335.64, 823, 1332)
 
 [node name="Miss_Great_Perfect" type="Node2D" parent="SubViewport"]
+visible = false
 position = Vector2(179.175, 136.62)
 scale = Vector2(0.33, 0.33)
 
@@ -193,6 +263,7 @@ points = PackedVector2Array(1387, 591, 1388.23, 591, 1391.58, 591, 1396.5, 591, 
 points = PackedVector2Array(1406, 697.44, 1408.11, 697.266, 1410.24, 697.247, 1412.38, 697.387, 1414.51, 697.69, 1416.6, 698.161, 1418.63, 698.806, 1420.6, 699.628, 1422.48, 700.633, 1424.25, 701.826, 1425.9, 703.21, 1428.27, 705.89, 1429.97, 708.766, 1431.02, 711.772, 1431.43, 714.84, 1431.24, 717.903, 1430.47, 720.892, 1429.14, 723.743, 1427.27, 726.385, 1424.88, 728.754, 1422, 730.78, 1421.2, 731.217, 1420.36, 731.623, 1419.48, 731.997, 1418.57, 732.339, 1417.64, 732.649, 1416.7, 732.926, 1415.76, 733.169, 1414.82, 733.38, 1413.9, 733.557, 1413, 733.7, 1410.93, 733.92, 1408.82, 733.983, 1406.7, 733.886, 1404.59, 733.626, 1402.51, 733.2, 1400.47, 732.605, 1398.5, 731.837, 1396.62, 730.895, 1394.84, 729.773, 1393.18, 728.47, 1391.06, 726.266, 1389.4, 723.811, 1388.19, 721.17, 1387.44, 718.405, 1387.17, 715.581, 1387.38, 712.761, 1388.08, 710.008, 1389.27, 707.386, 1390.97, 704.959, 1393.18, 702.79, 1394.36, 701.888, 1395.55, 701.094, 1396.76, 700.399, 1397.99, 699.792, 1399.24, 699.264, 1400.53, 698.803, 1401.84, 698.401, 1403.19, 698.046, 1404.57, 697.729, 1406, 697.44)
 
 [node name="HexOut" type="Node2D" parent="SubViewport"]
+visible = false
 position = Vector2(321.375, 228.97)
 scale = Vector2(0.16, 0.16)
 
@@ -308,10 +379,17 @@ points = PackedVector2Array(1149, 1217, 1148.97, 1217, 1148.9, 1217, 1148.78, 12
 position = Vector2(960, 540)
 scale = Vector2(0.61, 0.61)
 
+[node name="GlitchEffect" type="AnimationPlayer" parent="SubViewport"]
+root_node = NodePath("../..")
+libraries = {
+&"": SubResource("AnimationLibrary_olg7q")
+}
+script = ExtResource("5_klq6b")
+
 [node name="Camera2D" type="Camera2D" parent="."]
 offset = Vector2(960, 540)
 
-[node name="ProgressBar" type="ProgressBar" parent="."]
+[node name="MusicProgressBar" type="ProgressBar" parent="." node_paths=PackedStringArray("manager")]
 z_index = 5
 offset_right = 1920.0
 offset_bottom = 30.0
@@ -322,3 +400,19 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_mx8sn")
 max_value = 33.485
 value = 23.37
 show_percentage = false
+script = ExtResource("4_ppgk2")
+manager = NodePath("../SubViewport/Manager")
+
+[node name="ScoreLabel" type="Label" parent="." node_paths=PackedStringArray("manager")]
+offset_left = 1587.0
+offset_top = 33.0
+offset_right = 1918.0
+offset_bottom = 102.0
+theme_override_font_sizes/font_size = 50
+text = "Score: 100000"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("4_mx8sn")
+manager = NodePath("../SubViewport/Manager")
+
+[editable path="SubViewport/Manager"]

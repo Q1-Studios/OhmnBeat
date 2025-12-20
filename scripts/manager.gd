@@ -10,12 +10,19 @@ extends Node2D
 @export var music:AudioStreamPlayer
 @export var progressBar:TextureProgressBar
 
+#signal pointSignal
+
+#Points
 var PERFECTPOINTS:int = 300
 var OKPOINTS:int = 200
+var points:int = 0
+
+#Health
 var DAMAGE:int = 10
 var RECOVER:int = 5
 var health:int = 100
-var points:int = 0
+
+#Music/God function
 var beatMapLength: int = 0
 var enemyTracker:int = 0
 var currentEnemyKey:String
@@ -24,10 +31,14 @@ var musicLatency:int
 var currentMusicTime:int
 var globalStartTime:int
 var hasStarted:bool = false
+
+#Progressbar
 var currentTimeMs:float = 0
 var songStartTime:float = 0
 var songLength:float = 0
 var currentSongProgress:float = 0
+
+
 #TODO
 # would be nice if we could add hexagon rotation as a next level gimmick
 
@@ -176,8 +187,10 @@ func missed():
 
 func okHit():
 	points += OKPOINTS
+	#pointSignal.emit(points)
 func perfectHit():
 	health += RECOVER
 	health = clamp(health, 0, 100)
 	print("Perfect! Current Health: ", health)
 	points += PERFECTPOINTS
+	#pointSignal.emit(points)
