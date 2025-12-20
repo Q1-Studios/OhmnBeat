@@ -10,7 +10,9 @@ extends Node2D
 @export var music:AudioStreamPlayer
 @export var progressBar:TextureProgressBar
 
-#signal pointSignal
+signal perfectSignal
+signal okSignal
+signal missSignal
 
 #Points
 var PERFECTPOINTS:int = 300
@@ -184,13 +186,15 @@ func missed():
 	health -= DAMAGE
 	health = clamp(health, 0, 100)
 	print("Missed! Current Health: ", health)
+	missSignal.emit()
 
 func okHit():
 	points += OKPOINTS
-	#pointSignal.emit(points)
+	okSignal.emit()
+
 func perfectHit():
 	health += RECOVER
 	health = clamp(health, 0, 100)
 	print("Perfect! Current Health: ", health)
 	points += PERFECTPOINTS
-	#pointSignal.emit(points)
+	perfectSignal.emit()

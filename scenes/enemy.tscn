@@ -1,8 +1,12 @@
-[gd_scene load_steps=5 format=3 uid="uid://dqokghopk6w8j"]
+[gd_scene load_steps=6 format=3 uid="uid://dqokghopk6w8j"]
 
 [ext_resource type="Script" uid="uid://bloaqnqylotk2" path="res://scripts/linegen.gd" id="2_4ra3w"]
 [ext_resource type="Script" uid="uid://dsbqx6j1yln0d" path="res://scripts/enemy.gd" id="2_8a8l7"]
 [ext_resource type="Texture2D" uid="uid://7fkwqoc63022" path="res://assets/sprites/icon.svg" id="2_md0e3"]
+
+[sub_resource type="Curve" id="Curve_4ra3w"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 3.5707877, 0.0, 0, 0]
+point_count = 2
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lne1l"]
 size = Vector2(16, 16)
@@ -18,12 +22,17 @@ rotation = 1.5707964
 scale = Vector2(1.0000001, 1.0000001)
 points = PackedVector2Array(0, 0, 15, 0, 7.5, 3.5, 15, 0, 7.5, -3.5)
 width = 0.5
+width_curve = SubResource("Curve_4ra3w")
 joint_mode = 2
 begin_cap_mode = 2
 end_cap_mode = 2
 round_precision = 16
 antialiased = true
 script = ExtResource("2_4ra3w")
+amplitude = 35.0
+period = 0.1
+length = 30.0
+wavetype = 1
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 self_modulate = Color(1, 1, 1, 0.3647059)

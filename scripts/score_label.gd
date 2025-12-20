@@ -13,7 +13,7 @@ func _process(delta: float) -> void:
 	#make a helper function that calculates the difference between current point
 	#and what the nexr amount would be
 	#then we would have a for loop replacing the text quickly making it look like
-	#score increase is "animated" idk if id would look tacky
+	#score increase is "animated" idk if it would look tacky
 	#	-chris
 	scoreText = str("Score: " , manager.points)
 	text = scoreText
