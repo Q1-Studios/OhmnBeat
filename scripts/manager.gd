@@ -49,7 +49,6 @@ func _process(delta: float) -> void:
 			currentElapsedTime = Time.get_ticks_msec()
 			#print(beatMap.data[enemyTracker].key)
 			currentMusicTime = int(1000 * (music.get_playback_position() + AudioServer.get_time_to_next_mix() + musicLatency))
-
 			if (currentMusicTime >= currentEnemyTime - 5):
 				match currentEnemyKey:
 					"S":
@@ -76,42 +75,76 @@ func _process(delta: float) -> void:
 
 func _on_bar_perfect_hit() -> void:
 	print("bar1 perfect")
-	points += PERFECTPOINTS
+	perfectHit()
 func _on_bar_ok_inner_hit() -> void:
 	print("bar1 ok")
-	points += OKPOINTS
+	okHit()
 func _on_bar_ok_outer_hit() -> void:
 	print("bar1 ok")
-	points += OKPOINTS
-
+	okHit()
 
 func _on_bar_2_perfect_hit() -> void:
 	print("bar2 perfect")
-	points += PERFECTPOINTS
+	perfectHit()
 func _on_bar_2_ok_outer_hit() -> void:
 	print("bar2 ok")
-	points += OKPOINTS
+	okHit()
 func _on_bar_2_ok_inner_hit() -> void:
 	print("bar2 ok")
-	points += OKPOINTS
-	
+	okHit()
+
 func _on_bar_3_perfect_hit() -> void:
 	print("bar3 perfect")
-	points += PERFECTPOINTS
+	perfectHit()
 func _on_bar_3_ok_outer_hit() -> void:
 	print("bar3 ok")
-	points += OKPOINTS
+	okHit()
 func _on_bar_3_ok_inner_hit() -> void:
 	print("bar3 ok")
-	points += OKPOINTS
+	okHit()
+
+func _on_bar_4_perfect_hit() -> void:
+	print("bar4 perfect")
+	perfectHit()
+func _on_bar_4_ok_outer_hit() -> void:
+	print("bar4 ok")
+	okHit()
+func _on_bar_4_ok_inner_hit() -> void:
+	print("bar4 ok")
+	okHit()
+
+func _on_bar_5_perfect_hit() -> void:
+	print("bar5 perfect")
+	perfectHit()
+func _on_bar_5_ok_outer_hit() -> void:
+	print("bar5 ok")
+	okHit()
+func _on_bar_5_ok_inner_hit() -> void:
+	print("bar5 ok")
+	okHit()
+
+func _on_bar_6_perfect_hit() -> void:
+	print("bar6 perfect")
+	perfectHit()
+func _on_bar_6_ok_outer_hit() -> void:
+	print("bar6 ok")
+	okHit()
+func _on_bar_6_ok_inner_hit() -> void:
+	print("bar6 ok")
+	okHit()
+
 
 func _on_bar_no_hit() -> void:
 	missed()
-
 func _on_bar_2_no_hit() -> void:
 	missed()
-
 func _on_bar_3_no_hit() -> void:
+	missed()
+func _on_bar_4_no_hit() -> void:
+	missed()
+func _on_bar_5_no_hit() -> void:
+	missed()
+func _on_bar_6_no_hit() -> void:
 	missed()
 
 func missed():
@@ -121,6 +154,7 @@ func missed():
 	health = clamp(health, 0, 100)
 	print(health)
 	print("")
-	
 func okHit():
 	points += OKPOINTS
+func perfectHit():
+	points += PERFECTPOINTS
