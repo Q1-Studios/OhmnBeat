@@ -9,3 +9,4 @@ music = NodePath("AudioStreamPlayer")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_0wfyh")
+volume_db = -42.936
