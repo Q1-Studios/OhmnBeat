@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://c0685vkvjd2ek"]
+[gd_scene load_steps=30 format=3 uid="uid://c0685vkvjd2ek"]
 
 [ext_resource type="Script" uid="uid://dp17sk5btwmnf" path="res://scripts/menu_gui.gd" id="1_30dmf"]
 [ext_resource type="PackedScene" uid="uid://bcdqwk2oqbq4w" path="res://scenes/mousescene.tscn" id="1_rwv2g"]
@@ -536,6 +536,240 @@ resource_name = "exitosci"
 script/source = "extends Node2D
 func _ready():
 	hide()
+"
+
+[sub_resource type="Curve" id="Curve_rbo5s"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_0uspm"]
+interpolation_mode = 2
+colors = PackedColorArray(1.499905, 0.8005517, 0.19945474, 1, 0.6791764, 0.41908637, 1.1184396, 1)
+
+[sub_resource type="Animation" id="Animation_ds5pe"]
+resource_name = "fancyfirstfadein"
+length = 8.1455
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FancyFirstFadeIn/TheCopyGruber:width_curve")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(3.2333333),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [SubResource("Curve_rbo5s")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("FancyFirstFadeIn/TheCopyGruber:gradient")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.099999905, 7.5666666),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [SubResource("Gradient_0uspm"), SubResource("Gradient_0uspm")]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("FancyFirstFadeIn/TheCopyGruber:gradient:offsets")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.099999905, 7.5666666),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [PackedFloat32Array(0, 1), PackedFloat32Array(0, 0.012477718)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("FancyFirstFadeIn/TheCopyGruber:gradient:colors")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.099999905, 3.1066668),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [PackedColorArray(1.499905, 0.8005517, 0.19945474, 1, 0.6791764, 0.41908637, 1.1184396, 1), PackedColorArray(1.499905, 0.8005517, 0.19945474, 1, 1.1183037, 1.1183037, 1.1183037, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("FancyFirstFadeIn/TheCopyGruber:width_curve:point_0/position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.18, 3.1000001, 5.8),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 0), Vector2(0, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("FancyFirstFadeIn/TheCopyGruber:width_curve:point_1/position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.18, 3.1000001, 5.8),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 0), Vector2(1, 0.43851852), Vector2(1, 1)]
+}
+tracks/6/type = "method"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("FancyFirstFadeIn/TheCopyGruber")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(7.966667),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"stopcopy"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_nl8w8"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FancyFirstFadeIn/TheCopyGruber:width_curve")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [SubResource("Curve_rbo5s")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("FancyFirstFadeIn/TheCopyGruber:gradient")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [SubResource("Gradient_0uspm")]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("FancyFirstFadeIn/TheCopyGruber:gradient:offsets")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [PackedFloat32Array(0, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("FancyFirstFadeIn/TheCopyGruber:gradient:colors")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [PackedColorArray(1.499905, 0.8005517, 0.19945474, 1, 0.6791764, 0.41908637, 1.1184396, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("FancyFirstFadeIn/TheCopyGruber:width_curve:point_0/position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("FancyFirstFadeIn/TheCopyGruber:width_curve:point_1/position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_nl8w8"]
+_data = {
+&"RESET": SubResource("Animation_nl8w8"),
+&"fancyfirstfadein": SubResource("Animation_ds5pe")
+}
+
+[sub_resource type="GDScript" id="GDScript_ds5pe"]
+resource_name = "copygruber"
+script/source = "extends Line2D
+var docopy = true
+func stopcopy():
+	docopy = false
+func _process(_delta):
+	if docopy:
+		copyallto($\"../../ONBEAT/Selection_part13\")
+		copyallto($\"../../ONBEAT/Selection_part14\")
+		copyallto($\"../../ONBEAT/Selection_part15\")
+		copyallto($\"../../ONBEAT/Selection_part16\")
+		copyallto($\"../../ONBEAT/Selection_part17\")
+		copyallto($\"../../ONBEAT/Selection_part18\")
+		copyallto($\"../../ONBEAT/Selection_part19\")
+		copyallto($\"../../PRESSANYKEY/permahide/Selection_part1\")
+		copyallto($\"../../PRESSANYKEY/permahide/Selection_part2\")
+		copyallto($\"../../PRESSANYKEY/permahide/Selection_part3\")
+		copyallto($\"../../PRESSANYKEY/permahide/Selection_part4\")
+		copyallto($\"../../PRESSANYKEY/permahide/Selection_part5\")
+		copyallto($\"../../PRESSANYKEY/permahide/Selection_part6\")
+		copyallto($\"../../PRESSANYKEY/permahide/Selection_part7\")
+		copyallto($\"../../PRESSANYKEY/permahide/Selection_part8\")
+		copyallto($\"../../PRESSANYKEY/permahide/Selection_part9\")
+		copyallto($\"../../PRESSANYKEY/permahide/Selection_part10\")
+		copyallto($\"../../PRESSANYKEY/permahide/Selection_part11\")
+		copyallto($\"../../PRESSANYKEY/permahide/Owl2/Selection_part1\")
+		copyallto($\"../../PRESSANYKEY/permahide/Owl2/Selection_part2\")
+		copyallto($\"../../PRESSANYKEY/permahide/Owl2/Selection_part3\")
+		copyallto($\"../../PRESSANYKEY/permahide/Owl2/Selection_part4\")
+		copyallto($\"../../PRESSANYKEY/permahide/Owl2/Selection_part5\")
+		copyallto($\"../../PRESSANYKEY/permahide/Owl2/Selection_part6\")
+		copyallto($\"../../PRESSANYKEY/permahide/Owl2/Selection_part7\")
+		copyallto($\"../../PRESSANYKEY/permahide/Owl2/Selection_part8\")
+		copyallto($\"../../PRESSANYKEY/permahide/Owl2/Selection_part9\")
+		copyallto($\"../../PRESSANYKEY/permahide/Owl2/Selection_part10\")
+		copyallto($\"../../PRESSANYKEY/permahide/Owl2/Selection_part11\")
+		copyallto($\"../../PRESSANYKEY/permahide/Owl2/Selection_part12\")
+
+func copyallto(child):
+	child.closed = closed
+	child.width = width
+	child.width_curve = width_curve
+	child.default_color = default_color
+	child.gradient = gradient
+	child.texture = texture
+	child.texture_mode = texture_mode
+	child.joint_mode = joint_mode
+	child.begin_cap_mode = begin_cap_mode
+	child.end_cap_mode = end_cap_mode
+	child.sharp_limit = sharp_limit
+	child.round_precision = round_precision
+	child.antialiased = antialiased
 "
 
 [node name="MenuContent" type="Node2D"]
@@ -1336,6 +1570,23 @@ offset_bottom = 1080.0
 color = Color(1, 1, 1, 0)
 script = ExtResource("8_ds5pe")
 
+[node name="FancyFirstFadeIn" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_nl8w8")
+}
+autoplay = "fancyfirstfadein"
+
+[node name="TheCopyGruber" type="Line2D" parent="FancyFirstFadeIn"]
+width_curve = SubResource("Curve_rbo5s")
+gradient = SubResource("Gradient_0uspm")
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+round_precision = 16
+antialiased = true
+script = SubResource("GDScript_ds5pe")
+
 [connection signal="transitioning" from="LevelSelectLayer" to="." method="_on_transition_to_level"]
 
+[editable path="PRESSANYKEY/permahide/Owl2"]
 [editable path="MenuButtons/PLAY"]
