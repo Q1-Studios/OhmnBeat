@@ -1,12 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://ch4llw8cv0ai7"]
+[gd_scene load_steps=2 format=3 uid="uid://ch4llw8cv0ai7"]
 
 [ext_resource type="Script" uid="uid://1iqxd0ogilg2" path="res://scripts/scene_manager.gd" id="1_b81s6"]
-[ext_resource type="PackedScene" uid="uid://3dacuugsdegt" path="res://scenes/mainmenu.tscn" id="2_h7lqg"]
-[ext_resource type="PackedScene" uid="uid://c58wjax2eyvgm" path="res://scenes/level.tscn" id="3_q7wi7"]
-[ext_resource type="PackedScene" uid="uid://df1qtj8qc210w" path="res://scenes/scoreScene.tscn" id="4_h7lqg"]
 
 [node name="SceneManager" type="Node"]
 script = ExtResource("1_b81s6")
-menuScene = ExtResource("2_h7lqg")
-levelScene = ExtResource("3_q7wi7")
-scoreScene = ExtResource("4_h7lqg")
