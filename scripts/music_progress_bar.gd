@@ -8,5 +8,5 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	value = manager.currentSongProgress
+	value = manager.currentSongProgress*100
 	pass

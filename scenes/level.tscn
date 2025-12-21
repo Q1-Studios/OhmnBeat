@@ -8,7 +8,7 @@
 [ext_resource type="Script" uid="uid://75u7easj0h8u" path="res://scripts/standing_wave.gd" id="4_8iemx"]
 [ext_resource type="Script" path="res://scripts/score_label.gd" id="4_mx8sn"]
 [ext_resource type="PackedScene" uid="uid://cypocefdgcpb6" path="res://scenes/fancyhex.tscn" id="4_olg7q"]
-[ext_resource type="Script" path="res://scripts/music_progress_bar.gd" id="4_ppgk2"]
+[ext_resource type="Script" uid="uid://cxj5w7n7ps51f" path="res://scripts/music_progress_bar.gd" id="4_ppgk2"]
 [ext_resource type="Script" path="res://scripts/glitch_effect.gd" id="5_klq6b"]
 [ext_resource type="Resource" uid="uid://dertbgu17vopc" path="res://assets/beatmaps/Contingency Plant.tres" id="5_olg7q"]
 [ext_resource type="Script" uid="uid://dcqb6c2nodald" path="res://scenes/fixpitchonlaunch.gd" id="6_wc255"]
@@ -506,8 +506,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_styles/background = SubResource("StyleBoxFlat_w8frs")
 theme_override_styles/fill = SubResource("StyleBoxFlat_mx8sn")
-max_value = 33.485
-value = 23.37
+step = 0.1
 show_percentage = false
 script = ExtResource("4_ppgk2")
 manager = NodePath("../SubViewport/Manager")

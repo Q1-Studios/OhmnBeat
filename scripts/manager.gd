@@ -210,6 +210,7 @@ func missed():
 	health -= DAMAGE
 	health = clamp(health, 0, 100)
 	print("Missed! Current Health: ", health)
+	missAmount += 1
 	ManagerGlobal.missAmount = missAmount
 	missSignal.emit()
 	$"Miss_Great_Perfect/MISS".show()
