@@ -10,7 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://cypocefdgcpb6" path="res://fancyhex.tscn" id="4_olg7q"]
 [ext_resource type="Script" path="res://scripts/music_progress_bar.gd" id="4_ppgk2"]
 [ext_resource type="Script" path="res://scripts/glitch_effect.gd" id="5_klq6b"]
-[ext_resource type="AudioStream" uid="uid://bp5y72jadktrt" path="res://Contingency Plant (Level Theme).mp3" id="6_olg7q"]
+[ext_resource type="AudioStream" uid="uid://dddb2yff3p4nx" path="res://assets/music/ContingencyPlant.ogg" id="7_8iemx"]
 [ext_resource type="FontFile" uid="uid://7u54b7ave0i7" path="res://assets/Fonts/ethnocen.ttf" id="8_8c41q"]
 
 [sub_resource type="GDScript" id="GDScript_w8frs"]
@@ -453,7 +453,7 @@ position = Vector2(960, 540)
 scale = Vector2(0.61, 0.61)
 
 [node name="AudioStreamPlayer" parent="SubViewport/Manager" index="6"]
-stream = ExtResource("6_olg7q")
+stream = ExtResource("7_8iemx")
 volume_db = -40.0
 
 [node name="GlitchEffect" type="AnimationPlayer" parent="SubViewport"]
