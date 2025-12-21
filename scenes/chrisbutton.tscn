@@ -1,4 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://dr4mxxdydivm4"]
+[gd_scene load_steps=3 format=3 uid="uid://dr4mxxdydivm4"]
+
+[ext_resource type="PackedScene" uid="uid://c1yrgscpcae7g" path="res://scenes/button_sound_player.tscn" id="1_iwylg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dfy5j"]
 size = Vector2(257.64, 93.48002)
@@ -20,3 +22,5 @@ scale = Vector2(2.631579, 2.631579)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(109.82, 34.2)
 shape = SubResource("RectangleShape2D_dfy5j")
+
+[node name="ButtonSoundPlayer" parent="Area2D" instance=ExtResource("1_iwylg")]

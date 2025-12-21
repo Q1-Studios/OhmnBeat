@@ -118,6 +118,7 @@ func donotthecat():
 	
 
 func handle_click() -> void:
+	$Area2D/ButtonSoundPlayer/ClickSound.play()
 	$\"../CREDITS\".BITTEKEINGESPRAECH =true
 	$\"../QUIT\".BITTEKEINGESPRAECH = true
 	$\"../AnimationPlayer\".play(\"playwasclicked\")
@@ -499,7 +500,7 @@ var isdrin = false
 func _on_area_entered(_other_area: Area2D) -> void:
 	if not BITTEKEINGESPRAECH: 
 		modulate = highlight_color
-		$\"../../MadeWith\".hide()
+		$\"../../CreditsLayer\".hide()
 		$\"../../TutorialText\".hide()
 		$\"../../exitosci\".show()
 		isdrin = true
@@ -507,7 +508,7 @@ func _on_area_entered(_other_area: Area2D) -> void:
 func _on_area_exited(_other_area: Area2D) -> void:
 	if not BITTEKEINGESPRAECH:
 		modulate = normal_color
-		$\"../../MadeWith\".hide()
+		$\"../../CreditsLayer\".hide()
 		$\"../../TutorialText\".show()
 		$\"../../exitosci\".hide()
 		isdrin = false
@@ -519,6 +520,7 @@ func _process(_delta) -> void:
 
 func handle_click() -> void:
 	print(isdrin)
+	$Area2D/ButtonSoundPlayer/ClickSound.play()
 	$\"../AnimationPlayer\".play(\"TheQuitButton\")
 "
 

@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://ro5ic3wb0ah4"]
+[gd_scene load_steps=8 format=3 uid="uid://ro5ic3wb0ah4"]
 
 [ext_resource type="Script" uid="uid://xyktcaybb6n5" path="res://scripts/level_select_gui.gd" id="1_11g4t"]
 [ext_resource type="Script" uid="uid://ijpfmvaupo3m" path="res://scripts/selectable_level.gd" id="1_hxmql"]
 [ext_resource type="Script" uid="uid://cm01dxdx4wlcn" path="res://scripts/h_scroller.gd" id="3_mexx4"]
+[ext_resource type="PackedScene" uid="uid://c1yrgscpcae7g" path="res://scenes/button_sound_player.tscn" id="3_y4lgi"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_11g4t"]
 
@@ -665,6 +666,8 @@ points = PackedVector2Array(664, 151, 664, 149.852, 664, 146.736, 664, 142.144, 
 position = Vector2(319.5, 627.5)
 shape = SubResource("RectangleShape2D_y4lgi")
 
+[node name="ButtonSoundPlayer" parent="Levels/HBoxContainer/WithTheCurrent/WithTheCurrent" instance=ExtResource("3_y4lgi")]
+
 [node name="ContingencyPlant" type="Panel" parent="Levels/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
@@ -706,6 +709,8 @@ points = PackedVector2Array(664, 151, 664, 149.852, 664, 146.736, 664, 142.144, 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Levels/HBoxContainer/ContingencyPlant/ContingencyPlant"]
 position = Vector2(320.5, 635)
 shape = SubResource("RectangleShape2D_y4lgi")
+
+[node name="ButtonSoundPlayer" parent="Levels/HBoxContainer/ContingencyPlant/ContingencyPlant" instance=ExtResource("3_y4lgi")]
 
 [node name="WarpSpeed" type="Panel" parent="Levels/HBoxContainer"]
 layout_mode = 2
@@ -753,6 +758,8 @@ points = PackedVector2Array(664, 151, 664, 149.852, 664, 146.736, 664, 142.144, 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Levels/HBoxContainer/WarpSpeed/WarpSpeed"]
 position = Vector2(320.5, 635)
 shape = SubResource("RectangleShape2D_y4lgi")
+
+[node name="ButtonSoundPlayer" parent="Levels/HBoxContainer/WarpSpeed/WarpSpeed" instance=ExtResource("3_y4lgi")]
 
 [node name="LabelRect" type="ReferenceRect" parent="." node_paths=PackedStringArray("level1_template", "level2_template", "level3_template")]
 offset_top = 830.0

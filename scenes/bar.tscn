@@ -1,8 +1,13 @@
-[gd_scene load_steps=13 format=3 uid="uid://bjr3b5q84iffp"]
+[gd_scene load_steps=19 format=3 uid="uid://bjr3b5q84iffp"]
 
 [ext_resource type="Script" uid="uid://cwsl3qyhoh8nb" path="res://scripts/bars.gd" id="1_5dekh"]
 [ext_resource type="Script" uid="uid://cx5bywiu0iqj" path="res://scripts/successZone.gd" id="2_bwlfd"]
 [ext_resource type="Script" uid="uid://cnw6sasggbm1f" path="res://scripts/miss_bar.gd" id="3_x848m"]
+[ext_resource type="AudioStream" uid="uid://couhnfqa5ltfq" path="res://assets/sfx/miss/miss1.ogg" id="4_l1w72"]
+[ext_resource type="AudioStream" uid="uid://cciwcedpyo2jm" path="res://assets/sfx/miss/miss2.ogg" id="5_nqcov"]
+[ext_resource type="AudioStream" uid="uid://fhrdfk7bpup0" path="res://assets/sfx/miss/miss3.ogg" id="6_v67d5"]
+[ext_resource type="AudioStream" uid="uid://cv1nme5gqxxcy" path="res://assets/sfx/miss/miss4.ogg" id="7_rrntp"]
+[ext_resource type="AudioStream" uid="uid://b2fs548oe4gqx" path="res://assets/sfx/miss/miss5.ogg" id="8_5qaxt"]
 
 [sub_resource type="Gradient" id="Gradient_x848m"]
 offsets = PackedFloat32Array(0, 0.7918871, 0.8765432)
@@ -92,6 +97,14 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qdsxc"]
 size = Vector2(48.000008, 5)
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_cmq8q"]
+streams_count = 5
+stream_0/stream = ExtResource("4_l1w72")
+stream_1/stream = ExtResource("5_nqcov")
+stream_2/stream = ExtResource("6_v67d5")
+stream_3/stream = ExtResource("7_rrntp")
+stream_4/stream = ExtResource("8_5qaxt")
+
 [node name="Bar" type="Node2D" node_paths=PackedStringArray("okInnerBar", "okOuterBar", "perfectBar")]
 scale = Vector2(10, 10)
 script = ExtResource("1_5dekh")
@@ -151,13 +164,18 @@ position = Vector2(0.1, -0.49999952)
 scale = Vector2(0.9999998, 0.9999998)
 shape = SubResource("RectangleShape2D_x848m")
 
-[node name="MissBar" type="Area2D" parent="."]
+[node name="MissBar" type="Area2D" parent="." node_paths=PackedStringArray("miss_sfx")]
 position = Vector2(0, 17.066668)
 script = ExtResource("3_x848m")
+miss_sfx = NodePath("MissSFX")
 
 [node name="MissCollision" type="CollisionShape2D" parent="MissBar"]
 position = Vector2(-9.536742e-08, 0)
 scale = Vector2(0.99999976, 0.99999976)
 shape = SubResource("RectangleShape2D_qdsxc")
+
+[node name="MissSFX" type="AudioStreamPlayer" parent="MissBar"]
+stream = SubResource("AudioStreamRandomizer_cmq8q")
+volume_db = -20.0
 
 [connection signal="missed" from="MissBar" to="." method="_on_miss_bar_missed"]

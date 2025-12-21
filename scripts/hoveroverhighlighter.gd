@@ -22,6 +22,7 @@ func _process(_delta) -> void:
 			hide()
 
 func handle_click() -> void:
+	$Area2D/ButtonSoundPlayer/ClickSound.play()
 	print("Owl interacted with via collision!")
 
 func hide_collision_stuf():

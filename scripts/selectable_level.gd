@@ -4,6 +4,7 @@ extends Area2D
 @export var default_select: bool = false
 
 @onready var default_modulate: Color = modulate
+@onready var btn_sound_player: ButtonSoundPlayer = $ButtonSoundPlayer
 
 var selected: bool = false
 
@@ -30,6 +31,7 @@ func _input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
 		var e: InputEventMouseButton = event
 		if e.pressed and selected and is_visible_in_tree():
+			btn_sound_player.click_sfx.play()
 			level_clicked.emit()
 
 func select():

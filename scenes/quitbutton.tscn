@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://wd1kdyvcphow"]
+[gd_scene load_steps=4 format=3 uid="uid://wd1kdyvcphow"]
 
-[ext_resource type="Script" uid="uid://da7vbmg6vgob6" path="res://scripts/hoveroverhighlighter.gd" id="1_wf4f1"]
+[ext_resource type="Script" path="res://scripts/hoveroverhighlighter.gd" id="1_wf4f1"]
+[ext_resource type="PackedScene" uid="uid://c1yrgscpcae7g" path="res://scenes/button_sound_player.tscn" id="2_3gqj5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tj3d8"]
 size = Vector2(232.93997, 93.48002)
@@ -35,3 +36,5 @@ scale = Vector2(2.631579, 2.631579)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(1557.35, 543.71)
 shape = SubResource("RectangleShape2D_tj3d8")
+
+[node name="ButtonSoundPlayer" parent="Area2D" instance=ExtResource("2_3gqj5")]
