@@ -15,6 +15,10 @@ run/main_scene="uid://dlfmexxr77roi"
 config/features=PackedStringArray("4.5", "GL Compatibility")
 config/icon="uid://b553cij0iend4"
 
+[autoload]
+
+SceneManager="*res://scenes/scene_manager.tscn"
+
 [display]
 
 window/size/viewport_width=1920

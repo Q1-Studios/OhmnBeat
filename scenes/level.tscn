@@ -19,6 +19,9 @@ func _input(event: InputEvent) -> void:
 	if event is InputEventKey:
 		$SubViewport.push_input(event,false)
 		
+func deathTransition():
+	get_tree().change_scene_to_packed(SceneManager.scoreScene)
+	
 "
 
 [sub_resource type="Environment" id="Environment_5gdhr"]
@@ -64,7 +67,7 @@ shader_parameter/hard_cut = 0.0250000011875
 
 [sub_resource type="Animation" id="Animation_b121j"]
 resource_name = "GlitchEffectAnimation"
-length = 3.0
+length = 2.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -84,10 +87,24 @@ tracks/1/path = NodePath("SubViewport/Manager/AudioStreamPlayer:volume_db")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 3),
+"times": PackedFloat32Array(0, 2),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [-40.0, -80.0]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(2),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"deathTransition"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_8c41q"]
