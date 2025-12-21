@@ -14,7 +14,7 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if allowedToGlitch:
-		if manager.health == 0:
+		if manager.health == 0 or manager.currentSongProgress >= 0.995:
 			print("no health")
 			glitchEffectAnimationPlayer.play("GlitchEffectAnimation")
 			allowedToGlitch = false
