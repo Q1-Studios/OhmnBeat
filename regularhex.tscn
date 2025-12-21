@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://cu2eoqney7g6t"]
+[gd_scene load_steps=0 format=3 uid="uid://cu2eoqney7g6t"]
 
 [node name="Regularhex" type="Node2D"]
 

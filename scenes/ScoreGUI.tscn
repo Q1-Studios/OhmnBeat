@@ -1,8 +1,10 @@
-[gd_scene load_steps=12 format=3 uid="uid://bhx5efbk25at7"]
+[gd_scene load_steps=14 format=3 uid="uid://bhx5efbk25at7"]
 
 [ext_resource type="PackedScene" uid="uid://dr4mxxdydivm4" path="res://scenes/chrisButton.tscn" id="1_7xfkq"]
 [ext_resource type="PackedScene" uid="uid://bcdqwk2oqbq4w" path="res://scenes/mousescene.tscn" id="2_8bkue"]
 [ext_resource type="PackedScene" uid="uid://wd1kdyvcphow" path="res://scenes/quitbutton.tscn" id="4_1bmex"]
+[ext_resource type="FontFile" uid="uid://7u54b7ave0i7" path="res://assets/Fonts/ethnocen.ttf" id="4_f1sb5"]
+[ext_resource type="Script" uid="uid://b827ad2p7ghva" path="res://scripts/rich_text_label.gd" id="5_7xfkq"]
 
 [sub_resource type="Animation" id="Animation_dfy5j"]
 length = 0.001
@@ -218,3 +220,19 @@ script = SubResource("GDScript_5itgx")
 position = Vector2(-1609.013, 763.4474)
 scale = Vector2(1.75, 1.75)
 script = SubResource("GDScript_85riq")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+offset_left = 146.0
+offset_right = 1786.0
+offset_bottom = 552.0
+theme_override_fonts/normal_font = ExtResource("4_f1sb5")
+theme_override_font_sizes/normal_font_size = 60
+text = "
+Perfect:						20x
+
+Great:						10x
+
+Miss:							5x
+
+Total Score:			100000 Pts"
+script = ExtResource("5_7xfkq")
