@@ -32,6 +32,7 @@ window/size/mode.editor=0
 [global_group]
 
 Enemy=""
+MouseArea=""
 
 [input]
 

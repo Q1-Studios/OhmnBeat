@@ -17,7 +17,7 @@ round_precision = 16
 antialiased = true
 script = ExtResource("1_lftaj")
 
-[node name="MouseShape" type="Area2D" parent="."]
+[node name="MouseShape" type="Area2D" parent="." groups=["MouseArea"]]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MouseShape"]
 scale = Vector2(0.25, 0.25)
