@@ -103,8 +103,8 @@ perfectBar = NodePath("PerfectBar")
 script = ExtResource("2_bwlfd")
 
 [node name="BarSprite" type="Sprite2D" parent="PerfectBar"]
-position = Vector2(0, 1.6000001)
-scale = Vector2(0.93, 0.40624997)
+position = Vector2(0, 4.149998)
+scale = Vector2(0.93, 0.32656246)
 texture = SubResource("GradientTexture2D_qdsxc")
 
 [node name="PerfectCollision" type="CollisionShape2D" parent="PerfectBar"]
@@ -132,12 +132,22 @@ script = ExtResource("2_bwlfd")
 position = Vector2(0, -4.7683716e-07)
 shape = SubResource("RectangleShape2D_x848m")
 
+[node name="OkOuterCollision" type="CollisionShape2D" parent="OkInnerBar"]
+position = Vector2(0.19999999, -10.299999)
+scale = Vector2(0.99999976, 0.99999976)
+shape = SubResource("RectangleShape2D_x848m")
+
+[node name="OkOuterCollision2" type="CollisionShape2D" parent="OkInnerBar"]
+position = Vector2(0.19999999, -11.900001)
+scale = Vector2(0.9999996, 0.9999996)
+shape = SubResource("RectangleShape2D_x848m")
+
 [node name="OkOuterBar" type="Area2D" parent="."]
 position = Vector2(0, -5.0000005)
 script = ExtResource("2_bwlfd")
 
 [node name="OkOuterCollision" type="CollisionShape2D" parent="OkOuterBar"]
-position = Vector2(2.3841858e-07, 4.7683716e-07)
+position = Vector2(0.1, -0.49999952)
 scale = Vector2(0.9999998, 0.9999998)
 shape = SubResource("RectangleShape2D_x848m")
 
