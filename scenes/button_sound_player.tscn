@@ -45,6 +45,8 @@ hover_sfx = NodePath("HoverSound")
 
 [node name="ClickSound" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamRandomizer_vebv7")
+volume_db = 10.0
 
 [node name="HoverSound" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamRandomizer_f7hl7")
+volume_db = 10.0

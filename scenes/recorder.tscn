@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://di604njbaw667"]
 
 [ext_resource type="Script" uid="uid://bs2etkk8chlvx" path="res://scripts/recorder.gd" id="1_o5qli"]
-[ext_resource type="AudioStream" uid="uid://ciey78xiduc0k" path="res://With the Current.mp3" id="2_skgv3"]
+[ext_resource type="AudioStream" uid="uid://cphat3cah3un5" path="res://assets/music/WithTheCurrent.ogg" id="2_skgv3"]
 
 [node name="Node2D" type="Node2D" node_paths=PackedStringArray("music")]
 script = ExtResource("1_o5qli")

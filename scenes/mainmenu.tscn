@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://3dacuugsdegt"]
+[gd_scene load_steps=10 format=3 uid="uid://3dacuugsdegt"]
 
 [ext_resource type="Shader" uid="uid://csxon2ptntecx" path="res://shaders/crtscreen.gdshader" id="1_r3g3c"]
 [ext_resource type="Shader" uid="uid://brf2fxm2ewmux" path="res://shaders/accumulator.gdshader" id="2_3vvtq"]
 [ext_resource type="PackedScene" uid="uid://c0685vkvjd2ek" path="res://scenes/MenuGUI.tscn" id="3_r3g3c"]
+[ext_resource type="AudioStream" uid="uid://cf6i3i88luntv" path="res://assets/music/main_menu.ogg" id="4_3vvtq"]
 
 [sub_resource type="GDScript" id="GDScript_uphyt"]
 resource_name = "fwd"
@@ -98,3 +99,8 @@ environment = NodePath("../../WorldEnvironment")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 offset = Vector2(960, 540)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_3vvtq")
+volume_db = -10.0
+autoplay = true
