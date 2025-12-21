@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://braju33b42mc7" path="res://scripts/manager.gd" id="1_bdh1m"]
 [ext_resource type="PackedScene" uid="uid://bjr3b5q84iffp" path="res://scenes/bar.tscn" id="2_bgrh2"]
-[ext_resource type="Resource" uid="uid://cqughl5jgodkd" path="res://assets/beatmaps/test.tres" id="2_gq280"]
+[ext_resource type="Resource" uid="uid://dad3d67mf0e8p" path="res://assets/beatmaps/test.tres" id="2_gq280"]
 [ext_resource type="AudioStream" uid="uid://cbuu6rjekjsc6" path="res://Kygo & Selena Gomez - It Ain't Me (Codeko Remix).mp3" id="4_21v6b"]
 [ext_resource type="PackedScene" uid="uid://cu2eoqney7g6t" path="res://regularhex.tscn" id="5_gq280"]
 
@@ -20,31 +20,37 @@ music = NodePath("AudioStreamPlayer")
 [node name="Bar" parent="." instance=ExtResource("2_bgrh2")]
 position = Vector2(6.0915947e-05, -385)
 scale = Vector2(7, 7)
+keyName = "S"
 
 [node name="Bar2" parent="." instance=ExtResource("2_bgrh2")]
 position = Vector2(333, -193.00006)
 rotation = 1.0471976
 scale = Vector2(7, 7)
+keyName = "D"
 
 [node name="Bar3" parent="." instance=ExtResource("2_bgrh2")]
 position = Vector2(333, 191.99988)
 rotation = 2.0943952
 scale = Vector2(7, 7)
+keyName = "L"
 
 [node name="Bar4" parent="." instance=ExtResource("2_bgrh2")]
 position = Vector2(0.0001219511, 384)
 rotation = 3.1415927
 scale = Vector2(7, 7)
+keyName = "K"
 
 [node name="Bar5" parent="." instance=ExtResource("2_bgrh2")]
 position = Vector2(-332.99994, 192)
 rotation = 4.1887903
 scale = Vector2(7, 7)
+keyName = "J"
 
 [node name="Bar6" parent="." instance=ExtResource("2_bgrh2")]
 position = Vector2(-333, -193.00003)
 rotation = -1.0471976
 scale = Vector2(7, 7)
+keyName = "A"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_21v6b")
