@@ -55,7 +55,7 @@ func _input(event: InputEvent) -> void:
 
 func clean_array(array:Array[TimeStampKey]) -> Array[TimeStampKey]:
 	var new_array:Array[TimeStampKey] = []
-	var used_keys:Array = ["S","D","F","J","K","L"]
+	var used_keys:Array = ["A","S","D","J","K","L"]
 	
 	if not array.is_empty():
 		for x in array:

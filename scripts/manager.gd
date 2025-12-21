@@ -48,12 +48,6 @@ var currentSongProgress:float = 0
 func _ready() -> void:
 	globalStartTime = Time.get_unix_time_from_system()
 	songLength = int(music.stream.get_length() * 1000)
-	bar1.keyName = "Hex1"
-	bar2.keyName = "Hex2"
-	bar3.keyName = "Hex3"
-	bar4.keyName = "Hex4"
-	bar5.keyName = "Hex5"
-	bar6.keyName = "Hex6"
 	musicLatency = AudioServer.get_output_latency()
 	
 	beatMapLength = beatMap.data.size()
@@ -90,16 +84,16 @@ func _process(delta: float) -> void:
 					"D":
 						bar2.spawnEnemy()
 						enemyTracker += 1
-					"F":
+					"L":
 						bar3.spawnEnemy()
 						enemyTracker += 1
-					"J":
+					"K":
 						bar4.spawnEnemy()
 						enemyTracker += 1
-					"K":
+					"J":
 						bar5.spawnEnemy()
 						enemyTracker += 1
-					"L":
+					"A":
 						bar6.spawnEnemy()
 						enemyTracker += 1
 					_:
