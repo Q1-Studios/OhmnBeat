@@ -1,0 +1,238 @@
+[gd_scene load_steps=14 format=3 uid="uid://bhx5efbk25at7"]
+
+[ext_resource type="PackedScene" uid="uid://dr4mxxdydivm4" path="res://scenes/chrisButton.tscn" id="1_7xfkq"]
+[ext_resource type="PackedScene" uid="uid://bcdqwk2oqbq4w" path="res://scenes/mousescene.tscn" id="2_8bkue"]
+[ext_resource type="PackedScene" uid="uid://wd1kdyvcphow" path="res://scenes/quitbutton.tscn" id="4_1bmex"]
+[ext_resource type="FontFile" uid="uid://7u54b7ave0i7" path="res://assets/Fonts/ethnocen.ttf" id="4_f1sb5"]
+[ext_resource type="Script" uid="uid://b827ad2p7ghva" path="res://scripts/rich_text_label.gd" id="5_7xfkq"]
+
+[sub_resource type="Animation" id="Animation_dfy5j"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(2099.425, 509.89)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("QUIT:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("..:size")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2i(1920, 1080)]
+}
+
+[sub_resource type="Animation" id="Animation_gjjcl"]
+resource_name = "TheQuitButton"
+length = 0.139
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("..:size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2i(1920, 1080), Vector2i(4000, 1120)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../..")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"quitgame"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_uui5l"]
+resource_name = "creditswaspicked"
+
+[sub_resource type="Animation" id="Animation_h73c4"]
+resource_name = "playwasclicked"
+length = 1.017
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(268.39, 509.89)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("QUIT:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.03333333, 0.16666669),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_s5g8n"]
+resource_name = "swoopin"
+length = 3.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.06666672, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(2099.425, 509.89), Vector2(268.39, 509.89)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7yvfd"]
+_data = {
+&"RESET": SubResource("Animation_dfy5j"),
+&"TheQuitButton": SubResource("Animation_gjjcl"),
+&"creditswaspicked": SubResource("Animation_uui5l"),
+&"playwasclicked": SubResource("Animation_h73c4"),
+&"swoopin": SubResource("Animation_s5g8n")
+}
+
+[sub_resource type="GDScript" id="GDScript_5itgx"]
+resource_name = "chrisbuiltin"
+script/source = "extends Node2D
+
+@export var highlight_color: Color = Color(1.5, 0.8, 0.2, 1.0)
+@export var normal_color: Color = Color(1, 1, 1, 1)
+
+@onready var area_2d: Area2D = $Area2D
+
+func _ready() -> void:
+	area_2d.area_entered.connect(_on_area_entered)
+	area_2d.area_exited.connect(_on_area_exited)
+
+func _on_area_entered(_other_area: Area2D) -> void:
+	modulate = highlight_color
+
+func _on_area_exited(_other_area: Area2D) -> void:
+	modulate = normal_color
+
+func _process(_delta) -> void:
+	if Input.is_anything_pressed():
+		if area_2d.get_overlapping_areas().size() > 0:
+			handle_click()
+		
+
+func handle_click() -> void:
+	get_tree().change_scene_to_packed(SceneManager.levelScene)
+"
+
+[sub_resource type="GDScript" id="GDScript_85riq"]
+resource_name = "quitscript"
+script/source = "extends Node2D
+
+@export var highlight_color: Color = Color(1.5, 0.8, 0.2, 1.0)
+@export var normal_color: Color = Color(1, 1, 1, 1)
+
+@onready var area_2d: Area2D = $Area2D
+
+func _ready() -> void:
+	area_2d.area_entered.connect(_on_area_entered)
+	area_2d.area_exited.connect(_on_area_exited)
+var BITTEKEINGESPRAECH = false
+var isdrin = false
+
+func _on_area_entered(_other_area: Area2D) -> void:
+	if not BITTEKEINGESPRAECH: 
+		print(str(_other_area.get_path()) + \"entered\")
+		modulate = highlight_color
+		isdrin = true
+
+func _on_area_exited(_other_area: Area2D) -> void:
+	if not BITTEKEINGESPRAECH:
+		print(str(_other_area.get_path()) + \"exited\")
+		modulate = normal_color
+		isdrin = false
+	
+func _process(_delta) -> void:
+	if Input.is_anything_pressed() and isdrin and not BITTEKEINGESPRAECH:
+		if area_2d.get_overlapping_areas().size() > 0:
+			handle_click()
+
+func handle_click() -> void:
+	print(isdrin)
+	get_tree().change_scene_to_packed(SceneManager.menuScene)
+"
+
+[node name="Node2D" type="Node2D"]
+
+[node name="CursorWave" parent="." instance=ExtResource("2_8bkue")]
+position = Vector2(918.2888, 502.03766)
+
+[node name="MenuButtons" type="Node2D" parent="."]
+position = Vector2(2099.425, 509.89)
+scale = Vector2(0.38, 0.38)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="MenuButtons"]
+libraries = {
+&"": SubResource("AnimationLibrary_7yvfd")
+}
+
+[node name="RestartButton" parent="MenuButtons" instance=ExtResource("1_7xfkq")]
+position = Vector2(-4687.961, 637.1316)
+scale = Vector2(1.75, 1.75)
+script = SubResource("GDScript_5itgx")
+
+[node name="QUIT" parent="MenuButtons" instance=ExtResource("4_1bmex")]
+position = Vector2(-1609.013, 763.4474)
+scale = Vector2(1.75, 1.75)
+script = SubResource("GDScript_85riq")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+offset_left = 146.0
+offset_right = 1786.0
+offset_bottom = 552.0
+theme_override_fonts/normal_font = ExtResource("4_f1sb5")
+theme_override_font_sizes/normal_font_size = 60
+text = "
+Perfect:						20x
+
+Great:						10x
+
+Miss:							5x
+
+Total Score:			100000 Pts"
+script = ExtResource("5_7xfkq")

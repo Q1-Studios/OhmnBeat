@@ -11,9 +11,15 @@ config_version=5
 [application]
 
 config/name="KlagenfurtGSEJam2025"
-run/main_scene="uid://dlfmexxr77roi"
+run/main_scene="uid://3dacuugsdegt"
 config/features=PackedStringArray("4.5", "GL Compatibility")
+boot_splash/image="uid://dsljb2phhtb43"
 config/icon="uid://b553cij0iend4"
+
+[autoload]
+
+SceneManager="*res://scripts/scene_manager.gd"
+ManagerGlobal="*res://scripts/managerGlobal.gd"
 
 [display]
 

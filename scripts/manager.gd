@@ -55,6 +55,7 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	ManagerGlobal.points = points
 	if Time.get_unix_time_from_system() - 3 >= globalStartTime and not hasStarted:
 		music.play()
 		songStartTime = Time.get_unix_time_from_system()

@@ -8,12 +8,17 @@ extends Line2D
 
 var time: float = 0.0
 
+func _ready() -> void:
+	global_position = get_global_mouse_position()
+	global_position.y += 25
+	update_rippling_shape()
 
 func _process(delta: float) -> void:
 	time += delta * wave_speed
 	global_position = get_global_mouse_position()
 	global_position.y += 25
 	update_rippling_shape()
+
 
 func update_rippling_shape() -> void:
 	var new_points = []

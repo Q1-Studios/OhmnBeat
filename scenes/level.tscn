@@ -1,15 +1,18 @@
-[gd_scene load_steps=21 format=3 uid="uid://c58wjax2eyvgm"]
+[gd_scene load_steps=27 format=3 uid="uid://c58wjax2eyvgm"]
 
 [ext_resource type="Shader" uid="uid://csxon2ptntecx" path="res://shaders/crtscreen.gdshader" id="1_olg7q"]
 [ext_resource type="Script" uid="uid://dy7fu0maf3ug8" path="res://scripts/glitch_effect_sub_viewport.gd" id="2_2r41h"]
 [ext_resource type="Shader" uid="uid://brf2fxm2ewmux" path="res://shaders/accumulator.gdshader" id="2_t1rx8"]
 [ext_resource type="PackedScene" uid="uid://dlfmexxr77roi" path="res://scenes/manager.tscn" id="3_w8frs"]
+[ext_resource type="Script" uid="uid://75u7easj0h8u" path="res://scenes/standing_wave.gd" id="4_8iemx"]
 [ext_resource type="Script" uid="uid://cigecqpeji4pr" path="res://scripts/miss_great_perfect.gd" id="4_b121j"]
 [ext_resource type="Script" uid="uid://b0idrg4xodocc" path="res://scripts/score_label.gd" id="4_mx8sn"]
+[ext_resource type="PackedScene" uid="uid://cypocefdgcpb6" path="res://fancyhex.tscn" id="4_olg7q"]
 [ext_resource type="Script" uid="uid://cxj5w7n7ps51f" path="res://scripts/music_progress_bar.gd" id="4_ppgk2"]
 [ext_resource type="Script" uid="uid://dt8goso8xl5cc" path="res://scripts/glitch_effect.gd" id="5_klq6b"]
 [ext_resource type="AudioStream" uid="uid://bp5y72jadktrt" path="res://Contingency Plant (Level Theme).mp3" id="6_olg7q"]
 [ext_resource type="FontFile" uid="uid://7u54b7ave0i7" path="res://assets/Fonts/ethnocen.ttf" id="8_8c41q"]
+[ext_resource type="PackedScene" uid="uid://cu2eoqney7g6t" path="res://regularhex.tscn" id="8_t1rx8"]
 
 [sub_resource type="GDScript" id="GDScript_w8frs"]
 resource_name = "forward_keyboard_inputs"
@@ -20,6 +23,9 @@ func _input(event: InputEvent) -> void:
 	if event is InputEventKey:
 		$SubViewport.push_input(event,false)
 		
+func deathTransition():
+	get_tree().change_scene_to_packed(SceneManager.scoreScene)
+	
 "
 
 [sub_resource type="Environment" id="Environment_5gdhr"]
@@ -61,11 +67,125 @@ viewport_path = NodePath("SubViewport")
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_hah7f"]
 shader = ExtResource("2_t1rx8")
 shader_parameter/decay = 0.010000000475
-shader_parameter/hard_cut = 0.0250000011875
+shader_parameter/hard_cut = 0.0150000007125
+
+[sub_resource type="Gradient" id="Gradient_8iemx"]
+colors = PackedColorArray(0.53528136, 0.4683178, 1, 1, 0.23137255, 0.6039216, 1, 1)
+
+[sub_resource type="Animation" id="Animation_8iemx"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(2.035, 2.035)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Fancyhex2:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-0.9424778]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../Fancyhex2:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-1.275, -1.275)]
+}
+
+[sub_resource type="Animation" id="Animation_t1rx8"]
+resource_name = "spin"
+length = 150.0
+loop_mode = 1
+step = 1.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 63.931305, 119),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(2.035, 2.035), Vector2(1.3743765, 1.3743765), Vector2(2.035, 2.035)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 63.931305, 119),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, -3.0266392, 0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Fancyhex2:rotation")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 92, 119.05124),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [-0.9424778, 3.7524578917878086, -0.9424778]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../Fancyhex2:scale")
+tracks/3/interp = 2
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 92, 119),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(-1.31, -1.31), Vector2(-2.01, -2.01), Vector2(-1.005, -1.005)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8iemx"]
+_data = {
+&"RESET": SubResource("Animation_8iemx"),
+&"spin": SubResource("Animation_t1rx8")
+}
 
 [sub_resource type="Animation" id="Animation_b121j"]
 resource_name = "GlitchEffectAnimation"
-length = 3.0
+length = 2.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -85,10 +205,24 @@ tracks/1/path = NodePath("SubViewport/Manager/AudioStreamPlayer:volume_db")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 3),
+"times": PackedFloat32Array(0, 2),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [-40.0, -80.0]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(2),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"deathTransition"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_8c41q"]
@@ -125,11 +259,11 @@ _data = {
 }
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w8frs"]
-bg_color = Color(1, 1, 1, 0.08235294)
+bg_color = Color(0, 0, 0, 0.08235294)
 corner_detail = 1
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mx8sn"]
-bg_color = Color(1, 1, 1, 0.23137255)
+bg_color = Color(1, 1, 1, 0.34901962)
 corner_detail = 1
 
 [node name="root" type="Node2D"]
@@ -165,10 +299,54 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 color = Color(1, 0, 0, 1)
 
+[node name="StandingWave" type="Line2D" parent="SubViewport"]
+self_modulate = Color(1, 1, 1, 0.011764706)
+position = Vector2(0, 958.865)
+scale = Vector2(24.83, 24.83)
+points = PackedVector2Array(0, 0, 15, 0, 7.5, 3.5, 15, 0, 7.5, -3.5)
+width = 1.715
+gradient = SubResource("Gradient_8iemx")
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+round_precision = 16
+antialiased = true
+script = ExtResource("4_8iemx")
+amplitude = 5.0
+period = 25.0
+length = 80.0
+wavetype = 1
+
+[node name="Fancyhex" parent="SubViewport" instance=ExtResource("4_olg7q")]
+modulate = Color(1, 1, 1, 0.007843138)
+position = Vector2(955.215, 545.45)
+scale = Vector2(2.035, 2.035)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="SubViewport/Fancyhex"]
+libraries = {
+&"": SubResource("AnimationLibrary_8iemx")
+}
+autoplay = "spin"
+speed_scale = 0.5
+
+[node name="Fancyhex2" parent="SubViewport" instance=ExtResource("4_olg7q")]
+modulate = Color(1, 1, 1, 0.007843138)
+position = Vector2(955.215, 545.45)
+rotation = -0.9424778
+scale = Vector2(-1.275, -1.275)
+
+[node name="Regularhex" parent="SubViewport" instance=ExtResource("8_t1rx8")]
+position = Vector2(963, 538.715)
+scale = Vector2(0.4, 0.4)
+
+[node name="Regularhex2" parent="SubViewport" instance=ExtResource("8_t1rx8")]
+modulate = Color(1, 1, 1, 0.13725491)
+position = Vector2(963, 538.715)
+scale = Vector2(0.315, 0.315)
+
 [node name="Labels" type="Node2D" parent="SubViewport"]
-visible = false
-position = Vector2(214.5, 419.08)
-scale = Vector2(0.145, 0.145)
+position = Vector2(800.44, 394.305)
+scale = Vector2(0.18, 0.18)
 
 [node name="Selection_part1" type="Line2D" parent="SubViewport/Labels"]
 points = PackedVector2Array(996, 98, 995.444, 100.256, 994.773, 102.219, 993.967, 103.903, 993.008, 105.322, 991.878, 106.489, 990.557, 107.416, 989.027, 108.118, 987.27, 108.607, 985.268, 108.896, 983, 109, 982.552, 109, 981.336, 109, 979.544, 109, 977.368, 109, 975, 109, 972.632, 109, 970.456, 109, 968.664, 109, 967.448, 109, 967, 109, 964.592, 109, 958.056, 109, 948.424, 109, 936.728, 109, 924, 109, 911.272, 109, 899.576, 109, 889.944, 109, 883.408, 109, 881, 109, 877.874, 109.046, 874.85, 109.197, 871.928, 109.495, 869.109, 109.978, 866.394, 110.686, 863.783, 111.66, 861.276, 112.94, 858.875, 114.565, 856.579, 116.575, 854.39, 119.01, 851.886, 122.862, 850.292, 126.94, 849.564, 131.136, 849.659, 135.34, 850.531, 139.442, 852.139, 143.334, 854.437, 146.907, 857.382, 150.049, 860.931, 152.654, 865.04, 154.61, 866.22, 155.011, 867.336, 155.326, 868.404, 155.565, 869.442, 155.74, 870.467, 155.86, 871.497, 155.936, 872.548, 155.977, 873.637, 155.995, 874.782, 155.999, 876, 156, 877.876, 156, 882.968, 156, 890.472, 156, 899.584, 156, 909.5, 156, 919.416, 156, 928.528, 156, 936.032, 156, 941.124, 156, 943, 156, 948.68, 156.004, 954.386, 156.049, 960.1, 156.187, 965.807, 156.468, 971.487, 156.945, 977.126, 157.668, 982.704, 158.687, 988.206, 160.055, 993.614, 161.822, 998.91, 164.04, 1002.77, 166.08, 1006.25, 168.386, 1009.34, 170.956, 1012.04, 173.785, 1014.34, 176.87, 1016.26, 180.207, 1017.79, 183.792, 1018.93, 187.622, 1019.68, 191.692, 1020.03, 196, 1020.1, 197.605, 1020.17, 199.008, 1020.22, 200.26, 1020.24, 201.411, 1020.2, 202.511, 1020.09, 203.61, 1019.89, 204.759, 1019.58, 206.006, 1019.13, 207.403, 1018.54, 209, 1017.41, 211.617, 1016.15, 214.015, 1014.76, 216.217, 1013.24, 218.244, 1011.57, 220.119, 1009.77, 221.862, 1007.81, 223.496, 1005.7, 225.043, 1003.43, 226.523, 1001, 227.96, 995.548, 230.66, 989.912, 232.767, 984.124, 234.354, 978.215, 235.492, 972.216, 236.256, 966.161, 236.718, 960.079, 236.951, 954.004, 237.027, 947.967, 237.019, 942, 237, 939.452, 237, 932.536, 237, 922.344, 237, 909.968, 237, 896.5, 237, 883.032, 237, 870.656, 237, 860.464, 237, 853.548, 237, 851, 237, 850.389, 237.005, 849.669, 237.014, 848.871, 237.016, 848.024, 237.001, 847.16, 236.959, 846.309, 236.879, 845.502, 236.752, 844.77, 236.566, 844.142, 236.312, 843.65, 235.98, 843.09, 235.228, 842.876, 234.362, 842.952, 233.418, 843.268, 232.431, 843.767, 231.437, 844.399, 230.472, 845.108, 229.57, 845.842, 228.767, 846.547, 228.099, 847.17, 227.6, 847.978, 227.096, 848.81, 226.709, 849.664, 226.423, 850.536, 226.223, 851.424, 226.095, 852.324, 226.023, 853.235, 225.993, 854.153, 225.989, 855.076, 225.996, 856, 226, 858.856, 226, 866.608, 226, 878.032, 226, 891.904, 226, 907, 226, 922.096, 226, 935.968, 226, 947.392, 226, 955.144, 226, 958, 226, 962.902, 225.859, 967.916, 225.423, 972.952, 224.649, 977.918, 223.492, 982.725, 221.906, 987.281, 219.848, 991.495, 217.273, 995.277, 214.137, 998.536, 210.394, 1001.18, 206, 1001.7, 204.887, 1002.17, 203.742, 1002.6, 202.569, 1002.98, 201.374, 1003.29, 200.161, 1003.55, 198.935, 1003.73, 197.701, 1003.84, 196.464, 1003.87, 195.229, 1003.81, 194, 1003.12, 190.045, 1001.79, 186.346, 999.894, 182.922, 997.503, 179.79, 994.695, 176.969, 991.543, 174.476, 988.123, 172.329, 984.51, 170.548, 980.777, 169.148, 977, 168.15, 976.104, 168.15, 973.672, 168.15, 970.088, 168.15, 965.736, 168.15, 961, 168.15, 956.264, 168.15, 951.912, 168.15, 948.328, 168.15, 945.896, 168.15, 945, 168.15, 943.208, 168.15, 938.344, 168.15, 931.176, 168.15, 922.472, 168.15, 913, 168.15, 903.528, 168.15, 894.824, 168.15, 887.656, 168.15, 882.792, 168.15, 881, 168.15, 876.075, 167.939, 870.912, 167.496, 865.598, 166.799, 860.223, 165.824, 854.875, 164.55, 849.642, 162.954, 844.612, 161.015, 839.875, 158.709, 835.518, 156.015, 831.63, 152.91, 830.425, 151.749, 829.356, 150.598, 828.412, 149.441, 827.578, 148.265, 826.841, 147.055, 826.189, 145.797, 825.608, 144.477, 825.085, 143.08, 824.606, 141.593, 824.16, 140, 823.23, 135.005, 823.107, 130.261, 823.738, 125.786, 825.073, 121.598, 827.061, 117.713, 829.651, 114.148, 832.791, 110.923, 836.429, 108.053, 840.516, 105.556, 845, 103.45, 850.444, 101.516, 855.995, 100.068, 861.633, 99.0403, 867.341, 98.365, 873.099, 97.9762, 878.889, 97.8074, 884.693, 97.7918, 890.492, 97.8631, 896.267, 97.9547, 902, 98, 904.632, 98, 911.776, 98, 922.304, 98, 935.088, 98, 949, 98, 962.912, 98, 975.696, 98, 986.224, 98, 993.368, 98, 996, 98)
