@@ -58,7 +58,7 @@ func hit(targetList:Array):
 func spawnEnemy():
 	#print("spawn call works")
 	var instance = enemy.instantiate()
-	randomEnemyOffsetX = randi_range(-30, 30)
+	randomEnemyOffsetX = randi_range(-20, 20)
 	instance.position.x = randomEnemyOffsetX
 	instance.position.y = -50
 	instance.endPosition = $PerfectBar.position
