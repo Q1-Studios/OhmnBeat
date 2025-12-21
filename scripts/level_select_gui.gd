@@ -18,10 +18,10 @@ func _on_level1_clicked() -> void:
 
 
 func _on_level2_clicked() -> void:
+	transition_target = SceneManager.level2Scene
 	transitioning.emit()
-	# TODO Link to second level
 
 
 func _on_level3_clicked() -> void:
+	transition_target = SceneManager.level3Scene
 	transitioning.emit()
-	# TODO Link to third level

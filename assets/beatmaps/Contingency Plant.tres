@@ -1,0 +1,503 @@
+[gd_resource type="Resource" script_class="Beatmap" load_steps=102 format=3 uid="uid://dertbgu17vopc"]
+
+[ext_resource type="Script" uid="uid://nbg3jtt8yyoh" path="res://TimeStampKey.gd" id="1_mv8ii"]
+[ext_resource type="Script" uid="uid://dflfigbm8j6fj" path="res://beatmap.gd" id="2_76ctb"]
+
+[sub_resource type="Resource" id="Resource_0xf04"]
+script = ExtResource("1_mv8ii")
+milliseconds = 8000
+key = "S"
+
+[sub_resource type="Resource" id="Resource_lnj24"]
+script = ExtResource("1_mv8ii")
+milliseconds = 10000
+key = "K"
+
+[sub_resource type="Resource" id="Resource_dk4rp"]
+script = ExtResource("1_mv8ii")
+milliseconds = 12000
+key = "J"
+
+[sub_resource type="Resource" id="Resource_5c5ma"]
+script = ExtResource("1_mv8ii")
+milliseconds = 14000
+key = "D"
+
+[sub_resource type="Resource" id="Resource_xmo30"]
+script = ExtResource("1_mv8ii")
+milliseconds = 16000
+key = "S"
+
+[sub_resource type="Resource" id="Resource_uslsf"]
+script = ExtResource("1_mv8ii")
+milliseconds = 18000
+key = "K"
+
+[sub_resource type="Resource" id="Resource_1lnqq"]
+script = ExtResource("1_mv8ii")
+milliseconds = 20000
+key = "J"
+
+[sub_resource type="Resource" id="Resource_uidau"]
+script = ExtResource("1_mv8ii")
+milliseconds = 22000
+key = "D"
+
+[sub_resource type="Resource" id="Resource_ii2d6"]
+script = ExtResource("1_mv8ii")
+milliseconds = 24000
+key = "J"
+
+[sub_resource type="Resource" id="Resource_vf8k6"]
+script = ExtResource("1_mv8ii")
+milliseconds = 25000
+key = "J"
+
+[sub_resource type="Resource" id="Resource_l4htq"]
+script = ExtResource("1_mv8ii")
+milliseconds = 26000
+key = "D"
+
+[sub_resource type="Resource" id="Resource_itp5f"]
+script = ExtResource("1_mv8ii")
+milliseconds = 27000
+key = "D"
+
+[sub_resource type="Resource" id="Resource_rn43x"]
+script = ExtResource("1_mv8ii")
+milliseconds = 28000
+key = "K"
+
+[sub_resource type="Resource" id="Resource_1clyg"]
+script = ExtResource("1_mv8ii")
+milliseconds = 29000
+key = "K"
+
+[sub_resource type="Resource" id="Resource_7fm20"]
+script = ExtResource("1_mv8ii")
+milliseconds = 30000
+key = "S"
+
+[sub_resource type="Resource" id="Resource_w5428"]
+script = ExtResource("1_mv8ii")
+milliseconds = 31000
+key = "S"
+
+[sub_resource type="Resource" id="Resource_84280"]
+script = ExtResource("1_mv8ii")
+milliseconds = 32000
+key = "J"
+
+[sub_resource type="Resource" id="Resource_s56ji"]
+script = ExtResource("1_mv8ii")
+milliseconds = 33000
+key = "J"
+
+[sub_resource type="Resource" id="Resource_dbicf"]
+script = ExtResource("1_mv8ii")
+milliseconds = 34000
+key = "D"
+
+[sub_resource type="Resource" id="Resource_y8mlh"]
+script = ExtResource("1_mv8ii")
+milliseconds = 35000
+key = "D"
+
+[sub_resource type="Resource" id="Resource_smkks"]
+script = ExtResource("1_mv8ii")
+milliseconds = 36000
+key = "K"
+
+[sub_resource type="Resource" id="Resource_b7edv"]
+script = ExtResource("1_mv8ii")
+milliseconds = 37000
+key = "K"
+
+[sub_resource type="Resource" id="Resource_o7sil"]
+script = ExtResource("1_mv8ii")
+milliseconds = 38000
+key = "S"
+
+[sub_resource type="Resource" id="Resource_ir6nk"]
+script = ExtResource("1_mv8ii")
+milliseconds = 39000
+key = "S"
+
+[sub_resource type="Resource" id="Resource_ssdha"]
+script = ExtResource("1_mv8ii")
+milliseconds = 40000
+key = "J"
+
+[sub_resource type="Resource" id="Resource_3h3q3"]
+script = ExtResource("1_mv8ii")
+milliseconds = 41000
+key = "K"
+
+[sub_resource type="Resource" id="Resource_cvwak"]
+script = ExtResource("1_mv8ii")
+milliseconds = 42000
+key = "D"
+
+[sub_resource type="Resource" id="Resource_icxan"]
+script = ExtResource("1_mv8ii")
+milliseconds = 44000
+key = "D"
+
+[sub_resource type="Resource" id="Resource_mgldp"]
+script = ExtResource("1_mv8ii")
+milliseconds = 45000
+key = "S"
+
+[sub_resource type="Resource" id="Resource_qdqe2"]
+script = ExtResource("1_mv8ii")
+milliseconds = 46000
+key = "K"
+
+[sub_resource type="Resource" id="Resource_yoiit"]
+script = ExtResource("1_mv8ii")
+milliseconds = 47000
+key = "J"
+
+[sub_resource type="Resource" id="Resource_jaoqb"]
+script = ExtResource("1_mv8ii")
+milliseconds = 48000
+key = "J"
+
+[sub_resource type="Resource" id="Resource_g3hba"]
+script = ExtResource("1_mv8ii")
+milliseconds = 49000
+key = "K"
+
+[sub_resource type="Resource" id="Resource_lfv22"]
+script = ExtResource("1_mv8ii")
+milliseconds = 50000
+key = "D"
+
+[sub_resource type="Resource" id="Resource_tof67"]
+script = ExtResource("1_mv8ii")
+milliseconds = 52000
+key = "D"
+
+[sub_resource type="Resource" id="Resource_3n2sa"]
+script = ExtResource("1_mv8ii")
+milliseconds = 53000
+key = "S"
+
+[sub_resource type="Resource" id="Resource_nik2e"]
+script = ExtResource("1_mv8ii")
+milliseconds = 54000
+key = "K"
+
+[sub_resource type="Resource" id="Resource_i6203"]
+script = ExtResource("1_mv8ii")
+milliseconds = 55000
+key = "J"
+
+[sub_resource type="Resource" id="Resource_k2mb6"]
+script = ExtResource("1_mv8ii")
+milliseconds = 56000
+key = "S"
+
+[sub_resource type="Resource" id="Resource_nf3h8"]
+script = ExtResource("1_mv8ii")
+milliseconds = 57000
+key = "S"
+
+[sub_resource type="Resource" id="Resource_2u08u"]
+script = ExtResource("1_mv8ii")
+milliseconds = 58000
+key = "K"
+
+[sub_resource type="Resource" id="Resource_s71ug"]
+script = ExtResource("1_mv8ii")
+milliseconds = 59000
+key = "K"
+
+[sub_resource type="Resource" id="Resource_s2skv"]
+script = ExtResource("1_mv8ii")
+milliseconds = 60000
+key = "J"
+
+[sub_resource type="Resource" id="Resource_0n66e"]
+script = ExtResource("1_mv8ii")
+milliseconds = 61000
+key = "D"
+
+[sub_resource type="Resource" id="Resource_jh6sl"]
+script = ExtResource("1_mv8ii")
+milliseconds = 62000
+key = "J"
+
+[sub_resource type="Resource" id="Resource_g05l6"]
+script = ExtResource("1_mv8ii")
+milliseconds = 63000
+key = "D"
+
+[sub_resource type="Resource" id="Resource_dddpt"]
+script = ExtResource("1_mv8ii")
+milliseconds = 64000
+key = "K"
+
+[sub_resource type="Resource" id="Resource_gbn5b"]
+script = ExtResource("1_mv8ii")
+milliseconds = 65000
+key = "S"
+
+[sub_resource type="Resource" id="Resource_xi4jv"]
+script = ExtResource("1_mv8ii")
+milliseconds = 65500
+key = "D"
+
+[sub_resource type="Resource" id="Resource_w16t2"]
+script = ExtResource("1_mv8ii")
+milliseconds = 66000
+key = "J"
+
+[sub_resource type="Resource" id="Resource_yvd64"]
+script = ExtResource("1_mv8ii")
+milliseconds = 67000
+key = "J"
+
+[sub_resource type="Resource" id="Resource_eo2ww"]
+script = ExtResource("1_mv8ii")
+milliseconds = 67500
+key = "D"
+
+[sub_resource type="Resource" id="Resource_0jxvy"]
+script = ExtResource("1_mv8ii")
+milliseconds = 68000
+key = "S"
+
+[sub_resource type="Resource" id="Resource_xyiv8"]
+script = ExtResource("1_mv8ii")
+milliseconds = 69000
+key = "K"
+
+[sub_resource type="Resource" id="Resource_pv6fc"]
+script = ExtResource("1_mv8ii")
+milliseconds = 70000
+key = "S"
+
+[sub_resource type="Resource" id="Resource_ihewe"]
+script = ExtResource("1_mv8ii")
+milliseconds = 71000
+key = "K"
+
+[sub_resource type="Resource" id="Resource_buqa8"]
+script = ExtResource("1_mv8ii")
+milliseconds = 71500
+key = "J"
+
+[sub_resource type="Resource" id="Resource_uf4rv"]
+script = ExtResource("1_mv8ii")
+milliseconds = 72000
+key = "D"
+
+[sub_resource type="Resource" id="Resource_ibsqs"]
+script = ExtResource("1_mv8ii")
+milliseconds = 74000
+key = "J"
+
+[sub_resource type="Resource" id="Resource_i4vky"]
+script = ExtResource("1_mv8ii")
+milliseconds = 76000
+key = "S"
+
+[sub_resource type="Resource" id="Resource_xat7p"]
+script = ExtResource("1_mv8ii")
+milliseconds = 78000
+key = "K"
+
+[sub_resource type="Resource" id="Resource_hmytc"]
+script = ExtResource("1_mv8ii")
+milliseconds = 80000
+key = "S"
+
+[sub_resource type="Resource" id="Resource_whgsi"]
+script = ExtResource("1_mv8ii")
+milliseconds = 81000
+key = "S"
+
+[sub_resource type="Resource" id="Resource_qyber"]
+script = ExtResource("1_mv8ii")
+milliseconds = 82000
+key = "K"
+
+[sub_resource type="Resource" id="Resource_76f5c"]
+script = ExtResource("1_mv8ii")
+milliseconds = 83000
+key = "K"
+
+[sub_resource type="Resource" id="Resource_ueoqp"]
+script = ExtResource("1_mv8ii")
+milliseconds = 84000
+key = "D"
+
+[sub_resource type="Resource" id="Resource_5w13u"]
+script = ExtResource("1_mv8ii")
+milliseconds = 85000
+key = "D"
+
+[sub_resource type="Resource" id="Resource_glqc6"]
+script = ExtResource("1_mv8ii")
+milliseconds = 86000
+key = "J"
+
+[sub_resource type="Resource" id="Resource_bkp1v"]
+script = ExtResource("1_mv8ii")
+milliseconds = 87000
+key = "J"
+
+[sub_resource type="Resource" id="Resource_yoyjp"]
+script = ExtResource("1_mv8ii")
+milliseconds = 88000
+key = "S"
+
+[sub_resource type="Resource" id="Resource_s23jc"]
+script = ExtResource("1_mv8ii")
+milliseconds = 90000
+key = "S"
+
+[sub_resource type="Resource" id="Resource_ajx5q"]
+script = ExtResource("1_mv8ii")
+milliseconds = 91000
+key = "J"
+
+[sub_resource type="Resource" id="Resource_lhaef"]
+script = ExtResource("1_mv8ii")
+milliseconds = 92000
+key = "J"
+
+[sub_resource type="Resource" id="Resource_r3vck"]
+script = ExtResource("1_mv8ii")
+milliseconds = 93000
+key = "S"
+
+[sub_resource type="Resource" id="Resource_d16m4"]
+script = ExtResource("1_mv8ii")
+milliseconds = 94000
+key = "D"
+
+[sub_resource type="Resource" id="Resource_mr6pc"]
+script = ExtResource("1_mv8ii")
+milliseconds = 96000
+key = "D"
+
+[sub_resource type="Resource" id="Resource_ranjg"]
+script = ExtResource("1_mv8ii")
+milliseconds = 97000
+key = "J"
+
+[sub_resource type="Resource" id="Resource_fnnpd"]
+script = ExtResource("1_mv8ii")
+milliseconds = 98000
+key = "S"
+
+[sub_resource type="Resource" id="Resource_6g5ok"]
+script = ExtResource("1_mv8ii")
+milliseconds = 99000
+key = "K"
+
+[sub_resource type="Resource" id="Resource_6lawy"]
+script = ExtResource("1_mv8ii")
+milliseconds = 99500
+key = "K"
+
+[sub_resource type="Resource" id="Resource_242vi"]
+script = ExtResource("1_mv8ii")
+milliseconds = 100000
+key = "K"
+
+[sub_resource type="Resource" id="Resource_hpi0l"]
+script = ExtResource("1_mv8ii")
+milliseconds = 101000
+key = "S"
+
+[sub_resource type="Resource" id="Resource_vf2wu"]
+script = ExtResource("1_mv8ii")
+milliseconds = 102000
+key = "S"
+
+[sub_resource type="Resource" id="Resource_mlys3"]
+script = ExtResource("1_mv8ii")
+milliseconds = 104000
+key = "D"
+
+[sub_resource type="Resource" id="Resource_82kxm"]
+script = ExtResource("1_mv8ii")
+milliseconds = 104500
+key = "S"
+
+[sub_resource type="Resource" id="Resource_1dyfu"]
+script = ExtResource("1_mv8ii")
+milliseconds = 105000
+key = "D"
+
+[sub_resource type="Resource" id="Resource_hev3b"]
+script = ExtResource("1_mv8ii")
+milliseconds = 106000
+key = "J"
+
+[sub_resource type="Resource" id="Resource_uf12h"]
+script = ExtResource("1_mv8ii")
+milliseconds = 106500
+key = "K"
+
+[sub_resource type="Resource" id="Resource_d5rv3"]
+script = ExtResource("1_mv8ii")
+milliseconds = 107000
+key = "J"
+
+[sub_resource type="Resource" id="Resource_46he0"]
+script = ExtResource("1_mv8ii")
+milliseconds = 108000
+key = "S"
+
+[sub_resource type="Resource" id="Resource_8gbf3"]
+script = ExtResource("1_mv8ii")
+milliseconds = 108500
+key = "K"
+
+[sub_resource type="Resource" id="Resource_25eik"]
+script = ExtResource("1_mv8ii")
+milliseconds = 109000
+key = "S"
+
+[sub_resource type="Resource" id="Resource_prxch"]
+script = ExtResource("1_mv8ii")
+milliseconds = 110000
+key = "S"
+
+[sub_resource type="Resource" id="Resource_62nrw"]
+script = ExtResource("1_mv8ii")
+milliseconds = 110500
+key = "K"
+
+[sub_resource type="Resource" id="Resource_dqtdc"]
+script = ExtResource("1_mv8ii")
+milliseconds = 111000
+key = "S"
+
+[sub_resource type="Resource" id="Resource_8nxck"]
+script = ExtResource("1_mv8ii")
+milliseconds = 112000
+key = "D"
+
+[sub_resource type="Resource" id="Resource_84k1g"]
+script = ExtResource("1_mv8ii")
+milliseconds = 114000
+key = "J"
+
+[sub_resource type="Resource" id="Resource_nn8fs"]
+script = ExtResource("1_mv8ii")
+milliseconds = 116000
+key = "D"
+
+[sub_resource type="Resource" id="Resource_rw855"]
+script = ExtResource("1_mv8ii")
+milliseconds = 118000
+key = "J"
+
+[resource]
+script = ExtResource("2_76ctb")
+data = Array[ExtResource("1_mv8ii")]([SubResource("Resource_0xf04"), SubResource("Resource_lnj24"), SubResource("Resource_dk4rp"), SubResource("Resource_5c5ma"), SubResource("Resource_xmo30"), SubResource("Resource_uslsf"), SubResource("Resource_1lnqq"), SubResource("Resource_uidau"), SubResource("Resource_ii2d6"), SubResource("Resource_vf8k6"), SubResource("Resource_l4htq"), SubResource("Resource_itp5f"), SubResource("Resource_rn43x"), SubResource("Resource_1clyg"), SubResource("Resource_7fm20"), SubResource("Resource_w5428"), SubResource("Resource_84280"), SubResource("Resource_s56ji"), SubResource("Resource_dbicf"), SubResource("Resource_y8mlh"), SubResource("Resource_smkks"), SubResource("Resource_b7edv"), SubResource("Resource_o7sil"), SubResource("Resource_ir6nk"), SubResource("Resource_ssdha"), SubResource("Resource_3h3q3"), SubResource("Resource_cvwak"), SubResource("Resource_icxan"), SubResource("Resource_mgldp"), SubResource("Resource_qdqe2"), SubResource("Resource_yoiit"), SubResource("Resource_jaoqb"), SubResource("Resource_g3hba"), SubResource("Resource_lfv22"), SubResource("Resource_tof67"), SubResource("Resource_3n2sa"), SubResource("Resource_nik2e"), SubResource("Resource_i6203"), SubResource("Resource_k2mb6"), SubResource("Resource_nf3h8"), SubResource("Resource_2u08u"), SubResource("Resource_s71ug"), SubResource("Resource_s2skv"), SubResource("Resource_0n66e"), SubResource("Resource_jh6sl"), SubResource("Resource_g05l6"), SubResource("Resource_dddpt"), SubResource("Resource_gbn5b"), SubResource("Resource_xi4jv"), SubResource("Resource_w16t2"), SubResource("Resource_yvd64"), SubResource("Resource_eo2ww"), SubResource("Resource_0jxvy"), SubResource("Resource_xyiv8"), SubResource("Resource_pv6fc"), SubResource("Resource_ihewe"), SubResource("Resource_buqa8"), SubResource("Resource_uf4rv"), SubResource("Resource_ibsqs"), SubResource("Resource_i4vky"), SubResource("Resource_xat7p"), SubResource("Resource_hmytc"), SubResource("Resource_whgsi"), SubResource("Resource_qyber"), SubResource("Resource_76f5c"), SubResource("Resource_ueoqp"), SubResource("Resource_5w13u"), SubResource("Resource_glqc6"), SubResource("Resource_bkp1v"), SubResource("Resource_yoyjp"), SubResource("Resource_s23jc"), SubResource("Resource_ajx5q"), SubResource("Resource_lhaef"), SubResource("Resource_r3vck"), SubResource("Resource_d16m4"), SubResource("Resource_mr6pc"), SubResource("Resource_ranjg"), SubResource("Resource_fnnpd"), SubResource("Resource_6g5ok"), SubResource("Resource_6lawy"), SubResource("Resource_242vi"), SubResource("Resource_hpi0l"), SubResource("Resource_vf2wu"), SubResource("Resource_mlys3"), SubResource("Resource_82kxm"), SubResource("Resource_1dyfu"), SubResource("Resource_hev3b"), SubResource("Resource_uf12h"), SubResource("Resource_d5rv3"), SubResource("Resource_46he0"), SubResource("Resource_8gbf3"), SubResource("Resource_25eik"), SubResource("Resource_prxch"), SubResource("Resource_62nrw"), SubResource("Resource_dqtdc"), SubResource("Resource_8nxck"), SubResource("Resource_84k1g"), SubResource("Resource_nn8fs"), SubResource("Resource_rw855")])

@@ -1,0 +1,45 @@
+[gd_scene load_steps=7 format=3 uid="uid://boqidil8urfmq"]
+
+[ext_resource type="PackedScene" uid="uid://c58wjax2eyvgm" path="res://scenes/level.tscn" id="1_g05v7"]
+[ext_resource type="Resource" uid="uid://b1dobnddkuhsl" path="res://assets/beatmaps/Warp Speed.tres" id="2_7jvro"]
+[ext_resource type="AudioStream" uid="uid://7afemtia3k4s" path="res://assets/music/WarpSpeed_OhmBeatEdit.ogg" id="2_bc1w2"]
+[ext_resource type="Shader" uid="uid://csxon2ptntecx" path="res://shaders/crtscreen.gdshader" id="2_k14el"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bjloq"]
+shader = ExtResource("2_k14el")
+shader_parameter/scanline_count = 43.06400204554
+shader_parameter/scanline_speed = 0.05
+shader_parameter/scanline_strength = 0.1200000057
+shader_parameter/v_scan_strength = 0.1200000057
+shader_parameter/rgb_offset_uv = 0.0
+shader_parameter/curvature = 0.35
+shader_parameter/screen_aspect = Vector2(16, 9)
+shader_parameter/phosphor_bias_red = 1.15
+shader_parameter/phosphor_bias_blue = 1.0
+shader_parameter/phosphor_bias_green = 1.0
+shader_parameter/phosphor_clamp = 1.045
+shader_parameter/noise_strength = 0.0250000011875
+shader_parameter/noise_scale = 747.885
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_7jvro"]
+viewport_path = NodePath("SubViewport")
+
+[node name="root" instance=ExtResource("1_g05v7")]
+
+[node name="TextureRect" parent="." index="1"]
+material = SubResource("ShaderMaterial_bjloq")
+texture = SubResource("ViewportTexture_7jvro")
+
+[node name="Manager" parent="SubViewport" index="0"]
+beatMap = ExtResource("2_7jvro")
+
+[node name="Music" parent="SubViewport" index="1"]
+stream = ExtResource("2_bc1w2")
+
+[editable path="SubViewport/Manager"]
+[editable path="SubViewport/Manager/Bar"]
+[editable path="SubViewport/Manager/Bar2"]
+[editable path="SubViewport/Manager/Bar3"]
+[editable path="SubViewport/Manager/Bar4"]
+[editable path="SubViewport/Manager/Bar5"]
+[editable path="SubViewport/Manager/Bar6"]

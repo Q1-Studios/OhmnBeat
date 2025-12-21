@@ -1,5 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://3dacuugsdegt"]
 
+[ext_resource type="Script" uid="uid://b2hjhdudwvgmq" path="res://scripts/mainMenuworld_environment.gd" id="1_3vvtq"]
 [ext_resource type="Shader" uid="uid://csxon2ptntecx" path="res://shaders/crtscreen.gdshader" id="1_r3g3c"]
 [ext_resource type="Shader" uid="uid://brf2fxm2ewmux" path="res://shaders/accumulator.gdshader" id="2_3vvtq"]
 [ext_resource type="PackedScene" uid="uid://c0685vkvjd2ek" path="res://scenes/MenuGUI.tscn" id="3_r3g3c"]
@@ -69,6 +70,7 @@ script = SubResource("GDScript_uphyt")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_5gdhr")
+script = ExtResource("1_3vvtq")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 material = SubResource("ShaderMaterial_5gdhr")
