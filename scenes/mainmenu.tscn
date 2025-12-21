@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://3dacuugsdegt"]
+[gd_scene load_steps=11 format=3 uid="uid://3dacuugsdegt"]
 
 [ext_resource type="Script" uid="uid://b2hjhdudwvgmq" path="res://scripts/mainMenuworld_environment.gd" id="1_3vvtq"]
 [ext_resource type="Shader" uid="uid://csxon2ptntecx" path="res://shaders/crtscreen.gdshader" id="1_r3g3c"]
@@ -104,5 +104,5 @@ offset = Vector2(960, 540)
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_3vvtq")
-volume_db = -10.0
+volume_db = -15.0
 autoplay = true

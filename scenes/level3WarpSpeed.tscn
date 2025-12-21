@@ -35,6 +35,7 @@ beatMap = ExtResource("2_7jvro")
 
 [node name="Music" parent="SubViewport" index="1"]
 stream = ExtResource("2_bc1w2")
+volume_db = -2.0
 
 [editable path="SubViewport/Manager"]
 [editable path="SubViewport/Manager/Bar"]

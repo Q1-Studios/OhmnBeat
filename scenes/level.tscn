@@ -57,8 +57,8 @@ shader_parameter/rgb_offset_uv = 0.0
 shader_parameter/curvature = 0.35
 shader_parameter/screen_aspect = Vector2(16, 9)
 shader_parameter/phosphor_bias_red = 1.0
-shader_parameter/phosphor_bias_blue = 1.15
-shader_parameter/phosphor_bias_green = 1.0
+shader_parameter/phosphor_bias_blue = 1.0
+shader_parameter/phosphor_bias_green = 1.15
 shader_parameter/phosphor_clamp = 1.045
 shader_parameter/noise_strength = 0.0250000011875
 shader_parameter/noise_scale = 747.885
@@ -326,6 +326,7 @@ music = NodePath("../Music")
 
 [node name="Music" type="AudioStreamPlayer" parent="SubViewport"]
 stream = ExtResource("7_8iemx")
+volume_db = 5.0
 
 [node name="GlitchEffect" type="AnimationPlayer" parent="SubViewport"]
 root_node = NodePath("../../..")
