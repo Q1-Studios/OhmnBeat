@@ -33,6 +33,7 @@ period = 8.0
 length = 170.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
 self_modulate = Color(1, 1, 1, 0.3647059)
 scale = Vector2(2.27, 0.05)
 texture = ExtResource("2_md0e3")
