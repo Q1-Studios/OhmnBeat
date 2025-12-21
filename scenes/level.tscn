@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://c58wjax2eyvgm"]
+[gd_scene load_steps=27 format=3 uid="uid://c58wjax2eyvgm"]
 
 [ext_resource type="Shader" uid="uid://csxon2ptntecx" path="res://shaders/crtscreen.gdshader" id="1_olg7q"]
 [ext_resource type="Script" uid="uid://dy7fu0maf3ug8" path="res://scripts/glitch_effect_sub_viewport.gd" id="2_2r41h"]
@@ -533,6 +533,7 @@ scale = Vector2(0.61, 0.61)
 
 [node name="AudioStreamPlayer" parent="SubViewport/Manager" index="6"]
 stream = ExtResource("6_olg7q")
+volume_db = -40.0
 
 [node name="GlitchEffect" type="AnimationPlayer" parent="SubViewport"]
 root_node = NodePath("../..")

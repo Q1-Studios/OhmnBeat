@@ -5,8 +5,8 @@
 [ext_resource type="Script" uid="uid://cnw6sasggbm1f" path="res://scripts/miss_bar.gd" id="3_x848m"]
 
 [sub_resource type="Gradient" id="Gradient_x848m"]
-offsets = PackedFloat32Array(0, 0.75837743)
-colors = PackedColorArray(1, 1, 1, 0.40784314, 1, 1, 1, 0)
+offsets = PackedFloat32Array(0, 0.7918871, 0.8765432)
+colors = PackedColorArray(1, 1, 1, 0.40784314, 1, 1, 1, 0.09350902, 1, 1, 1, 0)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_qdsxc"]
 gradient = SubResource("Gradient_x848m")
@@ -85,19 +85,9 @@ perfectBar = NodePath("PerfectBar")
 script = ExtResource("2_bwlfd")
 
 [node name="BarSprite" type="Sprite2D" parent="PerfectBar"]
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-position = Vector2(0, 7.1)
-scale = Vector2(0.93, 0.23437499)
+position = Vector2(0, 1.6000001)
+scale = Vector2(0.93, 0.40624997)
 texture = SubResource("GradientTexture2D_qdsxc")
-=======
-=======
->>>>>>> Stashed changes
-visible = false
-position = Vector2(-9.536743e-07, -1.4901161e-08)
-scale = Vector2(60.8, 4.7083335)
-texture = SubResource("PlaceholderTexture2D_bwlfd")
->>>>>>> Stashed changes
 
 [node name="PerfectCollision" type="CollisionShape2D" parent="PerfectBar"]
 scale = Vector2(0.99999994, 0.99999994)
