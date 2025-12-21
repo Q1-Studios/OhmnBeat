@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://bamdewqkrikpq"]
+[gd_scene load_steps=8 format=3 uid="uid://bamdewqkrikpq"]
 
 [ext_resource type="PackedScene" uid="uid://c58wjax2eyvgm" path="res://scenes/level.tscn" id="1_5xonq"]
 [ext_resource type="Resource" uid="uid://by8mvxhngf53p" path="res://assets/beatmaps/With the current.tres" id="2_302s3"]
 [ext_resource type="Shader" uid="uid://csxon2ptntecx" path="res://shaders/crtscreen.gdshader" id="2_xy34d"]
 [ext_resource type="AudioStream" uid="uid://cphat3cah3un5" path="res://assets/music/WithTheCurrent.ogg" id="4_xy34d"]
+[ext_resource type="Script" uid="uid://dcqb6c2nodald" path="res://scenes/fixpitchonlaunch.gd" id="5_5mege"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_5mege"]
 shader = ExtResource("2_xy34d")
@@ -31,12 +32,17 @@ scene_name = "Level2"
 material = SubResource("ShaderMaterial_5mege")
 texture = SubResource("ViewportTexture_lcxik")
 
+[node name="SubViewport" parent="." index="2"]
+size = Vector2i(1920, 1080)
+
 [node name="Manager" parent="SubViewport" index="0"]
 beatMap = ExtResource("2_302s3")
 
 [node name="Music" parent="SubViewport" index="1"]
 stream = ExtResource("4_xy34d")
 volume_db = -5.0
+pitch_scale = 1.0
+script = ExtResource("5_5mege")
 
 [editable path="SubViewport/Manager"]
 [editable path="SubViewport/Manager/Bar"]
