@@ -32,14 +32,18 @@ func _input(event: InputEvent) -> void:
 		#print(keyName)
 		if hit(perfectBar.enemyList):
 			perfectHit.emit()
+			$PerfectBar/Line2D/AnimationPlayer.play("blinkspecial")
 			#print("hit")
 			#print(Time.get_unix_time_from_system())
 		elif hit(okInnerBar.enemyList):
 			okInnerHit.emit()
+			$PerfectBar/Line2D/AnimationPlayer.play("blink")
 		elif hit(okOuterBar.enemyList):
 			okOuterHit.emit()
+			$PerfectBar/Line2D/AnimationPlayer.play("blink")
 		else:
 			noHit.emit()
+			$PerfectBar/Line2D/AnimationPlayer.play("failedhit")
 			
 
 func hit(targetList:Array):
@@ -54,7 +58,7 @@ func hit(targetList:Array):
 func spawnEnemy():
 	#print("spawn call works")
 	var instance = enemy.instantiate()
-	randomEnemyOffsetX = randi_range(-30, 30)
+	randomEnemyOffsetX = randi_range(-20, 20)
 	instance.position.x = randomEnemyOffsetX
 	instance.position.y = -50
 	instance.endPosition = $PerfectBar.position
