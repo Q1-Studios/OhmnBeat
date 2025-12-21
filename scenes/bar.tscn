@@ -1,13 +1,99 @@
-[gd_scene load_steps=7 format=3 uid="uid://bjr3b5q84iffp"]
+[gd_scene load_steps=12 format=3 uid="uid://bjr3b5q84iffp"]
 
 [ext_resource type="Script" uid="uid://cwsl3qyhoh8nb" path="res://scripts/bars.gd" id="1_5dekh"]
 [ext_resource type="Script" uid="uid://cx5bywiu0iqj" path="res://scripts/successZone.gd" id="2_bwlfd"]
 [ext_resource type="Script" uid="uid://cnw6sasggbm1f" path="res://scripts/miss_bar.gd" id="3_x848m"]
 
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_bwlfd"]
+[sub_resource type="Gradient" id="Gradient_x848m"]
+offsets = PackedFloat32Array(0, 0.75837743)
+colors = PackedColorArray(1, 1, 1, 0.40784314, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_qdsxc"]
+gradient = SubResource("Gradient_x848m")
+fill_from = Vector2(1, 1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x848m"]
 size = Vector2(60.6, 5)
+
+[sub_resource type="Animation" id="Animation_x848m"]
+resource_name = "blink"
+length = 0.4775
+step = 0.0033
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 0,
+"values": []
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:default_color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.033333335, 0.04950495, 0.4620462),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 0, 1, 1), Color(1, 0, 1, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_qdsxc"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:default_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_efgdo"]
+resource_name = "blinkspecial"
+length = 0.4775
+step = 0.0033
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 0,
+"values": []
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:default_color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.036303632, 0.17491749, 0.20462047, 0.46534654),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [Color(1, 1, 1, 1), Color(0.989904, 0.84628063, 0, 1), Color(0.989904, 0.84628063, 0, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qdsxc"]
+_data = {
+&"RESET": SubResource("Animation_qdsxc"),
+&"blink": SubResource("Animation_x848m"),
+&"blinkspecial": SubResource("Animation_efgdo")
+}
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qdsxc"]
 size = Vector2(48.000008, 5)
@@ -23,13 +109,25 @@ perfectBar = NodePath("PerfectBar")
 script = ExtResource("2_bwlfd")
 
 [node name="BarSprite" type="Sprite2D" parent="PerfectBar"]
-position = Vector2(-9.536743e-07, -1.4901161e-08)
-scale = Vector2(60.8, 4.7083335)
-texture = SubResource("PlaceholderTexture2D_bwlfd")
+position = Vector2(0, 7.1)
+scale = Vector2(0.93, 0.23437499)
+texture = SubResource("GradientTexture2D_qdsxc")
 
 [node name="PerfectCollision" type="CollisionShape2D" parent="PerfectBar"]
 scale = Vector2(0.99999994, 0.99999994)
 shape = SubResource("RectangleShape2D_x848m")
+
+[node name="Line2D" type="Line2D" parent="PerfectBar"]
+points = PackedVector2Array(-30, 0, 30, 0)
+width = 1.5
+joint_mode = 2
+round_precision = 16
+antialiased = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="PerfectBar/Line2D"]
+libraries = {
+&"": SubResource("AnimationLibrary_qdsxc")
+}
 
 [node name="OkInnerBar" type="Area2D" parent="."]
 position = Vector2(0, 5.0000005)
