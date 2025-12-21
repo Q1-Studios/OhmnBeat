@@ -1,6 +1,6 @@
 extends Area2D
 
-@export var selected_modulate: Color
+@export var selected_modulate: Color = Color(1.5, 0.8, 0.2)
 @export var default_select: bool = false
 
 @onready var default_modulate: Color = modulate
