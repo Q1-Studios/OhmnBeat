@@ -19,6 +19,11 @@ var PERFECTPOINTS:int = 300
 var OKPOINTS:int = 200
 var points:int = 0
 
+#End screen counters
+var perfectAmount:int
+var okAmount:int
+var missAmount:int
+
 #Health
 var DAMAGE:int = 10
 var RECOVER:int = 5
@@ -55,7 +60,7 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	ManagerGlobal.points = points
+	
 	if Time.get_unix_time_from_system() - 3 >= globalStartTime and not hasStarted:
 		music.play()
 		songStartTime = Time.get_unix_time_from_system()
@@ -181,10 +186,14 @@ func missed():
 	health -= DAMAGE
 	health = clamp(health, 0, 100)
 	print("Missed! Current Health: ", health)
+	ManagerGlobal.missAmount = missAmount
 	missSignal.emit()
 
 func okHit():
 	points += OKPOINTS
+	ManagerGlobal.points = points
+	okAmount += 1
+	ManagerGlobal.okAmount = okAmount
 	okSignal.emit()
 
 func perfectHit():
@@ -192,4 +201,7 @@ func perfectHit():
 	health = clamp(health, 0, 100)
 	print("Perfect! Current Health: ", health)
 	points += PERFECTPOINTS
+	ManagerGlobal.points = points
+	perfectAmount += 1
+	ManagerGlobal.perfectAmount = perfectAmount
 	perfectSignal.emit()
