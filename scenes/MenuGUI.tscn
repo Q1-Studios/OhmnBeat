@@ -83,20 +83,25 @@ script/source = "extends Node2D
 
 @onready var area_2d: Area2D = $Area2D
 var thecat = true
+var contains_mouse: bool = false
 
 func _ready() -> void:
 	area_2d.area_entered.connect(_on_area_entered)
 	area_2d.area_exited.connect(_on_area_exited)
 
-func _on_area_entered(_other_area: Area2D) -> void:
-	modulate = highlight_color
+func _on_area_entered(other_area: Area2D) -> void:
+	if other_area.is_in_group(\"MouseArea\"):
+		contains_mouse = true
+		modulate = highlight_color
 
-func _on_area_exited(_other_area: Area2D) -> void:
-	modulate = normal_color
+func _on_area_exited(other_area: Area2D) -> void:
+	if other_area.is_in_group(\"MouseArea\"):
+		contains_mouse = false
+		modulate = normal_color
 
 func _process(_delta) -> void:
 	if thecat and Input.is_anything_pressed():
-		if area_2d.get_overlapping_areas().size() > 0:
+		if contains_mouse:
 			handle_click()
 	if not thecat:
 		modulate = normal_color
@@ -444,19 +449,23 @@ script/source = "extends Node2D
 
 @onready var area_2d: Area2D = $Area2D
 
+var contains_mouse: bool = false
+
 func _ready() -> void:
 	area_2d.area_entered.connect(_on_area_entered)
 	area_2d.area_exited.connect(_on_area_exited)
 
-func _on_area_entered(_other_area: Area2D) -> void:
-	if not BITTEKEINGESPRAECH:
+func _on_area_entered(other_area: Area2D) -> void:
+	if not BITTEKEINGESPRAECH and other_area.is_in_group(\"MouseArea\"):
+		contains_mouse = true
 		modulate = highlight_color
 		$\"../../CreditsLayer\".show()
 		$\"../../TutorialText\".hide()
 		$\"../../exitosci\".hide()
 	
-func _on_area_exited(_other_area: Area2D) -> void:
-	if not BITTEKEINGESPRAECH:
+func _on_area_exited(other_area: Area2D) -> void:
+	if not BITTEKEINGESPRAECH and other_area.is_in_group(\"MouseArea\"):
+		contains_mouse = false
 		modulate = normal_color
 		$\"../../CreditsLayer\".hide()
 		$\"../../exitosci\".hide()
@@ -464,7 +473,7 @@ func _on_area_exited(_other_area: Area2D) -> void:
 var BITTEKEINGESPRAECH = false
 func _process(_delta) -> void:
 	if Input.is_anything_pressed() and not BITTEKEINGESPRAECH:
-		if area_2d.get_overlapping_areas().size() > 0:
+		if contains_mouse:
 			handle_click()
 
 func handle_click() -> void:
@@ -485,16 +494,16 @@ func _ready() -> void:
 	area_2d.area_exited.connect(_on_area_exited)
 var BITTEKEINGESPRAECH = false
 var isdrin = false
-func _on_area_entered(_other_area: Area2D) -> void:
-	if not BITTEKEINGESPRAECH: 
+func _on_area_entered(other_area: Area2D) -> void:
+	if not BITTEKEINGESPRAECH and other_area.is_in_group(\"MouseArea\"): 
 		modulate = highlight_color
 		$\"../../CreditsLayer\".hide()
 		$\"../../TutorialText\".hide()
 		$\"../../exitosci\".show()
 		isdrin = true
 
-func _on_area_exited(_other_area: Area2D) -> void:
-	if not BITTEKEINGESPRAECH:
+func _on_area_exited(other_area: Area2D) -> void:
+	if not BITTEKEINGESPRAECH and other_area.is_in_group(\"MouseArea\"):
 		modulate = normal_color
 		$\"../../CreditsLayer\".hide()
 		$\"../../TutorialText\".show()
@@ -533,6 +542,81 @@ point_count = 2
 [sub_resource type="Gradient" id="Gradient_0uspm"]
 interpolation_mode = 2
 colors = PackedColorArray(1.499905, 0.8005517, 0.19945474, 1, 0.6791764, 0.41908637, 1.1184396, 1)
+
+[sub_resource type="Animation" id="Animation_nl8w8"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FancyFirstFadeIn/TheCopyGruber:width_curve")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [SubResource("Curve_rbo5s")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("FancyFirstFadeIn/TheCopyGruber:gradient")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [SubResource("Gradient_0uspm")]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("FancyFirstFadeIn/TheCopyGruber:gradient:offsets")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [PackedFloat32Array(0, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("FancyFirstFadeIn/TheCopyGruber:gradient:colors")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [PackedColorArray(1.499905, 0.8005517, 0.19945474, 1, 0.6791764, 0.41908637, 1.1184396, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("FancyFirstFadeIn/TheCopyGruber:width_curve:point_0/position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("FancyFirstFadeIn/TheCopyGruber:width_curve:point_1/position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_ds5pe"]
 resource_name = "fancyfirstfadein"
@@ -622,81 +706,6 @@ tracks/6/keys = {
 "args": [],
 "method": &"stopcopy"
 }]
-}
-
-[sub_resource type="Animation" id="Animation_nl8w8"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("FancyFirstFadeIn/TheCopyGruber:width_curve")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [SubResource("Curve_rbo5s")]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("FancyFirstFadeIn/TheCopyGruber:gradient")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [SubResource("Gradient_0uspm")]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("FancyFirstFadeIn/TheCopyGruber:gradient:offsets")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [PackedFloat32Array(0, 1)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("FancyFirstFadeIn/TheCopyGruber:gradient:colors")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [PackedColorArray(1.499905, 0.8005517, 0.19945474, 1, 0.6791764, 0.41908637, 1.1184396, 1)]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("FancyFirstFadeIn/TheCopyGruber:width_curve:point_0/position")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, 1)]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("FancyFirstFadeIn/TheCopyGruber:width_curve:point_1/position")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_nl8w8"]
