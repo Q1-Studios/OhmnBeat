@@ -31,16 +31,16 @@ scene_name = "Level3"
 material = SubResource("ShaderMaterial_bjloq")
 texture = SubResource("ViewportTexture_7jvro")
 
-[node name="SubViewport" parent="." index="2"]
-size = Vector2i(1920, 1080)
-
 [node name="Manager" parent="SubViewport" index="0"]
 beatMap = ExtResource("2_7jvro")
 
 [node name="Music" parent="SubViewport" index="1"]
 stream = ExtResource("2_bc1w2")
 volume_db = -2.0
-pitch_scale = 1.0
+
+[node name="Camera2D" parent="." index="3"]
+range_low = 1000
+range_high = 4000
 
 [editable path="SubViewport/Manager"]
 [editable path="SubViewport/Manager/Bar"]

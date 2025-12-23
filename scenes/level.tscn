@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://c58wjax2eyvgm"]
+[gd_scene load_steps=31 format=3 uid="uid://c58wjax2eyvgm"]
 
 [ext_resource type="Script" uid="uid://cmf57kjjp031t" path="res://scripts/fade_in.gd" id="1_8iemx"]
 [ext_resource type="Shader" uid="uid://csxon2ptntecx" path="res://shaders/crtscreen.gdshader" id="1_olg7q"]
@@ -289,6 +289,33 @@ _data = {
 &"spin": SubResource("Animation_t1rx8")
 }
 
+[sub_resource type="GDScript" id="GDScript_wc255"]
+resource_name = "bop"
+script/source = "extends Camera2D
+
+var spectrum := AudioServer.get_bus_effect_instance(
+	0, 0
+) as AudioEffectSpectrumAnalyzerInstance
+
+@export var zoom_amount := 0.038
+@export var smooth_speed := 10.0
+
+var current_zoom := 1.0
+
+@export var attack_speed = 14.0
+@export var release_speed = 7.0
+@export var range_low = 20
+@export var range_high = 100
+func _process(delta):
+	var low = spectrum.get_magnitude_for_frequency_range(range_low, range_high).length()
+	var energy = clamp(low * 5, 0.0, 1.0)
+	var target_zoom = 1.0 + energy * zoom_amount
+
+	var speed = attack_speed if target_zoom > current_zoom else release_speed
+	current_zoom = lerp(current_zoom, target_zoom, 1.0 - exp(-speed * delta))
+	zoom = Vector2.ONE * current_zoom
+"
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w8frs"]
 bg_color = Color(0, 0, 0, 0.08235294)
 corner_detail = 1
@@ -504,6 +531,8 @@ points = PackedVector2Array(1149, 1217, 1148.97, 1217, 1148.9, 1217, 1148.78, 12
 
 [node name="Camera2D" type="Camera2D" parent="."]
 offset = Vector2(960, 540)
+script = SubResource("GDScript_wc255")
+range_high = 300
 
 [node name="MusicProgressBar" type="ProgressBar" parent="." node_paths=PackedStringArray("manager")]
 z_index = 5
