@@ -21,6 +21,7 @@ boot_splash/minimum_display_time=1000
 
 ManagerGlobal="*res://scripts/managerGlobal.gd"
 SceneManager="*res://scenes/scene_manager.tscn"
+Globals="*res://scripts/globals.gd"
 
 [display]
 

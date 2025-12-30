@@ -167,3 +167,6 @@ func perfectHit():
 	$"Miss_Great_Perfect/PERFECT".show()
 	$"Miss_Great_Perfect/GREAT".hide()
 	$Miss_Great_Perfect/PERFECT/AnimationPlayer.play("swobble")
+
+func _on_touch_restart_triggered() -> void:
+	health = 0
