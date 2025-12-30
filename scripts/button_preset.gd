@@ -23,7 +23,8 @@ func _on_mouse_exited() -> void:
 		release_focus()
 
 func _on_focus_entered() -> void:
-	modulate = selected_modulate
+	if selectable:
+		modulate = selected_modulate
 	select()
 
 func _on_focus_exited() -> void:
