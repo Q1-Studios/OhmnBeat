@@ -58,7 +58,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("PLAY:disabled")
+tracks/1/path = NodePath("PlayButton:disabled")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -70,7 +70,7 @@ tracks/1/keys = {
 tracks/2/type = "method"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("PLAY")
+tracks/2/path = NodePath("PlayButton")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -84,7 +84,7 @@ tracks/2/keys = {
 tracks/3/type = "method"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("PLAY")
+tracks/3/path = NodePath("PlayButton")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -117,7 +117,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("PLAY:position")
+tracks/1/path = NodePath("PlayButton:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -129,7 +129,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("PLAY:scale")
+tracks/2/path = NodePath("PlayButton:scale")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -153,7 +153,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("CREDITS:modulate")
+tracks/4/path = NodePath("CreditsButton:modulate")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -165,11 +165,11 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("QUIT:modulate")
+tracks/5/path = NodePath("QuitButton:modulate")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0.03333333, 0.16666669),
+"times": PackedFloat32Array(0.03333333, 0.1667),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
@@ -201,7 +201,7 @@ tracks/7/keys = {
 tracks/8/type = "value"
 tracks/8/imported = false
 tracks/8/enabled = true
-tracks/8/path = NodePath("PLAY:disabled")
+tracks/8/path = NodePath("PlayButton:disabled")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
@@ -221,6 +221,18 @@ tracks/9/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [false]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("VibrateToggleButton:modulate")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0, 0.1667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_gjjcl"]
@@ -258,7 +270,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("PLAY:position")
+tracks/1/path = NodePath("PlayButton:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -270,7 +282,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("PLAY:scale")
+tracks/2/path = NodePath("PlayButton:scale")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -294,7 +306,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("CREDITS:modulate")
+tracks/4/path = NodePath("CreditsButton:modulate")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -306,7 +318,7 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("QUIT:modulate")
+tracks/5/path = NodePath("QuitButton:modulate")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -354,7 +366,7 @@ tracks/8/keys = {
 tracks/9/type = "value"
 tracks/9/imported = false
 tracks/9/enabled = true
-tracks/9/path = NodePath("PLAY:disabled")
+tracks/9/path = NodePath("PlayButton:disabled")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/keys = {
@@ -362,6 +374,18 @@ tracks/9/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [false]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("VibrateToggleButton:modulate")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_s5g8n"]
@@ -739,7 +763,7 @@ func copyallto(child):
 script = ExtResource("1_30dmf")
 fade_out = NodePath("FadeOut")
 init_text = NodePath("PressAnyKeyText")
-init_focus_btn = NodePath("MenuButtons/PLAY")
+init_focus_btn = NodePath("MenuButtons/PlayButton")
 animation_player = NodePath("MenuButtons/ButtonTriggeredAnimations")
 
 [node name="owlspawner" type="Node2D" parent="."]
@@ -792,35 +816,35 @@ libraries = {
 &"": SubResource("AnimationLibrary_7yvfd")
 }
 
-[node name="PLAY" parent="MenuButtons" node_paths=PackedStringArray("anim_player") instance=ExtResource("3_30dmf")]
+[node name="PlayButton" parent="MenuButtons" node_paths=PackedStringArray("anim_player") instance=ExtResource("3_30dmf")]
 offset_top = -200.0
 offset_bottom = 45.0
 scale = Vector2(1.297, 1.297)
-focus_neighbor_right = NodePath("../CREDITS")
+focus_neighbor_right = NodePath("../CreditsButton")
 script = SubResource("GDScript_wf3n4")
 anim_player = NodePath("../ButtonTriggeredAnimations")
 
-[node name="CREDITS" parent="MenuButtons" node_paths=PackedStringArray("anim_player", "show_on_hover", "default_shown") instance=ExtResource("4_ds5pe")]
+[node name="CreditsButton" parent="MenuButtons" node_paths=PackedStringArray("anim_player", "show_on_hover", "default_shown") instance=ExtResource("4_ds5pe")]
 offset_left = 1200.0
 offset_top = -200.0
 offset_right = 2159.0
 offset_bottom = 47.0
 scale = Vector2(1.36, 1.36)
-focus_neighbor_left = NodePath("../PLAY")
-focus_neighbor_right = NodePath("../QUIT")
+focus_neighbor_left = NodePath("../PlayButton")
+focus_neighbor_right = NodePath("../QuitButton")
 disabled = true
 script = SubResource("GDScript_h73c4")
 anim_player = NodePath("../ButtonTriggeredAnimations")
 show_on_hover = NodePath("../../CreditsText")
 default_shown = NodePath("../../TutorialText")
 
-[node name="QUIT" parent="MenuButtons" node_paths=PackedStringArray("anim_player", "show_on_hover", "default_shown") instance=ExtResource("5_nl8w8")]
+[node name="QuitButton" parent="MenuButtons" node_paths=PackedStringArray("anim_player", "show_on_hover", "default_shown") instance=ExtResource("5_nl8w8")]
 offset_left = 2900.0
 offset_top = -200.0
 offset_right = 3513.0
 offset_bottom = 46.0
 scale = Vector2(1.335, 1.335)
-focus_neighbor_left = NodePath("../CREDITS")
+focus_neighbor_left = NodePath("../CreditsButton")
 script = SubResource("GDScript_85riq")
 anim_player = NodePath("../ButtonTriggeredAnimations")
 show_on_hover = NodePath("../../ExitText")
@@ -1606,7 +1630,7 @@ antialiased = true
 script = SubResource("GDScript_ds5pe")
 lines = [NodePath("../../OnBeatLogo/Selection_part13"), NodePath("../../OnBeatLogo/Selection_part14"), NodePath("../../OnBeatLogo/Selection_part15"), NodePath("../../OnBeatLogo/Selection_part16"), NodePath("../../OnBeatLogo/Selection_part17"), NodePath("../../OnBeatLogo/Selection_part18"), NodePath("../../OnBeatLogo/Selection_part19"), NodePath("../../PressAnyKeyText/Paths/Selection_part1"), NodePath("../../PressAnyKeyText/Paths/Selection_part2"), NodePath("../../PressAnyKeyText/Paths/Selection_part3"), NodePath("../../PressAnyKeyText/Paths/Selection_part4"), NodePath("../../PressAnyKeyText/Paths/Selection_part5"), NodePath("../../PressAnyKeyText/Paths/Selection_part6"), NodePath("../../PressAnyKeyText/Paths/Selection_part7"), NodePath("../../PressAnyKeyText/Paths/Selection_part8"), NodePath("../../PressAnyKeyText/Paths/Selection_part9"), NodePath("../../PressAnyKeyText/Paths/Selection_part10"), NodePath("../../PressAnyKeyText/Paths/Selection_part11"), NodePath("../../PressAnyKeyText/Paths/Owl2/Selection_part1"), NodePath("../../PressAnyKeyText/Paths/Owl2/Selection_part2"), NodePath("../../PressAnyKeyText/Paths/Owl2/Selection_part3"), NodePath("../../PressAnyKeyText/Paths/Owl2/Selection_part4"), NodePath("../../PressAnyKeyText/Paths/Owl2/Selection_part5"), NodePath("../../PressAnyKeyText/Paths/Owl2/Selection_part6"), NodePath("../../PressAnyKeyText/Paths/Owl2/Selection_part7"), NodePath("../../PressAnyKeyText/Paths/Owl2/Selection_part8"), NodePath("../../PressAnyKeyText/Paths/Owl2/Selection_part9"), NodePath("../../PressAnyKeyText/Paths/Owl2/Selection_part10"), NodePath("../../PressAnyKeyText/Paths/Owl2/Selection_part11"), NodePath("../../PressAnyKeyText/Paths/Owl2/Selection_part12")]
 
-[connection signal="pressed" from="MenuButtons/PLAY" to="LevelSelectLayer" method="_on_level_select_shown"]
+[connection signal="pressed" from="MenuButtons/PlayButton" to="LevelSelectLayer" method="_on_level_select_shown"]
 [connection signal="exit_level_select" from="LevelSelectLayer" to="." method="_on_exit_level_select"]
 [connection signal="transition_to_level" from="LevelSelectLayer" to="." method="_on_transition_to_level"]
 [connection signal="transition_to_level" from="LevelSelectLayer" to="FadeOut" method="_on_transition_to_level"]

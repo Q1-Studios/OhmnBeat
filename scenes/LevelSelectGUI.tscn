@@ -640,6 +640,7 @@ root = NodePath("..")
 
 [node name="MobileGraceArea" parent="ExitButton" instance=ExtResource("3_onb6o")]
 layout_mode = 0
+offset_left = -97.0
 
 [node name="Levels" type="Node2D" parent="."]
 
