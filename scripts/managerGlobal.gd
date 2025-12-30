@@ -1,6 +1,7 @@
 extends Node
 
 # Variables relating to last run/score
+var victory:bool
 var points:int
 var perfectAmount:int 
 var okAmount:int 

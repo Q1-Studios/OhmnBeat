@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://bhx5efbk25at7"]
+[gd_scene load_steps=16 format=3 uid="uid://bhx5efbk25at7"]
 
 [ext_resource type="PackedScene" uid="uid://dr4mxxdydivm4" path="res://scenes/restartbutton.tscn" id="1_7xfkq"]
 [ext_resource type="Script" uid="uid://ceov5hw4m2am7" path="res://scripts/score_gui.gd" id="1_8bkue"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://wd1kdyvcphow" path="res://scenes/quitbutton.tscn" id="4_1bmex"]
 [ext_resource type="FontFile" uid="uid://7u54b7ave0i7" path="res://assets/Fonts/ethnocen.ttf" id="4_f1sb5"]
 [ext_resource type="Script" uid="uid://b827ad2p7ghva" path="res://scripts/rich_text_label.gd" id="5_7xfkq"]
+[ext_resource type="Script" uid="uid://bfmhd3f3f21a" path="res://scripts/outcome_text.gd" id="6_nq3vv"]
 
 [sub_resource type="Animation" id="Animation_dfy5j"]
 length = 0.001
@@ -174,27 +175,42 @@ libraries = {
 
 [node name="RestartButton" parent="MenuButtons" instance=ExtResource("1_7xfkq")]
 offset_left = -4800.0
-offset_top = 650.0
+offset_top = 800.0
 offset_right = -4121.0
-offset_bottom = 897.0
+offset_bottom = 1047.0
 scale = Vector2(1.75, 1.75)
 focus_neighbor_right = NodePath("../QuitButton")
 script = SubResource("GDScript_5itgx")
+metadata/_edit_use_anchors_ = true
 
 [node name="QuitButton" parent="MenuButtons" instance=ExtResource("4_1bmex")]
 offset_left = -2300.0
-offset_top = 650.0
+offset_top = 800.0
 offset_right = -1687.0
-offset_bottom = 896.0
+offset_bottom = 1046.0
 scale = Vector2(1.75, 1.75)
 focus_neighbor_left = NodePath("../RestartButton")
 script = SubResource("GDScript_85riq")
+metadata/_edit_use_anchors_ = true
+
+[node name="OutcomeText" type="Label" parent="."]
+offset_right = 1920.0
+offset_bottom = 300.0
+theme_override_fonts/font = ExtResource("4_f1sb5")
+theme_override_font_sizes/font_size = 100
+text = "Song complete"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("6_nq3vv")
+success_text = "Song complete"
+failure_text = "Failure"
+metadata/_edit_use_anchors_ = true
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
 offset_left = 259.0
-offset_top = 146.0
+offset_top = 250.0
 offset_right = 1899.0
-offset_bottom = 698.0
+offset_bottom = 802.0
 theme_override_fonts/normal_font = ExtResource("4_f1sb5")
 theme_override_font_sizes/normal_font_size = 60
 text = "
@@ -206,5 +222,6 @@ Miss:							5x
 
 Total Score:			100000 Pts"
 script = ExtResource("5_7xfkq")
+metadata/_edit_use_anchors_ = true
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]

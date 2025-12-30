@@ -12,10 +12,15 @@ func _ready() -> void:
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if allowedToGlitch:
 		if manager.health == 0 or manager.currentSongProgress >= 0.995:
-			print("no health")
+			print("Game over")
+			if manager.health == 0:
+				ManagerGlobal.victory = false
+			else:
+				ManagerGlobal.victory = true
+			
 			glitchEffectAnimationPlayer.play("GlitchEffectAnimation")
 			allowedToGlitch = false
 			size.x = 1920
