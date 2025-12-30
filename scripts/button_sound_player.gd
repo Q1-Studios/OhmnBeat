@@ -8,10 +8,10 @@ class_name ButtonSoundPlayer
 
 func _ready() -> void:
 	if parent_btn is ButtonPreset:
-		parent_btn.mouse_entered.connect(_on_mouse_entered)
+		parent_btn.focus_entered.connect(_on_focus_entered)
 		parent_btn.pressed.connect(_on_pressed)
 
-func _on_mouse_entered() -> void:
+func _on_focus_entered() -> void:
 	if parent_btn.selectable:
 		hover_sfx.play()
 	

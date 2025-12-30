@@ -2,7 +2,6 @@ extends Button
 class_name ButtonPreset
 
 @export var selected_modulate: Color = Color(1.5, 0.8, 0.2)
-@export var default_select: bool = false
 
 @onready var default_modulate: Color = modulate
 
@@ -12,21 +11,24 @@ var selectable: bool = true
 func _ready() -> void:
 	mouse_entered.connect(_on_mouse_entered)
 	mouse_exited.connect(_on_mouse_exited)
+	focus_entered.connect(_on_focus_entered)
+	focus_exited.connect(_on_focus_exited)
 	pressed.connect(_on_pressed)
-	
-	if default_select:
-		grab_focus()
-		select()
 
 func _on_mouse_entered() -> void:
 	if is_visible_in_tree() and selectable:
-		modulate = selected_modulate
 		grab_focus()
-		select()
 	
 func _on_mouse_exited() -> void:
-		modulate = default_modulate
-		unselect()
+		release_focus()
+
+func _on_focus_entered() -> void:
+	modulate = selected_modulate
+	select()
+
+func _on_focus_exited() -> void:
+	modulate = default_modulate
+	unselect()
 
 func _on_pressed() -> void:
 	press()

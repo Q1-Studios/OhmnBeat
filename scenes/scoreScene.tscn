@@ -11,7 +11,6 @@ script/source = "extends Node2D
 @export var sub_viewport: SubViewport
 
 func _input(event: InputEvent) -> void:
-	if event is InputEventMouseMotion or event is InputEventMouseButton:
 		sub_viewport.push_input(event,false)
 		Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 "

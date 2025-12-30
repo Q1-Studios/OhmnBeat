@@ -1,6 +1,7 @@
-[gd_scene load_steps=14 format=3 uid="uid://bhx5efbk25at7"]
+[gd_scene load_steps=15 format=3 uid="uid://bhx5efbk25at7"]
 
 [ext_resource type="PackedScene" uid="uid://dr4mxxdydivm4" path="res://scenes/restartbutton.tscn" id="1_7xfkq"]
+[ext_resource type="Script" uid="uid://ceov5hw4m2am7" path="res://scripts/score_gui.gd" id="1_8bkue"]
 [ext_resource type="PackedScene" uid="uid://bcdqwk2oqbq4w" path="res://scenes/mousescene.tscn" id="2_8bkue"]
 [ext_resource type="PackedScene" uid="uid://wd1kdyvcphow" path="res://scenes/quitbutton.tscn" id="4_1bmex"]
 [ext_resource type="FontFile" uid="uid://7u54b7ave0i7" path="res://assets/Fonts/ethnocen.ttf" id="4_f1sb5"]
@@ -155,7 +156,9 @@ func press() -> void:
 	get_tree().change_scene_to_packed(SceneManager.menuScene)
 "
 
-[node name="ScoreGUI" type="Node2D"]
+[node name="ScoreGUI" type="Node2D" node_paths=PackedStringArray("init_focus")]
+script = ExtResource("1_8bkue")
+init_focus = NodePath("MenuButtons/RestartButton")
 
 [node name="CursorWave" parent="." instance=ExtResource("2_8bkue")]
 position = Vector2(918.2888, 502.03766)
@@ -175,6 +178,7 @@ offset_top = 650.0
 offset_right = -4121.0
 offset_bottom = 897.0
 scale = Vector2(1.75, 1.75)
+focus_neighbor_right = NodePath("../QuitButton")
 script = SubResource("GDScript_5itgx")
 
 [node name="QuitButton" parent="MenuButtons" instance=ExtResource("4_1bmex")]
@@ -183,6 +187,7 @@ offset_top = 650.0
 offset_right = -1687.0
 offset_bottom = 896.0
 scale = Vector2(1.75, 1.75)
+focus_neighbor_left = NodePath("../RestartButton")
 script = SubResource("GDScript_85riq")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]

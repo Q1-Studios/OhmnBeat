@@ -657,9 +657,10 @@ func copyallto(child):
 	child.antialiased = antialiased
 "
 
-[node name="MenuContent" type="Node2D" node_paths=PackedStringArray("fade_out", "init_text", "init_animation_player")]
+[node name="MenuContent" type="Node2D" node_paths=PackedStringArray("fade_out", "init_focus_btn", "init_text", "init_animation_player")]
 script = ExtResource("1_30dmf")
 fade_out = NodePath("FadeOut")
+init_focus_btn = NodePath("MenuButtons/PLAY")
 init_text = NodePath("PressAnyKeyText")
 init_animation_player = NodePath("MenuButtons/ButtonTriggeredAnimations")
 
@@ -717,6 +718,7 @@ libraries = {
 offset_top = -200.0
 offset_bottom = 45.0
 scale = Vector2(1.297, 1.297)
+focus_neighbor_right = NodePath("../CREDITS")
 script = SubResource("GDScript_wf3n4")
 anim_player = NodePath("../ButtonTriggeredAnimations")
 
@@ -726,6 +728,8 @@ offset_top = -200.0
 offset_right = 2159.0
 offset_bottom = 47.0
 scale = Vector2(1.36, 1.36)
+focus_neighbor_left = NodePath("../PLAY")
+focus_neighbor_right = NodePath("../QUIT")
 disabled = true
 script = SubResource("GDScript_h73c4")
 anim_player = NodePath("../ButtonTriggeredAnimations")
@@ -738,6 +742,7 @@ offset_top = -200.0
 offset_right = 3513.0
 offset_bottom = 46.0
 scale = Vector2(1.335, 1.335)
+focus_neighbor_left = NodePath("../CREDITS")
 script = SubResource("GDScript_85riq")
 anim_player = NodePath("../ButtonTriggeredAnimations")
 show_on_hover = NodePath("../../ExitText")
@@ -1483,6 +1488,7 @@ antialiased = true
 script = SubResource("GDScript_ds5pe")
 lines = [NodePath("../../OnBeatLogo/Selection_part13"), NodePath("../../OnBeatLogo/Selection_part14"), NodePath("../../OnBeatLogo/Selection_part15"), NodePath("../../OnBeatLogo/Selection_part16"), NodePath("../../OnBeatLogo/Selection_part17"), NodePath("../../OnBeatLogo/Selection_part18"), NodePath("../../OnBeatLogo/Selection_part19"), NodePath("../../PressAnyKeyText/Paths/Selection_part1"), NodePath("../../PressAnyKeyText/Paths/Selection_part2"), NodePath("../../PressAnyKeyText/Paths/Selection_part3"), NodePath("../../PressAnyKeyText/Paths/Selection_part4"), NodePath("../../PressAnyKeyText/Paths/Selection_part5"), NodePath("../../PressAnyKeyText/Paths/Selection_part6"), NodePath("../../PressAnyKeyText/Paths/Selection_part7"), NodePath("../../PressAnyKeyText/Paths/Selection_part8"), NodePath("../../PressAnyKeyText/Paths/Selection_part9"), NodePath("../../PressAnyKeyText/Paths/Selection_part10"), NodePath("../../PressAnyKeyText/Paths/Selection_part11"), NodePath("../../PressAnyKeyText/Paths/Owl2/Selection_part1"), NodePath("../../PressAnyKeyText/Paths/Owl2/Selection_part2"), NodePath("../../PressAnyKeyText/Paths/Owl2/Selection_part3"), NodePath("../../PressAnyKeyText/Paths/Owl2/Selection_part4"), NodePath("../../PressAnyKeyText/Paths/Owl2/Selection_part5"), NodePath("../../PressAnyKeyText/Paths/Owl2/Selection_part6"), NodePath("../../PressAnyKeyText/Paths/Owl2/Selection_part7"), NodePath("../../PressAnyKeyText/Paths/Owl2/Selection_part8"), NodePath("../../PressAnyKeyText/Paths/Owl2/Selection_part9"), NodePath("../../PressAnyKeyText/Paths/Owl2/Selection_part10"), NodePath("../../PressAnyKeyText/Paths/Owl2/Selection_part11"), NodePath("../../PressAnyKeyText/Paths/Owl2/Selection_part12")]
 
+[connection signal="pressed" from="MenuButtons/PLAY" to="LevelSelectLayer" method="_on_level_select_shown"]
 [connection signal="transitioning" from="LevelSelectLayer" to="." method="_on_transition_to_level"]
 
 [editable path="PressAnyKeyText/Paths/Owl2"]

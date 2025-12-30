@@ -24,8 +24,9 @@ Button/styles/normal = SubResource("StyleBoxEmpty_g5sca")
 Button/styles/pressed = SubResource("StyleBoxEmpty_qntl6")
 Panel/styles/panel = SubResource("StyleBoxEmpty_11g4t")
 
-[node name="LevelSelectLayer" type="Node2D"]
+[node name="LevelSelectLayer" type="Node2D" node_paths=PackedStringArray("init_focus")]
 script = ExtResource("1_11g4t")
+init_focus = NodePath("Levels/HBoxContainer/ContingencyPlant/LevelSelectBtn")
 
 [node name="Paths" type="Node2D" parent="."]
 visible = false
