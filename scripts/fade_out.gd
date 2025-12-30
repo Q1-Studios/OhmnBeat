@@ -14,3 +14,7 @@ func _process(delta: float) -> void:
 
 func start_fade_out() -> void:
 	fade_out = true
+
+
+func _on_transition_to_level() -> void:
+	start_fade_out()

@@ -1,4 +1,5 @@
 extends Node2D
+class_name LevelSelectGUI
 
 @export var transition_time: float = 1.0
 
@@ -6,8 +7,10 @@ extends Node2D
 @export var init_focus: Button
 
 var transition_target: PackedScene = null
+var allow_exit: bool = false
 
-signal transitioning
+signal transition_to_level
+signal exit_level_select
 
 func _process(delta: float) -> void:
 	if transition_target != null:
@@ -17,6 +20,7 @@ func _process(delta: float) -> void:
 
 func _on_level_select_shown() -> void:
 	init_focus.grab_focus()
+	allow_exit = true
 
 func _on_level_clicked(level: int) -> void:
 	match level:
@@ -26,4 +30,9 @@ func _on_level_clicked(level: int) -> void:
 			transition_target = SceneManager.level2Scene
 		3:
 			transition_target = SceneManager.level3Scene
-	transitioning.emit()
+	transition_to_level.emit()
+
+func _on_exit_level_select() -> void:
+	if allow_exit:
+		allow_exit = false
+		exit_level_select.emit()
