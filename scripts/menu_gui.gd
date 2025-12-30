@@ -14,7 +14,7 @@ var anything_pressed = false
 
 func _process(_delta):
 	if not anything_pressed and Input.is_anything_pressed():
-		Input.vibrate_handheld(50, 0.5)
+		Vibration.gui_tap()
 		init_text.hide()
 		init_focus_btn.grab_focus()
 		animation_player.play("swoopin")

@@ -17,7 +17,7 @@ func _ready() -> void:
 
 func _on_mouse_entered() -> void:
 	if is_visible_in_tree() and selectable:
-		Input.vibrate_handheld(50, 0.5)
+		Vibration.gui_tap()
 		grab_focus()
 	
 func _on_mouse_exited() -> void:

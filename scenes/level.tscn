@@ -11,7 +11,7 @@
 [ext_resource type="Script" uid="uid://cxj5w7n7ps51f" path="res://scripts/music_progress_bar.gd" id="4_ppgk2"]
 [ext_resource type="Script" path="res://scripts/glitch_effect.gd" id="5_klq6b"]
 [ext_resource type="Resource" uid="uid://dertbgu17vopc" path="res://assets/beatmaps/Contingency Plant.tres" id="5_olg7q"]
-[ext_resource type="Script" uid="uid://dcqb6c2nodald" path="res://scenes/fixpitchonlaunch.gd" id="6_wc255"]
+[ext_resource type="Script" uid="uid://dcqb6c2nodald" path="res://scripts/fixpitchonlaunch.gd" id="6_wc255"]
 [ext_resource type="AudioStream" uid="uid://dddb2yff3p4nx" path="res://assets/music/ContingencyPlant.ogg" id="7_8iemx"]
 [ext_resource type="FontFile" uid="uid://7u54b7ave0i7" path="res://assets/Fonts/ethnocen.ttf" id="8_8c41q"]
 [ext_resource type="AudioStream" uid="uid://og72yxktkit7" path="res://assets/sfx/glitch/glitch_out.ogg" id="8_8iemx"]

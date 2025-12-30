@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://c0685vkvjd2ek"]
+[gd_scene load_steps=36 format=3 uid="uid://c0685vkvjd2ek"]
 
 [ext_resource type="Script" uid="uid://dp17sk5btwmnf" path="res://scripts/menu_gui.gd" id="1_30dmf"]
 [ext_resource type="PackedScene" uid="uid://bcdqwk2oqbq4w" path="res://scenes/mousescene.tscn" id="1_rwv2g"]
@@ -8,6 +8,10 @@
 [ext_resource type="PackedScene" uid="uid://wd1kdyvcphow" path="res://scenes/quitbutton.tscn" id="5_nl8w8"]
 [ext_resource type="PackedScene" uid="uid://ro5ic3wb0ah4" path="res://scenes/LevelSelectGUI.tscn" id="6_4imi1"]
 [ext_resource type="Script" uid="uid://dck7r87k33huf" path="res://scripts/fade_out.gd" id="8_ds5pe"]
+[ext_resource type="PackedScene" uid="uid://c1yrgscpcae7g" path="res://scenes/button_sound_player.tscn" id="8_fqox8"]
+[ext_resource type="Theme" uid="uid://b5x8fwp1vrarc" path="res://resources/themes/no_bg_button_theme.tres" id="9_rbo5s"]
+[ext_resource type="FontFile" uid="uid://7u54b7ave0i7" path="res://assets/Fonts/ethnocen.ttf" id="10_0uspm"]
+[ext_resource type="Script" uid="uid://c32cs7876gib4" path="res://scripts/vibrate_toggle_button.gd" id="10_fqox8"]
 
 [sub_resource type="GDScript" id="GDScript_3vvtq"]
 resource_name = "owlmover"
@@ -248,7 +252,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(2099.425, 509.89)]
+"values": [Vector2(2100, 510)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -320,7 +324,7 @@ tracks/6/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [true]
+"values": [false]
 }
 tracks/7/type = "value"
 tracks/7/imported = false
@@ -461,6 +465,10 @@ func unselect() -> void:
 func press() -> void:
 	anim_player.play(\"QuitClicked\")
 "
+
+[sub_resource type="LabelSettings" id="LabelSettings_fqox8"]
+font = ExtResource("10_0uspm")
+font_size = 14
 
 [sub_resource type="Animation" id="Animation_wf3n4"]
 length = 0.001
@@ -775,7 +783,7 @@ scale = Vector2(0.42, 0.42)
 points = PackedVector2Array(1249.31, 291.6, 1248.62, 292.22, 1248.08, 292.782, 1247.68, 293.309, 1247.39, 293.825, 1247.21, 294.354, 1247.09, 294.918, 1247.04, 295.541, 1247.02, 296.247, 1247.01, 297.059, 1247, 298, 1247, 298.868, 1247, 301.224, 1247, 304.696, 1247, 308.912, 1247, 313.5, 1247, 318.088, 1247, 322.304, 1247, 325.776, 1247, 328.132, 1247, 329, 1246.99, 329.648, 1246.99, 330.381, 1246.98, 331.175, 1247, 332.007, 1247.04, 332.85, 1247.12, 333.681, 1247.25, 334.477, 1247.43, 335.211, 1247.69, 335.86, 1248.02, 336.4, 1248.56, 336.926, 1249.23, 337.327, 1250, 337.619, 1250.84, 337.819, 1251.74, 337.942, 1252.65, 338.007, 1253.56, 338.029, 1254.44, 338.024, 1255.26, 338.009, 1256, 338, 1262.5, 338, 1280.13, 338, 1306.11, 338, 1337.66, 338, 1372, 338, 1406.34, 338, 1437.89, 338, 1463.87, 338, 1481.5, 338, 1488, 338, 1492.48, 337.883, 1497.54, 337.548, 1503.01, 337.006, 1508.75, 336.263, 1514.59, 335.33, 1520.39, 334.214, 1525.98, 332.925, 1531.22, 331.47, 1535.94, 329.859, 1540, 328.1, 1542.82, 326.438, 1545.22, 324.491, 1547.18, 322.306, 1548.64, 319.93, 1549.57, 317.411, 1549.93, 314.797, 1549.69, 312.134, 1548.79, 309.47, 1547.21, 306.853, 1544.9, 304.33, 1543.55, 303.192, 1542.11, 302.165, 1540.59, 301.238, 1539.02, 300.403, 1537.4, 299.648, 1535.74, 298.962, 1534.06, 298.337, 1532.37, 297.762, 1530.68, 297.226, 1529, 296.72, 1525.93, 295.897, 1522.33, 295.084, 1518.32, 294.299, 1514.05, 293.557, 1509.64, 292.877, 1505.22, 292.276, 1500.92, 291.771, 1496.86, 291.378, 1493.18, 291.115, 1490, 291, 1485.46, 291, 1473.15, 291, 1455.01, 291, 1432.98, 291, 1409, 291, 1385.02, 291, 1362.99, 291, 1344.85, 291, 1332.54, 291, 1328, 291, 1326.54, 291, 1322.59, 291, 1316.77, 291, 1309.7, 291, 1302, 291, 1294.3, 291, 1287.23, 291, 1281.41, 291, 1277.46, 291, 1276, 291, 1273.91, 290.984, 1271.37, 290.947, 1268.5, 290.903, 1265.41, 290.866, 1262.24, 290.85, 1259.1, 290.87, 1256.12, 290.941, 1253.41, 291.077, 1251.1, 291.292, 1249.31, 291.6)
 
 [node name="MenuButtons" type="Node2D" parent="."]
-position = Vector2(2099.425, 509.89)
+position = Vector2(2100, 510)
 scale = Vector2(0.38, 0.38)
 
 [node name="ButtonTriggeredAnimations" type="AnimationPlayer" parent="MenuButtons"]
@@ -816,6 +824,40 @@ script = SubResource("GDScript_85riq")
 anim_player = NodePath("../ButtonTriggeredAnimations")
 show_on_hover = NodePath("../../ExitText")
 default_shown = NodePath("../../TutorialText")
+
+[node name="VibrateToggleButton" type="Button" parent="MenuButtons" node_paths=PackedStringArray("toggled_symbol")]
+offset_left = 3600.0
+offset_top = 975.0
+offset_right = 3660.0
+offset_bottom = 1035.0
+scale = Vector2(2.632, 2.632)
+theme = ExtResource("9_rbo5s")
+script = ExtResource("10_fqox8")
+toggled_symbol = NodePath("Squiggle")
+metadata/_edit_use_anchors_ = true
+
+[node name="Squiggle" type="Line2D" parent="MenuButtons/VibrateToggleButton"]
+scale = Vector2(0.9999999, 0.9999999)
+points = PackedVector2Array(30, 0, 20, 20, 40, 40, 30, 60)
+width = 5.0
+
+[node name="Square" type="Line2D" parent="MenuButtons/VibrateToggleButton"]
+scale = Vector2(0.99999994, 0.99999994)
+points = PackedVector2Array(0, 0, 60, 0, 60, 60, 0, 60)
+closed = true
+width = 5.0
+
+[node name="Label" type="Label" parent="MenuButtons/VibrateToggleButton"]
+layout_mode = 0
+offset_left = -30.0
+offset_top = -20.0
+offset_right = 90.0
+offset_bottom = -4.0
+text = "Vibration"
+label_settings = SubResource("LabelSettings_fqox8")
+horizontal_alignment = 1
+
+[node name="ButtonSoundPlayer" parent="MenuButtons/VibrateToggleButton" instance=ExtResource("8_fqox8")]
 
 [node name="PressAnyKeyText" type="Node2D" parent="."]
 position = Vector2(540, 717.235)
@@ -880,6 +922,7 @@ scale = Vector2(4.951, 4.951)
 script = null
 
 [node name="TutorialText" type="Line2D" parent="."]
+visible = false
 position = Vector2(694.52, 748.39)
 scale = Vector2(0.285, 0.285)
 script = SubResource("GDScript_dfy5j")
