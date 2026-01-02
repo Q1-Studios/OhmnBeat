@@ -3,11 +3,13 @@ extends ReferenceRect
 @export var scroll_speed: float = 100
 @export var spacing: float = 50
 
-@export var level1_template: ReferenceRect
-@export var level2_template: ReferenceRect
-@export var level3_template: ReferenceRect
-
+var available_templates: Array[LevelSelectionLabelRect]
 var current_instances: Array[ReferenceRect] = []
+
+func _ready() -> void:
+	for child in get_children():
+		if child is LevelSelectionLabelRect:
+			available_templates.append(child)
 
 func _process(delta: float) -> void:
 	var reinsert_indexes: Array[int] = []
@@ -24,7 +26,7 @@ func _process(delta: float) -> void:
 		instance.position.x = current_instances.back().position.x + spacing + instance.size.x
 		current_instances.append(instance)
 
-func change_template(new_template: ReferenceRect):
+func change_template(new_template: LevelSelectionLabelRect):
 	for instance in current_instances:
 		instance.queue_free()
 	current_instances.clear()
@@ -39,11 +41,7 @@ func change_template(new_template: ReferenceRect):
 		current_instances.append(new_instance)
 		add_child(new_instance)
 
-func _on_level_selected(level: int) -> void:
-	match level:
-		1:
-			change_template(level1_template)
-		2:
-			change_template(level2_template)
-		3:
-			change_template(level3_template)
+func _on_level_selected(level: SceneManager.LevelIds) -> void:
+	for template in available_templates:
+		if template.corresponding_level == level:
+			change_template(template)

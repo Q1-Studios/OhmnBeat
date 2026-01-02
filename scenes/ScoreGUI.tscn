@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://bhx5efbk25at7"]
+[gd_scene load_steps=25 format=3 uid="uid://bhx5efbk25at7"]
 
 [ext_resource type="PackedScene" uid="uid://dr4mxxdydivm4" path="res://scenes/restartbutton.tscn" id="1_7xfkq"]
 [ext_resource type="Script" uid="uid://ceov5hw4m2am7" path="res://scripts/score_gui.gd" id="1_8bkue"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" uid="uid://bfmhd3f3f21a" path="res://scripts/outcome_text.gd" id="6_nq3vv"]
 [ext_resource type="Script" uid="uid://p04n1cdsny6g" path="res://scripts/reprise_music.gd" id="8_1bmex"]
 [ext_resource type="AudioStream" uid="uid://baybfgj38cd2g" path="res://assets/music/ContingencyPlant_Reprise.ogg" id="9_otn0o"]
+[ext_resource type="Script" uid="uid://cmh78knw1uq2k" path="res://scripts/stream_with_volume.gd" id="10_mu0s0"]
 [ext_resource type="AudioStream" uid="uid://d2h8wv02d4dgc" path="res://assets/music/WithTheCurrent_Reprise.ogg" id="10_otn0o"]
 [ext_resource type="AudioStream" uid="uid://cpq5o1nnwfx41" path="res://assets/music/WarpSpeed_OhmBeatEdit_Reprise.ogg" id="11_mu0s0"]
 [ext_resource type="Script" uid="uid://c6moxo5qoybc0" path="res://scripts/platform_text.gd" id="12_m4d8m"]
@@ -143,14 +144,7 @@ resource_name = "chrisbuiltin"
 script/source = "extends ButtonPreset
 
 func press() -> void:
-	var scene_to_switch: PackedScene
-	match ManagerGlobal.levelScene:
-		ManagerGlobal.LevelIds.LEVEL1:
-			scene_to_switch = SceneManager.levelScene
-		ManagerGlobal.LevelIds.LEVEL2:
-			scene_to_switch = SceneManager.level2Scene
-		ManagerGlobal.LevelIds.LEVEL3:
-			scene_to_switch = SceneManager.level3Scene
+	var scene_to_switch: PackedScene = SceneManager.get_level_from_id(ManagerGlobal.currentLevel)
 	get_tree().change_scene_to_packed(scene_to_switch)
 "
 
@@ -161,6 +155,24 @@ script/source = "extends ButtonPreset
 func press() -> void:
 	get_tree().change_scene_to_packed(SceneManager.menuScene)
 "
+
+[sub_resource type="Resource" id="Resource_74mtw"]
+script = ExtResource("10_mu0s0")
+stream = ExtResource("9_otn0o")
+volume_db = 5.0
+metadata/_custom_type_script = "uid://cmh78knw1uq2k"
+
+[sub_resource type="Resource" id="Resource_luylr"]
+script = ExtResource("10_mu0s0")
+stream = ExtResource("10_otn0o")
+volume_db = -5.0
+metadata/_custom_type_script = "uid://cmh78knw1uq2k"
+
+[sub_resource type="Resource" id="Resource_3ip4w"]
+script = ExtResource("10_mu0s0")
+stream = ExtResource("11_mu0s0")
+volume_db = -2.0
+metadata/_custom_type_script = "uid://cmh78knw1uq2k"
 
 [node name="ScoreGUI" type="Node2D" node_paths=PackedStringArray("init_focus")]
 script = ExtResource("1_8bkue")
@@ -246,6 +258,8 @@ metadata/_edit_use_anchors_ = true
 [node name="RepriseMusic" type="AudioStreamPlayer" parent="."]
 bus = &"Music"
 script = ExtResource("8_1bmex")
-level1_reprise = ExtResource("9_otn0o")
-level2_reprise = ExtResource("10_otn0o")
-level3_reprise = ExtResource("11_mu0s0")
+reprises = Dictionary[int, ExtResource("10_mu0s0")]({
+0: SubResource("Resource_74mtw"),
+1: SubResource("Resource_luylr"),
+2: SubResource("Resource_3ip4w")
+})

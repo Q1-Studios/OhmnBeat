@@ -1,10 +1,11 @@
-[gd_scene load_steps=13 format=3 uid="uid://ro5ic3wb0ah4"]
+[gd_scene load_steps=14 format=3 uid="uid://ro5ic3wb0ah4"]
 
 [ext_resource type="Script" uid="uid://xyktcaybb6n5" path="res://scripts/level_select_gui.gd" id="1_11g4t"]
 [ext_resource type="PackedScene" uid="uid://cceqruxjb1v5j" path="res://scenes/level_select_exit_btn.tscn" id="2_g5sca"]
 [ext_resource type="PackedScene" uid="uid://62bl1hreor1j" path="res://scenes/level_select_btn.tscn" id="2_onb6o"]
 [ext_resource type="Script" uid="uid://cm01dxdx4wlcn" path="res://scripts/h_scroller.gd" id="3_mexx4"]
 [ext_resource type="PackedScene" uid="uid://idb1j54md8ec" path="res://scenes/button_grace_area_mobile.tscn" id="3_onb6o"]
+[ext_resource type="Script" uid="uid://bau08snmx0ykn" path="res://scripts/level_selection_label.gd" id="6_g5sca"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mexx4"]
 
@@ -641,6 +642,7 @@ root = NodePath("..")
 [node name="MobileGraceArea" parent="ExitButton" instance=ExtResource("3_onb6o")]
 layout_mode = 0
 offset_left = -97.0
+offset_right = 118.0
 
 [node name="Levels" type="Node2D" parent="."]
 
@@ -693,7 +695,7 @@ size_flags_horizontal = 3
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-level_num = 2
+level = 1
 
 [node name="Omega" type="Marker2D" parent="Levels/HBoxContainer/WithTheCurrent/LevelSelectBtn"]
 position = Vector2(117, -128)
@@ -733,7 +735,7 @@ size_flags_horizontal = 3
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-level_num = 3
+level = 2
 
 [node name="Omega" type="Marker2D" parent="Levels/HBoxContainer/WarpSpeed/LevelSelectBtn"]
 position = Vector2(117, -128)
@@ -770,20 +772,18 @@ position = Vector2(217.99988, 432.25397)
 scale = Vector2(0.4, 0.4)
 points = PackedVector2Array(664, 151, 664, 149.852, 664, 146.736, 664, 142.144, 664, 136.568, 664, 130.5, 664, 124.432, 664, 118.856, 664, 114.264, 664, 111.148, 664, 110, 664, 108.768, 664, 105.424, 664, 100.496, 664, 94.512, 664, 88, 664, 81.488, 664, 75.504, 664, 70.576, 664, 67.232, 664, 66, 663.991, 65.2601, 663.976, 64.4376, 663.971, 63.5587, 663.993, 62.6496, 664.058, 61.7362, 664.181, 60.8448, 664.381, 60.0014, 664.673, 59.232, 665.074, 58.5629, 665.6, 58.02, 666.14, 57.6877, 666.789, 57.4339, 667.523, 57.2484, 668.319, 57.121, 669.15, 57.0413, 669.993, 56.999, 670.825, 56.9841, 671.619, 56.9861, 672.352, 56.9948, 673, 57, 674.324, 56.9802, 676.137, 56.939, 678.307, 56.8946, 680.703, 56.8651, 683.191, 56.8687, 685.64, 56.9237, 687.918, 57.0481, 689.892, 57.2602, 691.43, 57.5781, 692.4, 58.02, 692.926, 58.5629, 693.327, 59.232, 693.619, 60.0013, 693.819, 60.8448, 693.942, 61.7363, 694.007, 62.6496, 694.029, 63.5588, 694.024, 64.4376, 694.009, 65.2601, 694, 66, 694, 67.792, 694, 72.656, 694, 79.824, 694, 88.528, 694, 98, 694, 107.472, 694, 116.176, 694, 123.344, 694, 128.208, 694, 130, 694.024, 131.399, 694.078, 133.297, 694.136, 135.557, 694.171, 138.041, 694.156, 140.612, 694.065, 143.134, 693.87, 145.469, 693.546, 147.48, 693.064, 149.029, 692.4, 149.98, 691.86, 150.312, 691.211, 150.566, 690.477, 150.752, 689.681, 150.879, 688.85, 150.959, 688.007, 151.001, 687.175, 151.016, 686.381, 151.014, 685.648, 151.005, 685, 151, 684.412, 151, 682.816, 151, 680.464, 151, 677.608, 151, 674.5, 151, 671.392, 151, 668.536, 151, 666.184, 151, 664.588, 151, 664, 151)
 
-[node name="LabelRect" type="ReferenceRect" parent="." node_paths=PackedStringArray("level1_template", "level2_template", "level3_template")]
+[node name="LabelRect" type="ReferenceRect" parent="."]
 offset_top = 830.0
 offset_right = 1920.0
 offset_bottom = 912.0
 script = ExtResource("3_mexx4")
-level1_template = NodePath("ContingencyPlantRect")
-level2_template = NodePath("WithTheCurrentRect")
-level3_template = NodePath("WarpSpeedRect")
 
 [node name="ContingencyPlantRect" type="ReferenceRect" parent="LabelRect"]
 visible = false
 layout_mode = 0
 offset_right = 1690.0
 offset_bottom = 66.0
+script = ExtResource("6_g5sca")
 
 [node name="ContingencyPlantPaths" type="Node2D" parent="LabelRect/ContingencyPlantRect"]
 position = Vector2(4, -130)
@@ -926,6 +926,8 @@ visible = false
 layout_mode = 0
 offset_right = 1100.0
 offset_bottom = 66.0
+script = ExtResource("6_g5sca")
+corresponding_level = 1
 
 [node name="WithTheCurrentPaths" type="Node2D" parent="LabelRect/WithTheCurrentRect"]
 scale = Vector2(0.5, 0.5)
@@ -1022,6 +1024,8 @@ visible = false
 layout_mode = 0
 offset_right = 850.0
 offset_bottom = 66.0
+script = ExtResource("6_g5sca")
+corresponding_level = 2
 
 [node name="WarpSpeedPaths" type="Node2D" parent="LabelRect/WarpSpeedRect"]
 position = Vector2(0, -70)

@@ -10,7 +10,7 @@
 [node name="SceneManager" type="Node"]
 script = ExtResource("1_b81s6")
 menuScene = ExtResource("2_6k21d")
-levelScene = ExtResource("3_cjhpt")
 scoreScene = ExtResource("4_hhobr")
+levelScene = ExtResource("3_cjhpt")
 level2Scene = ExtResource("5_wofdf")
 level3Scene = ExtResource("6_kad1h")

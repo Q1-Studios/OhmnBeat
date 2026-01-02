@@ -22,14 +22,8 @@ func _on_level_select_shown() -> void:
 	init_focus.grab_focus()
 	allow_exit = true
 
-func _on_level_clicked(level: int) -> void:
-	match level:
-		1: 
-			transition_target = SceneManager.levelScene
-		2:
-			transition_target = SceneManager.level2Scene
-		3:
-			transition_target = SceneManager.level3Scene
+func _on_level_clicked(level: SceneManager.LevelIds) -> void:
+	transition_target = SceneManager.get_level_from_id(level)
 	transition_to_level.emit()
 
 func _on_exit_level_select() -> void:

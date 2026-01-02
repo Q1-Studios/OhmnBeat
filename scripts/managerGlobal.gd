@@ -6,10 +6,5 @@ var points:int
 var perfectAmount:int 
 var okAmount:int 
 var missAmount:int
-var levelScene: LevelIds
 
-enum LevelIds {
-	LEVEL1,
-	LEVEL2,
-	LEVEL3
-}
+var currentLevel: SceneManager.LevelIds
