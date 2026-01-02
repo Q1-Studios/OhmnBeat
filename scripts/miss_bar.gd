@@ -1,6 +1,6 @@
 extends Area2D
 
-signal missed
+signal missed(enemy: Enemy)
 
 @export var miss_sfx: AudioStreamPlayer
 
@@ -18,5 +18,5 @@ func _on_area_entered(area: Area2D) -> void:
 	if area.is_in_group("Enemy"):
 		#print("you missed")
 		miss_sfx.play()
-		missed.emit()
+		missed.emit(area)
 		area.queue_free()

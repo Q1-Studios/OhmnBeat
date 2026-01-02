@@ -6,6 +6,7 @@ var endPosition: Vector2
 var speed: float
 var progress: float = 0.0
 var spawn_delay_ms: int = 0
+var perfectTime: float
 
 # Called when the node enters the scene tree for the first time.
 

@@ -72,7 +72,7 @@ func _process(delta: float) -> void:
 	if enemyTracker < beatMapLength:
 			var currentEnemyKey = beatMap.data[enemyTracker].key
 			var currentEnemyTime = beatMap.data[enemyTracker].milliseconds 
-			var currentMusicTime = int(1000 * (music.get_playback_position() + AudioServer.get_time_to_next_mix() + musicLatency))
+			var currentMusicTime = int(1000 * get_playback_position())
 			
 			var spawnTime: int = currentEnemyTime - 2000 # Enemy spawns 2000ms before it hits the bar
 			if (currentMusicTime >= spawnTime):
@@ -160,3 +160,6 @@ func perfectHit():
 
 func _on_touch_restart_triggered() -> void:
 	health = 0
+
+func get_playback_position() -> float:
+	return music.get_playback_position() + AudioServer.get_time_to_next_mix() + musicLatency
