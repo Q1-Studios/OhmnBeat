@@ -171,6 +171,7 @@ metadata/_custom_type_script = "uid://cmh78knw1uq2k"
 [sub_resource type="Resource" id="Resource_6i2qx"]
 script = ExtResource("10_mu0s0")
 stream = ExtResource("15_luylr")
+volume_db = -3.0
 metadata/_custom_type_script = "uid://cmh78knw1uq2k"
 
 [node name="ScoreGUI" type="Node2D" node_paths=PackedStringArray("init_focus")]
