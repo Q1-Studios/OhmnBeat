@@ -102,6 +102,14 @@ func _process(delta: float) -> void:
 					_:
 						print("waiting")
 
+func resync_enemies() -> void:
+	bar1.resync_enemies()
+	bar2.resync_enemies()
+	bar3.resync_enemies()
+	bar4.resync_enemies()
+	bar5.resync_enemies()
+	bar6.resync_enemies()
+
 func _on_bar_perfect_hit() -> void:
 	print("bar1 perfect")
 	#$Bar/PerfectBar/Line2D/AnimationPlayer.play("blinkspecial")

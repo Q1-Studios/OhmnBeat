@@ -94,6 +94,10 @@ func spawnEnemy(perfect_time: float) -> void:
 	allEnemiesList.append(instance)
 	add_child(instance)
 
+func resync_enemies() -> void:
+	for enemy in allEnemiesList:
+		enemy.resync_progress(manager.get_playback_position())
+
 func _on_miss_bar_missed(enemy: Enemy) -> void:
 	noHit.emit()
 	erase_enemy(enemy)
