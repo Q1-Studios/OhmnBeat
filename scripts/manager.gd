@@ -78,28 +78,26 @@ func _process(delta: float) -> void:
 			if (currentMusicTime >= spawnTime):
 				# erstes hit object darf nicht < 2000ms sein
 				
-				var spawnDelay: int = currentMusicTime - spawnTime
+				var perfectTime: float = float(currentEnemyTime) / 1000
 				
 				match currentEnemyKey:
 					"S":
-						print("Spawn")
-						print(Time.get_unix_time_from_system())
-						bar1.spawnEnemy(spawnDelay)
+						bar1.spawnEnemy(perfectTime)
 						enemyTracker += 1
 					"D":
-						bar2.spawnEnemy(spawnDelay)
+						bar2.spawnEnemy(perfectTime)
 						enemyTracker += 1
 					"L":
-						bar3.spawnEnemy(spawnDelay)
+						bar3.spawnEnemy(perfectTime)
 						enemyTracker += 1
 					"K":
-						bar4.spawnEnemy(spawnDelay)
+						bar4.spawnEnemy(perfectTime)
 						enemyTracker += 1
 					"J":
-						bar5.spawnEnemy(spawnDelay)
+						bar5.spawnEnemy(perfectTime)
 						enemyTracker += 1
 					"A":
-						bar6.spawnEnemy(spawnDelay)
+						bar6.spawnEnemy(perfectTime)
 						enemyTracker += 1
 					_:
 						print("waiting")
@@ -108,10 +106,12 @@ func _on_bar_perfect_hit() -> void:
 	print("bar1 perfect")
 	#$Bar/PerfectBar/Line2D/AnimationPlayer.play("blinkspecial")
 	perfectHit()
+
 func _on_bar_ok_inner_hit() -> void:
 	print("bar1 ok")
 	#$Bar/PerfectBar/Line2D/AnimationPlayer.play("blink")
 	okHit()
+
 func _on_bar_ok_outer_hit() -> void:
 	print("bar1 ok")
 	#$Bar/PerfectBar/Line2D/AnimationPlayer.play("blink")
@@ -120,7 +120,7 @@ func _on_bar_ok_outer_hit() -> void:
 func _on_bar_no_hit() -> void:
 	#$Bar/PerfectBar/Line2D/AnimationPlayer.play("failedhit")
 	missed()
-	
+
 func missed():
 	health -= DAMAGE
 	health = clamp(health, 0, 100)

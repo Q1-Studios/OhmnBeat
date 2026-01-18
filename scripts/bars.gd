@@ -27,16 +27,6 @@ var allEnemiesList: Array[Enemy] = []
 const perfect_tolerance: float = 0.15
 const ok_tolerance: float = 0.35
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta: float) -> void:
-	#if Input.is_action_just_pressed("spawnKey"):
-		#spawnEnemy()
-	pass
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed(keyName):
@@ -89,18 +79,20 @@ func erase_enemy(enemy: Enemy) -> void:
 	allEnemiesList.erase(enemy)
 	enemy.queue_free()
 
-func spawnEnemy(spawn_delay_ms: int = 0):
+func spawnEnemy(perfect_time: float) -> void:
 	var instance: Enemy = enemyScene.instantiate()
 	#randomEnemyOffsetX = randi_range(-20, 20)
 	#instance.position.x = randomEnemyOffsetX
 	instance.position.y = -50
 	instance.endPosition = $PerfectBar.position
 	instance.speed = 0.5
-	instance.spawn_delay_ms = spawn_delay_ms
-	instance.perfectTime = manager.get_playback_position() - float(spawn_delay_ms) / 1000 + 1 / instance.speed
+	instance.perfectTime = perfect_time
+	
+	# Since an enemy may be spawned "too late", compensate this latency
+	instance.resync_progress(manager.get_playback_position())
+	
 	allEnemiesList.append(instance)
 	add_child(instance)
-
 
 func _on_miss_bar_missed(enemy: Enemy) -> void:
 	noHit.emit()
