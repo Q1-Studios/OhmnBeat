@@ -7,7 +7,7 @@ func _ready() -> void:
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	#TODO if time
 	#We could make a kind of animated number thing, 
 	#make a helper function that calculates the difference between current point

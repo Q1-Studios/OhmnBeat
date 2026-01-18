@@ -18,10 +18,6 @@ func _ready() -> void:
 	pointString = str(pointString, ManagerGlobal.points)
 	setText()
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-
 func setText():
 	text = perfectString + "\n" +"\n" + greatString + "\n" +"\n" + missString + "\n" +"\n" + pointString
 	
