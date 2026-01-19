@@ -6,8 +6,8 @@ class_name HitBar
 @export var okInnerBar:SuccessZone
 @export var okOuterBar:SuccessZone
 @export var perfectBar:SuccessZone
+@export var animationPlayer: AnimationPlayer
 
-@onready var animationPlayer: AnimationPlayer = $PerfectBar/Line2D/AnimationPlayer
 @onready var manager: HitBarManager = $".."
 
 signal perfectHit
@@ -85,7 +85,7 @@ func spawnEnemy(perfect_time: float) -> void:
 	#randomEnemyOffsetX = randi_range(-20, 20)
 	#instance.position.x = randomEnemyOffsetX
 	instance.startPosition.y = -50
-	instance.endPosition = $PerfectBar.position
+	instance.endPosition = perfectBar.position
 	instance.speed = 0.5
 	instance.perfectTime = perfect_time
 	

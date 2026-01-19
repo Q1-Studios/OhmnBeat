@@ -11,10 +11,11 @@ point_count = 3
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lne1l"]
 size = Vector2(16, 16)
 
-[node name="Enemy" type="Area2D" groups=["Enemy"]]
+[node name="Enemy" type="Area2D" node_paths=PackedStringArray("wave") groups=["Enemy"]]
 z_index = 5
 scale = Vector2(0.2, 0.2)
 script = ExtResource("2_8a8l7")
+wave = NodePath("Wave")
 
 [node name="Wave" type="Line2D" parent="."]
 position = Vector2(5.421011e-20, -180.00002)

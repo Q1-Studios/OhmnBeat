@@ -121,12 +121,13 @@ stream_4/stream = ExtResource("8_5qaxt")
 [sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_l1w72"]
 points = PackedVector2Array(0, 50, 31, 0, 70, -120, -70, -120, -31, 0)
 
-[node name="Bar" type="Node2D" node_paths=PackedStringArray("okInnerBar", "okOuterBar", "perfectBar")]
+[node name="Bar" type="Node2D" node_paths=PackedStringArray("okInnerBar", "okOuterBar", "perfectBar", "animationPlayer")]
 scale = Vector2(10, 10)
 script = ExtResource("1_5dekh")
 okInnerBar = NodePath("OkInnerBar")
 okOuterBar = NodePath("OkOuterBar")
 perfectBar = NodePath("PerfectBar")
+animationPlayer = NodePath("PerfectBar/Line2D/AnimationPlayer")
 enemyScene = ExtResource("2_nqcov")
 
 [node name="PerfectBar" type="Area2D" parent="."]

@@ -1,12 +1,13 @@
 extends Node2D
 class_name Enemy
 
+@export var wave: WaveLine2D
+
 var startPosition: Vector2
 var endPosition: Vector2
 var speed: float
 var progress: float = 0.0
 var perfectTime: float
-
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -30,5 +31,5 @@ func _process(delta: float) -> void:
 	
 	update_position()
 	
-	$Wave.offset = position.y/$Wave.period
-	$Wave.updatewave()
+	wave.offset = position.y / wave.period
+	wave.updatewave()

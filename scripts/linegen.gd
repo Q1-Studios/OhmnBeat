@@ -1,11 +1,9 @@
 extends Line2D
+class_name WaveLine2D
 
 @export var subdivisions:int = 150
 @export var amplitude:float = 25
 @export var period:float = 1.0
-
-
-
 @export var length:float = 15.0
 
 enum WAVE_TYPE {SINE, TRIANGLE, SAW, SINE_WOBBLE}
@@ -27,15 +25,13 @@ func updatewave() -> void:
 		new_points.append(Vector2(x,y))
 	
 	#position.x = offset * period
-
-
+	
 	points = new_points
 	#offset += movespeed * delta
 
 
 func get_sine_wave(x: float, amp: float) -> float:
 	return sin(x) * amp
-
 
 func get_triangle_wave(x: float, amp: float) -> float:
 	return (pingpong(x, 2.0) - 1.0) * amp
