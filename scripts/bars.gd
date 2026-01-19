@@ -83,7 +83,7 @@ func spawnEnemy(perfect_time: float) -> void:
 	var instance: Enemy = enemyScene.instantiate()
 	#randomEnemyOffsetX = randi_range(-20, 20)
 	#instance.position.x = randomEnemyOffsetX
-	instance.position.y = -50
+	instance.startPosition.y = -50
 	instance.endPosition = $PerfectBar.position
 	instance.speed = 0.5
 	instance.perfectTime = perfect_time
