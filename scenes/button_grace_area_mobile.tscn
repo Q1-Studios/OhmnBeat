@@ -8,6 +8,5 @@ modulate = Color(0, 0, 0, 1)
 offset_left = -119.0
 offset_right = -1.0
 offset_bottom = 150.0
-focus_neighbor_bottom = NodePath("../../Levels/HBoxContainer/ContingencyPlant/LevelSelectBtn")
 theme = ExtResource("1_rl61x")
 script = ExtResource("2_d3x02")

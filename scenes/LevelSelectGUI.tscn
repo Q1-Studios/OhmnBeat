@@ -643,6 +643,7 @@ root = NodePath("..")
 layout_mode = 0
 offset_left = -97.0
 offset_right = 118.0
+focus_neighbor_bottom = NodePath("../../Levels/HBoxContainer/ContingencyPlant/LevelSelectBtn")
 
 [node name="Levels" type="Node2D" parent="."]
 
