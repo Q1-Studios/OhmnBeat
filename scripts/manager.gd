@@ -166,8 +166,8 @@ func perfectHit():
 	$"Miss_Great_Perfect/GREAT".hide()
 	$Miss_Great_Perfect/PERFECT/AnimationPlayer.play("swobble")
 
-func _on_touch_restart_triggered() -> void:
-	health = 0
-
 func get_playback_position() -> float:
 	return music.get_playback_position() + AudioServer.get_time_to_next_mix() + musicLatency
+
+func _on_quit_level_btn_pressed() -> void:
+	health = 0

@@ -4,6 +4,7 @@ extends ColorRect
 
 @export var paused_display: Control
 @export var count_in_label: Label
+@export var quit_level_btn: ButtonPreset
 
 const count_in: int = 4
 
@@ -15,7 +16,8 @@ var pause_time: float
 var count_in_timestamps: Array[float] = []
 
 func _process(_delta: float) -> void:
-	if paused and not unpausing and Input.is_anything_pressed() and not require_release:
+	if (paused and not unpausing and Input.is_anything_pressed()
+	and not quit_level_btn.mouse_inside and not require_release):
 		start_unpause()
 	elif not paused and not unpausing and Input.is_action_just_pressed("ui_cancel"):
 		pause()
@@ -45,14 +47,15 @@ func _process(_delta: float) -> void:
 			unpausing = false
 
 func pause() -> void:
-	paused = true
-	get_tree().paused = true
-	manager.music.stream_paused = true
-	pause_time = manager.get_playback_position()
-	
-	paused_display.show()
-	count_in_label.hide()
-	show()
+	if manager.health > 0:
+		paused = true
+		get_tree().paused = true
+		manager.music.stream_paused = true
+		pause_time = manager.get_playback_position()
+		
+		paused_display.show()
+		count_in_label.hide()
+		show()
 
 func start_unpause() -> void:
 	unpausing = true
@@ -91,3 +94,11 @@ func unpause() -> void:
 	hide()
 	get_tree().paused = false
 	manager.resync_enemies()
+
+
+func _on_pause_touch_button_pressed() -> void:
+	require_release = true
+	pause()
+
+func _on_quit_level_btn_pressed() -> void:
+	unpause()
