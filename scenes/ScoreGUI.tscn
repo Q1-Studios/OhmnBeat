@@ -148,7 +148,10 @@ script/source = "extends ButtonPreset
 
 func press() -> void:
 	var scene_to_switch: PackedScene = SceneManager.get_level_from_id(ManagerGlobal.currentLevel)
-	get_tree().change_scene_to_packed(scene_to_switch)
+	call_deferred(\"change_scene\", scene_to_switch)
+
+func change_scene(scene: PackedScene) -> void:
+	get_tree().change_scene_to_packed(scene)
 "
 
 [sub_resource type="Resource" id="Resource_74mtw"]
