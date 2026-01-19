@@ -93,6 +93,7 @@ func unpause() -> void:
 	paused = false
 	hide()
 	get_tree().paused = false
+	manager.music.stream_paused = false
 	manager.resync_enemies()
 
 
