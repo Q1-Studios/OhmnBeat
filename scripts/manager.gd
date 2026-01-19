@@ -4,12 +4,7 @@ class_name HitBarManager
 @export var beatMap:Beatmap
 @export var restartHoldRequirement: float = 1.5
 
-@export var bar1:HitBar
-@export var bar2:HitBar
-@export var bar3:HitBar
-@export var bar4:HitBar
-@export var bar5:HitBar
-@export var bar6:HitBar
+@export var barList: Array[HitBar] = []
 @export var music:AudioStreamPlayer
 @export var progressBar:TextureProgressBar
 
@@ -79,21 +74,15 @@ func _process(delta: float) -> void:
 			var perfectTime: float = float(currentEnemy.milliseconds) / 1000
 			
 			if get_playback_position() < perfectTime:
-				match currentEnemy.key:
-					"S":
-						bar1.spawnEnemy(perfectTime)
-					"D":
-						bar2.spawnEnemy(perfectTime)
-					"L":
-						bar3.spawnEnemy(perfectTime)
-					"K":
-						bar4.spawnEnemy(perfectTime)
-					"J":
-						bar5.spawnEnemy(perfectTime)
-					"A":
-						bar6.spawnEnemy(perfectTime)
-					_:
-						print("Invalid key name in beatmap: " + currentEnemy.key)
+				# Iterate through all bars, spawn enemy where beatmap key matches bar
+				var keyMatch: bool = false
+				for bar in barList:
+					if currentEnemy.key == bar.keyName:
+						bar.spawnEnemy(perfectTime)
+						keyMatch = true
+						break
+				if not keyMatch:
+					print("Invalid key name in beatmap: " + currentEnemy.key)
 			else:
 				print("Dropped enemy (would be spawned after its hit time)")
 			
@@ -102,30 +91,19 @@ func _process(delta: float) -> void:
 				currentEnemy = beatMap.data[enemyTracker]
 
 func resync_enemies() -> void:
-	bar1.resync_enemies()
-	bar2.resync_enemies()
-	bar3.resync_enemies()
-	bar4.resync_enemies()
-	bar5.resync_enemies()
-	bar6.resync_enemies()
+	for bar in barList:
+		bar.resync_enemies()
 
 func _on_bar_perfect_hit() -> void:
-	print("bar1 perfect")
-	#$Bar/PerfectBar/Line2D/AnimationPlayer.play("blinkspecial")
 	perfectHit()
 
 func _on_bar_ok_inner_hit() -> void:
-	print("bar1 ok")
-	#$Bar/PerfectBar/Line2D/AnimationPlayer.play("blink")
 	okHit()
 
 func _on_bar_ok_outer_hit() -> void:
-	print("bar1 ok")
-	#$Bar/PerfectBar/Line2D/AnimationPlayer.play("blink")
 	okHit()
 
 func _on_bar_no_hit() -> void:
-	#$Bar/PerfectBar/Line2D/AnimationPlayer.play("failedhit")
 	missed()
 
 func missed():

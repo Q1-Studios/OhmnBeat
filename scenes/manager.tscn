@@ -159,14 +159,9 @@ _data = {
 &"swobble": SubResource("Animation_o1c0c")
 }
 
-[node name="Manager" type="Node2D" node_paths=PackedStringArray("bar1", "bar2", "bar3", "bar4", "bar5", "bar6")]
+[node name="Manager" type="Node2D" node_paths=PackedStringArray("barList")]
 script = ExtResource("1_bdh1m")
-bar1 = NodePath("Bar")
-bar2 = NodePath("Bar2")
-bar3 = NodePath("Bar3")
-bar4 = NodePath("Bar4")
-bar5 = NodePath("Bar5")
-bar6 = NodePath("Bar6")
+barList = [NodePath("Bar"), NodePath("Bar2"), NodePath("Bar3"), NodePath("Bar4"), NodePath("Bar5"), NodePath("Bar6")]
 
 [node name="Bar" parent="." instance=ExtResource("2_bgrh2")]
 position = Vector2(6.0915947e-05, -385)
