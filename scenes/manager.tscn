@@ -159,9 +159,15 @@ _data = {
 &"swobble": SubResource("Animation_o1c0c")
 }
 
-[node name="Manager" type="Node2D" node_paths=PackedStringArray("barList")]
+[node name="Manager" type="Node2D" node_paths=PackedStringArray("barList", "miss", "great", "perfect", "miss_animation", "great_animation", "perfect_animation")]
 script = ExtResource("1_bdh1m")
 barList = [NodePath("Bar"), NodePath("Bar2"), NodePath("Bar3"), NodePath("Bar4"), NodePath("Bar5"), NodePath("Bar6")]
+miss = NodePath("Miss_Great_Perfect/MISS")
+great = NodePath("Miss_Great_Perfect/GREAT")
+perfect = NodePath("Miss_Great_Perfect/PERFECT")
+miss_animation = NodePath("Miss_Great_Perfect/MISS/AnimationPlayer")
+great_animation = NodePath("Miss_Great_Perfect/GREAT/AnimationPlayer")
+perfect_animation = NodePath("Miss_Great_Perfect/PERFECT/AnimationPlayer")
 
 [node name="Bar" parent="." instance=ExtResource("2_bgrh2")]
 position = Vector2(6.0915947e-05, -385)

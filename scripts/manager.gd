@@ -1,12 +1,19 @@
 extends Node2D
 class_name HitBarManager
 
-@export var beatMap:Beatmap
+@export var beatMap: Beatmap
+@export var music: AudioStreamPlayer
+@export var progressBar: TextureProgressBar
 @export var restartHoldRequirement: float = 1.5
-
 @export var barList: Array[HitBar] = []
-@export var music:AudioStreamPlayer
-@export var progressBar:TextureProgressBar
+
+@export_group("MissGreatPerfect Indicators")
+@export var miss: CanvasItem
+@export var great: CanvasItem
+@export var perfect: CanvasItem
+@export var miss_animation: AnimationPlayer
+@export var great_animation: AnimationPlayer
+@export var perfect_animation: AnimationPlayer
 
 signal perfectSignal
 signal okSignal
@@ -114,10 +121,11 @@ func missed():
 		missAmount += 1
 		ManagerGlobal.missAmount = missAmount
 		missSignal.emit()
-		$"Miss_Great_Perfect/MISS".show()
-		$"Miss_Great_Perfect/PERFECT".hide()
-		$"Miss_Great_Perfect/GREAT".hide()
-		$Miss_Great_Perfect/MISS/AnimationPlayer.play("swobble")
+		
+		miss.show()
+		great.hide()
+		perfect.hide()
+		miss_animation.play("swobble")
 
 func okHit():
 	if health > 0:
@@ -126,10 +134,11 @@ func okHit():
 		okAmount += 1
 		ManagerGlobal.okAmount = okAmount
 		okSignal.emit()
-		$"Miss_Great_Perfect/MISS".hide()
-		$"Miss_Great_Perfect/PERFECT".hide()
-		$"Miss_Great_Perfect/GREAT".show()
-		$Miss_Great_Perfect/GREAT/AnimationPlayer.play("swobble")
+		
+		miss.hide()
+		great.show()
+		perfect.hide()
+		great_animation.play("swobble")
 
 func perfectHit():
 	if health > 0:
@@ -141,10 +150,11 @@ func perfectHit():
 		perfectAmount += 1
 		ManagerGlobal.perfectAmount = perfectAmount
 		perfectSignal.emit()
-		$"Miss_Great_Perfect/MISS".hide()
-		$"Miss_Great_Perfect/PERFECT".show()
-		$"Miss_Great_Perfect/GREAT".hide()
-		$Miss_Great_Perfect/PERFECT/AnimationPlayer.play("swobble")
+		
+		miss.hide()
+		great.hide()
+		perfect.show()
+		perfect_animation.play("swobble")
 
 func get_playback_position() -> float:
 	return music.get_playback_position() + AudioServer.get_time_to_next_mix() + musicLatency
