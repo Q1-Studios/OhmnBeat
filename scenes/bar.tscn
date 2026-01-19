@@ -1,7 +1,8 @@
-[gd_scene load_steps=20 format=3 uid="uid://bjr3b5q84iffp"]
+[gd_scene load_steps=21 format=3 uid="uid://bjr3b5q84iffp"]
 
 [ext_resource type="Script" uid="uid://cwsl3qyhoh8nb" path="res://scripts/bars.gd" id="1_5dekh"]
 [ext_resource type="Script" uid="uid://cx5bywiu0iqj" path="res://scripts/successZone.gd" id="2_bwlfd"]
+[ext_resource type="PackedScene" uid="uid://dqokghopk6w8j" path="res://scenes/enemy.tscn" id="2_nqcov"]
 [ext_resource type="Script" uid="uid://cnw6sasggbm1f" path="res://scripts/miss_bar.gd" id="3_x848m"]
 [ext_resource type="AudioStream" uid="uid://couhnfqa5ltfq" path="res://assets/sfx/miss/miss1.ogg" id="4_l1w72"]
 [ext_resource type="AudioStream" uid="uid://cciwcedpyo2jm" path="res://assets/sfx/miss/miss2.ogg" id="5_nqcov"]
@@ -126,6 +127,7 @@ script = ExtResource("1_5dekh")
 okInnerBar = NodePath("OkInnerBar")
 okOuterBar = NodePath("OkOuterBar")
 perfectBar = NodePath("PerfectBar")
+enemyScene = ExtResource("2_nqcov")
 
 [node name="PerfectBar" type="Area2D" parent="."]
 script = ExtResource("2_bwlfd")

@@ -6,7 +6,6 @@ class_name HitBar
 @export var okInnerBar:SuccessZone
 @export var okOuterBar:SuccessZone
 @export var perfectBar:SuccessZone
-@export var enemySpawn:Marker2D
 
 @onready var animationPlayer: AnimationPlayer = $PerfectBar/Line2D/AnimationPlayer
 @onready var manager: HitBarManager = $".."
@@ -18,7 +17,7 @@ signal noHit
 
 var randomEnemyOffsetX: int
 var enemyDestination: Vector2
-var enemyScene: PackedScene = preload("res://scenes/enemy.tscn")
+@export var enemyScene: PackedScene
 var allEnemiesList: Array[Enemy] = []
 
 # Time in seconds of an allowed offset for a perfect/ok hit.
