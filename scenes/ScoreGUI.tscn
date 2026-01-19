@@ -1,7 +1,8 @@
-[gd_scene load_steps=27 format=3 uid="uid://bhx5efbk25at7"]
+[gd_scene load_steps=28 format=3 uid="uid://bhx5efbk25at7"]
 
 [ext_resource type="PackedScene" uid="uid://dr4mxxdydivm4" path="res://scenes/restartbutton.tscn" id="1_7xfkq"]
 [ext_resource type="Script" uid="uid://ceov5hw4m2am7" path="res://scripts/score_gui.gd" id="1_8bkue"]
+[ext_resource type="PackedScene" uid="uid://c7r0p3yhdfhv2" path="res://scenes/mouse_hider.tscn" id="2_3ip4w"]
 [ext_resource type="PackedScene" uid="uid://bcdqwk2oqbq4w" path="res://scenes/mousescene.tscn" id="2_8bkue"]
 [ext_resource type="PackedScene" uid="uid://wd1kdyvcphow" path="res://scenes/quitbutton.tscn" id="4_1bmex"]
 [ext_resource type="FontFile" uid="uid://7u54b7ave0i7" path="res://assets/Fonts/ethnocen.ttf" id="4_f1sb5"]
@@ -177,6 +178,8 @@ metadata/_custom_type_script = "uid://cmh78knw1uq2k"
 [node name="ScoreGUI" type="Node2D" node_paths=PackedStringArray("init_focus")]
 script = ExtResource("1_8bkue")
 init_focus = NodePath("MenuButtons/RestartButton")
+
+[node name="MouseHider" parent="." instance=ExtResource("2_3ip4w")]
 
 [node name="CursorWave" parent="." instance=ExtResource("2_8bkue")]
 position = Vector2(918.2888, 502.03766)

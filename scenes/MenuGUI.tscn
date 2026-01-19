@@ -1,8 +1,9 @@
-[gd_scene load_steps=37 format=3 uid="uid://c0685vkvjd2ek"]
+[gd_scene load_steps=38 format=3 uid="uid://c0685vkvjd2ek"]
 
 [ext_resource type="Script" uid="uid://dp17sk5btwmnf" path="res://scripts/menu_gui.gd" id="1_30dmf"]
 [ext_resource type="PackedScene" uid="uid://bcdqwk2oqbq4w" path="res://scenes/mousescene.tscn" id="1_rwv2g"]
 [ext_resource type="PackedScene" uid="uid://bm3qbxwubhyyo" path="res://scenes/owl.tscn" id="2_4imi1"]
+[ext_resource type="PackedScene" uid="uid://c7r0p3yhdfhv2" path="res://scenes/mouse_hider.tscn" id="2_17pdy"]
 [ext_resource type="PackedScene" uid="uid://dta6pbius2h1f" path="res://scenes/playbutton.tscn" id="3_30dmf"]
 [ext_resource type="PackedScene" uid="uid://b4i1vlw2acucj" path="res://scenes/creditsbutton.tscn" id="4_ds5pe"]
 [ext_resource type="PackedScene" uid="uid://wd1kdyvcphow" path="res://scenes/quitbutton.tscn" id="5_nl8w8"]
@@ -837,6 +838,8 @@ fade_out = NodePath("FadeOut")
 init_text = NodePath("PressAnyKeyText")
 init_focus_btn = NodePath("MenuButtons/PlayButton")
 animation_player = NodePath("MenuButtons/ButtonTriggeredAnimations")
+
+[node name="MouseHider" parent="." instance=ExtResource("2_17pdy")]
 
 [node name="owlspawner" type="Node2D" parent="."]
 visible = false
