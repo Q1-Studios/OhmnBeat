@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://c7r0p3yhdfhv2" path="res://scenes/mouse_hider.tscn" id="2_3ip4w"]
 [ext_resource type="PackedScene" uid="uid://bcdqwk2oqbq4w" path="res://scenes/mousescene.tscn" id="2_8bkue"]
 [ext_resource type="PackedScene" uid="uid://wd1kdyvcphow" path="res://scenes/quitbutton.tscn" id="4_1bmex"]
-[ext_resource type="FontFile" uid="uid://7u54b7ave0i7" path="res://assets/Fonts/ethnocen.ttf" id="4_f1sb5"]
+[ext_resource type="FontFile" uid="uid://7u54b7ave0i7" path="res://assets/fonts/ethnocen.ttf" id="4_f1sb5"]
 [ext_resource type="Script" uid="uid://b827ad2p7ghva" path="res://scripts/rich_text_label.gd" id="5_7xfkq"]
 [ext_resource type="Script" uid="uid://bfmhd3f3f21a" path="res://scripts/outcome_text.gd" id="6_nq3vv"]
 [ext_resource type="Script" uid="uid://p04n1cdsny6g" path="res://scripts/reprise_music.gd" id="8_1bmex"]

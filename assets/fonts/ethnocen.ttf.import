@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://7u54b7ave0i7"
-path="res://.godot/imported/ethnocen.ttf-a0cd179d781f21b19d9619c85921a985.fontdata"
+path="res://.godot/imported/ethnocen.ttf-65bc1515198e3defb322f732b68f05df.fontdata"
 
 [deps]
 
-source_file="res://assets/Fonts/ethnocen.ttf"
-dest_files=["res://.godot/imported/ethnocen.ttf-a0cd179d781f21b19d9619c85921a985.fontdata"]
+source_file="res://assets/fonts/ethnocen.ttf"
+dest_files=["res://.godot/imported/ethnocen.ttf-65bc1515198e3defb322f732b68f05df.fontdata"]
 
 [params]
 

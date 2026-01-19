@@ -12,7 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://c1yrgscpcae7g" path="res://scenes/button_sound_player.tscn" id="8_fqox8"]
 [ext_resource type="PackedScene" uid="uid://idb1j54md8ec" path="res://scenes/button_grace_area_mobile.tscn" id="9_letrg"]
 [ext_resource type="Theme" uid="uid://b5x8fwp1vrarc" path="res://resources/themes/no_bg_button_theme.tres" id="9_rbo5s"]
-[ext_resource type="FontFile" uid="uid://7u54b7ave0i7" path="res://assets/Fonts/ethnocen.ttf" id="10_0uspm"]
+[ext_resource type="FontFile" uid="uid://7u54b7ave0i7" path="res://assets/fonts/ethnocen.ttf" id="10_0uspm"]
 [ext_resource type="Script" uid="uid://c32cs7876gib4" path="res://scripts/vibrate_toggle_button.gd" id="10_fqox8"]
 
 [sub_resource type="GDScript" id="GDScript_3vvtq"]

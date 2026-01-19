@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://kq6qyxrwdsp1"]
 
 [ext_resource type="PackedScene" uid="uid://c58wjax2eyvgm" path="res://scenes/levels/level.tscn" id="1_0ddxf"]
-[ext_resource type="Resource" uid="uid://dfptbpxdcpi6n" path="res://assets/beatmaps/ShiftyShowdown.tres" id="2_ovf82"]
+[ext_resource type="Resource" uid="uid://dfptbpxdcpi6n" path="res://resources/beatmaps/ShiftyShowdown.tres" id="2_ovf82"]
 [ext_resource type="Shader" uid="uid://csxon2ptntecx" path="res://shaders/crtscreen.gdshader" id="2_ugx5j"]
 [ext_resource type="AudioStream" uid="uid://cgsejebq4pf5r" path="res://assets/music/ShiftyShowdown_OhmBeatEdit.ogg" id="3_ugx5j"]
 
@@ -27,7 +27,7 @@ viewport_path = NodePath("SubViewport")
 [node name="root" instance=ExtResource("1_0ddxf")]
 scene_name = 3
 
-[node name="TextureRect" parent="." index="1"]
+[node name="TextureRect" parent="." index="2"]
 material = SubResource("ShaderMaterial_0my05")
 texture = SubResource("ViewportTexture_0my05")
 
@@ -45,3 +45,4 @@ volume_db = -3.0
 [editable path="SubViewport/Manager/Bar4"]
 [editable path="SubViewport/Manager/Bar5"]
 [editable path="SubViewport/Manager/Bar6"]
+[editable path="PauseScreen/PausedDisplay/QuitLevelBtn"]
