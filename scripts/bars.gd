@@ -39,6 +39,8 @@ func _on_touch_screen_button_pressed() -> void:
 	evaluate_hits()
 
 func evaluate_hits() -> void:
+	animationPlayer.stop()
+	animationPlayer.play("RESET")
 	if area_hit(perfectBar.enemyList) or timing_hit(perfect_tolerance):
 		perfectHit.emit()
 		animationPlayer.play("blinkspecial")
