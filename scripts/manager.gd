@@ -70,37 +70,36 @@ func _process(delta: float) -> void:
 		#print("progress", currentSongProgress)
 	
 	if enemyTracker < beatMapLength:
-			var currentEnemyKey = beatMap.data[enemyTracker].key
-			var currentEnemyTime = beatMap.data[enemyTracker].milliseconds 
-			var currentMusicTime = int(1000 * get_playback_position())
+		var currentEnemyKey = beatMap.data[enemyTracker].key
+		var currentEnemyTime = beatMap.data[enemyTracker].milliseconds 
+		var currentMusicTime = int(1000 * get_playback_position())
+		
+		var spawnTime: int = currentEnemyTime - 2000 # Enemy spawns 2000ms before it hits the bar
+		if (currentMusicTime >= spawnTime):
+			# erstes hit object darf nicht < 2000ms sein
 			
-			var spawnTime: int = currentEnemyTime - 2000 # Enemy spawns 2000ms before it hits the bar
-			if (currentMusicTime >= spawnTime):
-				# erstes hit object darf nicht < 2000ms sein
-				
-				var perfectTime: float = float(currentEnemyTime) / 1000
-				
+			var perfectTime: float = float(currentEnemyTime) / 1000
+			
+			if get_playback_position() < perfectTime:
 				match currentEnemyKey:
 					"S":
 						bar1.spawnEnemy(perfectTime)
-						enemyTracker += 1
 					"D":
 						bar2.spawnEnemy(perfectTime)
-						enemyTracker += 1
 					"L":
 						bar3.spawnEnemy(perfectTime)
-						enemyTracker += 1
 					"K":
 						bar4.spawnEnemy(perfectTime)
-						enemyTracker += 1
 					"J":
 						bar5.spawnEnemy(perfectTime)
-						enemyTracker += 1
 					"A":
 						bar6.spawnEnemy(perfectTime)
-						enemyTracker += 1
 					_:
-						print("waiting")
+						print("Invalid key name in beatmap")
+			else:
+				print("Dropped enemy (would be spawned after its hit time)")
+			
+			enemyTracker += 1
 
 func resync_enemies() -> void:
 	bar1.resync_enemies()
