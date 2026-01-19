@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://bhx5efbk25at7"]
+[gd_scene load_steps=29 format=3 uid="uid://bhx5efbk25at7"]
 
 [ext_resource type="PackedScene" uid="uid://dr4mxxdydivm4" path="res://scenes/restartbutton.tscn" id="1_7xfkq"]
 [ext_resource type="Script" uid="uid://ceov5hw4m2am7" path="res://scripts/score_gui.gd" id="1_8bkue"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://wd1kdyvcphow" path="res://scenes/quitbutton.tscn" id="4_1bmex"]
 [ext_resource type="FontFile" uid="uid://7u54b7ave0i7" path="res://assets/fonts/ethnocen.ttf" id="4_f1sb5"]
 [ext_resource type="Script" uid="uid://b827ad2p7ghva" path="res://scripts/rich_text_label.gd" id="5_7xfkq"]
+[ext_resource type="Script" uid="uid://cv74ks3h0xs82" path="res://scripts/song_title_text.gd" id="6_6i2qx"]
 [ext_resource type="Script" uid="uid://bfmhd3f3f21a" path="res://scripts/outcome_text.gd" id="6_nq3vv"]
 [ext_resource type="Script" uid="uid://p04n1cdsny6g" path="res://scripts/reprise_music.gd" id="8_1bmex"]
 [ext_resource type="Script" uid="uid://o4klbabn6lfq" path="res://scripts/exit_to_main_menu.gd" id="8_74mtw"]
@@ -178,7 +179,11 @@ stream = ExtResource("15_luylr")
 volume_db = -3.0
 metadata/_custom_type_script = "uid://cmh78knw1uq2k"
 
-[node name="ScoreGUI" type="Node2D" node_paths=PackedStringArray("init_focus")]
+[node name="ScoreGUI" type="Control" node_paths=PackedStringArray("init_focus")]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
 script = ExtResource("1_8bkue")
 init_focus = NodePath("MenuButtons/RestartButton")
 
@@ -188,6 +193,7 @@ init_focus = NodePath("MenuButtons/RestartButton")
 position = Vector2(918.2888, 502.03766)
 
 [node name="OutcomeText" type="Label" parent="."]
+layout_mode = 0
 offset_right = 1920.0
 offset_bottom = 300.0
 theme_override_fonts/font = ExtResource("4_f1sb5")
@@ -198,13 +204,32 @@ vertical_alignment = 1
 script = ExtResource("6_nq3vv")
 success_text = "Song complete"
 failure_text = "Failure"
-metadata/_edit_use_anchors_ = true
+
+[node name="SongTitle" type="Label" parent="."]
+layout_mode = 0
+offset_top = 183.0
+offset_right = 1920.0
+offset_bottom = 283.0
+theme_override_colors/font_color = Color(0.6706895, 0.6706895, 0.6706895, 1)
+theme_override_fonts/font = ExtResource("4_f1sb5")
+theme_override_font_sizes/font_size = 64
+text = "Contingency Plant"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("6_6i2qx")
+titles = Dictionary[int, String]({
+0: "Contingency Plant",
+1: "With The Current",
+2: "Warp Speed",
+3: "Shifty Showdown"
+})
 
 [node name="ScoresText" type="RichTextLabel" parent="."]
-offset_left = 259.0
-offset_top = 250.0
-offset_right = 1899.0
-offset_bottom = 802.0
+layout_mode = 1
+offset_left = 260.0
+offset_top = 310.0
+offset_right = 1900.0
+offset_bottom = 860.0
 theme_override_fonts/normal_font = ExtResource("4_f1sb5")
 theme_override_font_sizes/normal_font_size = 60
 text = "
@@ -216,10 +241,13 @@ Miss:							5x
 
 Total Score:			100000 Pts"
 script = ExtResource("5_7xfkq")
-metadata/_edit_use_anchors_ = true
 
-[node name="MenuButtons" type="Node2D" parent="."]
-position = Vector2(2099.425, 509.89)
+[node name="MenuButtons" type="Control" parent="."]
+anchors_preset = 0
+offset_left = 2099.425
+offset_top = 509.89
+offset_right = 2099.425
+offset_bottom = 509.89
 scale = Vector2(0.38, 0.38)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="MenuButtons"]
@@ -228,26 +256,27 @@ libraries = {
 }
 
 [node name="RestartButton" parent="MenuButtons" instance=ExtResource("1_7xfkq")]
+layout_mode = 0
 offset_left = -4800.0
-offset_top = 800.0
+offset_top = 865.0
 offset_right = -4121.0
-offset_bottom = 1047.0
+offset_bottom = 1112.0
 scale = Vector2(1.75, 1.75)
 focus_neighbor_right = NodePath("../QuitButton")
 script = SubResource("GDScript_5itgx")
-metadata/_edit_use_anchors_ = true
 
 [node name="QuitButton" parent="MenuButtons" instance=ExtResource("4_1bmex")]
+layout_mode = 0
 offset_left = -2300.0
-offset_top = 800.0
+offset_top = 865.0
 offset_right = -1687.0
-offset_bottom = 1046.0
+offset_bottom = 1111.0
 scale = Vector2(1.75, 1.75)
 focus_neighbor_left = NodePath("../RestartButton")
 script = ExtResource("8_74mtw")
-metadata/_edit_use_anchors_ = true
 
 [node name="PlatformText" type="Label" parent="."]
+layout_mode = 0
 offset_left = 900.0
 offset_top = 1000.0
 offset_right = 1000.0
@@ -259,7 +288,6 @@ text = "Mobile"
 horizontal_alignment = 1
 vertical_alignment = 1
 script = ExtResource("12_m4d8m")
-metadata/_edit_use_anchors_ = true
 
 [node name="RepriseMusic" type="AudioStreamPlayer" parent="."]
 bus = &"Music"
