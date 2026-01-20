@@ -19,5 +19,5 @@ func _ready() -> void:
 	setText()
 
 func setText():
-	text = perfectString + "\n" +"\n" + greatString + "\n" +"\n" + missString + "\n" +"\n" + pointString
+	text = "\n" + perfectString + "\n" +"\n" + greatString + "\n" +"\n" + missString + "\n" +"\n" + pointString
 	

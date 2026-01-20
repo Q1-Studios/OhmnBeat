@@ -19,8 +19,8 @@ boot_splash/minimum_display_time=1000
 
 [autoload]
 
-ManagerGlobal="*res://scripts/managerGlobal.gd"
 SceneManager="*res://scenes/scene_manager.tscn"
+ManagerGlobal="*res://scripts/managerGlobal.gd"
 Globals="*res://scripts/globals.gd"
 Vibration="*res://scripts/vibration.gd"
 

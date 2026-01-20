@@ -7,4 +7,4 @@ var perfectAmount:int
 var okAmount:int 
 var missAmount:int
 
-var currentLevel: SceneManager.LevelIds
+var currentLevel: SceneManager.LevelIds = SceneManager.LevelIds.LEVEL1
