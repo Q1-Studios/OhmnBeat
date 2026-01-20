@@ -3,8 +3,6 @@ class_name HitBarManager
 
 @export var beatMap: Beatmap
 @export var music: AudioStreamPlayer
-@export var progressBar: TextureProgressBar
-@export var restartHoldRequirement: float = 1.5
 @export var barList: Array[HitBar] = []
 
 @export_group("MissGreatPerfect Indicators")
@@ -37,7 +35,8 @@ var health:int = 100
 #Music/God function
 @onready var beatMapLength: int = beatMap.data.size()
 @onready var musicLatency:float = AudioServer.get_output_latency()
-@onready var globalStartTime:float = Time.get_unix_time_from_system()
+const silence_time: float = 3.0
+var already_waited_time: float = 0
 var enemyTracker:int = 0
 var hasStarted:bool = false
 
@@ -46,6 +45,7 @@ var hasStarted:bool = false
 var currentSongProgress:float = 0
 
 # Restart holding duration
+const restartHoldRequirement: float = 1.5
 var restartHeldTime: float = 0
 
 #TODO
@@ -61,9 +61,11 @@ func _process(delta: float) -> void:
 	else:
 		restartHeldTime = 0
 	
-	if not hasStarted and Time.get_unix_time_from_system() >= globalStartTime + 3:
+	if not hasStarted and already_waited_time >= silence_time:
 		music.play()
 		hasStarted = true
+	else:
+		already_waited_time += delta
 	
 	if currentSongProgress <= 1 and hasStarted:
 		#print("currentTime in seconds", currentTimeMs)
