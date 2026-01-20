@@ -25,9 +25,9 @@ shader_parameter/noise_scale = 747.885
 viewport_path = NodePath("SubViewport")
 
 [node name="root" instance=ExtResource("1_g05v7")]
-scene_name = 2
+level_id = 2
 
-[node name="TextureRect" parent="." index="1"]
+[node name="TextureRect" parent="." index="2"]
 material = SubResource("ShaderMaterial_bjloq")
 texture = SubResource("ViewportTexture_7jvro")
 
@@ -38,7 +38,7 @@ beatMap = ExtResource("2_7jvro")
 stream = ExtResource("2_bc1w2")
 volume_db = -2.0
 
-[node name="Camera2D" parent="." index="4"]
+[node name="Camera2D" parent="." index="5"]
 range_low = 1000
 range_high = 4000
 
@@ -49,3 +49,4 @@ range_high = 4000
 [editable path="SubViewport/Manager/Bar4"]
 [editable path="SubViewport/Manager/Bar5"]
 [editable path="SubViewport/Manager/Bar6"]
+[editable path="PauseScreen/PausedDisplay/QuitLevelBtn"]

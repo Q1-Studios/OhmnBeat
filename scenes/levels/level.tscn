@@ -26,7 +26,7 @@ resource_name = "forward_keyboard_inputs"
 script/source = "extends Node2D
 
 
-@export var scene_name: SceneManager.LevelIds = SceneManager.LevelIds.LEVEL1
+@export var level_id: SceneManager.LevelIds = SceneManager.LevelIds.LEVEL1
 @export var sub_viewport: SubViewport
 
 func _ready() -> void:
@@ -42,7 +42,7 @@ func _input(event: InputEvent) -> void:
 		
 func deathTransition():
 	print(\"check if transition is being called\")
-	ManagerGlobal.currentLevel = scene_name
+	ManagerGlobal.currentLevel = level_id
 	get_tree().change_scene_to_packed(SceneManager.scoreScene)
 	
 	

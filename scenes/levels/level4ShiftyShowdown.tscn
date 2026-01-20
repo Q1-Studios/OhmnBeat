@@ -25,7 +25,7 @@ shader_parameter/noise_scale = 747.885
 viewport_path = NodePath("SubViewport")
 
 [node name="root" instance=ExtResource("1_0ddxf")]
-scene_name = 3
+level_id = 3
 
 [node name="TextureRect" parent="." index="2"]
 material = SubResource("ShaderMaterial_0my05")
