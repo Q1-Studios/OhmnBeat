@@ -12,7 +12,9 @@
 script = ExtResource("1_b81s6")
 menuScene = ExtResource("2_6k21d")
 scoreScene = ExtResource("4_hhobr")
-levelScene = ExtResource("3_cjhpt")
-level2Scene = ExtResource("5_wofdf")
-level3Scene = ExtResource("6_kad1h")
-level4Scene = ExtResource("7_cjhpt")
+levels = Dictionary[int, PackedScene]({
+0: ExtResource("3_cjhpt"),
+1: ExtResource("5_wofdf"),
+2: ExtResource("6_kad1h"),
+3: ExtResource("7_cjhpt")
+})
