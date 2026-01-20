@@ -1,22 +1,49 @@
-[gd_scene load_steps=29 format=3 uid="uid://bhx5efbk25at7"]
+[gd_scene load_steps=28 format=3 uid="uid://bhx5efbk25at7"]
 
 [ext_resource type="PackedScene" uid="uid://dr4mxxdydivm4" path="res://scenes/restartbutton.tscn" id="1_7xfkq"]
 [ext_resource type="Script" uid="uid://ceov5hw4m2am7" path="res://scripts/score_gui.gd" id="1_8bkue"]
 [ext_resource type="PackedScene" uid="uid://c7r0p3yhdfhv2" path="res://scenes/mouse_hider.tscn" id="2_3ip4w"]
+[ext_resource type="Script" uid="uid://cmh78knw1uq2k" path="res://scripts/score_scene_settings.gd" id="2_6i2qx"]
 [ext_resource type="PackedScene" uid="uid://bcdqwk2oqbq4w" path="res://scenes/mousescene.tscn" id="2_8bkue"]
 [ext_resource type="PackedScene" uid="uid://wd1kdyvcphow" path="res://scenes/quitbutton.tscn" id="4_1bmex"]
 [ext_resource type="FontFile" uid="uid://7u54b7ave0i7" path="res://assets/fonts/ethnocen.ttf" id="4_f1sb5"]
 [ext_resource type="Script" uid="uid://b827ad2p7ghva" path="res://scripts/rich_text_label.gd" id="5_7xfkq"]
-[ext_resource type="Script" uid="uid://cv74ks3h0xs82" path="res://scripts/song_title_text.gd" id="6_6i2qx"]
 [ext_resource type="Script" uid="uid://bfmhd3f3f21a" path="res://scripts/outcome_text.gd" id="6_nq3vv"]
 [ext_resource type="Script" uid="uid://p04n1cdsny6g" path="res://scripts/reprise_music.gd" id="8_1bmex"]
 [ext_resource type="Script" uid="uid://o4klbabn6lfq" path="res://scripts/exit_to_main_menu.gd" id="8_74mtw"]
 [ext_resource type="AudioStream" uid="uid://baybfgj38cd2g" path="res://assets/music/ContingencyPlant_Reprise.ogg" id="9_otn0o"]
-[ext_resource type="Script" uid="uid://cmh78knw1uq2k" path="res://scripts/stream_with_volume.gd" id="10_mu0s0"]
 [ext_resource type="AudioStream" uid="uid://d2h8wv02d4dgc" path="res://assets/music/WithTheCurrent_Reprise.ogg" id="10_otn0o"]
 [ext_resource type="AudioStream" uid="uid://cpq5o1nnwfx41" path="res://assets/music/WarpSpeed_OhmBeatEdit_Reprise.ogg" id="11_mu0s0"]
 [ext_resource type="Script" uid="uid://c6moxo5qoybc0" path="res://scripts/platform_text.gd" id="12_m4d8m"]
 [ext_resource type="AudioStream" uid="uid://e6copueg0ush" path="res://assets/music/ShiftyShowdown_OhmBeatEdit_Reprise.ogg" id="15_luylr"]
+
+[sub_resource type="Resource" id="Resource_u714b"]
+script = ExtResource("2_6i2qx")
+song_title = "Contingency Plant"
+reprise_stream = ExtResource("9_otn0o")
+reprise_volume_db = 5.0
+metadata/_custom_type_script = "uid://cmh78knw1uq2k"
+
+[sub_resource type="Resource" id="Resource_31g76"]
+script = ExtResource("2_6i2qx")
+song_title = "With The Current"
+reprise_stream = ExtResource("10_otn0o")
+reprise_volume_db = -5.0
+metadata/_custom_type_script = "uid://cmh78knw1uq2k"
+
+[sub_resource type="Resource" id="Resource_gaip3"]
+script = ExtResource("2_6i2qx")
+song_title = "Warp Speed"
+reprise_stream = ExtResource("11_mu0s0")
+reprise_volume_db = -2.0
+metadata/_custom_type_script = "uid://cmh78knw1uq2k"
+
+[sub_resource type="Resource" id="Resource_4kvsm"]
+script = ExtResource("2_6i2qx")
+song_title = "Shifty Showdown"
+reprise_stream = ExtResource("15_luylr")
+reprise_volume_db = -3.0
+metadata/_custom_type_script = "uid://cmh78knw1uq2k"
 
 [sub_resource type="Animation" id="Animation_dfy5j"]
 length = 0.001
@@ -155,42 +182,30 @@ func change_scene(scene: PackedScene) -> void:
 	get_tree().change_scene_to_packed(scene)
 "
 
-[sub_resource type="Resource" id="Resource_74mtw"]
-script = ExtResource("10_mu0s0")
-stream = ExtResource("9_otn0o")
-volume_db = 5.0
-metadata/_custom_type_script = "uid://cmh78knw1uq2k"
-
-[sub_resource type="Resource" id="Resource_luylr"]
-script = ExtResource("10_mu0s0")
-stream = ExtResource("10_otn0o")
-volume_db = -5.0
-metadata/_custom_type_script = "uid://cmh78knw1uq2k"
-
-[sub_resource type="Resource" id="Resource_3ip4w"]
-script = ExtResource("10_mu0s0")
-stream = ExtResource("11_mu0s0")
-volume_db = -2.0
-metadata/_custom_type_script = "uid://cmh78knw1uq2k"
-
-[sub_resource type="Resource" id="Resource_6i2qx"]
-script = ExtResource("10_mu0s0")
-stream = ExtResource("15_luylr")
-volume_db = -3.0
-metadata/_custom_type_script = "uid://cmh78knw1uq2k"
-
-[node name="ScoreGUI" type="Control" node_paths=PackedStringArray("init_focus")]
+[node name="ScoreGUI" type="Control" node_paths=PackedStringArray("init_focus", "title_label", "reprise_music")]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 1920.0
 offset_bottom = 1080.0
 script = ExtResource("1_8bkue")
 init_focus = NodePath("MenuButtons/RestartButton")
+level_settings = Dictionary[int, ExtResource("2_6i2qx")]({
+0: SubResource("Resource_u714b"),
+1: SubResource("Resource_31g76"),
+2: SubResource("Resource_gaip3"),
+3: SubResource("Resource_4kvsm")
+})
+title_label = NodePath("SongTitle")
+reprise_music = NodePath("RepriseMusic")
 
 [node name="MouseHider" parent="." instance=ExtResource("2_3ip4w")]
 
 [node name="CursorWave" parent="." instance=ExtResource("2_8bkue")]
 position = Vector2(918.2888, 502.03766)
+
+[node name="RepriseMusic" type="AudioStreamPlayer" parent="."]
+bus = &"Music"
+script = ExtResource("8_1bmex")
 
 [node name="OutcomeText" type="Label" parent="."]
 layout_mode = 0
@@ -216,13 +231,6 @@ theme_override_font_sizes/font_size = 64
 text = "Contingency Plant"
 horizontal_alignment = 1
 vertical_alignment = 1
-script = ExtResource("6_6i2qx")
-titles = Dictionary[int, String]({
-0: "Contingency Plant",
-1: "With The Current",
-2: "Warp Speed",
-3: "Shifty Showdown"
-})
 
 [node name="ScoresText" type="RichTextLabel" parent="."]
 layout_mode = 1
@@ -288,13 +296,3 @@ text = "Mobile"
 horizontal_alignment = 1
 vertical_alignment = 1
 script = ExtResource("12_m4d8m")
-
-[node name="RepriseMusic" type="AudioStreamPlayer" parent="."]
-bus = &"Music"
-script = ExtResource("8_1bmex")
-reprises = Dictionary[Variant, ExtResource("10_mu0s0")]({
-0: SubResource("Resource_74mtw"),
-1: SubResource("Resource_luylr"),
-2: SubResource("Resource_3ip4w"),
-3: SubResource("Resource_6i2qx")
-})
