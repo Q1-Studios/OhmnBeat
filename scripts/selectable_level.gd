@@ -1,13 +1,12 @@
 extends ButtonPreset
 
-@export var level: SceneManager.LevelIds = SceneManager.LevelIds.LEVEL1
-
-signal level_clicked(level)
-signal level_selected(level)
+@export var level_config: LevelSelectConfig
+signal level_clicked(level_config)
+signal level_selected(level_config)
 
 func press() -> void:
 	if is_visible_in_tree():
-		level_clicked.emit(level)
+		level_clicked.emit(level_config)
 
 func select() -> void:
-	level_selected.emit(level)
+	level_selected.emit(level_config)

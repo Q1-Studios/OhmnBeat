@@ -1,5 +1,5 @@
 extends Resource
-class_name ScoreSceneSettings
+class_name ScoreSceneConfig
 
 @export var song_title: String
 @export var reprise_stream: AudioStream

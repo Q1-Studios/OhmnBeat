@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://dr4mxxdydivm4" path="res://scenes/restartbutton.tscn" id="1_7xfkq"]
 [ext_resource type="Script" uid="uid://ceov5hw4m2am7" path="res://scripts/score_gui.gd" id="1_8bkue"]
 [ext_resource type="PackedScene" uid="uid://c7r0p3yhdfhv2" path="res://scenes/mouse_hider.tscn" id="2_3ip4w"]
-[ext_resource type="Script" uid="uid://cmh78knw1uq2k" path="res://scripts/score_scene_settings.gd" id="2_6i2qx"]
+[ext_resource type="Script" uid="uid://cmh78knw1uq2k" path="res://scripts/score_scene_config.gd" id="2_6i2qx"]
 [ext_resource type="PackedScene" uid="uid://bcdqwk2oqbq4w" path="res://scenes/mousescene.tscn" id="2_8bkue"]
 [ext_resource type="PackedScene" uid="uid://wd1kdyvcphow" path="res://scenes/quitbutton.tscn" id="4_1bmex"]
 [ext_resource type="FontFile" uid="uid://7u54b7ave0i7" path="res://assets/fonts/ethnocen.ttf" id="4_f1sb5"]
@@ -189,7 +189,7 @@ offset_right = 1920.0
 offset_bottom = 1080.0
 script = ExtResource("1_8bkue")
 init_focus = NodePath("MenuButtons/RestartButton")
-level_settings = Dictionary[int, ExtResource("2_6i2qx")]({
+level_config = Dictionary[int, ExtResource("2_6i2qx")]({
 0: SubResource("Resource_u714b"),
 1: SubResource("Resource_31g76"),
 2: SubResource("Resource_gaip3"),
