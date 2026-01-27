@@ -1,7 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://cj8kk62ik12v3"]
+[gd_scene format=3 uid="uid://cj8kk62ik12v3"]
 
 [ext_resource type="Script" uid="uid://fsmf5ys74y5l" path="res://scripts/inactive_mouse_hider.gd" id="1_lumpo"]
 
-[node name="InactiveMouseHider" type="Node"]
+[node name="InactiveMouseHider" type="Node" unique_id=772162945]
 process_mode = 3
 script = ExtResource("1_lumpo")

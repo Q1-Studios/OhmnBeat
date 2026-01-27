@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://boqidil8urfmq"]
+[gd_scene format=3 uid="uid://boqidil8urfmq"]
 
 [ext_resource type="PackedScene" uid="uid://c58wjax2eyvgm" path="res://scenes/levels/level.tscn" id="1_g05v7"]
 [ext_resource type="Resource" uid="uid://b1dobnddkuhsl" path="res://resources/beatmaps/WarpSpeed.tres" id="2_7jvro"]
@@ -21,15 +21,15 @@ shader_parameter/phosphor_clamp = 1.045
 shader_parameter/noise_strength = 0.0250000011875
 shader_parameter/noise_scale = 747.885
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_7jvro"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_yhkax"]
 viewport_path = NodePath("SubViewport")
 
-[node name="root" instance=ExtResource("1_g05v7")]
+[node name="root" unique_id=933942010 instance=ExtResource("1_g05v7")]
 level_id = 2
 
 [node name="TextureRect" parent="." index="2"]
 material = SubResource("ShaderMaterial_bjloq")
-texture = SubResource("ViewportTexture_7jvro")
+texture = SubResource("ViewportTexture_yhkax")
 
 [node name="Manager" parent="SubViewport" index="0"]
 beatMap = ExtResource("2_7jvro")
@@ -37,6 +37,9 @@ beatMap = ExtResource("2_7jvro")
 [node name="Music" parent="SubViewport" index="1"]
 stream = ExtResource("2_bc1w2")
 volume_db = -2.0
+
+[node name="AnimationPlayer" parent="SubViewport/Fancyhex3" index="840"]
+autoplay = &"spin"
 
 [node name="Camera2D" parent="." index="5"]
 range_low = 1000

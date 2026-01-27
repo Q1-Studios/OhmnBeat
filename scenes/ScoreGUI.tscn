@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://bhx5efbk25at7"]
+[gd_scene format=3 uid="uid://bhx5efbk25at7"]
 
 [ext_resource type="PackedScene" uid="uid://dr4mxxdydivm4" path="res://scenes/restartbutton.tscn" id="1_7xfkq"]
 [ext_resource type="Script" uid="uid://ceov5hw4m2am7" path="res://scripts/score_gui.gd" id="1_8bkue"]
@@ -182,14 +182,14 @@ func change_scene(scene: PackedScene) -> void:
 	get_tree().change_scene_to_packed(scene)
 "
 
-[node name="ScoreGUI" type="Control" node_paths=PackedStringArray("init_focus", "title_label", "reprise_music")]
+[node name="ScoreGUI" type="Control" unique_id=506445395 node_paths=PackedStringArray("init_focus", "title_label", "reprise_music")]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 1920.0
 offset_bottom = 1080.0
 script = ExtResource("1_8bkue")
 init_focus = NodePath("MenuButtons/RestartButton")
-level_config = Dictionary[int, ExtResource("2_6i2qx")]({
+level_config = Dictionary[Variant, ExtResource("2_6i2qx")]({
 0: SubResource("Resource_u714b"),
 1: SubResource("Resource_31g76"),
 2: SubResource("Resource_gaip3"),
@@ -198,16 +198,16 @@ level_config = Dictionary[int, ExtResource("2_6i2qx")]({
 title_label = NodePath("SongTitle")
 reprise_music = NodePath("RepriseMusic")
 
-[node name="MouseHider" parent="." instance=ExtResource("2_3ip4w")]
+[node name="MouseHider" parent="." unique_id=321004488 instance=ExtResource("2_3ip4w")]
 
-[node name="CursorWave" parent="." instance=ExtResource("2_8bkue")]
+[node name="CursorWave" parent="." unique_id=61821200 instance=ExtResource("2_8bkue")]
 position = Vector2(918.2888, 502.03766)
 
-[node name="RepriseMusic" type="AudioStreamPlayer" parent="."]
+[node name="RepriseMusic" type="AudioStreamPlayer" parent="." unique_id=558423213]
 bus = &"Music"
 script = ExtResource("8_1bmex")
 
-[node name="OutcomeText" type="Label" parent="."]
+[node name="OutcomeText" type="Label" parent="." unique_id=1794876435]
 layout_mode = 0
 offset_right = 1920.0
 offset_bottom = 300.0
@@ -220,7 +220,7 @@ script = ExtResource("6_nq3vv")
 success_text = "Song complete"
 failure_text = "Failure"
 
-[node name="SongTitle" type="Label" parent="."]
+[node name="SongTitle" type="Label" parent="." unique_id=793003894]
 layout_mode = 0
 offset_top = 183.0
 offset_right = 1920.0
@@ -232,7 +232,7 @@ text = "Contingency Plant"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ScoresText" type="RichTextLabel" parent="."]
+[node name="ScoresText" type="RichTextLabel" parent="." unique_id=1437107240]
 layout_mode = 1
 offset_left = 260.0
 offset_top = 310.0
@@ -250,7 +250,7 @@ Miss:							5x
 Total Score:			100000 Pts"
 script = ExtResource("5_7xfkq")
 
-[node name="MenuButtons" type="Control" parent="."]
+[node name="MenuButtons" type="Control" parent="." unique_id=1501864594]
 anchors_preset = 0
 offset_left = 2099.425
 offset_top = 509.89
@@ -258,12 +258,10 @@ offset_right = 2099.425
 offset_bottom = 509.89
 scale = Vector2(0.38, 0.38)
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="MenuButtons"]
-libraries = {
-&"": SubResource("AnimationLibrary_7yvfd")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="MenuButtons" unique_id=191629196]
+libraries/ = SubResource("AnimationLibrary_7yvfd")
 
-[node name="RestartButton" parent="MenuButtons" instance=ExtResource("1_7xfkq")]
+[node name="RestartButton" parent="MenuButtons" unique_id=1287674459 instance=ExtResource("1_7xfkq")]
 layout_mode = 0
 offset_left = -4800.0
 offset_top = 865.0
@@ -273,7 +271,7 @@ scale = Vector2(1.75, 1.75)
 focus_neighbor_right = NodePath("../QuitButton")
 script = SubResource("GDScript_5itgx")
 
-[node name="QuitButton" parent="MenuButtons" instance=ExtResource("4_1bmex")]
+[node name="QuitButton" parent="MenuButtons" unique_id=1114366634 instance=ExtResource("4_1bmex")]
 layout_mode = 0
 offset_left = -2300.0
 offset_top = 865.0
@@ -283,7 +281,7 @@ scale = Vector2(1.75, 1.75)
 focus_neighbor_left = NodePath("../RestartButton")
 script = ExtResource("8_74mtw")
 
-[node name="PlatformText" type="Label" parent="."]
+[node name="PlatformText" type="Label" parent="." unique_id=155541834]
 layout_mode = 0
 offset_left = 900.0
 offset_top = 1000.0

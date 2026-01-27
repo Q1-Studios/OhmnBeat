@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://bjr3b5q84iffp"]
+[gd_scene format=3 uid="uid://bjr3b5q84iffp"]
 
 [ext_resource type="Script" uid="uid://cwsl3qyhoh8nb" path="res://scripts/bars.gd" id="1_5dekh"]
 [ext_resource type="Script" uid="uid://cx5bywiu0iqj" path="res://scripts/successZone.gd" id="2_bwlfd"]
@@ -121,7 +121,7 @@ stream_4/stream = ExtResource("8_5qaxt")
 [sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_l1w72"]
 points = PackedVector2Array(0, 50, 31, 0, 70, -120, -70, -120, -31, 0)
 
-[node name="Bar" type="Node2D" node_paths=PackedStringArray("okInnerBar", "okOuterBar", "perfectBar", "animationPlayer")]
+[node name="Bar" type="Node2D" unique_id=474280873 node_paths=PackedStringArray("okInnerBar", "okOuterBar", "perfectBar", "animationPlayer")]
 scale = Vector2(10, 10)
 script = ExtResource("1_5dekh")
 okInnerBar = NodePath("OkInnerBar")
@@ -130,64 +130,62 @@ perfectBar = NodePath("PerfectBar")
 animationPlayer = NodePath("PerfectBar/Line2D/AnimationPlayer")
 enemyScene = ExtResource("2_nqcov")
 
-[node name="PerfectBar" type="Area2D" parent="."]
+[node name="PerfectBar" type="Area2D" parent="." unique_id=1866964935]
 script = ExtResource("2_bwlfd")
 
-[node name="BarSprite" type="Sprite2D" parent="PerfectBar"]
+[node name="BarSprite" type="Sprite2D" parent="PerfectBar" unique_id=619801658]
 position = Vector2(0, 4.149998)
 scale = Vector2(0.93, 0.32656246)
 texture = SubResource("GradientTexture2D_qdsxc")
 
-[node name="PerfectCollision" type="CollisionShape2D" parent="PerfectBar"]
+[node name="PerfectCollision" type="CollisionShape2D" parent="PerfectBar" unique_id=1864814042]
 scale = Vector2(0.99999994, 0.99999994)
 shape = SubResource("RectangleShape2D_x848m")
 debug_color = Color(0.9583222, 6.738305e-07, 0.5304147, 0.41960785)
 
-[node name="Line2D" type="Line2D" parent="PerfectBar"]
+[node name="Line2D" type="Line2D" parent="PerfectBar" unique_id=2127688721]
 points = PackedVector2Array(-30, 0, 30, 0)
 width = 1.5
 joint_mode = 2
 round_precision = 16
 antialiased = true
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="PerfectBar/Line2D"]
-libraries = {
-&"": SubResource("AnimationLibrary_qdsxc")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="PerfectBar/Line2D" unique_id=1250226077]
+libraries/ = SubResource("AnimationLibrary_qdsxc")
 
-[node name="OkInnerBar" type="Area2D" parent="."]
+[node name="OkInnerBar" type="Area2D" parent="." unique_id=2131890720]
 position = Vector2(0, 5.0000005)
 script = ExtResource("2_bwlfd")
 
-[node name="OkInnerCollision" type="CollisionShape2D" parent="OkInnerBar"]
+[node name="OkInnerCollision" type="CollisionShape2D" parent="OkInnerBar" unique_id=954785482]
 position = Vector2(0, -4.7683716e-07)
 shape = SubResource("RectangleShape2D_x848m")
 
-[node name="OkOuterBar" type="Area2D" parent="."]
+[node name="OkOuterBar" type="Area2D" parent="." unique_id=1647063597]
 position = Vector2(0, -5.0000005)
 script = ExtResource("2_bwlfd")
 
-[node name="OkOuterCollision" type="CollisionShape2D" parent="OkOuterBar"]
+[node name="OkOuterCollision" type="CollisionShape2D" parent="OkOuterBar" unique_id=82085865]
 position = Vector2(0, 4.7683716e-07)
 scale = Vector2(0.9999998, 0.9999998)
 shape = SubResource("RectangleShape2D_x848m")
 
-[node name="MissBar" type="Area2D" parent="." node_paths=PackedStringArray("miss_sfx")]
+[node name="MissBar" type="Area2D" parent="." unique_id=1616691517 node_paths=PackedStringArray("miss_sfx")]
 position = Vector2(0, 17.066668)
 script = ExtResource("3_x848m")
 miss_sfx = NodePath("MissSFX")
 
-[node name="MissCollision" type="CollisionShape2D" parent="MissBar"]
+[node name="MissCollision" type="CollisionShape2D" parent="MissBar" unique_id=599261801]
 position = Vector2(-9.536742e-08, 0)
 scale = Vector2(0.99999976, 0.99999976)
 shape = SubResource("RectangleShape2D_qdsxc")
 
-[node name="MissSFX" type="AudioStreamPlayer" parent="MissBar"]
+[node name="MissSFX" type="AudioStreamPlayer" parent="MissBar" unique_id=773637311]
 stream = SubResource("AudioStreamRandomizer_cmq8q")
 volume_db = -20.0
 bus = &"SFX"
 
-[node name="TouchScreenButton" type="TouchScreenButton" parent="."]
+[node name="TouchScreenButton" type="TouchScreenButton" parent="." unique_id=482988997]
 shape = SubResource("ConvexPolygonShape2D_l1w72")
 
 [connection signal="missed" from="MissBar" to="." method="_on_miss_bar_missed"]

@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Beatmap" load_steps=110 format=3 uid="uid://by8mvxhngf53p"]
+[gd_resource type="Resource" script_class="Beatmap" format=3 uid="uid://by8mvxhngf53p"]
 
 [ext_resource type="Script" uid="uid://nbg3jtt8yyoh" path="res://scripts/TimeStampKey.gd" id="1_mv8ii"]
 [ext_resource type="Script" uid="uid://dflfigbm8j6fj" path="res://scripts/beatmap.gd" id="2_76ctb"]

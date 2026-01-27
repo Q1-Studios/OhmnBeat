@@ -1,7 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://ijo4bvqkw1sv"]
+[gd_scene format=3 uid="uid://ijo4bvqkw1sv"]
 
 [ext_resource type="Script" uid="uid://dtp0b7s8c6vtx" path="res://scripts/line_2d_formatter.gd" id="1_3ft2c"]
 
-[node name="Line2DFormatter" type="Line2D"]
+[node name="Line2DFormatter" type="Line2D" unique_id=1581070497]
 points = PackedVector2Array(330, 703)
 script = ExtResource("1_3ft2c")

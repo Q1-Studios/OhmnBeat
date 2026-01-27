@@ -1,8 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://bcdqwk2oqbq4w"]
+[gd_scene format=3 uid="uid://bcdqwk2oqbq4w"]
 
 [ext_resource type="Script" uid="uid://b7ccurasquhpu" path="res://scripts/cursorwave.gd" id="1_lftaj"]
 
-[node name="CursorWave" type="Line2D"]
+[node name="CursorWave" type="Line2D" unique_id=1116974659]
 rotation = -1.5707963
 scale = Vector2(8.937601, 8.937601)
 points = PackedVector2Array(0, 0, 15, 0, 7.5, 3.5, 15, 0, 7.5, -3.5)

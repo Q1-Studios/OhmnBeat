@@ -1,12 +1,12 @@
-[gd_scene load_steps=3 format=3 uid="uid://62bl1hreor1j"]
+[gd_scene format=3 uid="uid://62bl1hreor1j"]
 
 [ext_resource type="Script" uid="uid://ijpfmvaupo3m" path="res://scripts/selectable_level.gd" id="1_mwwhk"]
 [ext_resource type="PackedScene" uid="uid://c1yrgscpcae7g" path="res://scenes/button_sound_player.tscn" id="2_mbgow"]
 
-[node name="LevelSelectBtn" type="Button"]
+[node name="LevelSelectBtn" type="Button" unique_id=468324874]
 custom_minimum_size = Vector2(400, 400)
 offset_right = 400.0
 offset_bottom = 400.0
 script = ExtResource("1_mwwhk")
 
-[node name="ButtonSoundPlayer" parent="." instance=ExtResource("2_mbgow")]
+[node name="ButtonSoundPlayer" parent="." unique_id=1955068309 instance=ExtResource("2_mbgow")]

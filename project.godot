@@ -12,10 +12,14 @@ config_version=5
 
 config/name="Ohm'n'Beat"
 run/main_scene="uid://3dacuugsdegt"
-config/features=PackedStringArray("4.5", "GL Compatibility")
+config/features=PackedStringArray("4.6", "GL Compatibility")
 boot_splash/image="uid://dsljb2phhtb43"
 config/icon="uid://b553cij0iend4"
 boot_splash/minimum_display_time=1000
+
+[audio]
+
+buses/default_bus_layout="uid://b18jsvbh1o0a5"
 
 [autoload]
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://kq6qyxrwdsp1"]
+[gd_scene format=3 uid="uid://kq6qyxrwdsp1"]
 
 [ext_resource type="PackedScene" uid="uid://c58wjax2eyvgm" path="res://scenes/levels/level.tscn" id="1_0ddxf"]
 [ext_resource type="Resource" uid="uid://dfptbpxdcpi6n" path="res://resources/beatmaps/ShiftyShowdown.tres" id="2_ovf82"]
@@ -21,15 +21,15 @@ shader_parameter/phosphor_clamp = 1.045
 shader_parameter/noise_strength = 0.0250000011875
 shader_parameter/noise_scale = 747.885
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_0my05"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_ovf82"]
 viewport_path = NodePath("SubViewport")
 
-[node name="root" instance=ExtResource("1_0ddxf")]
+[node name="root" unique_id=1757636600 instance=ExtResource("1_0ddxf")]
 level_id = 3
 
 [node name="TextureRect" parent="." index="2"]
 material = SubResource("ShaderMaterial_0my05")
-texture = SubResource("ViewportTexture_0my05")
+texture = SubResource("ViewportTexture_ovf82")
 
 [node name="Manager" parent="SubViewport" index="0"]
 beatMap = ExtResource("2_ovf82")
@@ -37,6 +37,9 @@ beatMap = ExtResource("2_ovf82")
 [node name="Music" parent="SubViewport" index="1"]
 stream = ExtResource("3_ugx5j")
 volume_db = -3.0
+
+[node name="AnimationPlayer" parent="SubViewport/Fancyhex3" index="840"]
+autoplay = &"spin"
 
 [editable path="SubViewport/Manager"]
 [editable path="SubViewport/Manager/Bar"]

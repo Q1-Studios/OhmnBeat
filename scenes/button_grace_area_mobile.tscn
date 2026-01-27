@@ -1,9 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://idb1j54md8ec"]
+[gd_scene format=3 uid="uid://idb1j54md8ec"]
 
 [ext_resource type="Theme" uid="uid://b5x8fwp1vrarc" path="res://resources/themes/no_bg_button_theme.tres" id="1_rl61x"]
 [ext_resource type="Script" uid="uid://choyfx2rmvpky" path="res://scripts/button_grace_area_mobile.gd" id="2_d3x02"]
 
-[node name="MobileGraceArea" type="Button"]
+[node name="MobileGraceArea" type="Button" unique_id=460203261]
 modulate = Color(0, 0, 0, 1)
 offset_left = -119.0
 offset_right = -1.0

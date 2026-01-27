@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://c1yrgscpcae7g"]
+[gd_scene format=3 uid="uid://c1yrgscpcae7g"]
 
 [ext_resource type="Script" uid="uid://ipsopu863uks" path="res://scripts/button_sound_player.gd" id="1_tbans"]
 [ext_resource type="AudioStream" uid="uid://cor6nsymvtjnv" path="res://assets/sfx/ui_click/click1.ogg" id="2_b5xwy"]
@@ -38,17 +38,17 @@ stream_8/stream = ExtResource("15_tq7fp")
 stream_9/stream = ExtResource("16_mmr63")
 stream_10/stream = ExtResource("8_qyn7v")
 
-[node name="ButtonSoundPlayer" type="Node" node_paths=PackedStringArray("click_sfx", "hover_sfx")]
+[node name="ButtonSoundPlayer" type="Node" unique_id=2121138740 node_paths=PackedStringArray("click_sfx", "hover_sfx")]
 script = ExtResource("1_tbans")
 click_sfx = NodePath("ClickSound")
 hover_sfx = NodePath("HoverSound")
 
-[node name="ClickSound" type="AudioStreamPlayer" parent="."]
+[node name="ClickSound" type="AudioStreamPlayer" parent="." unique_id=1136475427]
 stream = SubResource("AudioStreamRandomizer_vebv7")
 volume_db = 10.0
 bus = &"SFX"
 
-[node name="HoverSound" type="AudioStreamPlayer" parent="."]
+[node name="HoverSound" type="AudioStreamPlayer" parent="." unique_id=896835011]
 stream = SubResource("AudioStreamRandomizer_f7hl7")
 volume_db = 10.0
 bus = &"SFX"

@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://tl36e353nly5"]
+[gd_scene format=3 uid="uid://tl36e353nly5"]
 
 [ext_resource type="Shader" uid="uid://csxon2ptntecx" path="res://shaders/crtscreen.gdshader" id="1_362ok"]
 [ext_resource type="Shader" uid="uid://brf2fxm2ewmux" path="res://shaders/accumulator.gdshader" id="2_wxyue"]
@@ -56,27 +56,27 @@ shader = ExtResource("2_wxyue")
 shader_parameter/decay = 0.010000000475
 shader_parameter/hard_cut = 0.0250000011875
 
-[node name="root" type="Node2D" node_paths=PackedStringArray("sub_viewport")]
+[node name="root" type="Node2D" unique_id=2132261300 node_paths=PackedStringArray("sub_viewport")]
 script = SubResource("GDScript_uphyt")
 sub_viewport = NodePath("SubViewport")
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1958300235]
 environment = SubResource("Environment_5gdhr")
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="TextureRect" type="TextureRect" parent="." unique_id=675405569]
 material = SubResource("ShaderMaterial_5gdhr")
 offset_right = 40.0
 offset_bottom = 40.0
 texture = SubResource("ViewportTexture_b4inp")
 metadata/_edit_use_anchors_ = true
 
-[node name="SubViewport" type="SubViewport" parent="."]
+[node name="SubViewport" type="SubViewport" parent="." unique_id=368467162]
 handle_input_locally = false
 size = Vector2i(1920, 1080)
 render_target_clear_mode = 1
 render_target_update_mode = 4
 
-[node name="ColorRect" type="ColorRect" parent="SubViewport"]
+[node name="ColorRect" type="ColorRect" parent="SubViewport" unique_id=598195722]
 material = SubResource("ShaderMaterial_hah7f")
 anchors_preset = 15
 anchor_right = 1.0
@@ -87,9 +87,9 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 color = Color(1, 0, 0, 1)
 
-[node name="ScoreGUI" parent="SubViewport" instance=ExtResource("3_xllif")]
+[node name="ScoreGUI" parent="SubViewport" unique_id=1542173882 instance=ExtResource("3_xllif")]
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1444636134]
 position = Vector2(271, 88)
 offset = Vector2(690, 450)
 script = ExtResource("4_kta5c")

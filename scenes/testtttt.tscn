@@ -1,12 +1,15 @@
-[gd_scene load_steps=3 format=3 uid="uid://uyu3qg2c3w3a"]
+[gd_scene format=3 uid="uid://uyu3qg2c3w3a"]
 
 [ext_resource type="PackedScene" uid="uid://dta6pbius2h1f" path="res://scenes/playbutton.tscn" id="1_ryi7b"]
 [ext_resource type="PackedScene" uid="uid://bcdqwk2oqbq4w" path="res://scenes/mousescene.tscn" id="2_0oegk"]
 
-[node name="Testtttt" type="Node2D"]
+[node name="Testtttt" type="Node2D" unique_id=461087231]
 
-[node name="PLAY" parent="." instance=ExtResource("1_ryi7b")]
-position = Vector2(320, 365)
+[node name="PLAY" parent="." unique_id=1096493721 instance=ExtResource("1_ryi7b")]
+offset_left = 320.0
+offset_top = 365.0
+offset_right = 999.0
+offset_bottom = 610.0
 
-[node name="CursorWave" parent="." instance=ExtResource("2_0oegk")]
+[node name="CursorWave" parent="." unique_id=1397365751 instance=ExtResource("2_0oegk")]
 position = Vector2(1087, 703)

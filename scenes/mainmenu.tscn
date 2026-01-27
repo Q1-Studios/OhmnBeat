@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://3dacuugsdegt"]
+[gd_scene format=3 uid="uid://3dacuugsdegt"]
 
 [ext_resource type="Script" uid="uid://b2hjhdudwvgmq" path="res://scripts/mainMenuworld_environment.gd" id="1_3vvtq"]
 [ext_resource type="Shader" uid="uid://csxon2ptntecx" path="res://shaders/crtscreen.gdshader" id="1_r3g3c"]
@@ -57,28 +57,28 @@ shader = ExtResource("2_3vvtq")
 shader_parameter/decay = 0.010000000475
 shader_parameter/hard_cut = 0.0250000011875
 
-[node name="root" type="Node2D" node_paths=PackedStringArray("sub_viewport")]
+[node name="root" type="Node2D" unique_id=1103302096 node_paths=PackedStringArray("sub_viewport")]
 script = SubResource("GDScript_uphyt")
 sub_viewport = NodePath("SubViewport")
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1399084446]
 environment = SubResource("Environment_5gdhr")
 script = ExtResource("1_3vvtq")
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="TextureRect" type="TextureRect" parent="." unique_id=325576248]
 material = SubResource("ShaderMaterial_5gdhr")
 offset_right = 40.0
 offset_bottom = 40.0
 texture = SubResource("ViewportTexture_b4inp")
 metadata/_edit_use_anchors_ = true
 
-[node name="SubViewport" type="SubViewport" parent="."]
+[node name="SubViewport" type="SubViewport" parent="." unique_id=1039753406]
 handle_input_locally = false
 size = Vector2i(1920, 1080)
 render_target_clear_mode = 1
 render_target_update_mode = 4
 
-[node name="ColorRect" type="ColorRect" parent="SubViewport"]
+[node name="ColorRect" type="ColorRect" parent="SubViewport" unique_id=1456128374]
 material = SubResource("ShaderMaterial_hah7f")
 anchors_preset = 15
 anchor_right = 1.0
@@ -90,13 +90,13 @@ size_flags_vertical = 3
 mouse_filter = 1
 color = Color(1, 0, 0, 1)
 
-[node name="MenuGUI" parent="SubViewport" node_paths=PackedStringArray("environment") instance=ExtResource("3_r3g3c")]
+[node name="MenuGUI" parent="SubViewport" unique_id=75318340 node_paths=PackedStringArray("environment") instance=ExtResource("3_r3g3c")]
 environment = NodePath("../../WorldEnvironment")
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1422158022]
 offset = Vector2(960, 540)
 
-[node name="Music" type="AudioStreamPlayer" parent="."]
+[node name="Music" type="AudioStreamPlayer" parent="." unique_id=1025283259]
 stream = ExtResource("4_3vvtq")
 volume_db = -15.0
 autoplay = true

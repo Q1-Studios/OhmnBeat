@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://qglugrro8xl3"]
+[gd_scene format=3 uid="uid://qglugrro8xl3"]
 
 [ext_resource type="Script" uid="uid://1iqxd0ogilg2" path="res://scripts/scene_manager.gd" id="1_b81s6"]
 [ext_resource type="PackedScene" uid="uid://3dacuugsdegt" path="res://scenes/mainmenu.tscn" id="2_6k21d"]
@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://boqidil8urfmq" path="res://scenes/levels/level3WarpSpeed.tscn" id="6_kad1h"]
 [ext_resource type="PackedScene" uid="uid://kq6qyxrwdsp1" path="res://scenes/levels/level4ShiftyShowdown.tscn" id="7_cjhpt"]
 
-[node name="SceneManager" type="Node"]
+[node name="SceneManager" type="Node" unique_id=1781922450]
 script = ExtResource("1_b81s6")
 menuScene = ExtResource("2_6k21d")
 scoreScene = ExtResource("4_hhobr")
