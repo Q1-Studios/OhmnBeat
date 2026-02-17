@@ -27,19 +27,16 @@ viewport_path = NodePath("SubViewport")
 [node name="root" unique_id=1757636600 instance=ExtResource("1_0ddxf")]
 level_id = 3
 
-[node name="TextureRect" parent="." index="2"]
+[node name="TextureRect" parent="." index="2" unique_id=1611586020]
 material = SubResource("ShaderMaterial_0my05")
 texture = SubResource("ViewportTexture_ovf82")
 
-[node name="Manager" parent="SubViewport" index="0"]
+[node name="Manager" parent="SubViewport" parent_id_path=PackedInt32Array(987971692) index="0" unique_id=131391181]
 beatMap = ExtResource("2_ovf82")
 
-[node name="Music" parent="SubViewport" index="1"]
+[node name="Music" parent="SubViewport" parent_id_path=PackedInt32Array(987971692) index="1" unique_id=499453669]
 stream = ExtResource("3_ugx5j")
 volume_db = -3.0
-
-[node name="AnimationPlayer" parent="SubViewport/Fancyhex3" index="840"]
-autoplay = &"spin"
 
 [editable path="SubViewport/Manager"]
 [editable path="SubViewport/Manager/Bar"]

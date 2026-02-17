@@ -27,21 +27,18 @@ viewport_path = NodePath("SubViewport")
 [node name="root" unique_id=1299789013 instance=ExtResource("1_5xonq")]
 level_id = 1
 
-[node name="TextureRect" parent="." index="2"]
+[node name="TextureRect" parent="." index="2" unique_id=1611586020]
 material = SubResource("ShaderMaterial_5mege")
 texture = SubResource("ViewportTexture_ga37a")
 
-[node name="Manager" parent="SubViewport" index="0"]
+[node name="Manager" parent="SubViewport" parent_id_path=PackedInt32Array(987971692) index="0" unique_id=131391181]
 beatMap = ExtResource("2_302s3")
 
-[node name="Music" parent="SubViewport" index="1"]
+[node name="Music" parent="SubViewport" parent_id_path=PackedInt32Array(987971692) index="1" unique_id=499453669]
 stream = ExtResource("4_xy34d")
 volume_db = -5.0
 
-[node name="AnimationPlayer" parent="SubViewport/Fancyhex3" index="840"]
-autoplay = &"spin"
-
-[node name="Camera2D" parent="." index="5"]
+[node name="Camera2D" parent="." index="5" unique_id=1826682028]
 range_high = 150
 
 [editable path="SubViewport/Manager"]
