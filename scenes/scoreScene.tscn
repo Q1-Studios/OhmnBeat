@@ -90,7 +90,6 @@ color = Color(1, 0, 0, 1)
 [node name="ScoreGUI" parent="SubViewport" unique_id=1542173882 instance=ExtResource("3_xllif")]
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1444636134]
-position = Vector2(271, 88)
-offset = Vector2(690, 450)
+offset = Vector2(960, 540)
 script = ExtResource("4_kta5c")
 range_high = 300
