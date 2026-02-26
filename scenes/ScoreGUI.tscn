@@ -200,9 +200,6 @@ reprise_music = NodePath("RepriseMusic")
 
 [node name="MouseHider" parent="." unique_id=321004488 instance=ExtResource("2_3ip4w")]
 
-[node name="CursorWave" parent="." unique_id=61821200 instance=ExtResource("2_8bkue")]
-position = Vector2(918.2888, 502.03766)
-
 [node name="RepriseMusic" type="AudioStreamPlayer" parent="." unique_id=558423213]
 bus = &"Music"
 script = ExtResource("8_1bmex")
@@ -294,3 +291,6 @@ text = "Mobile"
 horizontal_alignment = 1
 vertical_alignment = 1
 script = ExtResource("12_m4d8m")
+
+[node name="CursorWave" parent="." unique_id=61821200 instance=ExtResource("2_8bkue")]
+position = Vector2(918.2888, 502.03766)
