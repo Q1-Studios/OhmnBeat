@@ -6,7 +6,7 @@ class_name ButtonPreset
 @onready var default_modulate: Color = modulate
 
 var selected: bool = false
-var selectable: bool = true
+@export var selectable: bool = true
 
 var mouse_inside: bool = false
 
