@@ -6,6 +6,10 @@ class_name LevelSelectGUI
 @export_group("Local")
 @export var init_focus: Button
 
+@export var level_select_layer: CanvasItem
+@export var latency_layer: CanvasItem
+@export var latency_exit_focus: Button
+
 var transition_target: PackedScene = null
 var allow_exit: bool = false
 
@@ -31,3 +35,16 @@ func _on_exit_level_select() -> void:
 	if allow_exit:
 		allow_exit = false
 		exit_level_select.emit()
+
+func _on_latency_calibration_clicked() -> void:
+	var music_bus_index: int = AudioServer.get_bus_index("Music")
+	AudioServer.set_bus_mute(music_bus_index, true)
+	latency_layer.show()
+	level_select_layer.hide()
+
+func _on_latency_calibration_exited() -> void:
+	var music_bus_index: int = AudioServer.get_bus_index("Music")
+	AudioServer.set_bus_mute(music_bus_index, false)
+	latency_layer.hide()
+	level_select_layer.show()
+	latency_exit_focus.grab_focus()

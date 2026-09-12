@@ -206,7 +206,7 @@ tracks/5/keys = {
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("../LevelSelectLayer:modulate")
+tracks/6/path = NodePath("../LevelSelectGUI:modulate")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
@@ -218,7 +218,7 @@ tracks/6/keys = {
 tracks/7/type = "value"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("../LevelSelectLayer:visible")
+tracks/7/path = NodePath("../LevelSelectGUI:visible")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
@@ -294,7 +294,7 @@ tracks/12/keys = {
 tracks/13/type = "method"
 tracks/13/imported = false
 tracks/13/enabled = true
-tracks/13/path = NodePath("../LevelSelectLayer")
+tracks/13/path = NodePath("../LevelSelectGUI")
 tracks/13/interp = 1
 tracks/13/loop_wrap = true
 tracks/13/keys = {
@@ -437,7 +437,7 @@ tracks/6/keys = {
 tracks/7/type = "value"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("../LevelSelectLayer:modulate")
+tracks/7/path = NodePath("../LevelSelectGUI:modulate")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
@@ -449,7 +449,7 @@ tracks/7/keys = {
 tracks/8/type = "value"
 tracks/8/imported = false
 tracks/8/enabled = true
-tracks/8/path = NodePath("../LevelSelectLayer:visible")
+tracks/8/path = NodePath("../LevelSelectGUI:visible")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
@@ -1718,7 +1718,7 @@ points = PackedVector2Array(902, 675, 902.258, 674.408, 902.51, 673.832, 902.766
 [node name="Selection_part21" type="Line2D" parent="CreditsText/Credits" unique_id=677793986]
 points = PackedVector2Array(358, 589.14, 354.775, 589.667, 351.697, 590.219, 348.748, 590.834, 345.906, 591.552, 343.153, 592.41, 340.467, 593.448, 337.828, 594.706, 335.218, 596.221, 332.615, 598.033, 330, 600.18, 325.51, 604.932, 321.932, 610.329, 319.291, 616.211, 317.609, 622.417, 316.913, 628.789, 317.224, 635.166, 318.569, 641.39, 320.97, 647.3, 324.453, 652.736, 329.04, 657.54, 333.168, 660.721, 337.355, 663.252, 341.61, 665.206, 345.942, 666.659, 350.357, 667.684, 354.866, 668.356, 359.477, 668.749, 364.197, 668.938, 369.035, 668.997, 374, 669, 374.672, 669, 376.496, 669, 379.184, 669, 382.448, 669, 386, 669, 389.552, 669, 392.816, 669, 395.504, 669, 397.328, 669, 398, 669, 401.815, 668.894, 405.609, 668.58, 409.364, 668.043, 413.061, 667.268, 416.681, 666.241, 420.206, 664.949, 423.615, 663.375, 426.892, 661.508, 430.016, 659.33, 432.97, 656.83, 437.105, 652.197, 440.295, 647.006, 442.549, 641.396, 443.878, 635.505, 444.291, 629.472, 443.799, 623.437, 442.411, 617.537, 440.136, 611.912, 436.986, 606.7, 432.97, 602.04, 428.542, 598.222, 423.979, 595.228, 419.284, 592.961, 414.46, 591.32, 409.511, 590.209, 404.44, 589.528, 399.25, 589.179, 393.944, 589.064, 388.527, 589.084, 383, 589.14, 382.3, 589.14, 380.4, 589.14, 377.6, 589.14, 374.2, 589.14, 370.5, 589.14, 366.8, 589.14, 363.4, 589.14, 360.6, 589.14, 358.7, 589.14, 358, 589.14)
 
-[node name="LevelSelectLayer" parent="." unique_id=2014810091 instance=ExtResource("6_4imi1")]
+[node name="LevelSelectGUI" parent="." unique_id=2014810091 instance=ExtResource("6_4imi1")]
 visible = false
 
 [node name="CursorWave" parent="." unique_id=289517077 instance=ExtResource("1_rwv2g")]
@@ -1746,8 +1746,8 @@ antialiased = true
 script = SubResource("GDScript_ds5pe")
 lines = [NodePath("../../OnBeatLogo/Selection_part13"), NodePath("../../OnBeatLogo/Selection_part14"), NodePath("../../OnBeatLogo/Selection_part15"), NodePath("../../OnBeatLogo/Selection_part16"), NodePath("../../OnBeatLogo/Selection_part17"), NodePath("../../OnBeatLogo/Selection_part18"), NodePath("../../OnBeatLogo/Selection_part19"), NodePath("../../PressAnyKeyText/Paths/Selection_part1"), NodePath("../../PressAnyKeyText/Paths/Selection_part2"), NodePath("../../PressAnyKeyText/Paths/Selection_part3"), NodePath("../../PressAnyKeyText/Paths/Selection_part4"), NodePath("../../PressAnyKeyText/Paths/Selection_part5"), NodePath("../../PressAnyKeyText/Paths/Selection_part6"), NodePath("../../PressAnyKeyText/Paths/Selection_part7"), NodePath("../../PressAnyKeyText/Paths/Selection_part8"), NodePath("../../PressAnyKeyText/Paths/Selection_part9"), NodePath("../../PressAnyKeyText/Paths/Selection_part10"), NodePath("../../PressAnyKeyText/Paths/Selection_part11"), NodePath("../../PressAnyKeyText/Paths/Owl2/Selection_part1"), NodePath("../../PressAnyKeyText/Paths/Owl2/Selection_part2"), NodePath("../../PressAnyKeyText/Paths/Owl2/Selection_part3"), NodePath("../../PressAnyKeyText/Paths/Owl2/Selection_part4"), NodePath("../../PressAnyKeyText/Paths/Owl2/Selection_part5"), NodePath("../../PressAnyKeyText/Paths/Owl2/Selection_part6"), NodePath("../../PressAnyKeyText/Paths/Owl2/Selection_part7"), NodePath("../../PressAnyKeyText/Paths/Owl2/Selection_part8"), NodePath("../../PressAnyKeyText/Paths/Owl2/Selection_part9"), NodePath("../../PressAnyKeyText/Paths/Owl2/Selection_part10"), NodePath("../../PressAnyKeyText/Paths/Owl2/Selection_part11"), NodePath("../../PressAnyKeyText/Paths/Owl2/Selection_part12")]
 
-[connection signal="exit_level_select" from="LevelSelectLayer" to="." method="_on_exit_level_select"]
-[connection signal="transition_to_level" from="LevelSelectLayer" to="." method="_on_transition_to_level"]
-[connection signal="transition_to_level" from="LevelSelectLayer" to="FadeOut" method="_on_transition_to_level"]
+[connection signal="exit_level_select" from="LevelSelectGUI" to="." method="_on_exit_level_select"]
+[connection signal="transition_to_level" from="LevelSelectGUI" to="." method="_on_transition_to_level"]
+[connection signal="transition_to_level" from="LevelSelectGUI" to="FadeOut" method="_on_transition_to_level"]
 
 [editable path="PressAnyKeyText/Paths/Owl2"]

@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://cceqruxjb1v5j"]
 
-[ext_resource type="Theme" uid="uid://b5x8fwp1vrarc" path="res://resources/themes/no_bg_button_theme.tres" id="1_thrss"]
-[ext_resource type="Script" uid="uid://dtpah7fhd6sn5" path="res://scripts/level_select_exit_button.gd" id="2_bxudj"]
-[ext_resource type="PackedScene" uid="uid://c1yrgscpcae7g" path="res://scenes/button_sound_player.tscn" id="3_vvhof"]
+[ext_resource type="Theme" uid="uid://b5x8fwp1vrarc" path="res://resources/themes/no_bg_button_theme.tres" id="1_pmdt6"]
+[ext_resource type="Script" uid="uid://dtpah7fhd6sn5" path="res://scripts/exit_button.gd" id="2_pmdt6"]
+[ext_resource type="PackedScene" uid="uid://c1yrgscpcae7g" path="res://scenes/button_sound_player.tscn" id="3_sneai"]
 
 [node name="ExitButton" type="Button" unique_id=1512175997]
 modulate = Color(0, 0, 0, 1)
@@ -10,11 +10,10 @@ offset_left = 251.0
 offset_top = 90.0
 offset_right = 401.0
 offset_bottom = 240.0
-focus_neighbor_bottom = NodePath("../Levels/HBoxContainer/ContingencyPlant/LevelSelectBtn")
-theme = ExtResource("1_thrss")
-script = ExtResource("2_bxudj")
+theme = ExtResource("1_pmdt6")
+script = ExtResource("2_pmdt6")
 
-[node name="ButtonSoundPlayer" parent="." unique_id=333771393 instance=ExtResource("3_vvhof")]
+[node name="ButtonSoundPlayer" parent="." unique_id=333771393 instance=ExtResource("3_sneai")]
 
 [node name="BackArrow" type="Marker2D" parent="." unique_id=1326828125]
 position = Vector2(-600, -35)

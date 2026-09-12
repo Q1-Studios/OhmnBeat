@@ -1,5 +1,7 @@
 extends Node
 
+var latency_millis: int = 0
+
 # Variables relating to last run/score
 var victory:bool
 var points:int

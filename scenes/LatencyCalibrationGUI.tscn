@@ -1,0 +1,110 @@
+[gd_scene format=3 uid="uid://bi85swsn85h0h"]
+
+[ext_resource type="Script" uid="uid://bnrcrdcqd110u" path="res://scripts/latency_calibration_gui.gd" id="1_2ty45"]
+[ext_resource type="AudioStream" uid="uid://b5hthndbh7rcg" path="res://assets/sfx/calibration/calibration.ogg" id="1_deifc"]
+[ext_resource type="FontFile" uid="uid://7u54b7ave0i7" path="res://assets/fonts/ethnocen.ttf" id="2_c6qvj"]
+[ext_resource type="Script" uid="uid://dtat1elu36abw" path="res://scripts/latency_label.gd" id="3_2fjm1"]
+[ext_resource type="Script" uid="uid://bo5k6rqeopy5p" path="res://scripts/sync_latency_line.gd" id="4_tcbm0"]
+[ext_resource type="Script" uid="uid://g1bltbjrf2ca" path="res://scripts/sync_audio_progress_line.gd" id="5_6a8uk"]
+[ext_resource type="PackedScene" uid="uid://cceqruxjb1v5j" path="res://scenes/exit_btn.tscn" id="7_2fjm1"]
+[ext_resource type="PackedScene" uid="uid://idb1j54md8ec" path="res://scenes/button_grace_area_mobile.tscn" id="8_6a8uk"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_jdkbx"]
+font = ExtResource("2_c6qvj")
+font_size = 64
+font_color = Color(0.5921569, 0.5921569, 0.5921569, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_valv0"]
+font = ExtResource("2_c6qvj")
+font_size = 48
+font_color = Color(0.5931336, 0.59313357, 0.59313357, 1)
+
+[node name="LatencyCalibrationGUI" type="Node2D" unique_id=2076164255 node_paths=PackedStringArray("init_focus", "latency_src", "latency_sfx")]
+script = ExtResource("1_2ty45")
+init_focus = NodePath("ExitButton")
+latency_src = NodePath("LatencyLine")
+latency_sfx = NodePath("AudioStreamPlayer")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=130384900]
+stream = ExtResource("1_deifc")
+volume_db = -5.0
+bus = &"SFX"
+
+[node name="Control" type="Control" parent="." unique_id=462704177]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+
+[node name="Label" type="Label" parent="Control" unique_id=1442623600]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 112.0
+offset_bottom = 217.0
+grow_horizontal = 2
+text = "Latency Calibration"
+label_settings = SubResource("LabelSettings_jdkbx")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LatencyLabel" type="Label" parent="Control" unique_id=115781069 node_paths=PackedStringArray("latency_src")]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = -0.5
+offset_top = 215.0
+offset_right = -0.5
+offset_bottom = 432.0
+grow_horizontal = 2
+text = "0 ms"
+label_settings = SubResource("LabelSettings_valv0")
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("3_2fjm1")
+latency_src = NodePath("../../LatencyLine")
+
+[node name="Instructions" type="Label" parent="Control" unique_id=1281460383]
+custom_minimum_size = Vector2(1920, 0)
+custom_maximum_size = Vector2(1920, -1)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -425.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Adjust the position of the long line
+so that the small line hits it
+when you hear the beep."
+label_settings = SubResource("LabelSettings_valv0")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="LatencyLine" type="Line2D" parent="." unique_id=218394086 node_paths=PackedStringArray("audio", "label")]
+position = Vector2(960, 432)
+points = PackedVector2Array(-960, 0, 960, 0)
+default_color = Color(1.5, 0.8, 0.2, 1)
+script = ExtResource("4_tcbm0")
+audio = NodePath("../AudioStreamPlayer")
+label = NodePath("../Control/LatencyLabel")
+start_screen_percentage = 0.4
+
+[node name="ProgressLine" type="Line2D" parent="." unique_id=1926049471 node_paths=PackedStringArray("audio")]
+position = Vector2(960, 0)
+points = PackedVector2Array(-200, 0, 200, 0)
+script = ExtResource("5_6a8uk")
+audio = NodePath("../AudioStreamPlayer")
+start_screen_percentage = 0.4
+
+[node name="ExitButton" parent="." unique_id=1512175997 instance=ExtResource("7_2fjm1")]
+modulate = Color(1, 1, 1, 1)
+
+[node name="MobileGraceArea" parent="ExitButton" unique_id=460203261 instance=ExtResource("8_6a8uk")]
+layout_mode = 0
+offset_left = -245.0
+offset_right = 118.0
+
+[connection signal="exit" from="ExitButton" to="." method="_on_exit_button_pressed"]
