@@ -9,6 +9,8 @@ class_name LatencyLine
 
 const SPEED: int = 40
 
+var legal_mouse_init: bool = false
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	position.y = start_screen_percentage * y_distance
@@ -23,7 +25,19 @@ func _process(delta: float) -> void:
 		position.y -= SPEED * delta
 	if(Input.is_action_pressed("ui_down")):
 		position.y += SPEED * delta
+	if(Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT) and legal_mouse_init):
+		position.y = get_viewport().get_mouse_position().y
 	position.y = clamp(position.y, start_screen_percentage * y_distance, y_distance)
+
+
+func _input(event: InputEvent) -> void:
+	if(event is InputEventMouseButton
+	and event.button_index == MOUSE_BUTTON_LEFT
+	and event.pressed):
+		if(event.position.y >= start_screen_percentage * y_distance):
+			legal_mouse_init = true
+		else:
+			legal_mouse_init = false
 
 
 func get_latency() -> int:
