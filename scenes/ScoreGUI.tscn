@@ -7,13 +7,13 @@
 [ext_resource type="PackedScene" uid="uid://bcdqwk2oqbq4w" path="res://scenes/mousescene.tscn" id="2_8bkue"]
 [ext_resource type="PackedScene" uid="uid://wd1kdyvcphow" path="res://scenes/quitbutton.tscn" id="4_1bmex"]
 [ext_resource type="FontFile" uid="uid://7u54b7ave0i7" path="res://assets/fonts/ethnocen.ttf" id="4_f1sb5"]
-[ext_resource type="Script" uid="uid://b827ad2p7ghva" path="res://scripts/rich_text_label.gd" id="5_7xfkq"]
 [ext_resource type="Script" uid="uid://bfmhd3f3f21a" path="res://scripts/outcome_text.gd" id="6_nq3vv"]
 [ext_resource type="Script" uid="uid://p04n1cdsny6g" path="res://scripts/reprise_music.gd" id="8_1bmex"]
 [ext_resource type="Script" uid="uid://o4klbabn6lfq" path="res://scripts/exit_to_main_menu.gd" id="8_74mtw"]
 [ext_resource type="AudioStream" uid="uid://baybfgj38cd2g" path="res://assets/music/ContingencyPlant_Reprise.ogg" id="9_otn0o"]
 [ext_resource type="AudioStream" uid="uid://d2h8wv02d4dgc" path="res://assets/music/WithTheCurrent_Reprise.ogg" id="10_otn0o"]
 [ext_resource type="AudioStream" uid="uid://cpq5o1nnwfx41" path="res://assets/music/WarpSpeed_OhmBeatEdit_Reprise.ogg" id="11_mu0s0"]
+[ext_resource type="Script" uid="uid://h40c53u1cqhp" path="res://scripts/scores_text.gd" id="12_6i2qx"]
 [ext_resource type="Script" uid="uid://c6moxo5qoybc0" path="res://scripts/platform_text.gd" id="12_m4d8m"]
 [ext_resource type="AudioStream" uid="uid://e6copueg0ush" path="res://assets/music/ShiftyShowdown_OhmBeatEdit_Reprise.ogg" id="15_luylr"]
 
@@ -44,6 +44,10 @@ song_title = "Shifty Showdown"
 reprise_stream = ExtResource("15_luylr")
 reprise_volume_db = -3.0
 metadata/_custom_type_script = "uid://cmh78knw1uq2k"
+
+[sub_resource type="LabelSettings" id="LabelSettings_valv0"]
+font = ExtResource("4_f1sb5")
+font_size = 60
 
 [sub_resource type="Animation" id="Animation_dfy5j"]
 length = 0.001
@@ -229,23 +233,104 @@ text = "Contingency Plant"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ScoresText" type="RichTextLabel" parent="." unique_id=1437107240]
-layout_mode = 1
-offset_left = 260.0
+[node name="ScoresText" type="GridContainer" parent="." unique_id=304855412 node_paths=PackedStringArray("perfectLabel", "greatLabel", "missLabel", "noHitLabel", "totalScoreLabel")]
+layout_mode = 0
+offset_left = 247.0
 offset_top = 310.0
-offset_right = 1900.0
-offset_bottom = 860.0
-theme_override_fonts/normal_font = ExtResource("4_f1sb5")
-theme_override_font_sizes/normal_font_size = 60
-text = "
-Perfect:						20x
+offset_right = 1677.0
+offset_bottom = 830.0
+columns = 2
+script = ExtResource("12_6i2qx")
+perfectLabel = NodePath("PerfectAmount")
+greatLabel = NodePath("GreatAmount")
+missLabel = NodePath("MissAmount")
+noHitLabel = NodePath("NoHitAmount")
+totalScoreLabel = NodePath("TotalScore")
 
-Great:						10x
+[node name="Perfect" type="Label" parent="ScoresText" unique_id=759835904]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Perfect:"
+label_settings = SubResource("LabelSettings_valv0")
+vertical_alignment = 1
 
-Miss:							5x
+[node name="PerfectAmount" type="Label" parent="ScoresText" unique_id=519326739]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "20x"
+label_settings = SubResource("LabelSettings_valv0")
+horizontal_alignment = 2
+vertical_alignment = 1
 
-Total Score:			100000 Pts"
-script = ExtResource("5_7xfkq")
+[node name="Great" type="Label" parent="ScoresText" unique_id=1574062163]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Great:"
+label_settings = SubResource("LabelSettings_valv0")
+vertical_alignment = 1
+
+[node name="GreatAmount" type="Label" parent="ScoresText" unique_id=1110285789]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "10x"
+label_settings = SubResource("LabelSettings_valv0")
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Miss" type="Label" parent="ScoresText" unique_id=936414580]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Miss:"
+label_settings = SubResource("LabelSettings_valv0")
+vertical_alignment = 1
+
+[node name="MissAmount" type="Label" parent="ScoresText" unique_id=564764853]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "5x"
+label_settings = SubResource("LabelSettings_valv0")
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="NoHit" type="Label" parent="ScoresText" unique_id=1085518690]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Error:"
+label_settings = SubResource("LabelSettings_valv0")
+vertical_alignment = 1
+
+[node name="NoHitAmount" type="Label" parent="ScoresText" unique_id=205362247]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "2x"
+label_settings = SubResource("LabelSettings_valv0")
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Total" type="Label" parent="ScoresText" unique_id=723929665]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Total Score:"
+label_settings = SubResource("LabelSettings_valv0")
+vertical_alignment = 1
+
+[node name="TotalScore" type="Label" parent="ScoresText" unique_id=834232350]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "100000 PTS"
+label_settings = SubResource("LabelSettings_valv0")
+horizontal_alignment = 2
+vertical_alignment = 1
 
 [node name="MenuButtons" type="Control" parent="." unique_id=1501864594]
 anchors_preset = 0
