@@ -688,7 +688,6 @@ offset_bottom = 239.0
 
 [node name="ExitButton" parent="LevelSelectLayer/HBoxContainer" unique_id=1854582931 instance=ExtResource("2_g5sca")]
 layout_mode = 2
-focus_neighbor_right = NodePath("../LatencyButton")
 focus_neighbor_bottom = NodePath("../../Levels/HBoxContainer/ContingencyPlant/LevelSelectBtn")
 
 [node name="MobileGraceArea" parent="LevelSelectLayer/HBoxContainer/ExitButton" unique_id=1492430613 instance=ExtResource("3_onb6o")]
@@ -706,9 +705,7 @@ modulate = Color(0, 0, 0, 1)
 custom_minimum_size = Vector2(320, 150)
 custom_maximum_size = Vector2(320, 150)
 layout_mode = 2
-focus_neighbor_left = NodePath("../ExitButton")
-focus_neighbor_right = NodePath("../ResetScoresButton")
-focus_neighbor_bottom = NodePath("../../Levels/HBoxContainer/ContingencyPlant/LevelSelectBtn")
+focus_neighbor_bottom = NodePath("../../Levels/HBoxContainer/WithTheCurrent/LevelSelectBtn")
 theme = ExtResource("4_mqe8u")
 script = ExtResource("5_hngwy")
 
@@ -759,7 +756,7 @@ size_flags_horizontal = 3
 modulate = Color(0, 0, 0, 1)
 custom_minimum_size = Vector2(265, 150)
 layout_mode = 2
-focus_neighbor_left = NodePath("../LatencyButton")
+focus_neighbor_bottom = NodePath("../../Levels/HBoxContainer/ShiftyShowdown/LevelSelectBtn")
 theme = ExtResource("4_mqe8u")
 script = ExtResource("8_xubo2")
 danger_text = "Reset
@@ -857,6 +854,7 @@ size_flags_horizontal = 3
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+focus_neighbor_top = NodePath("../../../../HBoxContainer/LatencyButton")
 level_config = SubResource("Resource_rxeqv")
 
 [node name="Omega" type="Marker2D" parent="LevelSelectLayer/Levels/HBoxContainer/WithTheCurrent/LevelSelectBtn" unique_id=1333236326]
@@ -904,6 +902,7 @@ size_flags_horizontal = 3
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+focus_neighbor_top = NodePath("../../../../HBoxContainer/LatencyButton")
 level_config = SubResource("Resource_mqe8u")
 
 [node name="Omega" type="Marker2D" parent="LevelSelectLayer/Levels/HBoxContainer/WarpSpeed/LevelSelectBtn" unique_id=6251052]
@@ -956,6 +955,7 @@ size_flags_horizontal = 3
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+focus_neighbor_top = NodePath("../../../../HBoxContainer/ResetScoresButton")
 level_config = SubResource("Resource_ej5xt")
 
 [node name="Omega" type="Marker2D" parent="LevelSelectLayer/Levels/HBoxContainer/ShiftyShowdown/LevelSelectBtn" unique_id=1336067519]
