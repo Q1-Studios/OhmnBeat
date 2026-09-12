@@ -14,6 +14,7 @@ signal perfectHit
 signal okInnerHit
 signal okOuterHit
 signal noHit
+signal miss
 
 var randomEnemyOffsetX: int
 var enemyDestination: Vector2
@@ -100,5 +101,5 @@ func resync_enemies() -> void:
 		enemy.resync_progress(manager.get_playback_position())
 
 func _on_miss_bar_missed(enemy: Enemy) -> void:
-	noHit.emit()
+	miss.emit()
 	erase_enemy(enemy)

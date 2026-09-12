@@ -8,5 +8,6 @@ var points:int
 var perfectAmount:int 
 var okAmount:int 
 var missAmount:int
+var noHitAmount:int
 
 var currentLevel: SceneManager.LevelIds = SceneManager.LevelIds.LEVEL1

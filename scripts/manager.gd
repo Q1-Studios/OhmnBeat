@@ -7,15 +7,18 @@ class_name HitBarManager
 
 @export_group("MissGreatPerfect Indicators")
 @export var miss: CanvasItem
+@export var no_hit: CanvasItem
 @export var great: CanvasItem
 @export var perfect: CanvasItem
 @export var miss_animation: AnimationPlayer
+@export var no_hit_animation: AnimationPlayer
 @export var great_animation: AnimationPlayer
 @export var perfect_animation: AnimationPlayer
 
 signal perfectSignal
 signal okSignal
 signal missSignal
+signal noHitSignal
 
 #Points
 const PERFECTPOINTS:int = 300
@@ -26,6 +29,7 @@ var points:int = 0
 var perfectAmount:int = 0
 var okAmount:int = 0
 var missAmount:int = 0
+var noHitAmount:int = 0
 
 #Health
 const DAMAGE:int = 10
@@ -112,21 +116,38 @@ func _on_bar_ok_outer_hit() -> void:
 	okHit()
 
 func _on_bar_no_hit() -> void:
+	nothingHit()
+
+func _on_bar_miss() -> void:
 	missed()
 
 func missed():
 	if health > 0:
 		health -= DAMAGE
 		health = clamp(health, 0, 100)
-		print("Missed! Current Health: ", health)
 		missAmount += 1
 		ManagerGlobal.missAmount = missAmount
 		missSignal.emit()
 		
 		miss.show()
+		no_hit.hide()
 		great.hide()
 		perfect.hide()
 		miss_animation.play("swobble")
+
+func nothingHit():
+	if health > 0:
+		health -= DAMAGE
+		health = clamp(health, 0, 100)
+		noHitAmount += 1
+		ManagerGlobal.noHitAmount = noHitAmount
+		noHitSignal.emit()
+		
+		miss.hide()
+		no_hit.show()
+		great.hide()
+		perfect.hide()
+		no_hit_animation.play("swobble")
 
 func okHit():
 	if health > 0:
@@ -137,6 +158,7 @@ func okHit():
 		okSignal.emit()
 		
 		miss.hide()
+		no_hit.hide()
 		great.show()
 		perfect.hide()
 		great_animation.play("swobble")
@@ -145,7 +167,6 @@ func perfectHit():
 	if health > 0:
 		health += RECOVER
 		health = clamp(health, 0, 100)
-		print("Perfect! Current Health: ", health)
 		points += PERFECTPOINTS
 		ManagerGlobal.points = points
 		perfectAmount += 1
@@ -153,6 +174,7 @@ func perfectHit():
 		perfectSignal.emit()
 		
 		miss.hide()
+		no_hit.hide()
 		great.hide()
 		perfect.show()
 		perfect_animation.play("swobble")
