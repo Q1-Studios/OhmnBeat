@@ -9,8 +9,8 @@ extends GridContainer
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	perfectLabel.text = str(ManagerGlobal.perfectAmount, "x")
-	greatLabel.text = str(ManagerGlobal.okAmount, "x")
-	missLabel.text = str(ManagerGlobal.missAmount, "x")
-	noHitLabel.text = str(ManagerGlobal.noHitAmount, "x")
+	perfectLabel.text = str(ManagerGlobal.perfectAmount)
+	greatLabel.text = str(ManagerGlobal.okAmount)
+	missLabel.text = str(ManagerGlobal.missAmount)
+	noHitLabel.text = str(ManagerGlobal.noHitAmount)
 	totalScoreLabel.text = str(ManagerGlobal.points, " Pts")
