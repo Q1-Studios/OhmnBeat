@@ -5,10 +5,10 @@ extends Label
 func _ready() -> void:
 	text = ""
 	var current_level: SceneManager.LevelIds = ManagerGlobal.currentLevel
-	var prev_highscore: ScoreRecord = ManagerGlobal.highscores.get(current_level)
+	var prev_highscore: ScoreRecord = ManagerGlobal.get_highscore(current_level)
 	var current_score = build_score_record()
 	
-	if(prev_highscore == null or current_score.score > prev_highscore.score):
+	if(current_score.score > prev_highscore.score):
 		text = "New highscore!"
 	if(current_score.perfect):
 		text = "Perfect score!"

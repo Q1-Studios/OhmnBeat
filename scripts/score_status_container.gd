@@ -14,10 +14,7 @@ func _ready() -> void:
 	checkmark_container.hide()
 	
 	var level_id: SceneManager.LevelIds = parent_btn.level_config.level_id
-	var score_record: ScoreRecord = ManagerGlobal.highscores.get(level_id)
-	
-	if(score_record == null):
-		return
+	var score_record: ScoreRecord = ManagerGlobal.get_highscore(level_id)
 	
 	score.text = str(score_record.score, " Pts")
 	if(score_record.complete):

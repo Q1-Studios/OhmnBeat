@@ -1,6 +1,7 @@
 extends Node
 
 const SAVE_PATH = "user://savegame.tres"
+var savegame: SaveGame
 
 var latency_millis: int = 0
 
@@ -14,19 +15,18 @@ var noHitAmount:int
 
 var currentLevel: SceneManager.LevelIds = SceneManager.LevelIds.LEVEL1
 
-var highscores: Dictionary[SceneManager.LevelIds, ScoreRecord] = {}
-
 func _ready() -> void:
-	load_game()
+	savegame = load_game()
+
+func get_highscore(level_id: SceneManager.LevelIds) -> ScoreRecord:
+	var score_record: ScoreRecord = savegame.scores.get(level_id)
+	if(score_record == null): 
+		return ScoreRecord.new()
+	return score_record
 
 func submit_score(level_id: SceneManager.LevelIds, new_score: ScoreRecord) -> void:
-	var prev_score: ScoreRecord = highscores.get(level_id)
-	
-	if(prev_score == null):
-		highscores.set(level_id, new_score)
-		save_game()
-		return
-	
+	var prev_score: ScoreRecord = get_highscore(level_id)
+
 	var stored_score: ScoreRecord = ScoreRecord.new()
 	stored_score.complete = (prev_score.complete or new_score.complete)
 	stored_score.perfect = (prev_score.perfect or new_score.perfect)
@@ -35,16 +35,14 @@ func submit_score(level_id: SceneManager.LevelIds, new_score: ScoreRecord) -> vo
 	if(new_score.score > prev_score.score):
 		stored_score.score = new_score.score
 	
-	highscores.set(level_id, stored_score)
+	savegame.scores.set(level_id, stored_score)
 	save_game()
 
 func save_game() -> void:
-	var savegame: SaveGame = SaveGame.new()
-	savegame.scores = highscores
-	
 	ResourceSaver.save(savegame, SAVE_PATH)
 
-func load_game() -> void:
+func load_game() -> SaveGame:
 	if(ResourceLoader.exists(SAVE_PATH)):
-		var savegame: SaveGame = ResourceLoader.load(SAVE_PATH, "SaveGame")
-		highscores = savegame.scores
+		return ResourceLoader.load(SAVE_PATH, "SaveGame")
+	else:
+		return SaveGame.new()
