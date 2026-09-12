@@ -683,7 +683,7 @@ default_color = Color(0, 0, 0, 1)
 [node name="HBoxContainer" type="HBoxContainer" parent="LevelSelectLayer" unique_id=92549201]
 offset_left = 242.0
 offset_top = 89.0
-offset_right = 1704.0
+offset_right = 1685.0
 offset_bottom = 239.0
 
 [node name="ExitButton" parent="LevelSelectLayer/HBoxContainer" unique_id=1854582931 instance=ExtResource("2_g5sca")]
@@ -733,7 +733,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="ArrowheadLeft" type="Marker2D" parent="LevelSelectLayer/HBoxContainer/LatencyButton" unique_id=2062585831]
-position = Vector2(47, 72)
+position = Vector2(45, 72)
 scale = Vector2(0.4, 0.4)
 
 [node name="Selection_part30" type="Line2D" parent="LevelSelectLayer/HBoxContainer/LatencyButton/ArrowheadLeft" unique_id=263644016]
@@ -755,33 +755,47 @@ points = PackedVector2Array(1669, 313, 1668.13, 312.768, 1665.78, 312.138, 1662.
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="ResetScoresButton" type="Button" parent="LevelSelectLayer/HBoxContainer" unique_id=1350759837]
+[node name="ResetScoresButton" type="Button" parent="LevelSelectLayer/HBoxContainer" unique_id=1350759837 node_paths=PackedStringArray("label", "hide_on_danger")]
 modulate = Color(0, 0, 0, 1)
 custom_minimum_size = Vector2(265, 150)
-custom_maximum_size = Vector2(265, 150)
 layout_mode = 2
 focus_neighbor_left = NodePath("../LatencyButton")
 theme = ExtResource("4_mqe8u")
 script = ExtResource("8_xubo2")
+danger_text = "Reset
+Scores?"
+danger_modulate = Color(0.7738555, 2.23808e-06, 9.62615e-07, 1)
+label = NodePath("Label")
+hide_on_danger = NodePath("ArrowheadLeft")
 
 [node name="ButtonSoundPlayer" parent="LevelSelectLayer/HBoxContainer/ResetScoresButton" unique_id=1672320082 instance=ExtResource("7_ej5xt")]
 
 [node name="Label" type="Label" parent="LevelSelectLayer/HBoxContainer/ResetScoresButton" unique_id=193160744]
 layout_mode = 1
-anchors_preset = 6
-anchor_left = 1.0
-anchor_top = 0.5
+anchors_preset = 15
 anchor_right = 1.0
-anchor_bottom = 0.5
-offset_left = -206.0
-offset_top = -17.0
-offset_bottom = 17.0
-grow_horizontal = 0
+anchor_bottom = 1.0
+grow_horizontal = 2
 grow_vertical = 2
-text = "RESET"
+text = "Reset"
 label_settings = SubResource("LabelSettings_valv0")
-horizontal_alignment = 1
+horizontal_alignment = 2
 vertical_alignment = 1
+
+[node name="ArrowheadLeft" type="Marker2D" parent="LevelSelectLayer/HBoxContainer/ResetScoresButton" unique_id=879135853]
+position = Vector2(105, 72)
+scale = Vector2(0.4, 0.4)
+
+[node name="Selection_part30" type="Line2D" parent="LevelSelectLayer/HBoxContainer/ResetScoresButton/ArrowheadLeft" unique_id=67400720]
+position = Vector2(1562.5, 277.49997)
+rotation = -3.1415925
+scale = Vector2(0.99999994, 0.99999994)
+points = PackedVector2Array(1669, 313, 1668.13, 312.768, 1665.78, 312.138, 1662.3, 311.209, 1658.09, 310.082, 1653.5, 308.855, 1648.91, 307.628, 1644.7, 306.501, 1641.22, 305.572, 1638.87, 304.942, 1638, 304.71, 1636.71, 304.346, 1633.22, 303.358, 1628.06, 301.902, 1621.81, 300.134, 1615, 298.21, 1608.19, 296.286, 1601.94, 294.518, 1596.78, 293.062, 1593.29, 292.074, 1592, 291.71, 1589.62, 291.091, 1586.88, 290.437, 1583.91, 289.707, 1580.84, 288.859, 1577.82, 287.852, 1574.96, 286.646, 1572.41, 285.199, 1570.29, 283.47, 1568.74, 281.417, 1567.89, 279, 1567.81, 276.034, 1568.57, 273.545, 1570.04, 271.478, 1572.07, 269.779, 1574.53, 268.394, 1577.25, 267.269, 1580.1, 266.35, 1582.94, 265.584, 1585.62, 264.915, 1588, 264.29, 1589.71, 263.806, 1594.34, 262.492, 1601.18, 260.555, 1609.47, 258.204, 1618.5, 255.645, 1627.53, 253.086, 1635.82, 250.735, 1642.66, 248.798, 1647.29, 247.484, 1649, 247, 1650.16, 246.65, 1651.78, 246.156, 1653.72, 245.565, 1655.88, 244.926, 1658.13, 244.286, 1660.36, 243.695, 1662.45, 243.201, 1664.28, 242.851, 1665.73, 242.695, 1666.69, 242.78, 1667.45, 243.176, 1668.02, 243.77, 1668.45, 244.523, 1668.73, 245.396, 1668.91, 246.35, 1669.01, 247.348, 1669.04, 248.35, 1669.03, 249.319, 1669.01, 250.215, 1669, 251, 1669.01, 251.843, 1669.02, 252.932, 1669.04, 254.2, 1669.04, 255.581, 1669.03, 257.01, 1669, 258.421, 1668.93, 259.748, 1668.82, 260.926, 1668.65, 261.889, 1668.43, 262.57, 1667.65, 263.464, 1666.29, 264.339, 1664.48, 265.184, 1662.34, 265.989, 1660.01, 266.743, 1657.62, 267.434, 1655.29, 268.054, 1653.16, 268.59, 1651.35, 269.032, 1650, 269.37, 1647.67, 269.98, 1644.96, 270.693, 1641.98, 271.492, 1638.83, 272.359, 1635.61, 273.276, 1632.43, 274.226, 1629.37, 275.192, 1626.55, 276.154, 1624.06, 277.096, 1622, 278, 1622.95, 278.26, 1625.54, 278.966, 1629.34, 280.007, 1633.97, 281.27, 1639, 282.645, 1644.03, 284.02, 1648.66, 285.283, 1652.46, 286.324, 1655.05, 287.03, 1656, 287.29, 1657.06, 287.576, 1658.3, 287.894, 1659.65, 288.248, 1661.08, 288.646, 1662.51, 289.094, 1663.91, 289.598, 1665.2, 290.164, 1666.35, 290.799, 1667.3, 291.509, 1667.98, 292.3, 1668.42, 293.418, 1668.74, 295.094, 1668.95, 297.199, 1669.07, 299.602, 1669.13, 302.174, 1669.13, 304.783, 1669.1, 307.301, 1669.06, 309.596, 1669.02, 311.539, 1669, 313)
+
+[node name="MobileGraceArea" parent="LevelSelectLayer/HBoxContainer/ResetScoresButton" unique_id=460203261 instance=ExtResource("3_onb6o")]
+layout_mode = 0
+offset_left = 266.0
+offset_right = 505.0
 
 [node name="Levels" type="Node2D" parent="LevelSelectLayer" unique_id=1439274069]
 
