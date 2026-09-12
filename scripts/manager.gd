@@ -34,7 +34,6 @@ var health:int = 100
 
 #Music/God function
 @onready var beatMapLength: int = beatMap.data.size()
-@onready var musicLatency:float = AudioServer.get_output_latency()
 const silence_time: float = 3.0
 var already_waited_time: float = 0
 var enemyTracker:int = 0
@@ -70,7 +69,7 @@ func _process(delta: float) -> void:
 	if currentSongProgress <= 1 and hasStarted:
 		#print("currentTime in seconds", currentTimeMs)
 		#print("songLength")
-		currentSongProgress = music.get_playback_position() / songLength
+		currentSongProgress = get_playback_position() / songLength
 		#print("progress", currentSongProgress)
 	
 	if enemyTracker < beatMapLength:
@@ -159,7 +158,7 @@ func perfectHit():
 		perfect_animation.play("swobble")
 
 func get_playback_position() -> float:
-	return music.get_playback_position() + AudioServer.get_time_to_next_mix() + musicLatency
+	return music.get_playback_position() + AudioServer.get_time_to_next_mix() - (ManagerGlobal.latency_millis / 1000.0)
 
 func _on_quit_level_btn_pressed() -> void:
 	health = 0
