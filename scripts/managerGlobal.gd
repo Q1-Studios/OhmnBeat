@@ -27,15 +27,15 @@ func get_highscore(level_id: SceneManager.LevelIds) -> ScoreRecord:
 func submit_score(level_id: SceneManager.LevelIds, new_score: ScoreRecord) -> void:
 	var prev_score: ScoreRecord = get_highscore(level_id)
 
-	var stored_score: ScoreRecord = ScoreRecord.new()
-	stored_score.complete = (prev_score.complete or new_score.complete)
-	stored_score.perfect = (prev_score.perfect or new_score.perfect)
+	var to_store_score: ScoreRecord = ScoreRecord.new()
+	to_store_score.complete = (prev_score.complete or new_score.complete)
+	to_store_score.perfect = (prev_score.perfect or new_score.perfect)
 	
-	stored_score.score = prev_score.score
+	to_store_score.score = prev_score.score
 	if(new_score.score > prev_score.score):
-		stored_score.score = new_score.score
+		to_store_score.score = new_score.score
 	
-	savegame.scores.set(level_id, stored_score)
+	savegame.scores.set(level_id, to_store_score)
 	save_game()
 
 func save_game() -> void:
