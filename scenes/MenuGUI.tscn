@@ -125,9 +125,6 @@ tracks/5/keys = {
 }]
 }
 
-[sub_resource type="Animation" id="Animation_uui5l"]
-resource_name = "CreditsClicked"
-
 [sub_resource type="Animation" id="Animation_h73c4"]
 resource_name = "PlayClicked"
 length = 1.017
@@ -425,31 +422,31 @@ tracks/5/keys = {
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("../TutorialText:visible")
+tracks/6/path = NodePath("../LevelSelectGUI:modulate")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
 }
 tracks/7/type = "value"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("../LevelSelectGUI:modulate")
+tracks/7/path = NodePath("../LevelSelectGUI:visible")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
+"update": 1,
+"values": [false]
 }
 tracks/8/type = "value"
 tracks/8/imported = false
 tracks/8/enabled = true
-tracks/8/path = NodePath("../LevelSelectGUI:visible")
+tracks/8/path = NodePath("PlayButton:disabled")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
@@ -461,55 +458,55 @@ tracks/8/keys = {
 tracks/9/type = "value"
 tracks/9/imported = false
 tracks/9/enabled = true
-tracks/9/path = NodePath("PlayButton:disabled")
+tracks/9/path = NodePath("VibrateToggleButton:modulate")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
 }
 tracks/10/type = "value"
 tracks/10/imported = false
 tracks/10/enabled = true
-tracks/10/path = NodePath("VibrateToggleButton:modulate")
+tracks/10/path = NodePath("VibrateToggleButton:selectable")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
+"update": 1,
+"values": [true]
 }
 tracks/11/type = "value"
 tracks/11/imported = false
 tracks/11/enabled = true
-tracks/11/path = NodePath("VibrateToggleButton:selectable")
+tracks/11/path = NodePath("VibrateToggleButton:disabled")
 tracks/11/interp = 1
 tracks/11/loop_wrap = true
 tracks/11/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [true]
+"values": [false]
 }
 tracks/12/type = "value"
 tracks/12/imported = false
 tracks/12/enabled = true
-tracks/12/path = NodePath("VibrateToggleButton:disabled")
+tracks/12/path = NodePath("../TutorialText:modulate")
 tracks/12/interp = 1
 tracks/12/loop_wrap = true
 tracks/12/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_s5g8n"]
 resource_name = "swoopin"
-length = 3.01
+length = 0.65050423
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -525,32 +522,31 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("../TutorialText:visible")
+tracks/1/path = NodePath("../PressAnyKeyText/Paths:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0.23333335, 0.39999998),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [false, true]
+"values": [true, false]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("../PressAnyKeyText/Paths:visible")
+tracks/2/path = NodePath("../TutorialText:modulate")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0.23333335, 0.39999998),
+"times": PackedFloat32Array(0.229, 0.4),
 "transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_7yvfd"]
 _data = {
 &"AfterExitLevelSelect": SubResource("Animation_rbo5s"),
-&"CreditsClicked": SubResource("Animation_uui5l"),
 &"PlayClicked": SubResource("Animation_h73c4"),
 &"QuitClicked": SubResource("Animation_gjjcl"),
 &"RESET": SubResource("Animation_dfy5j"),
@@ -567,7 +563,8 @@ script/source = "extends ButtonPreset
 func press() -> void:
 	set_selectable(false)
 	disabled = true
-	anim_player.play(\"PlayClicked\")
+	anim_player.clear_queue()
+	anim_player.queue(\"PlayClicked\")
 "
 
 [sub_resource type="GDScript" id="GDScript_h73c4"]
@@ -586,9 +583,6 @@ func unselect() -> void:
 	if selectable:
 		show_on_hover.hide()
 		default_shown.show()
-
-func press() -> void:
-	anim_player.play(\"CreditsClicked\")
 "
 
 [sub_resource type="GDScript" id="GDScript_85riq"]
@@ -654,20 +648,6 @@ _data = {
 &"RESET": SubResource("Animation_wf3n4"),
 &"blink": SubResource("Animation_85riq")
 }
-
-[sub_resource type="GDScript" id="GDScript_dfy5j"]
-resource_name = "tutorialtext"
-script/source = "extends Line2D
-func _ready():
-	hide()
-"
-
-[sub_resource type="GDScript" id="GDScript_uui5l"]
-resource_name = "exitosci"
-script/source = "extends Node2D
-func _ready():
-	hide()
-"
 
 [sub_resource type="Curve" id="Curve_rbo5s"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
@@ -1070,10 +1050,9 @@ scale = Vector2(4.951, 4.951)
 script = null
 
 [node name="TutorialText" type="Line2D" parent="." unique_id=767600423]
-visible = false
+modulate = Color(1, 1, 1, 0)
 position = Vector2(694.52, 748.39)
 scale = Vector2(0.285, 0.285)
-script = SubResource("GDScript_dfy5j")
 
 [node name="Selection_part49" type="Line2D" parent="TutorialText" unique_id=306009645]
 points = PackedVector2Array(1735, 661, 1736.24, 659.264, 1739.59, 654.552, 1744.53, 647.608, 1750.54, 639.176, 1757.07, 630, 1763.6, 620.824, 1769.61, 612.392, 1774.55, 605.448, 1777.9, 600.736, 1779.14, 599, 1780.64, 596.851, 1782.28, 594.474, 1784.05, 591.971, 1785.96, 589.443, 1787.99, 586.991, 1790.15, 584.717, 1792.43, 582.723, 1794.84, 581.109, 1797.36, 579.978, 1800, 579.43, 1802.69, 579.564, 1805.25, 580.349, 1807.68, 581.677, 1809.97, 583.437, 1812.12, 585.523, 1814.13, 587.823, 1816, 590.23, 1817.72, 592.634, 1819.3, 594.927, 1820.72, 597, 1821.57, 598.204, 1823.87, 601.472, 1827.26, 606.288, 1831.39, 612.136, 1835.87, 618.5, 1840.35, 624.864, 1844.48, 630.712, 1847.87, 635.528, 1850.17, 638.796, 1851.02, 640, 1852.35, 641.893, 1853.79, 643.912, 1855.31, 646.026, 1856.87, 648.206, 1858.43, 650.421, 1859.96, 652.643, 1861.42, 654.842, 1862.77, 656.987, 1863.97, 659.05, 1865, 661, 1864.19, 661.028, 1861.98, 661.104, 1858.74, 661.216, 1854.79, 661.352, 1850.5, 661.5, 1846.21, 661.648, 1842.26, 661.784, 1839.02, 661.896, 1836.81, 661.972, 1836, 662, 1835.08, 662, 1832.57, 662, 1828.87, 662, 1824.38, 662, 1819.5, 662, 1814.62, 662, 1810.13, 662, 1806.43, 662, 1803.92, 662, 1803, 662, 1802.47, 661.972, 1801.02, 661.896, 1798.9, 661.784, 1796.31, 661.648, 1793.5, 661.5, 1790.69, 661.352, 1788.1, 661.216, 1785.98, 661.104, 1784.53, 661.028, 1784, 661, 1784.86, 659.358, 1785.66, 657.934, 1786.43, 656.717, 1787.23, 655.694, 1788.09, 654.855, 1789.07, 654.187, 1790.2, 653.68, 1791.54, 653.32, 1793.12, 653.098, 1795, 653, 1796.32, 653, 1799.89, 653, 1805.15, 653, 1811.54, 653, 1818.5, 653, 1825.46, 653, 1831.85, 653, 1837.11, 653, 1840.68, 653, 1842, 653, 1841.51, 652.3, 1840.17, 650.4, 1838.2, 647.6, 1835.81, 644.2, 1833.21, 640.5, 1830.61, 636.8, 1828.22, 633.4, 1826.25, 630.6, 1824.91, 628.7, 1824.42, 628, 1823.74, 627.076, 1821.88, 624.568, 1819.15, 620.872, 1815.82, 616.384, 1812.21, 611.5, 1808.6, 606.616, 1805.27, 602.128, 1802.54, 598.432, 1800.68, 595.924, 1800, 595, 1798.97, 596.428, 1796.19, 600.304, 1792.09, 606.016, 1787.11, 612.952, 1781.68, 620.5, 1776.26, 628.048, 1771.28, 634.984, 1767.18, 640.696, 1764.4, 644.572, 1763.37, 646, 1761.82, 648.188, 1760.34, 650.404, 1758.88, 652.588, 1757.4, 654.682, 1755.84, 656.625, 1754.14, 658.358, 1752.26, 659.822, 1750.15, 660.956, 1747.74, 661.702, 1745, 662, 1743.85, 662.019, 1742.79, 662.029, 1741.81, 662.025, 1740.87, 661.998, 1739.96, 661.942, 1739.05, 661.852, 1738.12, 661.719, 1737.15, 661.537, 1736.12, 661.3, 1735, 661)
@@ -1408,7 +1387,6 @@ points = PackedVector2Array(1684, 279, 1685.65, 279, 1690.14, 279, 1696.74, 279,
 visible = false
 position = Vector2(681.5, 738.71)
 scale = Vector2(0.315, 0.315)
-script = SubResource("GDScript_uui5l")
 
 [node name="Selection_part1" type="Line2D" parent="ExitText" unique_id=1421287475]
 points = PackedVector2Array(88, 93, 91.276, 93, 100.168, 93, 113.272, 93, 129.184, 93, 146.5, 93, 163.816, 93, 179.728, 93, 192.832, 93, 201.724, 93, 205, 93, 204.636, 93.504, 203.648, 94.872, 202.192, 96.888, 200.424, 99.336, 198.5, 102, 196.576, 104.664, 194.808, 107.112, 193.352, 109.128, 192.364, 110.496, 192, 111, 191.799, 111.223, 191.254, 111.83, 190.451, 112.724, 189.476, 113.809, 188.415, 114.99, 187.354, 116.171, 186.379, 117.256, 185.576, 118.15, 185.031, 118.757, 184.83, 118.98, 184.611, 119.009, 184.016, 119.086, 183.139, 119.2, 182.074, 119.339, 180.915, 119.49, 179.756, 119.641, 178.691, 119.78, 177.814, 119.894, 177.219, 119.971, 177, 120, 175.432, 120, 171.176, 120, 164.904, 120, 157.288, 120, 149, 120, 140.712, 120, 133.096, 120, 126.824, 120, 122.568, 120, 121, 120, 120.984, 123.015, 120.988, 125.54, 121.089, 127.616, 121.364, 129.283, 121.89, 130.584, 122.745, 131.557, 124.007, 132.245, 125.751, 132.688, 128.057, 132.926, 131, 133, 132.904, 133, 138.072, 133, 145.688, 133, 154.936, 133, 165, 133, 175.064, 133, 184.312, 133, 191.928, 133, 197.096, 133, 199, 133, 198.248, 134.891, 197.293, 136.78, 196.172, 138.659, 194.919, 140.523, 193.571, 142.364, 192.164, 144.176, 190.732, 145.952, 189.312, 147.686, 187.939, 149.371, 186.65, 151, 186.102, 151.718, 185.48, 152.542, 184.799, 153.44, 184.072, 154.378, 183.315, 155.324, 182.541, 156.244, 181.764, 157.105, 180.999, 157.876, 180.26, 158.521, 179.56, 159.01, 178.907, 159.337, 178.202, 159.585, 177.456, 159.766, 176.68, 159.89, 175.885, 159.966, 175.082, 160.006, 174.281, 160.019, 173.493, 160.015, 172.729, 160.005, 172, 160, 170.572, 160, 166.696, 160, 160.984, 160, 154.048, 160, 146.5, 160, 138.952, 160, 132.016, 160, 126.304, 160, 122.428, 160, 121, 160, 120.981, 163.312, 120.978, 166.07, 121.07, 168.321, 121.335, 170.115, 121.852, 171.5, 122.702, 172.525, 123.963, 173.239, 125.713, 173.69, 128.032, 173.928, 131, 174, 133.072, 174, 138.696, 174, 146.984, 174, 157.048, 174, 168, 174, 178.952, 174, 189.016, 174, 197.304, 174, 202.928, 174, 205, 174, 204.28, 175.556, 203.477, 177.055, 202.602, 178.506, 201.667, 179.917, 200.683, 181.296, 199.66, 182.652, 198.612, 183.991, 197.548, 185.324, 196.48, 186.657, 195.42, 188, 193.732, 190.256, 192.208, 192.398, 190.773, 194.398, 189.354, 196.226, 187.875, 197.854, 186.263, 199.254, 184.444, 200.397, 182.343, 201.254, 179.886, 201.798, 177, 202, 175.516, 202, 171.488, 202, 165.552, 202, 158.344, 202, 150.5, 202, 142.656, 202, 135.448, 202, 129.512, 202, 125.484, 202, 124, 202, 123.244, 202, 121.192, 202, 118.168, 202, 114.496, 202, 110.5, 202, 106.504, 202, 102.832, 202, 99.808, 202, 97.756, 202, 97, 202, 96.3522, 202.005, 95.6189, 202.014, 94.8245, 202.016, 93.9934, 202.001, 93.15, 201.959, 92.3186, 201.879, 91.5235, 201.752, 90.7891, 201.566, 90.1398, 201.312, 89.6, 200.98, 89.0741, 200.437, 88.6733, 199.768, 88.3812, 198.999, 88.1814, 198.155, 88.0575, 197.264, 87.993, 196.35, 87.9714, 195.441, 87.9763, 194.562, 87.9913, 193.74, 88, 193, 88, 190.2, 88, 182.6, 88, 171.4, 88, 157.8, 88, 143, 88, 128.2, 88, 114.6, 88, 103.4, 88, 95.8, 88, 93)
