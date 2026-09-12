@@ -1,6 +1,6 @@
 extends SubViewport
 
-@export var manager:Node2D
+@export var manager:HitBarManager
 @export var glitchEffectAnimationPlayer:AnimationPlayer
 var allowedToGlitch:bool
 # Called when the node enters the scene tree for the first time.

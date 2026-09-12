@@ -11,3 +11,5 @@ var missAmount:int
 var noHitAmount:int
 
 var currentLevel: SceneManager.LevelIds = SceneManager.LevelIds.LEVEL1
+
+var highscores: Dictionary[SceneManager.LevelIds, ScoreRecord] = {}

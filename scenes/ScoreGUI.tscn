@@ -12,6 +12,7 @@
 [ext_resource type="Script" uid="uid://o4klbabn6lfq" path="res://scripts/exit_to_main_menu.gd" id="8_74mtw"]
 [ext_resource type="AudioStream" uid="uid://baybfgj38cd2g" path="res://assets/music/ContingencyPlant_Reprise.ogg" id="9_otn0o"]
 [ext_resource type="AudioStream" uid="uid://d2h8wv02d4dgc" path="res://assets/music/WithTheCurrent_Reprise.ogg" id="10_otn0o"]
+[ext_resource type="Script" uid="uid://lute21k3ojau" path="res://scripts/highscore_indicator.gd" id="11_6i2qx"]
 [ext_resource type="AudioStream" uid="uid://cpq5o1nnwfx41" path="res://assets/music/WarpSpeed_OhmBeatEdit_Reprise.ogg" id="11_mu0s0"]
 [ext_resource type="Script" uid="uid://h40c53u1cqhp" path="res://scripts/scores_text.gd" id="12_6i2qx"]
 [ext_resource type="Script" uid="uid://c6moxo5qoybc0" path="res://scripts/platform_text.gd" id="12_m4d8m"]
@@ -44,6 +45,10 @@ song_title = "Shifty Showdown"
 reprise_stream = ExtResource("15_luylr")
 reprise_volume_db = -3.0
 metadata/_custom_type_script = "uid://cmh78knw1uq2k"
+
+[sub_resource type="LabelSettings" id="LabelSettings_jdkbx"]
+font = ExtResource("4_f1sb5")
+font_size = 38
 
 [sub_resource type="LabelSettings" id="LabelSettings_valv0"]
 font = ExtResource("4_f1sb5")
@@ -233,10 +238,21 @@ text = "Contingency Plant"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="HighscoreIndicator" type="Label" parent="." unique_id=1725043080]
+layout_mode = 0
+offset_top = 286.0
+offset_right = 1920.0
+offset_bottom = 326.0
+text = "New highscore!"
+label_settings = SubResource("LabelSettings_jdkbx")
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("11_6i2qx")
+
 [node name="ScoresText" type="GridContainer" parent="." unique_id=304855412 node_paths=PackedStringArray("perfectLabel", "greatLabel", "missLabel", "noHitLabel", "totalScoreLabel")]
 layout_mode = 0
 offset_left = 247.0
-offset_top = 310.0
+offset_top = 359.0
 offset_right = 1677.0
 offset_bottom = 830.0
 columns = 2
