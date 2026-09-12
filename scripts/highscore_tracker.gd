@@ -1,18 +1,18 @@
 extends Label
 
-var prev_highscore: ScoreRecord
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	text = ""
-	prev_highscore = ManagerGlobal.highscores.get(ManagerGlobal.currentLevel)
+	var current_level: SceneManager.LevelIds = ManagerGlobal.currentLevel
+	var prev_highscore: ScoreRecord = ManagerGlobal.highscores.get(current_level)
 	var current_score = build_score_record()
 	
 	if(prev_highscore == null or current_score.score > prev_highscore.score):
 		text = "New highscore!"
-		ManagerGlobal.highscores.set(ManagerGlobal.currentLevel, current_score)
 	if(current_score.perfect):
 		text = "Perfect score!"
+	ManagerGlobal.submit_score(current_level, current_score)
 
 func build_score_record() -> ScoreRecord:
 	var record: ScoreRecord = ScoreRecord.new()
