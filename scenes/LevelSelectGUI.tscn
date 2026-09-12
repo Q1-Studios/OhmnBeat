@@ -10,6 +10,7 @@
 [ext_resource type="Script" uid="uid://dbo4y3yi1hnur" path="res://scripts/level_select_config.gd" id="5_qntl6"]
 [ext_resource type="FontFile" uid="uid://7u54b7ave0i7" path="res://assets/fonts/ethnocen.ttf" id="6_g5sca"]
 [ext_resource type="PackedScene" uid="uid://c1yrgscpcae7g" path="res://scenes/button_sound_player.tscn" id="7_ej5xt"]
+[ext_resource type="Script" uid="uid://qr5k0d40ekld" path="res://scripts/reset_scores_button.gd" id="8_xubo2"]
 [ext_resource type="PackedScene" uid="uid://5k8ys1ec3ysr" path="res://scenes/score_status_container.tscn" id="10_hngwy"]
 [ext_resource type="PackedScene" uid="uid://bi85swsn85h0h" path="res://scenes/LatencyCalibrationGUI.tscn" id="11_7thhl"]
 
@@ -70,7 +71,7 @@ script = ExtResource("1_11g4t")
 init_focus = NodePath("LevelSelectLayer/Levels/HBoxContainer/ContingencyPlant/LevelSelectBtn")
 level_select_layer = NodePath("LevelSelectLayer")
 latency_layer = NodePath("LatencyCalibrationLayer")
-latency_exit_focus = NodePath("LevelSelectLayer/LatencyButton")
+latency_exit_focus = NodePath("LevelSelectLayer/HBoxContainer/LatencyButton")
 
 [node name="Paths" type="Node2D" parent="." unique_id=1205040012]
 visible = false
@@ -679,53 +680,108 @@ default_color = Color(0, 0, 0, 1)
 points = PackedVector2Array(792, 948, 791.972, 948, 791.896, 948, 791.784, 948, 791.648, 948, 791.5, 948, 791.352, 948, 791.216, 948, 791.104, 948, 791.028, 948, 791, 948, 791.028, 948.028, 791.104, 948.104, 791.216, 948.216, 791.352, 948.352, 791.5, 948.5, 791.648, 948.648, 791.784, 948.784, 791.896, 948.896, 791.972, 948.972, 792, 949, 792, 948.972, 792, 948.896, 792, 948.784, 792, 948.648, 792, 948.5, 792, 948.352, 792, 948.216, 792, 948.104, 792, 948.028, 792, 948)
 default_color = Color(0, 0, 0, 1)
 
-[node name="ExitButton" parent="LevelSelectLayer" unique_id=1854582931 instance=ExtResource("2_g5sca")]
-focus_neighbor_right = NodePath("../LatencyButton")
-focus_neighbor_bottom = NodePath("../Levels/HBoxContainer/ContingencyPlant/LevelSelectBtn")
+[node name="HBoxContainer" type="HBoxContainer" parent="LevelSelectLayer" unique_id=92549201]
+offset_left = 242.0
+offset_top = 89.0
+offset_right = 1704.0
+offset_bottom = 239.0
 
-[node name="MobileGraceArea" parent="LevelSelectLayer/ExitButton" unique_id=1492430613 instance=ExtResource("3_onb6o")]
+[node name="ExitButton" parent="LevelSelectLayer/HBoxContainer" unique_id=1854582931 instance=ExtResource("2_g5sca")]
+layout_mode = 2
+focus_neighbor_right = NodePath("../LatencyButton")
+focus_neighbor_bottom = NodePath("../../Levels/HBoxContainer/ContingencyPlant/LevelSelectBtn")
+
+[node name="MobileGraceArea" parent="LevelSelectLayer/HBoxContainer/ExitButton" unique_id=1492430613 instance=ExtResource("3_onb6o")]
 layout_mode = 0
 offset_left = -97.0
 offset_right = 118.0
-focus_neighbor_bottom = NodePath("../../Levels/HBoxContainer/ContingencyPlant/LevelSelectBtn")
+focus_neighbor_bottom = NodePath("../../../Levels/HBoxContainer/ContingencyPlant/LevelSelectBtn")
 
-[node name="LatencyButton" type="Button" parent="LevelSelectLayer" unique_id=1033955922]
+[node name="Spacer" type="Control" parent="LevelSelectLayer/HBoxContainer" unique_id=1820247806]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="LatencyButton" type="Button" parent="LevelSelectLayer/HBoxContainer" unique_id=1033955922]
 modulate = Color(0, 0, 0, 1)
-offset_left = 1414.0
-offset_top = 118.0
-offset_right = 1732.0
-offset_bottom = 238.0
+custom_minimum_size = Vector2(320, 150)
+custom_maximum_size = Vector2(320, 150)
+layout_mode = 2
 focus_neighbor_left = NodePath("../ExitButton")
-focus_neighbor_bottom = NodePath("../Levels/HBoxContainer/ContingencyPlant/LevelSelectBtn")
+focus_neighbor_right = NodePath("../ResetScoresButton")
+focus_neighbor_bottom = NodePath("../../Levels/HBoxContainer/ContingencyPlant/LevelSelectBtn")
 theme = ExtResource("4_mqe8u")
 script = ExtResource("5_hngwy")
 
-[node name="ButtonSoundPlayer" parent="LevelSelectLayer/LatencyButton" unique_id=2121138740 instance=ExtResource("7_ej5xt")]
+[node name="ButtonSoundPlayer" parent="LevelSelectLayer/HBoxContainer/LatencyButton" unique_id=2121138740 instance=ExtResource("7_ej5xt")]
 
-[node name="MobileGraceArea" parent="LevelSelectLayer/LatencyButton" unique_id=460203261 instance=ExtResource("3_onb6o")]
-layout_mode = 0
-offset_left = 297.0
-offset_top = -2.0
-offset_right = 495.0
-offset_bottom = 121.0
-
-[node name="Label" type="Label" parent="LevelSelectLayer/LatencyButton" unique_id=415705220]
-layout_mode = 0
-offset_left = 82.0
-offset_top = 49.0
-offset_right = 211.0
-offset_bottom = 83.0
+[node name="Label" type="Label" parent="LevelSelectLayer/HBoxContainer/LatencyButton" unique_id=415705220]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -103.0
+offset_top = -17.0
+offset_right = 103.0
+offset_bottom = 17.0
+grow_horizontal = 2
+grow_vertical = 2
 text = "Latency"
 label_settings = SubResource("LabelSettings_valv0")
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="Arrowhead" type="Marker2D" parent="LevelSelectLayer/LatencyButton" unique_id=2062585831]
-position = Vector2(22.999996, 62.999996)
+[node name="ArrowheadLeft" type="Marker2D" parent="LevelSelectLayer/HBoxContainer/LatencyButton" unique_id=2062585831]
+position = Vector2(47, 72)
 scale = Vector2(0.4, 0.4)
 
-[node name="Selection_part30" type="Line2D" parent="LevelSelectLayer/LatencyButton/Arrowhead" unique_id=263644016]
-position = Vector2(1679.9999, 279.99997)
-rotation = 3.1415927
+[node name="Selection_part30" type="Line2D" parent="LevelSelectLayer/HBoxContainer/LatencyButton/ArrowheadLeft" unique_id=263644016]
+position = Vector2(1562.5, 277.49997)
+rotation = -3.1415925
+scale = Vector2(0.99999994, 0.99999994)
 points = PackedVector2Array(1669, 313, 1668.13, 312.768, 1665.78, 312.138, 1662.3, 311.209, 1658.09, 310.082, 1653.5, 308.855, 1648.91, 307.628, 1644.7, 306.501, 1641.22, 305.572, 1638.87, 304.942, 1638, 304.71, 1636.71, 304.346, 1633.22, 303.358, 1628.06, 301.902, 1621.81, 300.134, 1615, 298.21, 1608.19, 296.286, 1601.94, 294.518, 1596.78, 293.062, 1593.29, 292.074, 1592, 291.71, 1589.62, 291.091, 1586.88, 290.437, 1583.91, 289.707, 1580.84, 288.859, 1577.82, 287.852, 1574.96, 286.646, 1572.41, 285.199, 1570.29, 283.47, 1568.74, 281.417, 1567.89, 279, 1567.81, 276.034, 1568.57, 273.545, 1570.04, 271.478, 1572.07, 269.779, 1574.53, 268.394, 1577.25, 267.269, 1580.1, 266.35, 1582.94, 265.584, 1585.62, 264.915, 1588, 264.29, 1589.71, 263.806, 1594.34, 262.492, 1601.18, 260.555, 1609.47, 258.204, 1618.5, 255.645, 1627.53, 253.086, 1635.82, 250.735, 1642.66, 248.798, 1647.29, 247.484, 1649, 247, 1650.16, 246.65, 1651.78, 246.156, 1653.72, 245.565, 1655.88, 244.926, 1658.13, 244.286, 1660.36, 243.695, 1662.45, 243.201, 1664.28, 242.851, 1665.73, 242.695, 1666.69, 242.78, 1667.45, 243.176, 1668.02, 243.77, 1668.45, 244.523, 1668.73, 245.396, 1668.91, 246.35, 1669.01, 247.348, 1669.04, 248.35, 1669.03, 249.319, 1669.01, 250.215, 1669, 251, 1669.01, 251.843, 1669.02, 252.932, 1669.04, 254.2, 1669.04, 255.581, 1669.03, 257.01, 1669, 258.421, 1668.93, 259.748, 1668.82, 260.926, 1668.65, 261.889, 1668.43, 262.57, 1667.65, 263.464, 1666.29, 264.339, 1664.48, 265.184, 1662.34, 265.989, 1660.01, 266.743, 1657.62, 267.434, 1655.29, 268.054, 1653.16, 268.59, 1651.35, 269.032, 1650, 269.37, 1647.67, 269.98, 1644.96, 270.693, 1641.98, 271.492, 1638.83, 272.359, 1635.61, 273.276, 1632.43, 274.226, 1629.37, 275.192, 1626.55, 276.154, 1624.06, 277.096, 1622, 278, 1622.95, 278.26, 1625.54, 278.966, 1629.34, 280.007, 1633.97, 281.27, 1639, 282.645, 1644.03, 284.02, 1648.66, 285.283, 1652.46, 286.324, 1655.05, 287.03, 1656, 287.29, 1657.06, 287.576, 1658.3, 287.894, 1659.65, 288.248, 1661.08, 288.646, 1662.51, 289.094, 1663.91, 289.598, 1665.2, 290.164, 1666.35, 290.799, 1667.3, 291.509, 1667.98, 292.3, 1668.42, 293.418, 1668.74, 295.094, 1668.95, 297.199, 1669.07, 299.602, 1669.13, 302.174, 1669.13, 304.783, 1669.1, 307.301, 1669.06, 309.596, 1669.02, 311.539, 1669, 313)
+
+[node name="ArrowheadRight" type="Marker2D" parent="LevelSelectLayer/HBoxContainer/LatencyButton" unique_id=1146991708]
+position = Vector2(270, 72)
+scale = Vector2(0.4, 0.4)
+
+[node name="Selection_part30" type="Line2D" parent="LevelSelectLayer/HBoxContainer/LatencyButton/ArrowheadRight" unique_id=1444397469]
+position = Vector2(-1562.4998, -277.49997)
+scale = Vector2(0.99999994, 0.99999994)
+points = PackedVector2Array(1669, 313, 1668.13, 312.768, 1665.78, 312.138, 1662.3, 311.209, 1658.09, 310.082, 1653.5, 308.855, 1648.91, 307.628, 1644.7, 306.501, 1641.22, 305.572, 1638.87, 304.942, 1638, 304.71, 1636.71, 304.346, 1633.22, 303.358, 1628.06, 301.902, 1621.81, 300.134, 1615, 298.21, 1608.19, 296.286, 1601.94, 294.518, 1596.78, 293.062, 1593.29, 292.074, 1592, 291.71, 1589.62, 291.091, 1586.88, 290.437, 1583.91, 289.707, 1580.84, 288.859, 1577.82, 287.852, 1574.96, 286.646, 1572.41, 285.199, 1570.29, 283.47, 1568.74, 281.417, 1567.89, 279, 1567.81, 276.034, 1568.57, 273.545, 1570.04, 271.478, 1572.07, 269.779, 1574.53, 268.394, 1577.25, 267.269, 1580.1, 266.35, 1582.94, 265.584, 1585.62, 264.915, 1588, 264.29, 1589.71, 263.806, 1594.34, 262.492, 1601.18, 260.555, 1609.47, 258.204, 1618.5, 255.645, 1627.53, 253.086, 1635.82, 250.735, 1642.66, 248.798, 1647.29, 247.484, 1649, 247, 1650.16, 246.65, 1651.78, 246.156, 1653.72, 245.565, 1655.88, 244.926, 1658.13, 244.286, 1660.36, 243.695, 1662.45, 243.201, 1664.28, 242.851, 1665.73, 242.695, 1666.69, 242.78, 1667.45, 243.176, 1668.02, 243.77, 1668.45, 244.523, 1668.73, 245.396, 1668.91, 246.35, 1669.01, 247.348, 1669.04, 248.35, 1669.03, 249.319, 1669.01, 250.215, 1669, 251, 1669.01, 251.843, 1669.02, 252.932, 1669.04, 254.2, 1669.04, 255.581, 1669.03, 257.01, 1669, 258.421, 1668.93, 259.748, 1668.82, 260.926, 1668.65, 261.889, 1668.43, 262.57, 1667.65, 263.464, 1666.29, 264.339, 1664.48, 265.184, 1662.34, 265.989, 1660.01, 266.743, 1657.62, 267.434, 1655.29, 268.054, 1653.16, 268.59, 1651.35, 269.032, 1650, 269.37, 1647.67, 269.98, 1644.96, 270.693, 1641.98, 271.492, 1638.83, 272.359, 1635.61, 273.276, 1632.43, 274.226, 1629.37, 275.192, 1626.55, 276.154, 1624.06, 277.096, 1622, 278, 1622.95, 278.26, 1625.54, 278.966, 1629.34, 280.007, 1633.97, 281.27, 1639, 282.645, 1644.03, 284.02, 1648.66, 285.283, 1652.46, 286.324, 1655.05, 287.03, 1656, 287.29, 1657.06, 287.576, 1658.3, 287.894, 1659.65, 288.248, 1661.08, 288.646, 1662.51, 289.094, 1663.91, 289.598, 1665.2, 290.164, 1666.35, 290.799, 1667.3, 291.509, 1667.98, 292.3, 1668.42, 293.418, 1668.74, 295.094, 1668.95, 297.199, 1669.07, 299.602, 1669.13, 302.174, 1669.13, 304.783, 1669.1, 307.301, 1669.06, 309.596, 1669.02, 311.539, 1669, 313)
+
+[node name="Spacer2" type="Control" parent="LevelSelectLayer/HBoxContainer" unique_id=1694052350]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ResetScoresButton" type="Button" parent="LevelSelectLayer/HBoxContainer" unique_id=1350759837]
+modulate = Color(0, 0, 0, 1)
+custom_minimum_size = Vector2(265, 150)
+custom_maximum_size = Vector2(265, 150)
+layout_mode = 2
+focus_neighbor_left = NodePath("../LatencyButton")
+theme = ExtResource("4_mqe8u")
+script = ExtResource("8_xubo2")
+
+[node name="ButtonSoundPlayer" parent="LevelSelectLayer/HBoxContainer/ResetScoresButton" unique_id=1672320082 instance=ExtResource("7_ej5xt")]
+
+[node name="Label" type="Label" parent="LevelSelectLayer/HBoxContainer/ResetScoresButton" unique_id=193160744]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -206.0
+offset_top = -17.0
+offset_bottom = 17.0
+grow_horizontal = 0
+grow_vertical = 2
+text = "RESET"
+label_settings = SubResource("LabelSettings_valv0")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Levels" type="Node2D" parent="LevelSelectLayer" unique_id=1439274069]
 
@@ -744,7 +800,7 @@ size_flags_horizontal = 3
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-focus_neighbor_top = NodePath("../../../../ExitButton")
+focus_neighbor_top = NodePath("../../../../HBoxContainer/ExitButton")
 level_config = SubResource("Resource_qntl6")
 
 [node name="Omega" type="Marker2D" parent="LevelSelectLayer/Levels/HBoxContainer/ContingencyPlant/LevelSelectBtn" unique_id=1584194508]
@@ -949,8 +1005,8 @@ color = Color(0, 0, 0, 1)
 
 [node name="LatencyCalibrationGUI" parent="LatencyCalibrationLayer" unique_id=2076164255 instance=ExtResource("11_7thhl")]
 
-[connection signal="exit" from="LevelSelectLayer/ExitButton" to="." method="_on_exit_level_select"]
-[connection signal="latency_button_pressed" from="LevelSelectLayer/LatencyButton" to="." method="_on_latency_calibration_clicked"]
+[connection signal="exit" from="LevelSelectLayer/HBoxContainer/ExitButton" to="." method="_on_exit_level_select"]
+[connection signal="latency_button_pressed" from="LevelSelectLayer/HBoxContainer/LatencyButton" to="." method="_on_latency_calibration_clicked"]
 [connection signal="level_clicked" from="LevelSelectLayer/Levels/HBoxContainer/ContingencyPlant/LevelSelectBtn" to="." method="_on_level_clicked"]
 [connection signal="level_selected" from="LevelSelectLayer/Levels/HBoxContainer/ContingencyPlant/LevelSelectBtn" to="LevelSelectLayer/LabelRect" method="_on_level_selected"]
 [connection signal="level_clicked" from="LevelSelectLayer/Levels/HBoxContainer/WithTheCurrent/LevelSelectBtn" to="." method="_on_level_clicked"]

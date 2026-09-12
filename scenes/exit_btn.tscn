@@ -6,6 +6,7 @@
 
 [node name="ExitButton" type="Button" unique_id=1512175997]
 modulate = Color(0, 0, 0, 1)
+custom_minimum_size = Vector2(150, 150)
 offset_left = 251.0
 offset_top = 90.0
 offset_right = 401.0

@@ -1,6 +1,7 @@
 extends Node
 
 const SAVE_PATH = "user://savegame.tres"
+const BACKUP_SAVE_PATH = "user://last_deleted.tres"
 var savegame: SaveGame
 
 var latency_millis: int = 0
@@ -14,6 +15,8 @@ var missAmount:int
 var noHitAmount:int
 
 var currentLevel: SceneManager.LevelIds = SceneManager.LevelIds.LEVEL1
+
+signal updated_savegame
 
 func _ready() -> void:
 	savegame = load_game()
@@ -36,13 +39,22 @@ func submit_score(level_id: SceneManager.LevelIds, new_score: ScoreRecord) -> vo
 		to_store_score.score = new_score.score
 	
 	savegame.scores.set(level_id, to_store_score)
-	save_game()
+	updated_savegame.emit()
+	save_game(SAVE_PATH)
 
-func save_game() -> void:
-	ResourceSaver.save(savegame, SAVE_PATH)
+func save_game(path: String) -> void:
+	ResourceSaver.save(savegame, path)
 
 func load_game() -> SaveGame:
 	if(ResourceLoader.exists(SAVE_PATH)):
 		return ResourceLoader.load(SAVE_PATH, "SaveGame")
 	else:
 		return SaveGame.new()
+
+func reset_game():
+	save_game(BACKUP_SAVE_PATH)
+	
+	savegame = SaveGame.new()
+	updated_savegame.emit()
+	
+	save_game(SAVE_PATH)

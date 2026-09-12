@@ -9,6 +9,10 @@ extends VBoxContainer
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	ManagerGlobal.updated_savegame.connect(_on_updated_savegame)
+	_on_updated_savegame()
+
+func _on_updated_savegame() -> void:
 	score.text = "0 Pts"
 	status.text = ""
 	checkmark_container.hide()
