@@ -1,4 +1,5 @@
 extends ButtonPreset
+class_name SelectableLevel
 
 @export var level_config: LevelSelectConfig
 signal level_clicked(level_config)

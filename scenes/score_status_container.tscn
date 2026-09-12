@@ -1,0 +1,49 @@
+[gd_scene format=3 uid="uid://5k8ys1ec3ysr"]
+
+[ext_resource type="Script" uid="uid://cda2dwf5tek24" path="res://scripts/score_status_container.gd" id="1_8y00g"]
+[ext_resource type="FontFile" uid="uid://7u54b7ave0i7" path="res://assets/fonts/ethnocen.ttf" id="2_0tv66"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_jdkbx"]
+font = ExtResource("2_0tv66")
+font_size = 28
+
+[sub_resource type="LabelSettings" id="LabelSettings_7thhl"]
+font = ExtResource("2_0tv66")
+font_size = 18
+
+[node name="ScoreStatusContainer" type="VBoxContainer" unique_id=1129463349 node_paths=PackedStringArray("score", "status", "checkmark_container")]
+offset_right = 305.0
+offset_bottom = 55.0
+script = ExtResource("1_8y00g")
+score = NodePath("Score")
+status = NodePath("HBoxContainer/LevelStatus")
+checkmark_container = NodePath("HBoxContainer/CheckmarkContainer")
+
+[node name="Score" type="Label" parent="." unique_id=1188638532]
+layout_mode = 2
+size_flags_vertical = 3
+text = "100000 PTS"
+label_settings = SubResource("LabelSettings_jdkbx")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=2126796993]
+layout_mode = 2
+alignment = 1
+
+[node name="CheckmarkContainer" type="Control" parent="HBoxContainer" unique_id=750619874]
+custom_minimum_size = Vector2(25, 20)
+custom_maximum_size = Vector2(25, 20)
+layout_mode = 2
+
+[node name="Checkmark" type="Line2D" parent="HBoxContainer/CheckmarkContainer" unique_id=43469135]
+points = PackedVector2Array(0, 10, 5, 15, 18, 0)
+width = 5.0
+
+[node name="LevelStatus" type="Label" parent="HBoxContainer" unique_id=1524665107]
+layout_mode = 2
+size_flags_vertical = 3
+text = "PERFECT"
+label_settings = SubResource("LabelSettings_7thhl")
+horizontal_alignment = 1
+vertical_alignment = 1
