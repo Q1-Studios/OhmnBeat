@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://cu2eoqney7g6t" path="res://scenes/regularhex.tscn" id="5_gq280"]
 
 [sub_resource type="Animation" id="Animation_gq280"]
+resource_name = "RESET"
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -66,6 +67,69 @@ _data = {
 &"swobble": SubResource("Animation_21v6b")
 }
 
+[sub_resource type="Animation" id="Animation_u52xp"]
+resource_name = "RESET"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("NOHIT:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("NOHIT:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_xiihq"]
+resource_name = "swobble"
+length = 0.405
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("NOHIT:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.02, 0.06559688, 0.08, 0.10515404, 0.120000005, 0.16, 0.17487124, 0.19201206, 0.38141763),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 0, 0, 1), Color(1, 0, 0, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 0, 0, 1), Color(1, 0, 0, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("NOHIT:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.19, 0.38),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 100)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3ftge"]
+_data = {
+&"RESET": SubResource("Animation_u52xp"),
+&"swobble": SubResource("Animation_xiihq")
+}
+
 [sub_resource type="Animation" id="Animation_cphvb"]
 resource_name = "swobble"
 length = 0.4775
@@ -88,6 +152,7 @@ _data = {
 }
 
 [sub_resource type="Animation" id="Animation_j5tnm"]
+resource_name = "RESET"
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -324,9 +389,9 @@ points = PackedVector2Array(869, 113, 870.232, 113, 873.576, 113, 878.504, 113, 
 [node name="Selection_part6" type="Line2D" parent="Miss_Great_Perfect/NOHIT" unique_id=1929500613]
 points = PackedVector2Array(887, 219.46, 888.433, 219.277, 889.785, 219.139, 891.077, 219.052, 892.326, 219.022, 893.553, 219.055, 894.775, 219.156, 896.011, 219.331, 897.282, 219.587, 898.605, 219.928, 900, 220.36, 900.845, 220.652, 901.682, 220.966, 902.508, 221.303, 903.321, 221.667, 904.12, 222.059, 904.902, 222.482, 905.665, 222.938, 906.407, 223.43, 907.126, 223.96, 907.82, 224.53, 911.323, 228.481, 913.313, 232.716, 913.916, 237.06, 913.26, 241.335, 911.473, 245.366, 908.68, 248.976, 905.009, 251.989, 900.587, 254.228, 895.542, 255.517, 890, 255.68, 884.319, 254.695, 879.517, 252.821, 875.616, 250.218, 872.637, 247.041, 870.601, 243.449, 869.529, 239.598, 869.442, 235.646, 870.36, 231.751, 872.306, 228.07, 875.3, 224.76, 876.395, 223.865, 877.484, 223.084, 878.574, 222.405, 879.676, 221.816, 880.798, 221.304, 881.947, 220.856, 883.133, 220.461, 884.365, 220.104, 885.651, 219.775, 887, 219.46)
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Miss_Great_Perfect/NOHIT" unique_id=747231751]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Miss_Great_Perfect/NOHIT" unique_id=1647004026]
 root_node = NodePath("../..")
-libraries/ = SubResource("AnimationLibrary_cphvb")
+libraries/ = SubResource("AnimationLibrary_3ftge")
 
 [node name="GREAT" type="Node2D" parent="Miss_Great_Perfect" unique_id=30889252]
 visible = false
