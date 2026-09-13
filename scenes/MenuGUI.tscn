@@ -14,6 +14,7 @@
 [ext_resource type="Theme" uid="uid://b5x8fwp1vrarc" path="res://resources/themes/no_bg_button_theme.tres" id="9_rbo5s"]
 [ext_resource type="FontFile" uid="uid://7u54b7ave0i7" path="res://assets/fonts/ethnocen.ttf" id="10_0uspm"]
 [ext_resource type="Script" uid="uid://c32cs7876gib4" path="res://scripts/vibrate_toggle_button.gd" id="10_fqox8"]
+[ext_resource type="Script" uid="uid://c4k71o7m4emo7" path="res://scripts/show_when_all_hidden.gd" id="12_52hod"]
 
 [sub_resource type="GDScript" id="GDScript_3vvtq"]
 resource_name = "owlmover"
@@ -239,31 +240,33 @@ tracks/8/keys = {
 tracks/9/type = "value"
 tracks/9/imported = false
 tracks/9/enabled = true
-tracks/9/path = NodePath("../TutorialText:visible")
+tracks/9/path = NodePath("VibrateToggleButton:modulate")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/10/type = "value"
-tracks/10/imported = false
-tracks/10/enabled = true
-tracks/10/path = NodePath("VibrateToggleButton:modulate")
-tracks/10/interp = 1
-tracks/10/loop_wrap = true
-tracks/10/keys = {
 "times": PackedFloat32Array(0, 0.1667),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
+tracks/10/type = "method"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("CreditsButton")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [false],
+"method": &"set_selectable"
+}]
+}
 tracks/11/type = "method"
 tracks/11/imported = false
 tracks/11/enabled = true
-tracks/11/path = NodePath("CreditsButton")
+tracks/11/path = NodePath("QuitButton")
 tracks/11/interp = 1
 tracks/11/loop_wrap = true
 tracks/11/keys = {
@@ -277,24 +280,10 @@ tracks/11/keys = {
 tracks/12/type = "method"
 tracks/12/imported = false
 tracks/12/enabled = true
-tracks/12/path = NodePath("QuitButton")
+tracks/12/path = NodePath("../LevelSelectGUI")
 tracks/12/interp = 1
 tracks/12/loop_wrap = true
 tracks/12/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [false],
-"method": &"set_selectable"
-}]
-}
-tracks/13/type = "method"
-tracks/13/imported = false
-tracks/13/enabled = true
-tracks/13/path = NodePath("../LevelSelectGUI")
-tracks/13/interp = 1
-tracks/13/loop_wrap = true
-tracks/13/keys = {
 "times": PackedFloat32Array(0.76666665),
 "transitions": PackedFloat32Array(1),
 "values": [{
@@ -302,29 +291,41 @@ tracks/13/keys = {
 "method": &"_on_level_select_shown"
 }]
 }
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("VibrateToggleButton:selectable")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0, 0.0025),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
 tracks/14/type = "value"
 tracks/14/imported = false
 tracks/14/enabled = true
-tracks/14/path = NodePath("VibrateToggleButton:selectable")
+tracks/14/path = NodePath("VibrateToggleButton:disabled")
 tracks/14/interp = 1
 tracks/14/loop_wrap = true
 tracks/14/keys = {
 "times": PackedFloat32Array(0, 0.0025),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [true, false]
+"values": [false, true]
 }
 tracks/15/type = "value"
 tracks/15/imported = false
 tracks/15/enabled = true
-tracks/15/path = NodePath("VibrateToggleButton:disabled")
+tracks/15/path = NodePath("../TutorialText:modulate")
 tracks/15/interp = 1
 tracks/15/loop_wrap = true
 tracks/15/keys = {
-"times": PackedFloat32Array(0, 0.0025),
+"times": PackedFloat32Array(6.687552e-05, 0.0025),
 "transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [false, true]
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_gjjcl"]
@@ -573,16 +574,13 @@ script/source = "extends ButtonPreset
 
 @export var anim_player: AnimationPlayer
 @export var show_on_hover: CanvasItem
-@export var default_shown: CanvasItem
 
 func select() -> void:
 	show_on_hover.show()
-	default_shown.hide()
 	
 func unselect() -> void:
 	if selectable:
 		show_on_hover.hide()
-		default_shown.show()
 "
 
 [sub_resource type="GDScript" id="GDScript_85riq"]
@@ -591,16 +589,13 @@ script/source = "extends ButtonPreset
 
 @export var anim_player: AnimationPlayer
 @export var show_on_hover: CanvasItem
-@export var default_shown: CanvasItem
 
 func select() -> void:
 	show_on_hover.show()
-	default_shown.hide()
 
 func unselect() -> void:
 	if selectable:
 		show_on_hover.hide()
-		default_shown.show()
 
 func press() -> void:
 	anim_player.play(\"QuitClicked\")
@@ -925,7 +920,7 @@ focus_neighbor_right = NodePath("../CreditsButton")
 script = SubResource("GDScript_wf3n4")
 anim_player = NodePath("../ButtonTriggeredAnimations")
 
-[node name="CreditsButton" parent="MenuButtons" unique_id=62756028 node_paths=PackedStringArray("anim_player", "show_on_hover", "default_shown") instance=ExtResource("4_ds5pe")]
+[node name="CreditsButton" parent="MenuButtons" unique_id=62756028 node_paths=PackedStringArray("anim_player", "show_on_hover") instance=ExtResource("4_ds5pe")]
 offset_left = 1200.0
 offset_top = -200.0
 offset_right = 2159.0
@@ -937,9 +932,8 @@ disabled = true
 script = SubResource("GDScript_h73c4")
 anim_player = NodePath("../ButtonTriggeredAnimations")
 show_on_hover = NodePath("../../CreditsText")
-default_shown = NodePath("../../TutorialText")
 
-[node name="QuitButton" parent="MenuButtons" unique_id=607266363 node_paths=PackedStringArray("anim_player", "show_on_hover", "default_shown") instance=ExtResource("5_nl8w8")]
+[node name="QuitButton" parent="MenuButtons" unique_id=607266363 node_paths=PackedStringArray("anim_player", "show_on_hover") instance=ExtResource("5_nl8w8")]
 offset_left = 2900.0
 offset_top = -200.0
 offset_right = 3513.0
@@ -949,7 +943,6 @@ focus_neighbor_left = NodePath("../CreditsButton")
 script = SubResource("GDScript_85riq")
 anim_player = NodePath("../ButtonTriggeredAnimations")
 show_on_hover = NodePath("../../ExitText")
-default_shown = NodePath("../../TutorialText")
 
 [node name="VibrateToggleButton" type="Button" parent="MenuButtons" unique_id=776217352 node_paths=PackedStringArray("toggled_symbol")]
 offset_left = 3600.0
@@ -999,6 +992,7 @@ libraries/ = SubResource("AnimationLibrary_wf3n4")
 autoplay = &"blink"
 
 [node name="Paths" type="Node2D" parent="PressAnyKeyText" unique_id=1797206732]
+visible = false
 
 [node name="Selection_part1" type="Line2D" parent="PressAnyKeyText/Paths" unique_id=1472047750]
 scale = Vector2(0.99999994, 0.99999994)
@@ -1049,10 +1043,13 @@ position = Vector2(519.2009, 174.47314)
 scale = Vector2(4.951, 4.951)
 script = null
 
-[node name="TutorialText" type="Line2D" parent="." unique_id=767600423]
+[node name="TutorialText" type="Line2D" parent="." unique_id=767600423 node_paths=PackedStringArray("others")]
+visible = false
 modulate = Color(1, 1, 1, 0)
 position = Vector2(694.52, 748.39)
 scale = Vector2(0.285, 0.285)
+script = ExtResource("12_52hod")
+others = [NodePath("../CreditsText"), NodePath("../ExitText")]
 
 [node name="Selection_part49" type="Line2D" parent="TutorialText" unique_id=306009645]
 points = PackedVector2Array(1735, 661, 1736.24, 659.264, 1739.59, 654.552, 1744.53, 647.608, 1750.54, 639.176, 1757.07, 630, 1763.6, 620.824, 1769.61, 612.392, 1774.55, 605.448, 1777.9, 600.736, 1779.14, 599, 1780.64, 596.851, 1782.28, 594.474, 1784.05, 591.971, 1785.96, 589.443, 1787.99, 586.991, 1790.15, 584.717, 1792.43, 582.723, 1794.84, 581.109, 1797.36, 579.978, 1800, 579.43, 1802.69, 579.564, 1805.25, 580.349, 1807.68, 581.677, 1809.97, 583.437, 1812.12, 585.523, 1814.13, 587.823, 1816, 590.23, 1817.72, 592.634, 1819.3, 594.927, 1820.72, 597, 1821.57, 598.204, 1823.87, 601.472, 1827.26, 606.288, 1831.39, 612.136, 1835.87, 618.5, 1840.35, 624.864, 1844.48, 630.712, 1847.87, 635.528, 1850.17, 638.796, 1851.02, 640, 1852.35, 641.893, 1853.79, 643.912, 1855.31, 646.026, 1856.87, 648.206, 1858.43, 650.421, 1859.96, 652.643, 1861.42, 654.842, 1862.77, 656.987, 1863.97, 659.05, 1865, 661, 1864.19, 661.028, 1861.98, 661.104, 1858.74, 661.216, 1854.79, 661.352, 1850.5, 661.5, 1846.21, 661.648, 1842.26, 661.784, 1839.02, 661.896, 1836.81, 661.972, 1836, 662, 1835.08, 662, 1832.57, 662, 1828.87, 662, 1824.38, 662, 1819.5, 662, 1814.62, 662, 1810.13, 662, 1806.43, 662, 1803.92, 662, 1803, 662, 1802.47, 661.972, 1801.02, 661.896, 1798.9, 661.784, 1796.31, 661.648, 1793.5, 661.5, 1790.69, 661.352, 1788.1, 661.216, 1785.98, 661.104, 1784.53, 661.028, 1784, 661, 1784.86, 659.358, 1785.66, 657.934, 1786.43, 656.717, 1787.23, 655.694, 1788.09, 654.855, 1789.07, 654.187, 1790.2, 653.68, 1791.54, 653.32, 1793.12, 653.098, 1795, 653, 1796.32, 653, 1799.89, 653, 1805.15, 653, 1811.54, 653, 1818.5, 653, 1825.46, 653, 1831.85, 653, 1837.11, 653, 1840.68, 653, 1842, 653, 1841.51, 652.3, 1840.17, 650.4, 1838.2, 647.6, 1835.81, 644.2, 1833.21, 640.5, 1830.61, 636.8, 1828.22, 633.4, 1826.25, 630.6, 1824.91, 628.7, 1824.42, 628, 1823.74, 627.076, 1821.88, 624.568, 1819.15, 620.872, 1815.82, 616.384, 1812.21, 611.5, 1808.6, 606.616, 1805.27, 602.128, 1802.54, 598.432, 1800.68, 595.924, 1800, 595, 1798.97, 596.428, 1796.19, 600.304, 1792.09, 606.016, 1787.11, 612.952, 1781.68, 620.5, 1776.26, 628.048, 1771.28, 634.984, 1767.18, 640.696, 1764.4, 644.572, 1763.37, 646, 1761.82, 648.188, 1760.34, 650.404, 1758.88, 652.588, 1757.4, 654.682, 1755.84, 656.625, 1754.14, 658.358, 1752.26, 659.822, 1750.15, 660.956, 1747.74, 661.702, 1745, 662, 1743.85, 662.019, 1742.79, 662.029, 1741.81, 662.025, 1740.87, 661.998, 1739.96, 661.942, 1739.05, 661.852, 1738.12, 661.719, 1737.15, 661.537, 1736.12, 661.3, 1735, 661)
