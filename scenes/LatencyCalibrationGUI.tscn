@@ -100,6 +100,12 @@ start_screen_percentage = 0.4
 
 [node name="ExitButton" parent="." unique_id=1512175997 instance=ExtResource("7_2fjm1")]
 modulate = Color(1, 1, 1, 1)
+focus_neighbor_left = NodePath(".")
+focus_neighbor_top = NodePath(".")
+focus_neighbor_right = NodePath(".")
+focus_neighbor_bottom = NodePath(".")
+focus_next = NodePath(".")
+focus_previous = NodePath(".")
 
 [node name="MobileGraceArea" parent="ExitButton" unique_id=460203261 instance=ExtResource("8_6a8uk")]
 layout_mode = 0
