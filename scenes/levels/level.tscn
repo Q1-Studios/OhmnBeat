@@ -542,7 +542,6 @@ offset = Vector2(960, 540)
 script = ExtResource("13_ux5qa")
 
 [node name="MusicProgressBar" type="ProgressBar" parent="." unique_id=1079399295 node_paths=PackedStringArray("manager")]
-z_index = 5
 offset_right = 1920.0
 offset_bottom = 30.0
 size_flags_horizontal = 3
