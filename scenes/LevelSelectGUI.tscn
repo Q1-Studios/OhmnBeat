@@ -791,7 +791,8 @@ points = PackedVector2Array(1669, 313, 1668.13, 312.768, 1665.78, 312.138, 1662.
 
 [node name="MobileGraceArea" parent="LevelSelectLayer/HBoxContainer/ResetScoresButton" unique_id=460203261 instance=ExtResource("3_onb6o")]
 layout_mode = 0
-offset_left = 266.0
+offset_left = 265.0
+offset_top = -88.0
 offset_right = 505.0
 
 [node name="Levels" type="Node2D" parent="LevelSelectLayer" unique_id=1439274069]
