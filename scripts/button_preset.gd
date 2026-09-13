@@ -51,8 +51,9 @@ func _on_button_down() -> void:
 
 func _on_button_up() -> void:
 	button_down_self = false
-	proxy_grab_focus()
-	proxy_release_focus()
+	if(not proxy_for.has_focus()):
+		proxy_grab_focus()
+		proxy_release_focus()
 
 func set_selectable(value: bool) -> void:
 	selectable = value
