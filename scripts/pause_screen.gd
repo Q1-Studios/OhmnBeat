@@ -6,18 +6,23 @@ extends ColorRect
 @export var count_in_label: Label
 @export var quit_level_btn: ButtonPreset
 
+@export var latency_btn: ButtonPreset
+@export var latency_calibration_layer: CanvasItem
+
 const count_in: int = 4
 
 var paused: bool = false
 var unpausing: bool = false
 var require_release: bool = false
+var latency_calibration: bool = false
 
 var pause_time: float
 var count_in_timestamps: Array[float] = []
 
 func _process(_delta: float) -> void:
-	if (paused and not unpausing and Input.is_anything_pressed()
-	and not quit_level_btn.mouse_inside and not require_release):
+	if (paused and not unpausing and not latency_calibration
+	and Input.is_anything_pressed() and not require_release
+	and not quit_level_btn.mouse_inside and not latency_btn.mouse_inside):
 		start_unpause()
 	elif not paused and not unpausing and Input.is_action_just_pressed("ui_cancel"):
 		pause()
@@ -103,3 +108,12 @@ func _on_pause_touch_button_pressed() -> void:
 
 func _on_quit_level_btn_pressed() -> void:
 	unpause()
+
+
+func _on_latency_btn_pressed() -> void:
+	latency_calibration_layer.show()
+	latency_calibration = true
+
+func _on_exit_latency_calibration() -> void:
+	latency_calibration_layer.hide()
+	latency_calibration = false
