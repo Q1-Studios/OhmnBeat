@@ -22,7 +22,7 @@ var count_in_timestamps: Array[float] = []
 func _process(_delta: float) -> void:
 	if (paused and not unpausing and not latency_calibration
 	and Input.is_anything_pressed() and not require_release
-	and not quit_level_btn.mouse_inside and not latency_btn.mouse_inside):
+	and not quit_level_btn.is_mouse_inside() and not latency_btn.is_mouse_inside()):
 		start_unpause()
 	elif not paused and not unpausing and Input.is_action_just_pressed("ui_cancel"):
 		pause()

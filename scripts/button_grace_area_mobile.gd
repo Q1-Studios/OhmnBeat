@@ -5,7 +5,7 @@ class_name ButtonGraceAreaMobile
 
 func _ready() -> void:
 	super._ready()
-	proxy_for = actual_button
+	set_as_proxy_for(actual_button)
 	if not Globals.is_mobile:
 		hide()
 
