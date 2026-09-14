@@ -504,6 +504,30 @@ tracks/12/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 0)]
 }
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("../PressAnyKeyText/Paths:modulate")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("../PressAnyKeyText/Paths:visible")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_s5g8n"]
 resource_name = "swoopin"
@@ -527,10 +551,10 @@ tracks/1/path = NodePath("../PressAnyKeyText/Paths:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0.23333335, 0.39999998),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 0.4, 0.563044),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
-"values": [true, false]
+"values": [true, true, false]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -539,10 +563,22 @@ tracks/2/path = NodePath("../TutorialText:modulate")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0.229, 0.4),
+"times": PackedFloat32Array(0.32216805, 0.49316806),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../PressAnyKeyText/Paths:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.2346, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_7yvfd"]
@@ -992,7 +1028,6 @@ libraries/ = SubResource("AnimationLibrary_wf3n4")
 autoplay = &"blink"
 
 [node name="Paths" type="Node2D" parent="PressAnyKeyText" unique_id=1797206732]
-visible = false
 
 [node name="Selection_part1" type="Line2D" parent="PressAnyKeyText/Paths" unique_id=1472047750]
 scale = Vector2(0.99999994, 0.99999994)
@@ -1044,7 +1079,6 @@ scale = Vector2(4.951, 4.951)
 script = null
 
 [node name="TutorialText" type="Line2D" parent="." unique_id=767600423 node_paths=PackedStringArray("others")]
-visible = false
 modulate = Color(1, 1, 1, 0)
 position = Vector2(694.52, 748.39)
 scale = Vector2(0.285, 0.285)
