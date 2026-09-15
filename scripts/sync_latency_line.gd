@@ -5,7 +5,7 @@ class_name LatencyLine
 @export var label: Label
 @export var start_screen_percentage: float = 0.5
 @export var pulse_color: Color = Color.DARK_RED
-@export var pulse_duration: float = 0.1
+@export var pulse_duration: float = 0.05
 
 @onready var y_distance: float = get_viewport_rect().size.y
 @onready var default_modulate: Color = modulate
